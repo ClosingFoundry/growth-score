@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Growth Score | An open measurement standard</title>
-<meta name="description" content="A published measurement standard for commercial capability. Free for the companies measured, licensed to the institutions that fund them.">
+<title>Version history | Growth Score</title>
+<meta name="description" content="Every change to the method, and whether scores either side of it stay comparable.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -193,177 +193,60 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 </head>
 <body>
 <div class="draft">Prototype V2 <b>&middot;</b> Placeholder name <b>&middot;</b> Not for external issue</div>
-<div class="vswitch">Viewing <b>V2, the published standard</b> &nbsp;|&nbsp; <a href="../">V1, the institutional brochure</a> &nbsp;|&nbsp; Specification v1.4, last revised 30 July 2026</div>
+<div class="vswitch">Viewing <b>V2, the published standard</b> &nbsp;|&nbsp; <a href="../../">V1, the institutional brochure</a> &nbsp;|&nbsp; Specification v1.4, last revised 30 July 2026</div>
 <header>
   <div class="wrap bar">
-    <a class="logo" href="./" class="on"><span class="mk">Growth Score</span><span class="sub">An open measurement standard</span></a>
+    <a class="logo" href="../"><span class="mk">Growth Score</span><span class="sub">An open measurement standard</span></a>
     <button class="menu" id="menuBtn" aria-expanded="false">Menu</button>
     <nav id="nav"><ul>
       <li class="drop">
         <button class="dtrig" aria-expanded="false">The standard <span class="caret">&#9662;</span></button>
         <div class="dmenu">
-          <a href="method/"><b>Method v1.4</b><em>Questions, scales, arithmetic, bands</em></a>
-          <a href="run/"><b>Run it now</b><em>Reference implementation, live in your browser</em></a>
-          <a href="conformance/"><b>Conformance</b><em>Test vectors, manifest, verification</em></a>
-          <a href="integrate/"><b>Integrate</b><em>Four ways to run it, machine access</em></a>
-          <a href="versions/"><b>Versions</b><em>Changelog and comparability</em></a>
-          <a href="limits/"><b>Limits</b><em>What this doesn’t do</em></a>
+          <a href="../method/"><b>Method v1.4</b><em>Questions, scales, arithmetic, bands</em></a>
+          <a href="../run/"><b>Run it now</b><em>Reference implementation, live in your browser</em></a>
+          <a href="../conformance/"><b>Conformance</b><em>Test vectors, manifest, verification</em></a>
+          <a href="../integrate/"><b>Integrate</b><em>Four ways to run it, machine access</em></a>
+          <a href="../versions/" class="on"><b>Versions</b><em>Changelog and comparability</em></a>
+          <a href="../limits/"><b>Limits</b><em>What this doesn’t do</em></a>
         </div>
       </li>
       <li class="drop">
         <button class="dtrig" aria-expanded="false">Who licenses it <span class="caret">&#9662;</span></button>
         <div class="dmenu">
-          <a href="banks/"><b>Banks</b><em>Which customers are building capability</em></a>
-          <a href="public-bodies/"><b>Public bodies</b><em>Movement, not throughput</em></a>
-          <a href="universities/"><b>Universities</b><em>Evidence for the next bid</em></a>
-          <a href="investors/"><b>Investors</b><em>Portfolio movement from day one</em></a>
+          <a href="../banks/"><b>Banks</b><em>Which customers are building capability</em></a>
+          <a href="../public-bodies/"><b>Public bodies</b><em>Movement, not throughput</em></a>
+          <a href="../universities/"><b>Universities</b><em>Evidence for the next bid</em></a>
+          <a href="../investors/"><b>Investors</b><em>Portfolio movement from day one</em></a>
         </div>
       </li>
-      <li><a href="specimen/">Specimen</a></li>
-      <li><a href="about/">About</a></li>
-      <li><a class="navcta" href="contact/">Contact</a></li>
+      <li><a href="../specimen/">Specimen</a></li>
+      <li><a href="../about/">About</a></li>
+      <li><a class="navcta" href="../contact/">Contact</a></li>
     </ul></nav>
   </div>
 </header>
 <main>
 <div class="page on">
   <section class="hero">
-    <div class="wrap">
-      <div class="grid2" style="grid-template-columns:1fr 1.05fr;gap:56px;align-items:center">
-        <div>
-          <p class="eyebrow">An open measurement standard</p>
-          <h1 style="max-width:19ch">Revenue tells you what already happened. This tells you what to fix.</h1>
-          <p class="big" style="margin-top:24px">
-            A measure of whether a company can actually sell what it’s built. Eight minutes, free, and taken again
-            ninety days later so the movement shows up long before the accounts do.
-          </p>
-          <p class="big"><b>The whole method is published.</b> Read it, check the arithmetic, run it yourself.</p>
-          <div class="btns">
-            <a class="btn" href="run/">Run the method now</a>
-            <a class="btn ghost" href="method/">Read the specification</a>
-          </div>
-        </div>
-
-        <div class="plot">
-          <div class="plot-head">
-            <span class="plot-title">One cohort, two resolutions</span>
-            <div class="toggle" role="group" aria-label="Resolution">
-              <button id="btnAgg" aria-pressed="true">What you report today</button>
-              <button id="btnPer" aria-pressed="false">Per company</button>
-            </div>
-          </div>
-          <svg id="plotSvg" viewBox="0 0 640 190" role="img" aria-label="A single aggregate figure resolving into individual company positions along a scale">
-            <line x1="40" y1="140" x2="600" y2="140" stroke="var(--rule)" stroke-width="1"></line>
-            <g id="axis"></g>
-            <g id="ticks"></g>
-            <g id="blob" class="blob">
-              <circle cx="320" cy="112" r="28" fill="var(--mark)" opacity=".10"></circle>
-              <circle cx="320" cy="112" r="8" fill="var(--mark)"></circle>
-              <text x="320" y="70" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="var(--mid)">198 businesses supported</text>
-            </g>
-            <text x="40" y="168" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--mid)">Not ready to raise or scale</text>
-            <text x="600" y="168" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--mid)">Investment ready</text>
-          </svg>
-          <div class="preadout">
-            <div>Companies you can name<b id="rB">0</b></div>
-            <div>Root causes identified<b id="rA">0</b></div>
-            <div>Movement you can evidence<b id="rC">None</b></div>
-          </div>
-        </div>
-
-      </div>
+    <div class="narrow">
+      <p class="eyebrow">Version history</p>
+      <h1>Every change, and whether it broke comparability.</h1>
+      <p class="big" style="margin-top:22px">A longitudinal measure is worthless if the method quietly changes underneath it. Each entry states plainly whether scores either side of the change can still be compared. That single field is what a report covering two dates depends on.</p>
     </div>
   </section>
-
-  <section class="alt tight">
-    <div class="wrap">
-      <p class="eyebrow">Current state</p>
-      <div class="stats">
-        <div><b>v1.4</b><span>Current method version</span></div>
-        <div><b>37</b><span>Questions, 32 capability + 5 momentum</span></div>
-        <div><b>31</b><span>Companies measured to date</span></div>
-        <div><b>0</b><span>Peer benchmarks published</span></div>
-      </div>
-      <p class="small" style="margin-top:20px;max-width:70ch">
-        Counts as at 30 July 2026, excluding test and duplicate records. Thirty one is early and we're not going to dress it up.
-        It's enough to diagnose a company. It isn't enough to tell you how you compare with your peers, which is why no peer
-        benchmark is published. The threshold for publishing one is in the method, and we're nowhere near it.
-      </p>
-    </div>
-  </section>
-
   <section>
-    <div class="wrap">
-      <p class="eyebrow">The problem</p>
-      <div class="grid2">
-        <div><h2>Every measure you’ve arrives after the point where you could have acted on it.</h2></div>
-        <div>
-          <p class="big">At the front, the attendance register: applications, attendees, businesses supported. Counted at the door. It tells you the room was full.</p>
-          <p class="big">At the back, the accounts: revenue, headcount, survival. Real, and far too late.</p>
-          <p>Between them, nothing measures whether a company can actually sell what it’s built, what’s wrong with it, or whether it got better. That gap is the only place anyone can still act.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="dark wide">
-    <div class="wrap">
-      <p class="eyebrow">Why the method is public</p>
-      <div class="grid2">
-        <div>
-          <h2>Nobody adopts a measure they aren't allowed to inspect.</h2>
-          <p class="big" style="margin-top:20px">Every standard worth the name is published: accounting standards, cyber certification schemes, clinical instruments, impact frameworks. The ones that stayed secret stayed products.</p>
-        </div>
-        <div>
-          <ul class="plain">
-            <li><b>You can read every question and scale</b> before anyone answers one.</li>
-            <li><b>You can reproduce the arithmetic</b> by hand from the published rules.</li>
-            <li><b>You can verify determinism yourself</b> against our public test vectors.</li>
-            <li><b>You can check any deployment</b> against the version it claims to run.</li>
-            <li><b>What stays ours</b> is the diagnostic library, the routing, and the register of who has been measured.</li>
-          </ul>
-          <div class="btns"><a class="btn" href="conformance/">How to verify it</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <p class="eyebrow">The model</p>
-      <h2>Four stages, four root causes, sixteen cells.</h2>
-      <p class="big" style="margin-top:16px;max-width:64ch">A company answers 37 questions: 32 on what it’s built, 5 on what’s actually producing output now. Those answers fill the grid below.</p>
-      <p style="max-width:64ch">The stages are where a symptom shows up. The root causes are why. Two different questions, and the fix depends on the second one. Click any cell.</p>
-      <div class="grid2" style="margin-top:32px;grid-template-columns:1.25fr 1fr;align-items:start">
-        <div>
-          <table class="matrix" id="mx"><thead><tr><th></th><th>Product</th><th>People</th><th>Process</th><th>Repeatability</th></tr></thead><tbody id="mxb"></tbody></table>
-          <p class="small" style="margin-top:14px">Values shown are the worked example published in the method. Darker means weaker.</p>
-        </div>
-        <div class="readout" id="ro">
-          <span class="mono">Select a cell</span>
-          <p style="margin:0" class="small">Each cell is scored from two questions on a five point scale. The stage score is the average of its row, the root cause score the average of its column.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="alt">
-    <div class="wrap">
-      <p class="eyebrow">What licensees get</p>
-      <div class="grid4">
-        <a class="card" href="banks/"><span class="mono">Banks</span><h3>Which customers are building capability</h3><p class="small">Per customer, dated, ahead of the account showing it.</p></a>
-        <a class="card" href="public-bodies/"><span class="mono">Public bodies</span><h3>Movement, not throughput</h3><p class="small">One instrument across every delivery partner, so two programmes can finally be compared.</p></a>
-        <a class="card" href="universities/"><span class="mono">Universities</span><h3>Evidence for the next bid</h3><p class="small">Measured in, measured out, comparable across cohorts and years.</p></a>
-        <a class="card" href="investors/"><span class="mono">Investors</span><h3>Portfolio movement</h3><p class="small">The same instrument twice a year, from the day of investment.</p></a>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="narrow" style="text-align:center">
-      <h2>Take it. It’s free, and it stays free.</h2>
-      <p class="big" style="margin-top:16px">Eight minutes, no obligation, and the result is yours whether or not you ever speak to us.</p>
-      <div class="btns" style="justify-content:center"><a class="btn" href="specimen/">See what you get first</a></div>
+    <div class="narrow">
+      <table>
+        <thead><tr><th>Version</th><th>Change</th><th>Comparable?</th></tr></thead>
+        <tbody>
+          <tr><td>v1.4 <span class="mono">current</span></td><td>Kernel composition: single canonical output shared by report, share link, email and PDF surfaces</td><td class="yes">Yes, no scoring change</td></tr>
+          <tr><td>v1.3</td><td><span class="ph">changelog to be reconstructed from source</span></td><td><span class="ph">to confirm</span></td></tr>
+          <tr><td>v1.2</td><td><span class="ph">changelog to be reconstructed from source</span></td><td><span class="ph">to confirm</span></td></tr>
+        </tbody>
+      </table>
+      <p class="small" style="margin-top:22px">The gaps are real and stay visible until the history is reconstructed properly from the source. A changelog invented after the fact would defeat the purpose of publishing one.</p>
+      <h2 style="margin-top:48px">When a peer benchmark gets published</h2>
+      <p style="margin-top:16px">Not until there’s a defensible cohort: provisionally at least 100 comparable observations per segment, with the exact threshold set against the observed distribution on statistical advice. At 31 companies measured in total, no segment is close, so no percentile is shown anywhere in the product. We could display one today and it would be fiction.</p>
     </div>
   </section>
 
@@ -376,9 +259,9 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
         <div class="logo" style="margin-bottom:14px"><span class="mk" style="color:#fff">Growth Score</span><span class="sub">An open measurement standard</span></div>
         <p style="max-width:34ch">An open measurement standard for commercial capability. Free for the companies measured, licensed to the institutions that fund them.</p>
       </div>
-      <div><h4>The standard</h4><p><a href="method/">Method v1.4</a><br><a href="run/">Run it now</a><br><a href="conformance/">Conformance</a><br><a href="integrate/">Integrate</a><br><a href="versions/">Versions</a><br><a href="limits/">Limits</a></p></div>
-      <div><h4>Sectors</h4><p><a href="banks/">Banks</a><br><a href="public-bodies/">Public bodies</a><br><a href="universities/">Universities</a><br><a href="investors/">Investors</a></p></div>
-      <div><h4>Company</h4><p><a href="about/">About</a><br><a href="specimen/">Specimen report</a><br><a href="contact/">Contact</a><br><span class="ph">Privacy</span><br><span class="ph">Terms</span></p></div>
+      <div><h4>The standard</h4><p><a href="../method/">Method v1.4</a><br><a href="../run/">Run it now</a><br><a href="../conformance/">Conformance</a><br><a href="../integrate/">Integrate</a><br><a href="../versions/">Versions</a><br><a href="../limits/">Limits</a></p></div>
+      <div><h4>Sectors</h4><p><a href="../banks/">Banks</a><br><a href="../public-bodies/">Public bodies</a><br><a href="../universities/">Universities</a><br><a href="../investors/">Investors</a></p></div>
+      <div><h4>Company</h4><p><a href="../about/">About</a><br><a href="../specimen/">Specimen report</a><br><a href="../contact/">Contact</a><br><span class="ph">Privacy</span><br><span class="ph">Terms</span></p></div>
     </div>
     <div class="foot-bottom">
       <span>Prototype V2. Name, entity and version history unconfirmed.</span>
@@ -417,108 +300,7 @@ var sb = document.getElementById("sendBtn");
 if(sb){ sb.addEventListener("click", function(){
   document.getElementById("formNote").textContent = "Prototype only. Nothing was sent. Wire this to the real inbox before launch."; }); }
 
-/* ---------------- hero cohort plot ---------------- */
-(function(){
-  var svg = document.getElementById("plotSvg");
-  if(!svg) return;
-  var N = 198, X0 = 40, X1 = 600, BASE = 140;
-  var ticksG = document.getElementById("ticks"), axisG = document.getElementById("axis");
 
-  for(var a = 0; a <= 10; a++){
-    var x = X0 + (X1 - X0) * (a/10);
-    var l = document.createElementNS("http://www.w3.org/2000/svg","line");
-    l.setAttribute("x1",x); l.setAttribute("x2",x);
-    l.setAttribute("y1",BASE); l.setAttribute("y2", a % 5 === 0 ? BASE+9 : BASE+5);
-    l.setAttribute("stroke","var(--rule)");
-    axisG.appendChild(l);
-  }
-
-  var seed = 7;
-  function rnd(){ seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; }
-  var tickEls = [];
-  for(var i = 0; i < N; i++){
-    var r = (rnd() + rnd() + rnd()) / 3;
-    var pos = X0 + (X1 - X0) * Math.min(0.97, r * 1.15);
-    var h = 10 + (rnd() * 13);
-    var t = document.createElementNS("http://www.w3.org/2000/svg","line");
-    t.setAttribute("x1",pos); t.setAttribute("x2",pos);
-    t.setAttribute("y1",BASE); t.setAttribute("y2",BASE - h);
-    t.setAttribute("stroke", r > 0.72 ? "var(--mark)" : "var(--ink)");
-    t.setAttribute("stroke-width","1.5");
-    t.setAttribute("opacity","0");
-    t.setAttribute("class","tick");
-    t.style.transformOrigin = pos + "px " + BASE + "px";
-    t.style.transform = "translateX(" + (320 - pos) + "px) scaleY(0.1)";
-    ticksG.appendChild(t);
-    tickEls.push(t);
-  }
-
-  var blob = document.getElementById("blob");
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function setView(per, stagger){
-    document.getElementById("btnAgg").setAttribute("aria-pressed", per ? "false":"true");
-    document.getElementById("btnPer").setAttribute("aria-pressed", per ? "true":"false");
-    blob.style.opacity = per ? "0" : "1";
-    tickEls.forEach(function(t,i){
-      t.style.transitionDelay = (reduce || !stagger) ? "0ms" : (per ? (i*3)+"ms" : "0ms");
-      t.setAttribute("opacity", per ? "1" : "0");
-      t.style.transform = per ? "translateX(0) scaleY(1)"
-                              : "translateX(" + (320 - t.getAttribute("x1")) + "px) scaleY(0.1)";
-    });
-    document.getElementById("rB").textContent = per ? "198" : "0";
-    document.getElementById("rA").textContent = per ? "198" : "0";
-    document.getElementById("rC").textContent = per ? "Per company" : "None";
-  }
-  document.getElementById("btnAgg").addEventListener("click", function(){ setView(false, false); });
-  document.getElementById("btnPer").addEventListener("click", function(){ setView(true, true); });
-
-  setView(false, false);
-  /* demonstrate itself once, then hand control back */
-  if(!reduce) setTimeout(function(){ setView(true, true); }, 1300);
-})();
-/* ---- matrix from the published worked example ---- */
-var STAGES = ["Demand","Sales Process","Closing","Expand"];
-var CAUSES = ["Product","People","Process","Repeatability"];
-var V = [[3.5,3.0,2.5,2.5],[3.5,3.0,2.0,2.0],[3.0,2.5,1.5,2.0],[2.0,2.0,1.5,1.5]];
-var NOTE = {
-  "Demand|Product":"The proposition isn’t yet sharp enough for one buyer. Pick the single best-fit segment and rewrite the value statement around their named pain.",
-  "Demand|Process":"Demand creation happens in bursts rather than to a rhythm that can be inspected.",
-  "Sales Process|Process":"Discovery quality varies by whoever is running the call. Good at-bats are being wasted.",
-  "Closing|Process":"Pricing, approval, procurement and legal steps are discovered too late. Avoidable slippage is the visible symptom.",
-  "Closing|Repeatability":"Common late-stage mistakes repeat because deal reviews report activity rather than inspect buyer evidence.",
-  "Expand|Process":"There’s no repeatable plan for renewal or expansion, so both depend on the relationship lasting."
-};
-function colour(v){
-  var t = (v-1)/4;                    // 0 weakest .. 1 strongest
-  var a = 0.10 + (1-t)*0.62;          // weaker = darker
-  return "rgba(11,78,214," + a.toFixed(3) + ")";
-}
-var body = document.getElementById("mxb");
-STAGES.forEach(function(st,i){
-  var tr = document.createElement("tr");
-  var th = document.createElement("th"); th.className="row"; th.textContent = st; tr.appendChild(th);
-  CAUSES.forEach(function(rc,j){
-    var td = document.createElement("td");
-    var d = document.createElement("div");
-    d.className = "cell"; d.textContent = V[i][j].toFixed(1);
-    d.style.background = colour(V[i][j]);
-    d.style.color = V[i][j] < 2.6 ? "#fff" : "var(--ink)";
-    d.setAttribute("role","button"); d.tabIndex = 0;
-    function pick(){
-      document.querySelectorAll(".cell").forEach(function(c){c.classList.remove("sel");});
-      d.classList.add("sel");
-      var key = st+"|"+rc;
-      document.getElementById("ro").innerHTML =
-        '<span class="mono">'+st+' &times; '+rc+' &middot; '+V[i][j].toFixed(1)+' of 5</span>' +
-        '<p style="margin:0">'+(NOTE[key] || "Scored from two questions in this cell. The written diagnosis for this combination is part of the licensed library, not the published method.")+'</p>';
-    }
-    d.addEventListener("click", pick);
-    d.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); pick(); }});
-    td.appendChild(d); tr.appendChild(td);
-  });
-  body.appendChild(tr);
-});
 </script>
 </body>
 </html>
