@@ -144,6 +144,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
       <li><a href="#method">Method</a></li>
       <li><a href="#specimen">Specimen</a></li>
       <li><a href="#conformance">Conformance</a></li>
+      <li><a href="#integrate">Integrate</a></li>
       <li><a href="#banks">Banks</a></li>
       <li><a href="#public">Public bodies</a></li>
       <li><a href="#education">Universities</a></li>
@@ -595,7 +596,85 @@ score      = round((48 + 56) / 2) = <span class="n">52</span>   ->  band: Ascent
   </section>
 </div>
 
-<!-- ================= BANKS ================= -->
+<!-- ================= INTEGRATE ================= -->
+<div class="page" id="page-integrate">
+  <section class="hero">
+    <div class="narrow">
+      <p class="eyebrow">Distribution</p>
+      <h1>Four ways to run it.</h1>
+      <p class="big" style="margin-top:22px">The method is free to read and free to implement. What you are choosing here is how the measurement reaches your companies and where the results live. Every route runs the identical published method, so results from any of them are comparable with results from any other.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="grid2">
+        <div class="card">
+          <span class="mono">Level 1 &middot; nothing to build</span>
+          <h3>Cohort link</h3>
+          <p class="small">A dedicated address for your programme. Companies complete the measure, results are tagged to your cohort, and the report comes back to you. No engineering, no procurement of software, usually live the same week.</p>
+          <p class="small"><b>Right for:</b> accelerators, growth hubs, university programmes, first pilots of any kind.</p>
+        </div>
+        <div class="card">
+          <span class="mono">Level 2 &middot; your brand</span>
+          <h3>Embedded</h3>
+          <p class="small">The same measure inside your own site, carrying your brand, so the company never feels handed off. The method underneath is unchanged and the deployment declares its conformance at the same public path as every other.</p>
+          <p class="small"><b>Right for:</b> banks and institutions where the programme brand matters.</p>
+        </div>
+        <div class="card">
+          <span class="mono">Level 3 &middot; your systems</span>
+          <h3>API and webhooks</h3>
+          <p class="small">Submit answers, receive the full structured result. Positions and diagnoses land in your CRM, case management or programme system automatically, and a webhook fires when a company rescores.</p>
+          <p class="small"><b>Right for:</b> banks, larger authorities, anyone whose reporting has to live where their other data lives.</p>
+        </div>
+        <div class="card">
+          <span class="mono">Level 4 &middot; your estate</span>
+          <h3>Certified self-hosted</h3>
+          <p class="small">You run the instrument inside your own infrastructure, pass the published conformance vectors, declare the version you run, and return anonymised aggregate movement. For cases where data genuinely cannot leave.</p>
+          <p class="small"><b>Right for:</b> a small number of buyers with hard data residency or risk constraints. The reporting obligation is the condition of using the name.</p>
+        </div>
+      </div>
+      <p class="big" style="margin-top:34px;max-width:64ch">Levels 1 to 3 keep results in the register, which is what makes them verifiable by someone else. Level 4 exists because refusing it would push a buyer into building an unverifiable clone, which is worse for everyone.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="narrow">
+      <h2>Where the line sits</h2>
+      <p style="margin-top:16px">Worth stating plainly, because it is the whole commercial model.</p>
+      <table style="margin-top:20px">
+        <thead><tr><th>Free, forever</th><th>Licensed</th></tr></thead>
+        <tbody>
+          <tr><td>Reading the method</td><td>The cohort and portfolio reporting</td></tr>
+          <tr><td>Implementing it yourself</td><td>The sixteen cell diagnosis and the routing</td></tr>
+          <tr><td>A company taking the measure</td><td>Access to the hosted instrument at programme scale</td></tr>
+          <tr><td>A company's own full result</td><td>A verifiable result in the register</td></tr>
+        </tbody>
+      </table>
+      <p class="small" style="margin-top:20px">Anyone may rebuild the measurement from the published specification. Nobody gets the diagnosis library, and a self-run score cannot be verified by a third party, which is the only thing that matters the moment a funder, an investor or a committee is asked to trust it.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="narrow">
+      <h2>Machine and agent access</h2>
+      <p style="margin-top:16px">The specification is published as data, so software can read it without a human transcribing anything. That includes AI agents, and we would rather design for that deliberately than pretend it will not happen.</p>
+      <table style="margin-top:22px">
+        <thead><tr><th>Surface</th><th>What it is for</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><code class="inl">/method/v1.4/*.json</code></td><td>The model, scales and bands as structured data</td><td class="yes">Published</td></tr>
+          <tr><td><code class="inl">/llms.txt</code></td><td>A machine-readable index of the specification, so a model reads the method rather than guessing at it</td><td><span class="ph">pending</span></td></tr>
+          <tr><td><code class="inl">/.well-known/growth-score.json</code></td><td>Conformance declaration for any deployment</td><td><span class="ph">pending</span></td></tr>
+          <tr><td><code class="inl">/verify/{reference}</code></td><td>Confirm a result is real, without exposing anything private</td><td><span class="ph">pending</span></td></tr>
+          <tr><td>MCP server</td><td>Lets an agent administer the measure, retrieve a result, or check conformance on behalf of a consenting user</td><td><span class="ph">pending</span></td></tr>
+        </tbody>
+      </table>
+      <p class="big" style="margin-top:28px">An agent can already read 37 published questions and ask them. What it cannot do is produce a result anyone else will accept.</p>
+      <p>That is the point of publishing the method and keeping the register closed. Anything that calls itself a Growth Score can be checked: which version produced it, when it was taken, whether it is current, and whether the implementation passes the published vectors. A number generated by a model that has read this website is not a Growth Score, and it will not verify.</p>
+      <p class="small">The scoring path itself contains no generative model and never will. The same answers produce the same score every time, which is the only reason a second measurement can be compared with a first.</p>
+    </div>
+  </section>
+</div>
 <div class="page" id="page-banks">
   <section class="hero">
     <div class="wrap">
@@ -953,7 +1032,7 @@ score      = round((48 + 56) / 2) = <span class="n">52</span>   ->  band: Ascent
         <div class="logo" style="margin-bottom:14px"><span class="mk brandname" style="color:#fff">Trigpoint</span><span class="sub">The Growth Score</span></div>
         <p style="max-width:34ch">An open measurement standard for commercial capability. Free for the companies measured, licensed to the institutions that fund them.</p>
       </div>
-      <div><h4>The standard</h4><p><a href="#method">Method v1.4</a><br><a href="#conformance">Conformance</a><br><a href="#versions">Versions</a><br><a href="#limits">Limits</a></p></div>
+      <div><h4>The standard</h4><p><a href="#method">Method v1.4</a><br><a href="#conformance">Conformance</a><br><a href="#integrate">Integrate</a><br><a href="#versions">Versions</a><br><a href="#limits">Limits</a></p></div>
       <div><h4>Sectors</h4><p><a href="#banks">Banks</a><br><a href="#public">Public bodies</a><br><a href="#education">Universities</a><br><a href="#investors">Investors</a></p></div>
       <div><h4>Company</h4><p><a href="#about">About</a><br><a href="#specimen">Specimen report</a><br><a href="#contact">Contact</a><br><span class="ph">Privacy</span><br><span class="ph">Terms</span></p></div>
     </div>
@@ -968,7 +1047,7 @@ score      = round((48 + 56) / 2) = <span class="n">52</span>   ->  band: Ascent
 var BRAND = "Trigpoint";
 document.querySelectorAll(".brandname").forEach(function(el){ el.textContent = BRAND; });
 
-var pages = ["home","method","specimen","conformance","banks","public","education","investors","versions","limits","about","contact"];
+var pages = ["home","method","specimen","conformance","integrate","banks","public","education","investors","versions","limits","about","contact"];
 function route(){
   var id = (location.hash || "#home").replace("#","");
   if(pages.indexOf(id) === -1) id = "home";
