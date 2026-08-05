@@ -32,10 +32,30 @@ header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.93);backdro
 .logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
 .logo .mk{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-.01em}
 .logo .sub{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
-nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
-nav a{font-size:14px;text-decoration:none;color:var(--ink-soft);padding-bottom:3px;border-bottom:1px solid transparent}
-nav a:hover{border-bottom-color:var(--rule)}
-nav a.on{color:var(--ink);border-bottom-color:var(--mark)}
+nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0;align-items:center}
+nav > ul > li > a{font-size:14.5px;text-decoration:none;color:var(--ink-soft);padding:8px 12px;border-radius:8px;display:block}
+nav > ul > li > a:hover{background:var(--paper-alt);color:var(--ink)}
+nav > ul > li > a.on{color:var(--mark)}
+a.navcta{border:1px solid var(--rule);font-weight:600}
+a.navcta:hover{border-color:var(--mark);color:var(--mark)!important}
+
+.drop{position:relative}
+.dtrig{font-family:var(--body);font-size:14.5px;color:var(--ink-soft);background:none;border:none;cursor:pointer;padding:8px 12px;border-radius:8px;display:flex;align-items:center;gap:7px}
+.dtrig:hover,.drop.open .dtrig{background:var(--paper-alt);color:var(--ink)}
+.drop.hason .dtrig{color:var(--mark)}
+.caret{font-size:9px;color:var(--mid);transition:transform .18s}
+.drop.open .caret{transform:rotate(180deg)}
+.dmenu{
+  position:absolute;top:calc(100% + 10px);left:0;min-width:310px;background:var(--white);
+  border:1px solid var(--rule);border-radius:14px;box-shadow:0 14px 40px rgba(14,27,44,.13);
+  padding:8px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .16s ease;z-index:60;
+}
+.drop.open .dmenu{opacity:1;visibility:visible;transform:translateY(0)}
+.dmenu a{display:block;text-decoration:none;padding:10px 12px;border-radius:9px;color:var(--ink)}
+.dmenu a:hover{background:var(--paper-alt)}
+.dmenu a.on{background:var(--paper-alt)}
+.dmenu b{display:block;font-size:14.5px;font-weight:600;margin-bottom:1px}
+.dmenu em{display:block;font-style:normal;font-size:12.5px;color:var(--mid);line-height:1.4}
 .menu{display:none;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--rule);padding:7px 12px;cursor:pointer;color:var(--ink);border-radius:8px}
 
 h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.022em;margin:0}
@@ -67,8 +87,15 @@ section:first-of-type{border-top:none}
 @media(max-width:860px){
   .grid2,.grid3,.grid4{grid-template-columns:1fr;gap:28px}
   nav{display:none;width:100%} nav.open{display:block}
-  nav ul{flex-direction:column;gap:2px;padding:10px 0 4px}
-  nav a{display:block;padding:9px 0}
+  nav ul{flex-direction:column;gap:2px;padding:10px 0 4px;align-items:stretch}
+  nav > ul > li > a{padding:11px 0}
+  .dtrig{width:100%;justify-content:space-between;padding:11px 0;font-weight:600}
+  .dmenu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;
+         border-left:2px solid var(--rule);border-radius:0;padding:0 0 6px 14px;margin-bottom:6px;display:none}
+  .drop.open .dmenu{display:block}
+  .dmenu a{padding:9px 0}
+  .dmenu em{display:none}
+  a.navcta{text-align:center;margin-top:8px;padding:12px}
   .menu{display:block} .bar{flex-wrap:wrap}
   section{padding:56px 0}
 }
@@ -141,18 +168,28 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
     <a class="logo" href="#home"><span class="mk brandname">Trigpoint</span><span class="sub">The Growth Score</span></a>
     <button class="menu" id="menuBtn" aria-expanded="false">Menu</button>
     <nav id="nav"><ul>
-      <li><a href="#method">Method</a></li>
+      <li class="drop">
+        <button class="dtrig" aria-expanded="false">The standard <span class="caret">&#9662;</span></button>
+        <div class="dmenu">
+          <a href="#method"><b>Method v1.4</b><em>Questions, scales, arithmetic, bands</em></a>
+          <a href="#conformance"><b>Conformance</b><em>Test vectors, manifest, verification</em></a>
+          <a href="#integrate"><b>Integrate</b><em>Four ways to run it, machine access</em></a>
+          <a href="#versions"><b>Versions</b><em>Changelog and comparability</em></a>
+          <a href="#limits"><b>Limits</b><em>What this does not do</em></a>
+        </div>
+      </li>
+      <li class="drop">
+        <button class="dtrig" aria-expanded="false">Who licenses it <span class="caret">&#9662;</span></button>
+        <div class="dmenu">
+          <a href="#banks"><b>Banks</b><em>Which customers are building capability</em></a>
+          <a href="#public"><b>Public bodies</b><em>Movement, not throughput</em></a>
+          <a href="#education"><b>Universities</b><em>Evidence for the next bid</em></a>
+          <a href="#investors"><b>Investors</b><em>Portfolio movement from day one</em></a>
+        </div>
+      </li>
       <li><a href="#specimen">Specimen</a></li>
-      <li><a href="#conformance">Conformance</a></li>
-      <li><a href="#integrate">Integrate</a></li>
-      <li><a href="#banks">Banks</a></li>
-      <li><a href="#public">Public bodies</a></li>
-      <li><a href="#education">Universities</a></li>
-      <li><a href="#investors">Investors</a></li>
-      <li><a href="#versions">Versions</a></li>
-      <li><a href="#limits">Limits</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a class="navcta" href="#contact">Contact</a></li>
     </ul></nav>
   </div>
 </header>
@@ -1053,9 +1090,49 @@ function route(){
   if(pages.indexOf(id) === -1) id = "home";
   pages.forEach(function(p){ document.getElementById("page-"+p).classList.toggle("on", p===id); });
   document.querySelectorAll("nav a").forEach(function(a){ a.classList.toggle("on", a.getAttribute("href")==="#"+id); });
+  document.querySelectorAll(".drop").forEach(function(d){
+    d.classList.remove("open");
+    d.querySelector(".dtrig").setAttribute("aria-expanded","false");
+    d.classList.toggle("hason", !!d.querySelector('a[href="#'+id+'"]'));
+  });
   document.getElementById("nav").classList.remove("open");
   window.scrollTo(0,0);
 }
+
+/* dropdowns: hover on desktop, click anywhere, keyboard friendly */
+var isTouch = window.matchMedia("(max-width:860px)");
+document.querySelectorAll(".drop").forEach(function(d){
+  var t = d.querySelector(".dtrig");
+  t.addEventListener("click", function(e){
+    e.stopPropagation();
+    var open = d.classList.contains("open");
+    document.querySelectorAll(".drop").forEach(function(o){
+      o.classList.remove("open"); o.querySelector(".dtrig").setAttribute("aria-expanded","false");
+    });
+    if(!open){ d.classList.add("open"); t.setAttribute("aria-expanded","true"); }
+  });
+  d.addEventListener("mouseenter", function(){
+    if(isTouch.matches) return;
+    document.querySelectorAll(".drop").forEach(function(o){ o.classList.remove("open"); });
+    d.classList.add("open"); t.setAttribute("aria-expanded","true");
+  });
+  d.addEventListener("mouseleave", function(){
+    if(isTouch.matches) return;
+    d.classList.remove("open"); t.setAttribute("aria-expanded","false");
+  });
+});
+document.addEventListener("click", function(){
+  document.querySelectorAll(".drop").forEach(function(d){
+    d.classList.remove("open"); d.querySelector(".dtrig").setAttribute("aria-expanded","false");
+  });
+});
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    document.querySelectorAll(".drop").forEach(function(d){
+      d.classList.remove("open"); d.querySelector(".dtrig").setAttribute("aria-expanded","false");
+    });
+  }
+});
 window.addEventListener("hashchange", route);
 document.getElementById("menuBtn").addEventListener("click", function(){
   var open = document.getElementById("nav").classList.toggle("open");
