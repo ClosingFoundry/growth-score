@@ -1,0 +1,78 @@
+{
+  "version": "v1.4",
+  "questions": {
+    "total": 37,
+    "capability": 32,
+    "momentum": 5
+  },
+  "stages": [
+    {
+      "id": "demand",
+      "name": "Demand",
+      "job": "Create enough qualified attention from the right kind of buyer"
+    },
+    {
+      "id": "sales_process",
+      "name": "Sales Process",
+      "job": "Turn attention into qualified opportunities that progress"
+    },
+    {
+      "id": "closing",
+      "name": "Closing",
+      "job": "Convert late-stage opportunities into signed business with predictable timing"
+    },
+    {
+      "id": "expand",
+      "name": "Expand",
+      "job": "Turn signed customers into renewals, adoption and expansion"
+    }
+  ],
+  "root_causes": [
+    {
+      "id": "product",
+      "name": "Product",
+      "asks": "Is the proposition, value and business case sharp enough?"
+    },
+    {
+      "id": "people",
+      "name": "People",
+      "asks": "Are the right people, with the right judgement and accountability, owning it?"
+    },
+    {
+      "id": "process",
+      "name": "Process",
+      "asks": "Is there a defined, evidenced way of working that can be inspected?"
+    },
+    {
+      "id": "repeatability",
+      "name": "Repeatability",
+      "asks": "Is what works captured, codified and reused rather than reinvented?"
+    }
+  ],
+  "matrix": {
+    "rows": "stages",
+    "cols": "root_causes",
+    "questions_per_cell": 2
+  },
+  "arithmetic": [
+    "cell = mean(its 2 questions)",
+    "stage = mean(the 4 cells in that row)",
+    "rootCause = mean(that cause across all 4 stages)",
+    "capability = mean(all 16 cells) / 5 * 100",
+    "momentum = mean(the 5 momentum answers) / 5 * 100",
+    "score = round((capability + momentum) / 2)"
+  ],
+  "lenses": [
+    "Volume",
+    "Efficiency",
+    "Control",
+    "Expansion"
+  ],
+  "scoring_path": "deterministic",
+  "generative_model_in_scoring": false,
+  "not_published": [
+    "lens rule precedence and thresholds",
+    "the 16-cell diagnostic and action library",
+    "routing to support"
+  ]
+}

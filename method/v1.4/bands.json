@@ -1,0 +1,30 @@
+{
+  "version": "v1.4",
+  "bands": [
+    {
+      "name": "Base Camp",
+      "min": 0,
+      "max": 39,
+      "meaning": "Foundations still forming. Pick one stage and install the repeatable basics."
+    },
+    {
+      "name": "Ascent",
+      "min": 40,
+      "max": 59,
+      "meaning": "Moving, but what is built and what is done daily are not pulling together."
+    },
+    {
+      "name": "Ridge",
+      "min": 60,
+      "max": 79,
+      "meaning": "A working motion. The next move is repeatability at scale."
+    },
+    {
+      "name": "Summit",
+      "min": 80,
+      "max": 100,
+      "meaning": "Repeatable and defensible. Focus shifts to expansion and durability."
+    }
+  ],
+  "note": "A few points either side of a band boundary is noise, not a difference in engine."
+}
