@@ -124,6 +124,20 @@ ul.plain li::before{content:"";position:absolute;left:0;top:22px;width:12px;heig
 .dark .btn{background:#fff;color:var(--mark);border-color:#fff}
 .dark .btn.ghost{background:none;color:#fff;border-color:rgba(255,255,255,.5)}
 
+.plot{background:var(--white);border:1px solid var(--rule);border-radius:16px;padding:24px 24px 20px;box-shadow:0 2px 14px rgba(14,27,44,.06)}
+.plot-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.plot-title{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--mid)}
+.toggle{display:inline-flex;border:1px solid var(--rule);border-radius:9px;overflow:hidden}
+.toggle button{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;background:var(--white);border:none;padding:8px 12px;cursor:pointer;color:var(--mid)}
+.toggle button+button{border-left:1px solid var(--rule)}
+.toggle button[aria-pressed=true]{background:var(--mark);color:#fff}
+.plot svg{display:block;width:100%;height:auto}
+.tick{transition:opacity .5s ease, transform .85s cubic-bezier(.22,.9,.3,1)}
+.blob{transition:opacity .4s ease}
+.preadout{display:flex;gap:26px;flex-wrap:wrap;margin-top:16px;padding-top:15px;border-top:1px solid var(--rule)}
+.preadout div{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--mid)}
+.preadout b{display:block;font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:-.03em;color:var(--ink);margin-top:3px}
+@media(prefers-reduced-motion:reduce){.tick,.blob{transition:none}}
 .rrow{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--rule)}
 .rrow .lab{font-size:14.5px}
 .rrow .lab i{font-style:normal;color:var(--mid);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:2px}
@@ -213,18 +227,50 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 <div class="page on" id="page-home">
   <section class="hero">
     <div class="wrap">
-      <p class="eyebrow">An open measurement standard for commercial capability</p>
-      <h1 style="max-width:21ch">Revenue tells you what already happened.</h1>
-      <h1 style="max-width:21ch;color:var(--mark);margin-top:4px">This tells you what to fix.</h1>
-      <p class="big" style="margin-top:28px;max-width:62ch">
-        A company answers 37 questions in eight minutes. The method returns a position, the stage where the problem shows up,
-        and the root cause underneath it. Then it is taken again, so the movement is visible long before it reaches the accounts.
-      </p>
-      <p class="big" style="max-width:62ch"><b>The whole method is published.</b> The questions, the scales, the arithmetic, the version history
-      and the test vectors. Free for the companies measured, forever. Licensed to the institutions that fund them.</p>
-      <div class="btns">
-        <a class="btn" href="#run">Run the method now</a>
-        <a class="btn ghost" href="#method">Read the specification</a>
+      <div class="grid2" style="grid-template-columns:1fr 1.05fr;gap:56px;align-items:center">
+        <div>
+          <p class="eyebrow">An open measurement standard</p>
+          <h1 style="max-width:16ch">Revenue tells you what already happened.</h1>
+          <h1 style="max-width:16ch;color:var(--mark);margin-top:4px">This tells you what to fix.</h1>
+          <p class="big" style="margin-top:24px">
+            A company answers 37 questions in eight minutes. The method returns a position, the stage where the problem shows up,
+            and the root cause underneath it. Then it is taken again, so movement is visible long before it reaches the accounts.
+          </p>
+          <p class="big"><b>The whole method is published.</b> Questions, scales, arithmetic, version history and test vectors.
+          Free for the companies measured, forever.</p>
+          <div class="btns">
+            <a class="btn" href="#run">Run the method now</a>
+            <a class="btn ghost" href="#method">Read the specification</a>
+          </div>
+        </div>
+
+        <div class="plot">
+          <div class="plot-head">
+            <span class="plot-title">One cohort, two resolutions</span>
+            <div class="toggle" role="group" aria-label="Resolution">
+              <button id="btnAgg" aria-pressed="true">What you report today</button>
+              <button id="btnPer" aria-pressed="false">Per company</button>
+            </div>
+          </div>
+          <svg id="plotSvg" viewBox="0 0 640 190" role="img" aria-label="A single aggregate figure resolving into individual company positions along a scale">
+            <line x1="40" y1="140" x2="600" y2="140" stroke="var(--rule)" stroke-width="1"></line>
+            <g id="axis"></g>
+            <g id="ticks"></g>
+            <g id="blob" class="blob">
+              <circle cx="320" cy="112" r="28" fill="var(--mark)" opacity=".10"></circle>
+              <circle cx="320" cy="112" r="8" fill="var(--mark)"></circle>
+              <text x="320" y="70" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="var(--mid)">198 businesses supported</text>
+            </g>
+            <text x="40" y="168" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--mid)">Not ready to raise or scale</text>
+            <text x="600" y="168" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--mid)">Investment ready</text>
+          </svg>
+          <div class="preadout">
+            <div>Companies you can name<b id="rB">0</b></div>
+            <div>Root causes identified<b id="rA">0</b></div>
+            <div>Movement you can evidence<b id="rC">None</b></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -1421,6 +1467,68 @@ if(sb){ sb.addEventListener("click", function(){
   });
 
   build(); calc();
+})();
+
+
+/* ---------------- hero cohort plot ---------------- */
+(function(){
+  var svg = document.getElementById("plotSvg");
+  if(!svg) return;
+  var N = 198, X0 = 40, X1 = 600, BASE = 140;
+  var ticksG = document.getElementById("ticks"), axisG = document.getElementById("axis");
+
+  for(var a = 0; a <= 10; a++){
+    var x = X0 + (X1 - X0) * (a/10);
+    var l = document.createElementNS("http://www.w3.org/2000/svg","line");
+    l.setAttribute("x1",x); l.setAttribute("x2",x);
+    l.setAttribute("y1",BASE); l.setAttribute("y2", a % 5 === 0 ? BASE+9 : BASE+5);
+    l.setAttribute("stroke","var(--rule)");
+    axisG.appendChild(l);
+  }
+
+  var seed = 7;
+  function rnd(){ seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; }
+  var tickEls = [];
+  for(var i = 0; i < N; i++){
+    var r = (rnd() + rnd() + rnd()) / 3;
+    var pos = X0 + (X1 - X0) * Math.min(0.97, r * 1.15);
+    var h = 10 + (rnd() * 13);
+    var t = document.createElementNS("http://www.w3.org/2000/svg","line");
+    t.setAttribute("x1",pos); t.setAttribute("x2",pos);
+    t.setAttribute("y1",BASE); t.setAttribute("y2",BASE - h);
+    t.setAttribute("stroke", r > 0.72 ? "var(--mark)" : "var(--ink)");
+    t.setAttribute("stroke-width","1.5");
+    t.setAttribute("opacity","0");
+    t.setAttribute("class","tick");
+    t.style.transformOrigin = pos + "px " + BASE + "px";
+    t.style.transform = "translateX(" + (320 - pos) + "px) scaleY(0.1)";
+    ticksG.appendChild(t);
+    tickEls.push(t);
+  }
+
+  var blob = document.getElementById("blob");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function setView(per, stagger){
+    document.getElementById("btnAgg").setAttribute("aria-pressed", per ? "false":"true");
+    document.getElementById("btnPer").setAttribute("aria-pressed", per ? "true":"false");
+    blob.style.opacity = per ? "0" : "1";
+    tickEls.forEach(function(t,i){
+      t.style.transitionDelay = (reduce || !stagger) ? "0ms" : (per ? (i*3)+"ms" : "0ms");
+      t.setAttribute("opacity", per ? "1" : "0");
+      t.style.transform = per ? "translateX(0) scaleY(1)"
+                              : "translateX(" + (320 - t.getAttribute("x1")) + "px) scaleY(0.1)";
+    });
+    document.getElementById("rB").textContent = per ? "198" : "0";
+    document.getElementById("rA").textContent = per ? "198" : "0";
+    document.getElementById("rC").textContent = per ? "Per company" : "None";
+  }
+  document.getElementById("btnAgg").addEventListener("click", function(){ setView(false, false); });
+  document.getElementById("btnPer").addEventListener("click", function(){ setView(true, true); });
+
+  setView(false, false);
+  /* demonstrate itself once, then hand control back */
+  if(!reduce) setTimeout(function(){ setView(true, true); }, 1300);
 })();
 
 route();
