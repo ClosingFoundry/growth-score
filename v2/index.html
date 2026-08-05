@@ -124,6 +124,18 @@ ul.plain li::before{content:"";position:absolute;left:0;top:22px;width:12px;heig
 .dark .btn{background:#fff;color:var(--mark);border-color:#fff}
 .dark .btn.ghost{background:none;color:#fff;border-color:rgba(255,255,255,.5)}
 
+.rrow{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--rule)}
+.rrow .lab{font-size:14.5px}
+.rrow .lab i{font-style:normal;color:var(--mid);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:2px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:9px;overflow:hidden}
+.seg button{font-family:var(--mono);font-size:13px;width:36px;height:34px;background:var(--white);border:none;border-left:1px solid var(--rule);cursor:pointer;color:var(--mid)}
+.seg button:first-child{border-left:none}
+.seg button[aria-pressed=true]{background:var(--mark);color:#fff}
+.bars div{display:grid;grid-template-columns:110px 1fr 34px;gap:10px;align-items:center;margin-bottom:7px;font-size:13.5px}
+.bars .t{height:8px;background:var(--paper-alt);border-radius:99px;overflow:hidden}
+.bars .t i{display:block;height:100%;background:var(--mark);border-radius:99px}
+.bars b{font-family:var(--mono);font-size:12.5px;font-weight:500;text-align:right}
+@media(min-width:861px){#sticky{position:sticky;top:96px}}
 .ph{font-family:var(--mono);font-size:13px;background:#FFF4DE;color:#7A5200;padding:1px 6px;border:1px dashed #DDAE55;border-radius:5px}
 
 /* ---- spec / code ---- */
@@ -172,6 +184,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
         <button class="dtrig" aria-expanded="false">The standard <span class="caret">&#9662;</span></button>
         <div class="dmenu">
           <a href="#method"><b>Method v1.4</b><em>Questions, scales, arithmetic, bands</em></a>
+          <a href="#run"><b>Run it now</b><em>Reference implementation, live in your browser</em></a>
           <a href="#conformance"><b>Conformance</b><em>Test vectors, manifest, verification</em></a>
           <a href="#integrate"><b>Integrate</b><em>Four ways to run it, machine access</em></a>
           <a href="#versions"><b>Versions</b><em>Changelog and comparability</em></a>
@@ -210,8 +223,8 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
       <p class="big" style="max-width:62ch"><b>The whole method is published.</b> The questions, the scales, the arithmetic, the version history
       and the test vectors. Free for the companies measured, forever. Licensed to the institutions that fund them.</p>
       <div class="btns">
-        <a class="btn" href="#method">Read the method</a>
-        <a class="btn ghost" href="#specimen">See a real report</a>
+        <a class="btn" href="#run">Run the method now</a>
+        <a class="btn ghost" href="#method">Read the specification</a>
       </div>
     </div>
   </section>
@@ -633,7 +646,93 @@ score      = round((48 + 56) / 2) = <span class="n">52</span>   ->  band: Ascent
   </section>
 </div>
 
-<!-- ================= INTEGRATE ================= -->
+<!-- ================= RUN IT ================= -->
+<div class="page" id="page-run">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Reference implementation &middot; v1.4</p>
+      <h1 style="max-width:20ch">Run the method yourself.</h1>
+      <p class="big" style="margin-top:22px;max-width:64ch">
+        Set a value for each of the sixteen cells and the five momentum readings. Everything below updates as you go:
+        the score, the band, the weakest stage, the local and systemic root causes, and the capability against momentum read.
+        Nothing is sent anywhere and nothing is stored. Close the tab and it is gone.
+      </p>
+      <p class="small" style="max-width:64ch">
+        <b>This is the arithmetic, not the questionnaire.</b> The real instrument asks 37 questions and derives these values from the answers.
+        This page exists so you can confirm the published rules produce the published outputs, before you ask anyone to complete anything.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="grid2" style="grid-template-columns:1.15fr 1fr;align-items:start;gap:40px">
+
+        <div>
+          <p class="eyebrow">Capability &middot; 16 cells</p>
+          <p class="small" style="margin-top:-8px">Score how true each is in practice today. Use evidence and consistency, not intent.</p>
+          <div id="cells"></div>
+
+          <p class="eyebrow" style="margin-top:36px">Momentum &middot; 5 readings</p>
+          <p class="small" style="margin-top:-8px">Is the engine producing output now?</p>
+          <div id="moms"></div>
+
+          <div class="btns">
+            <button class="btn ghost" id="resetBtn" type="button">Reset to 3</button>
+            <button class="btn ghost" id="exampleBtn" type="button">Load the worked example</button>
+          </div>
+        </div>
+
+        <div id="sticky">
+          <div class="card" style="padding:0;overflow:hidden">
+            <div style="background:var(--ink);color:#fff;padding:26px 28px">
+              <div style="display:flex;align-items:baseline;gap:14px">
+                <span id="rScore" style="font-size:56px;font-weight:700;letter-spacing:-.04em;line-height:1">50</span>
+                <span id="rBand" style="font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#8FB0F8">Ascent</span>
+              </div>
+              <div style="font-family:var(--mono);font-size:12px;color:#94A3C4;margin-top:10px">
+                Capability <b id="rCap" style="color:#fff;font-weight:500">60</b>
+                &nbsp;&middot;&nbsp; Momentum <b id="rMom" style="color:#fff;font-weight:500">60</b>
+                &nbsp;&middot;&nbsp; Method v1.4
+              </div>
+              <div style="height:6px;background:#26364F;border-radius:99px;margin-top:18px;overflow:hidden">
+                <div id="rBar" style="height:100%;background:#8FB0F8;width:50%;transition:width .25s"></div>
+              </div>
+            </div>
+            <div style="padding:26px 28px">
+              <p class="mono">The read</p>
+              <p id="rRead" style="margin:0 0 20px">Set the values to see the diagnosis.</p>
+              <p class="mono">Capability against momentum</p>
+              <p id="rSplit" class="small" style="margin:0 0 20px"></p>
+              <p class="mono">Stage scores</p>
+              <div id="rStages" style="margin-bottom:18px"></div>
+              <p class="mono">Root cause scores</p>
+              <div id="rCauses"></div>
+            </div>
+          </div>
+          <p class="small" style="margin-top:16px">
+            The problem lens shown is the documented default mapping. The full rule precedence, its thresholds and the written
+            diagnosis for each cell are part of the licensed layer and are not published.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="narrow">
+      <h2>What this page proves</h2>
+      <ul class="plain" style="margin-top:18px">
+        <li><b>It is deterministic.</b> Set the same values twice and you get the same result. There is no model in the scoring path and there never will be.</li>
+        <li><b>It is reproducible by hand.</b> Every number here comes from the six lines of arithmetic published in the method. Nothing is hidden between the inputs and the output.</li>
+        <li><b>Nothing is weighted by sector or size.</b> The same rules apply to every company, which is the only reason two results can be compared.</li>
+        <li><b>The judgement is not in the maths.</b> Load the worked example and note that Expand scores lowest, yet is not what the diagnosis sends you to fix. That precedence is the part you license.</li>
+      </ul>
+      <div class="btns"><a class="btn ghost" href="#method">The full specification</a><a class="btn ghost" href="#specimen">A complete report</a></div>
+    </div>
+  </section>
+</div>
 <div class="page" id="page-integrate">
   <section class="hero">
     <div class="narrow">
@@ -1069,7 +1168,7 @@ score      = round((48 + 56) / 2) = <span class="n">52</span>   ->  band: Ascent
         <div class="logo" style="margin-bottom:14px"><span class="mk brandname" style="color:#fff">Trigpoint</span><span class="sub">The Growth Score</span></div>
         <p style="max-width:34ch">An open measurement standard for commercial capability. Free for the companies measured, licensed to the institutions that fund them.</p>
       </div>
-      <div><h4>The standard</h4><p><a href="#method">Method v1.4</a><br><a href="#conformance">Conformance</a><br><a href="#integrate">Integrate</a><br><a href="#versions">Versions</a><br><a href="#limits">Limits</a></p></div>
+      <div><h4>The standard</h4><p><a href="#method">Method v1.4</a><br><a href="#run">Run it now</a><br><a href="#conformance">Conformance</a><br><a href="#integrate">Integrate</a><br><a href="#versions">Versions</a><br><a href="#limits">Limits</a></p></div>
       <div><h4>Sectors</h4><p><a href="#banks">Banks</a><br><a href="#public">Public bodies</a><br><a href="#education">Universities</a><br><a href="#investors">Investors</a></p></div>
       <div><h4>Company</h4><p><a href="#about">About</a><br><a href="#specimen">Specimen report</a><br><a href="#contact">Contact</a><br><span class="ph">Privacy</span><br><span class="ph">Terms</span></p></div>
     </div>
@@ -1084,7 +1183,7 @@ score      = round((48 + 56) / 2) = <span class="n">52</span>   ->  band: Ascent
 var BRAND = "Trigpoint";
 document.querySelectorAll(".brandname").forEach(function(el){ el.textContent = BRAND; });
 
-var pages = ["home","method","specimen","conformance","integrate","banks","public","education","investors","versions","limits","about","contact"];
+var pages = ["home","method","run","specimen","conformance","integrate","banks","public","education","investors","versions","limits","about","contact"];
 function route(){
   var id = (location.hash || "#home").replace("#","");
   if(pages.indexOf(id) === -1) id = "home";
@@ -1186,6 +1285,143 @@ var sb = document.getElementById("sendBtn");
 if(sb){ sb.addEventListener("click", function(){
   document.getElementById("formNote").textContent = "Prototype only. Nothing was sent. Wire this to the real inbox before launch.";
 }); }
+
+
+/* ---------------- reference implementation ---------------- */
+(function(){
+  var host = document.getElementById("cells");
+  if(!host) return;
+  var ST = ["Demand","Sales Process","Closing","Expand"];
+  var RC = ["Product","People","Process","Repeatability"];
+  var MOM = ["First meetings","Qualified opportunities","Deal pace and slippage","Forecast confidence","Expansion"];
+  var CAPLAB = ["Not in place","Inconsistent","Partly in place","Consistent","Proven and improving"];
+  var MOMLAB = ["Well below target","Below target","Partly on track","On track","Strong"];
+  var EX = [[3.5,3.0,2.5,2.5],[3.5,3.0,2.0,2.0],[3.0,2.5,1.5,2.0],[2.0,2.0,1.5,1.5]];
+  var cells = [[3,3,3,3],[3,3,3,3],[3,3,3,3],[3,3,3,3]];
+  var moms  = [3,3,3,3,3];
+
+  function seg(val, labels, onPick){
+    var w = document.createElement("div"); w.className = "seg";
+    for(var v=1; v<=5; v++){
+      (function(v){
+        var b = document.createElement("button");
+        b.type="button"; b.textContent = v;
+        b.title = labels[v-1];
+        b.setAttribute("aria-pressed", Math.round(val)===v ? "true":"false");
+        b.addEventListener("click", function(){ onPick(v); });
+        w.appendChild(b);
+      })(v);
+    }
+    return w;
+  }
+
+  function build(){
+    host.innerHTML = "";
+    ST.forEach(function(st,i){
+      RC.forEach(function(rc,j){
+        var row = document.createElement("div"); row.className="rrow";
+        var lab = document.createElement("div"); lab.className="lab";
+        lab.innerHTML = "<i>"+st+"</i>"+rc;
+        row.appendChild(lab);
+        row.appendChild(seg(cells[i][j], CAPLAB, function(v){ cells[i][j]=v; build(); calc(); }));
+        host.appendChild(row);
+      });
+    });
+    var mh = document.getElementById("moms"); mh.innerHTML="";
+    MOM.forEach(function(m,i){
+      var row = document.createElement("div"); row.className="rrow";
+      var lab = document.createElement("div"); lab.className="lab";
+      lab.innerHTML = "<i>Momentum</i>"+m;
+      row.appendChild(lab);
+      row.appendChild(seg(moms[i], MOMLAB, function(v){ moms[i]=v; build(); calc(); }));
+      mh.appendChild(row);
+    });
+  }
+
+  function mean(a){ return a.reduce(function(x,y){return x+y;},0)/a.length; }
+  function band(sc){
+    if(sc < 40) return "Base Camp";
+    if(sc < 60) return "Ascent";
+    if(sc < 80) return "Ridge";
+    return "Summit";
+  }
+  function bars(el, names, vals){
+    el.innerHTML = "";
+    var min = Math.min.apply(null, vals);
+    names.forEach(function(n,i){
+      var d = document.createElement("div");
+      d.innerHTML = '<span'+(vals[i]===min?' style="font-weight:600"':'')+'>'+n+'</span>'+
+        '<span class="t"><i style="width:'+((vals[i]/5)*100).toFixed(1)+'%"></i></span>'+
+        '<b>'+vals[i].toFixed(1)+'</b>';
+      el.appendChild(d);
+    });
+  }
+
+  function calc(){
+    var stage = ST.map(function(_,i){ return mean(cells[i]); });
+    var cause = RC.map(function(_,j){ return mean(cells.map(function(r){ return r[j]; })); });
+    var flat = [].concat.apply([], cells);
+    var cap = mean(flat)/5*100;
+    var mom = mean(moms)/5*100;
+    var score = Math.round((cap+mom)/2);
+
+    /* primary stage: weakest, with the documented Expand suppression */
+    var order = stage.map(function(v,i){ return {i:i,v:v}; }).sort(function(a,b){ return a.v-b.v; });
+    var pi = order[0].i;
+    var newBizWeak = Math.min(stage[0],stage[1],stage[2]) < 2.5;
+    var suppressed = false;
+    if(pi === 3 && newBizWeak){ pi = order.filter(function(o){ return o.i!==3; })[0].i; suppressed = true; }
+
+    /* local root cause within the primary stage, systemic across all four */
+    var localIdx = cells[pi].indexOf(Math.min.apply(null, cells[pi]));
+    var sysIdx = cause.indexOf(Math.min.apply(null, cause));
+
+    /* documented default lens mapping */
+    var lens = ["Volume","Efficiency","Efficiency","Expansion"][pi];
+    if(pi === 2) lens = (RC[localIdx] === "Process" || RC[localIdx] === "People") ? "Control" : "Efficiency";
+
+    document.getElementById("rScore").textContent = score;
+    document.getElementById("rBand").textContent = band(score);
+    document.getElementById("rCap").textContent = Math.round(cap);
+    document.getElementById("rMom").textContent = Math.round(mom);
+    document.getElementById("rBar").style.width = score + "%";
+
+    var systemic = (cause[sysIdx]/5*100) <= (cells[pi][localIdx]/5*100) - 10;
+    var read = "Your problem lens is <b>"+lens+"</b>. It shows up most strongly in <b>"+ST[pi]+
+      "</b>, where the local weakness is <b>"+RC[localIdx]+"</b>.";
+    if(systemic || sysIdx !== localIdx){
+      read += " Across the whole engine the weakest root cause is <b>"+RC[sysIdx]+"</b>"+
+        (systemic ? ", materially weaker than the local one, so treat this as systemic rather than a "+ST[pi]+" problem." : ".");
+    } else {
+      read += " The same cause is weakest across the whole engine, so it is systemic.";
+    }
+    if(suppressed){
+      read += " Expand scores lowest, but new business is not yet working, so an expansion finding is suppressed and the diagnosis routes to the stage that matters now.";
+    }
+    document.getElementById("rRead").innerHTML = read;
+
+    var gap = cap - mom, split;
+    if(cap >= 70 && mom < 45) split = "The engine is built and not being run. Usually inspection rhythm, ownership or cadence rather than capability.";
+    else if(gap <= -30) split = "Results are coming from effort rather than from the engine. Capacity limited: when the effort stops, so does the output.";
+    else if(gap >= 30) split = "Considerably more has been built than is currently moving. Look at whether it is being used, not at building more.";
+    else if(cap < 40 && mom < 40) split = "Neither built nor producing. Pick one stage and install the basics.";
+    else if(cap >= 70 && mom >= 70) split = "Built and producing. Focus shifts to expansion and durability.";
+    else split = "Capability and operating rhythm are broadly aligned. The gap between them is not itself the story.";
+    document.getElementById("rSplit").textContent = split;
+
+    bars(document.getElementById("rStages"), ST, stage);
+    bars(document.getElementById("rCauses"), RC, cause);
+  }
+
+  document.getElementById("resetBtn").addEventListener("click", function(){
+    cells = [[3,3,3,3],[3,3,3,3],[3,3,3,3],[3,3,3,3]]; moms = [3,3,3,3,3]; build(); calc();
+  });
+  document.getElementById("exampleBtn").addEventListener("click", function(){
+    cells = EX.map(function(r){ return r.slice(); }); moms = [3,3,3,2,3]; build(); calc();
+  });
+
+  build(); calc();
+})();
 
 route();
 </script>
