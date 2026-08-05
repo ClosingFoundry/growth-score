@@ -189,6 +189,52 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
 @media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
 .foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid #26364F;font-family:var(--mono);font-size:11px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* ---------- mobile ---------- */
+@media(max-width:860px){
+  /* inline grid-template-columns must be beaten explicitly */
+  .grid2,.grid3,.grid4{grid-template-columns:1fr!important;gap:26px!important}
+  section,section.tight,section.wide{padding:48px 0}
+  .hero{padding:40px 0 34px}
+  h1{font-size:clamp(30px,8.2vw,40px)}
+  h2{font-size:clamp(23px,6.2vw,30px)}
+  .big{font-size:17.5px}
+  body{font-size:16px}
+  .wrap,.narrow{padding:0 20px}
+  .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
+  table{font-size:14px;min-width:520px}
+  th{font-size:10px;padding-right:10px}
+  td{padding:11px 10px 11px 0}
+  pre{font-size:11px;padding:16px;border-radius:2px}
+  .stats b{font-size:26px}
+  .stats div{padding:16px 14px}
+  .plot{padding:18px 16px 14px}
+  .plot-head{gap:10px}
+  .toggle{width:100%}
+  .toggle button{flex:1;padding:9px 6px;font-size:10px}
+  .preadout{gap:18px}
+  .preadout b{font-size:22px}
+  .matrix{border-spacing:3px;min-width:0}
+  .matrix th{font-size:9px}
+  .matrix th.row{padding-right:6px;font-size:9.5px}
+  .cell{padding:11px 2px;font-size:14px}
+  .seg button{width:32px;height:38px}
+  .rrow{gap:10px}
+  .rrow .lab{font-size:13.5px}
+  .bars div{grid-template-columns:88px 1fr 30px;font-size:12.5px}
+  .btns{gap:10px}
+  .btn{width:100%;text-align:center;padding:14px 18px}
+  .readout{padding:16px}
+  ul.plain li{padding:12px 0 12px 20px}
+  ul.plain li::before{top:20px;width:9px}
+  .draft{font-size:9.5px;letter-spacing:.08em;padding:7px 14px}
+  .vswitch{font-size:11px;padding:8px 14px;line-height:1.5}
+  .foot-grid{grid-template-columns:1fr;gap:24px}
+}
+@media(max-width:480px){
+  .logo .sub{display:none}
+  .grid2 > .card, .grid3 > .card, .grid4 > .card{padding:20px}
+}
 </style>
 </head>
 <body>
@@ -299,6 +345,12 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
   </div>
 </footer>
 <script>
+
+document.querySelectorAll("table").forEach(function(t){
+  if(t.parentElement && t.parentElement.classList.contains("tw")) return;
+  var w = document.createElement("div"); w.className = "tw";
+  t.parentNode.insertBefore(w, t); w.appendChild(t);
+});
 
 document.getElementById("menuBtn").addEventListener("click", function(){
   var open = document.getElementById("nav").classList.toggle("open");
