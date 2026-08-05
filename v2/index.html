@@ -84,6 +84,9 @@ td{padding:14px 14px 14px 0;border-bottom:1px solid var(--rule);vertical-align:t
 td:first-child{font-weight:500}
 .no{color:var(--mid)} .yes{color:var(--mark)}
 
+label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:7px}
+input,select,textarea{width:100%;font-family:var(--body);font-size:16px;padding:12px;background:var(--white);border:1px solid var(--rule);color:var(--ink);margin-bottom:20px;border-radius:10px}
+textarea{min-height:110px;resize:vertical}
 ul.plain{list-style:none;margin:0;padding:0}
 ul.plain li{padding:13px 0 13px 26px;border-bottom:1px solid var(--rule);position:relative}
 ul.plain li::before{content:"";position:absolute;left:0;top:22px;width:12px;height:1px;background:var(--mark)}
@@ -138,13 +141,17 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
     <a class="logo" href="#home"><span class="mk brandname">Trigpoint</span><span class="sub">The Growth Score</span></a>
     <button class="menu" id="menuBtn" aria-expanded="false">Menu</button>
     <nav id="nav"><ul>
-      <li><a href="#method">The method</a></li>
+      <li><a href="#method">Method</a></li>
       <li><a href="#specimen">Specimen</a></li>
       <li><a href="#conformance">Conformance</a></li>
+      <li><a href="#banks">Banks</a></li>
+      <li><a href="#public">Public bodies</a></li>
+      <li><a href="#education">Universities</a></li>
+      <li><a href="#investors">Investors</a></li>
       <li><a href="#versions">Versions</a></li>
-      <li><a href="#institutions">Institutions</a></li>
       <li><a href="#limits">Limits</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul></nav>
   </div>
 </header>
@@ -246,10 +253,10 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
     <div class="wrap">
       <p class="eyebrow">What licensees get</p>
       <div class="grid4">
-        <a class="card" href="#institutions"><span class="mono">Banks</span><h3>Which customers are building capability</h3><p class="small">Per customer, dated, ahead of the account showing it.</p></a>
-        <a class="card" href="#institutions"><span class="mono">Public bodies</span><h3>Movement, not throughput</h3><p class="small">One instrument across every delivery partner, so two programmes can finally be compared.</p></a>
-        <a class="card" href="#institutions"><span class="mono">Universities</span><h3>Evidence for the next bid</h3><p class="small">Measured in, measured out, comparable across cohorts and years.</p></a>
-        <a class="card" href="#institutions"><span class="mono">Investors</span><h3>Portfolio movement</h3><p class="small">The same instrument twice a year, from the day of investment.</p></a>
+        <a class="card" href="#banks"><span class="mono">Banks</span><h3>Which customers are building capability</h3><p class="small">Per customer, dated, ahead of the account showing it.</p></a>
+        <a class="card" href="#public"><span class="mono">Public bodies</span><h3>Movement, not throughput</h3><p class="small">One instrument across every delivery partner, so two programmes can finally be compared.</p></a>
+        <a class="card" href="#education"><span class="mono">Universities</span><h3>Evidence for the next bid</h3><p class="small">Measured in, measured out, comparable across cohorts and years.</p></a>
+        <a class="card" href="#investors"><span class="mono">Investors</span><h3>Portfolio movement</h3><p class="small">The same instrument twice a year, from the day of investment.</p></a>
       </div>
     </div>
   </section>
@@ -588,41 +595,301 @@ score      = round((48 + 56) / 2) = <span class="n">52</span>   ->  band: Ascent
   </section>
 </div>
 
-<!-- ================= INSTITUTIONS ================= -->
-<div class="page" id="page-institutions">
+<!-- ================= BANKS ================= -->
+<div class="page" id="page-banks">
   <section class="hero">
-    <div class="narrow">
-      <p class="eyebrow">For institutions</p>
-      <h1>The method is free. The reporting is what you license.</h1>
-      <p class="big" style="margin-top:22px">Companies are never charged. Institutions license the cohort view, the routing and the reporting: what moved, for whom, after which intervention, on one instrument that makes two programmes comparable for the first time.</p>
+    <div class="wrap">
+      <p class="eyebrow">For banks</p>
+      <h1 style="max-width:23ch">You bank them at the start, and lose them the moment they become worth banking.</h1>
+      <p class="big" style="margin-top:26px;max-width:64ch">Start-up propositions are measured in accounts opened and businesses supported. The commercial side is measured in balances and transactions. One is counted too early to mean anything, the other only moves after the customer has already scaled. By the time the account shows it, the lending, the foreign exchange and the corporate advice have been bought elsewhere.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Two buyers, one instrument</p>
+      <h2>Every bank holds this problem twice.</h2>
+      <div class="grid2" style="margin-top:30px">
+        <div class="card"><span class="mono">The programme side</span><h3>Accelerators, hubs, partnerships</h3><p class="small">Runs on grant or marketing money and reports in participation. Needs per-company evidence the programme changed something, before the next budget round asks for it. This buyer needs the quarterly report.</p></div>
+        <div class="card"><span class="mono">The relationship side</span><h3>Business and commercial banking</h3><p class="small">Hundreds of accounts per manager, and a customer's growth is discovered from account behaviour after the event. This buyer needs the signal: which customers to spend scarce attention on, and what they need next. That is where the value compounds.</p></div>
+      </div>
+      <p class="big" style="margin-top:30px;max-width:62ch">The pilot starts on the programme side, because the evidence problem is funded and immediate. The relationship side is where it grows.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">The firewall, stated first</p>
+      <div class="grid2">
+        <div><h2>It is not a credit signal and must never be used as one.</h2></div>
+        <div>
+          <p class="big">The Growth Score does not assess creditworthiness, does not feed lending decisions, and is not an input to any affordability, pricing or risk model.</p>
+          <p>We state this before you ask and we put it in the contract. Your risk function does not have to take that on trust either: the method, the arithmetic and the conformance vectors are published, so they can audit the instrument before a pilot rather than after one.</p>
+          <div class="btns"><a class="btn ghost" href="#conformance">The conformance pack</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">The payoff</p>
+      <h2>What exists after one cycle that does not exist now.</h2>
+      <table style="margin-top:30px">
+        <thead><tr><th>Measure</th><th>Today</th><th>After one cycle</th></tr></thead>
+        <tbody>
+          <tr><td>Which programme members are building commercial capability</td><td class="no">Unknown until the account moves</td><td class="yes">A dated position per member, refreshed each cycle</td></tr>
+          <tr><td>Evidence the programme produced anything</td><td class="no">Attendance and satisfaction</td><td class="yes">Movement per company, baseline to endline</td></tr>
+          <tr><td>What a scaling customer needs next</td><td class="no">Discovered in conversation, if at all</td><td class="yes">A named gap, recorded, ahead of the account showing it</td></tr>
+          <tr><td>The board answer on the SME commitment</td><td class="no">Aggregate lifetime totals</td><td class="yes">A quarterly report, per cohort, comparable year on year</td></tr>
+        </tbody>
+      </table>
+      <p class="small" style="margin-top:22px">Wearing your brand or ours. A bank-branded deployment runs the identical published method and declares its conformance at the same fixed path as every other, so co-branding never means a private variant.</p>
+      <div class="btns"><a class="btn" href="#contact">Request a demonstration</a><a class="btn ghost" href="#limits">What we do not claim</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PUBLIC BODIES ================= -->
+<div class="page" id="page-public">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">For combined authorities, agencies and growth hubs</p>
+      <h1 style="max-width:24ch">"We put 200 companies through the programme" will not survive the next settlement.</h1>
+      <p class="big" style="margin-top:26px;max-width:64ch">Throughput was acceptable evidence while budgets were growing. It will not be acceptable while they are being reallocated, and the programmes that can show movement will be the ones that keep their funding.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">What the report contains</p>
+      <h2>The quarterly report, page by page.</h2>
+      <div class="grid3" style="margin-top:30px">
+        <div class="card"><span class="mono">Per programme</span><h3>Cohort movement</h3><p class="small">Every company measured at intake and exit. The proportion that moved, the average movement, and the stage where it happened.</p></div>
+        <div class="card"><span class="mono">Per company</span><h3>Position and cause</h3><p class="small">Where each company stands, the named root cause, the intervention routed, and what changed at the next measurement.</p></div>
+        <div class="card"><span class="mono">Across the portfolio</span><h3>Like for like</h3><p class="small">Every programme on the same published instrument, so one delivery partner can be set against another for the first time.</p></div>
+      </div>
+      <p class="big" style="margin-top:30px;max-width:64ch">The sentence you take to the next settlement changes. From "we put 200 companies through" to "we measured 200 companies, this proportion improved, and here is the intervention that did it".</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="grid2">
+        <div>
+          <p class="eyebrow">Two ways to fund it</p>
+          <h2>One of them needs no new budget line.</h2>
+        </div>
+        <div>
+          <ul class="plain">
+            <li>The authority licenses it centrally and requires its programmes to use it.</li>
+            <li>Or each delivery partner funds it from support money already allocated to them, at no new cost to the authority.</li>
+          </ul>
+          <p class="small" style="margin-top:20px">Because the method is published, a delivery partner can also run it themselves. That is deliberate: adoption matters more to us than seat count, and a partner running the published instrument produces data as comparable as one we run.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">The payoff</p>
+      <table style="margin-top:8px">
+        <thead><tr><th>Measure</th><th>Today</th><th>After one cycle</th></tr></thead>
+        <tbody>
+          <tr><td>Outcome evidence per programme</td><td class="no">Throughput, self-reported by the provider</td><td class="yes">Movement per company, same instrument across providers</td></tr>
+          <tr><td>Comparison between delivery partners</td><td class="no">Not possible, different metrics</td><td class="yes">Like for like, on one published scale</td></tr>
+          <tr><td>Where support money should concentrate</td><td class="no">Committee judgement</td><td class="yes">The stages and causes that recur across the portfolio, counted</td></tr>
+          <tr><td>The impact report itself</td><td class="no">Commissioned, occasional, expensive</td><td class="yes">Produced quarterly as a by-product of delivery</td></tr>
+        </tbody>
+      </table>
+      <p class="small" style="margin-top:22px">On assurance: the method, arithmetic and conformance vectors are public, which answers most of an algorithmic transparency or data protection review before it starts. It is a measurement instrument, not an automated decision about any person or business.</p>
+      <div class="btns"><a class="btn" href="#contact">Request a demonstration</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= EDUCATION ================= -->
+<div class="page" id="page-education">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">For universities, accelerators and programme partners</p>
+      <h1 style="max-width:23ch">The research is world class. The evidence that anything commercialised is a headcount.</h1>
+      <p class="big" style="margin-top:26px;max-width:64ch">Enterprise and commercialisation funding is defended with participation: founders trained, teams supported, spin-outs formed. The gap between forming a spin-out and that spin-out being commercially ready is exactly where the money is lost, and it is the part nobody measures.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
       <div class="grid2">
-        <div class="card">
-          <span class="mono">Banks</span>
-          <h3>Two buyers, one instrument</h3>
-          <p class="small">The programme side needs per-company evidence its accelerator produced something. The relationship side needs to know which customers are building capability while there is still time to act. Not a credit signal, and never an input to lending, pricing or eligibility. That goes in the contract.</p>
+        <div>
+          <p class="eyebrow">The gap</p>
+          <h2>Commercial capability is the blocker, and it is on nobody's dashboard.</h2>
+          <p style="margin-top:18px">Technical founders out of a research environment are strong on the product and unpractised at selling it. That is not a criticism, it is a predictable and fixable pattern. But you cannot fix at scale what you cannot see per team.</p>
+          <p>The method names which of the four stages is weakest for each team and which of the four causes sits underneath it, so support is aimed rather than delivered to everyone identically.</p>
         </div>
         <div class="card">
-          <span class="mono">Public bodies</span>
-          <h3>The quarterly report as a by-product</h3>
-          <p class="small">Baseline at intake, endline at exit, per company, across every delivery partner. The sentence changes from "we put 200 companies through" to "we measured 200, this proportion moved, after this intervention". Either the authority licenses it centrally or each provider funds it from money already allocated.</p>
-        </div>
-        <div class="card">
-          <span class="mono">Universities and accelerators</span>
-          <h3>Evidence attached to the next bid</h3>
-          <p class="small">Intake and exit positions for every team, the distribution of root causes across the cohort, and movement per team. Comparable across cohorts and across years, because the instrument does not change.</p>
-        </div>
-        <div class="card">
-          <span class="mono">Investors and funds</span>
-          <h3>Portfolio movement from day one</h3>
-          <p class="small">Your criteria, weighted by you, applied consistently to inbound. Then the same instrument across the portfolio twice a year, so the evidence pack for the next fund exists before you need it. It cannot be reconstructed later.</p>
+          <span class="mono">What a programme gets</span>
+          <ul class="plain">
+            <li>A dated position for every team at intake, across all four stages</li>
+            <li>The named blocker per team, so support is targeted not generic</li>
+            <li>Movement at exit, per team, in a report you can attach to the next bid</li>
+            <li>A comparable measure across cohorts and across years</li>
+          </ul>
         </div>
       </div>
-      <p class="big" style="margin-top:36px;max-width:62ch">First engagement is always the same shape: one cohort, one quarter, baseline and endline, one report. If the report is not something you would put in front of a funder, you do not continue.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">The bid</p>
+      <div class="grid2">
+        <div><h2>The next funding application, with evidence attached.</h2></div>
+        <div>
+          <p class="big">A bid that says "we trained 60 founders" competes against one that says "we measured 60 teams, named the blocker for each, and this proportion moved before demo day".</p>
+          <p>The second bid does not exist today because the measurement does not. After one cohort it does, and every subsequent cohort compounds it, because the instrument is versioned and does not drift.</p>
+          <p class="small">On procurement: where a new supplier route would take longer than the funding window allows, we contract through an existing procured supplier. The measurement starts inside the window; the paperwork follows the route that already exists.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">The payoff</p>
+      <table style="margin-top:8px">
+        <thead><tr><th>Measure</th><th>Today</th><th>After one cohort</th></tr></thead>
+        <tbody>
+          <tr><td>Commercial readiness of a spin-out or venture team</td><td class="no">Adviser impression</td><td class="yes">A dated position across four stages</td></tr>
+          <tr><td>Where enterprise support should focus</td><td class="no">The same workshop for everyone</td><td class="yes">Targeted at the named blocker per team</td></tr>
+          <tr><td>Evidence for the next funding bid</td><td class="no">Participation counts</td><td class="yes">Movement per team, comparable across cohorts</td></tr>
+          <tr><td>Progress between cohorts and years</td><td class="no">Not measured</td><td class="yes">Same instrument, same scale, every intake</td></tr>
+        </tbody>
+      </table>
+      <div class="btns"><a class="btn" href="#contact">Request a demonstration</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= INVESTORS ================= -->
+<div class="page" id="page-investors">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">For funds, syndicates and corporate finance</p>
+      <h1 style="max-width:22ch">You reject most of what reaches you, and you reject it on paper.</h1>
+      <p class="big" style="margin-top:26px;max-width:64ch">Deal flow arrives unfiltered and mostly unready. The filtering happens in the first few slides, in minutes, by a human. Everything before that point is cost, and everything after it is memory.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="grid2">
+        <div>
+          <p class="eyebrow">Your criteria, made explicit</p>
+          <h2>We do not ask you to fill in a blank sheet.</h2>
+          <p style="margin-top:18px">Most investors cannot state their criteria from a standing start, and the deals they actually do rarely match the criteria they would write down. So we do not ask. We give you the criteria and you weight them, against a fixed budget of votes. Marking something mission critical costs most of the budget, so only a few things can be, which is the point.</p>
+          <p class="small">The weighting is an overlay. It ranks and filters against your thesis. It never alters the underlying score, which stays canonical so every company remains comparable with every other.</p>
+        </div>
+        <div class="card">
+          <span class="mono">What a fund gets</span>
+          <ul class="plain">
+            <li>Your criteria on the record, weighted, revisable at any time</li>
+            <li>Inbound companies read against your weighting, not a generic one</li>
+            <li>A consistent position on every company, taken the same way</li>
+            <li>A reason attached to every pass, which today does not exist</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">How matching behaves</p>
+      <h2>No spraying. Terms agreed before any introduction.</h2>
+      <div class="grid3" style="margin-top:30px">
+        <div class="card"><span class="mono">Consent</span><h3>Both sides opt in</h3><p class="small">A company chooses to enter matching. You see companies that clear your weighted threshold. Nothing is forwarded anywhere without the company choosing it.</p></div>
+        <div class="card"><span class="mono">Terms first</span><h3>In writing, in advance</h3><p class="small">The terms of an introduction are shown to both sides and agreed before it is made, including who the company is already talking to, so nobody is introduced into a conversation that exists.</p></div>
+        <div class="card"><span class="mono">Always on</span><h3>Not a one-off event</h3><p class="small">Matches refresh as companies rescore. A company two fixes short of your threshold today may clear it next quarter, and you see that happen.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">The fund raise after this one</p>
+      <div class="grid2">
+        <div><h2>The portfolio evidence problem, solved before you need it.</h2></div>
+        <div>
+          <p class="big">A first fund raises its successor years before exits exist. The conversation turns on one question: can you show the portfolio moved.</p>
+          <p>Measured twice a year on a versioned instrument, it can, per company, from the day of investment. That record cannot be reconstructed later. It can only be started now.</p>
+        </div>
+      </div>
+      <table style="margin-top:34px">
+        <thead><tr><th>Measure</th><th>Today</th><th>With the portfolio on the instrument</th></tr></thead>
+        <tbody>
+          <tr><td>Inbound filtering</td><td class="no">Manual, minutes per deck, no record</td><td class="yes">Read against your weighted criteria, consistently</td></tr>
+          <tr><td>Portfolio progress between rounds</td><td class="no">Board pack anecdote and revenue lag</td><td class="yes">Movement per company, twice a year, same scale</td></tr>
+          <tr><td>The evidence pack for your own investors</td><td class="no">Written from scratch, unverifiable</td><td class="yes">Produced from the measurement record, independently checkable</td></tr>
+          <tr><td>Post-investment support</td><td class="no">Generic</td><td class="yes">Aimed at each company's named blocker</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Corporate finance</p>
+      <div class="grid2">
+        <div><h2>We do not want your clients. We want your clients measured.</h2></div>
+        <div>
+          <p class="big">Advisers who bring their client base onto the instrument keep the relationship, keep the mandate and keep the fee. What they gain is time back on preparation and evidence to hand their own investors.</p>
+          <p>Terms are agreed in advance, in writing, before anything is introduced.</p>
+          <p class="small">We do not claim that a score predicts or improves the likelihood of investment. It reports a position and its movement. Nothing more.</p>
+          <div class="btns"><a class="btn" href="#contact">Talk to us</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= CONTACT ================= -->
+<div class="page" id="page-contact">
+  <section class="hero">
+    <div class="wrap">
+      <div class="grid2">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h1 style="max-width:16ch">See it measure a real company.</h1>
+          <p class="big" style="margin-top:24px">A demonstration takes twenty minutes. Bring a company you know well and we will measure it live, in front of you, and you can tell us whether the diagnosis is right.</p>
+          <ul class="plain" style="margin-top:26px">
+            <li>No deck first. The instrument first.</li>
+            <li>The method is already public. Read it before you speak to us if you would rather.</li>
+            <li>A bounded pilot is the only thing we will ask you to agree to.</li>
+          </ul>
+          <div class="btns"><a class="btn ghost" href="#method">Read the method instead</a></div>
+        </div>
+        <div class="card">
+          <label for="f1">Name</label><input id="f1" type="text" placeholder="Your name">
+          <label for="f2">Organisation</label><input id="f2" type="text" placeholder="Organisation">
+          <label for="f3">Email</label><input id="f3" type="email" placeholder="name@organisation.uk">
+          <label for="f4">Which describes you</label>
+          <select id="f4">
+            <option>Bank or financial institution</option>
+            <option>Combined authority, agency or growth hub</option>
+            <option>University, accelerator or programme partner</option>
+            <option>Fund, syndicate or corporate finance</option>
+            <option>Founder or revenue leader</option>
+            <option>Implementing the method independently</option>
+            <option>Something else</option>
+          </select>
+          <label for="f5">What are you currently unable to measure</label>
+          <textarea id="f5" placeholder="One or two lines is enough"></textarea>
+          <button class="btn" id="sendBtn" style="width:100%">Request a demonstration</button>
+          <p class="small" id="formNote" style="margin-top:14px">Prototype form. Nothing is sent or stored.</p>
+        </div>
+      </div>
     </div>
   </section>
 </div>
@@ -687,8 +954,8 @@ score      = round((48 + 56) / 2) = <span class="n">52</span>   ->  band: Ascent
         <p style="max-width:34ch">An open measurement standard for commercial capability. Free for the companies measured, licensed to the institutions that fund them.</p>
       </div>
       <div><h4>The standard</h4><p><a href="#method">Method v1.4</a><br><a href="#conformance">Conformance</a><br><a href="#versions">Versions</a><br><a href="#limits">Limits</a></p></div>
-      <div><h4>See it</h4><p><a href="#specimen">Specimen report</a><br><a href="#institutions">For institutions</a></p></div>
-      <div><h4>Company</h4><p><a href="#about">About</a><br><span class="ph">Privacy</span><br><span class="ph">Terms</span></p></div>
+      <div><h4>Sectors</h4><p><a href="#banks">Banks</a><br><a href="#public">Public bodies</a><br><a href="#education">Universities</a><br><a href="#investors">Investors</a></p></div>
+      <div><h4>Company</h4><p><a href="#about">About</a><br><a href="#specimen">Specimen report</a><br><a href="#contact">Contact</a><br><span class="ph">Privacy</span><br><span class="ph">Terms</span></p></div>
     </div>
     <div class="foot-bottom">
       <span>Prototype V2. Name, entity and version history unconfirmed.</span>
@@ -701,7 +968,7 @@ score      = round((48 + 56) / 2) = <span class="n">52</span>   ->  band: Ascent
 var BRAND = "Trigpoint";
 document.querySelectorAll(".brandname").forEach(function(el){ el.textContent = BRAND; });
 
-var pages = ["home","method","specimen","conformance","versions","institutions","limits","about"];
+var pages = ["home","method","specimen","conformance","banks","public","education","investors","versions","limits","about","contact"];
 function route(){
   var id = (location.hash || "#home").replace("#","");
   if(pages.indexOf(id) === -1) id = "home";
@@ -758,6 +1025,11 @@ STAGES.forEach(function(st,i){
   });
   body.appendChild(tr);
 });
+
+var sb = document.getElementById("sendBtn");
+if(sb){ sb.addEventListener("click", function(){
+  document.getElementById("formNote").textContent = "Prototype only. Nothing was sent. Wire this to the real inbox before launch.";
+}); }
 
 route();
 </script>
