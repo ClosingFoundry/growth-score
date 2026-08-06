@@ -286,6 +286,37 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
   <section>
     <div class="wrap">
+      <p class="eyebrow">The filtering problem, drawn</p>
+      <div class="grid2" style="grid-template-columns:1fr 1.15fr;gap:46px;align-items:center">
+        <div>
+          <h2>The same judgement, applied the same way, with the reason written down.</h2>
+          <p class="big">Inbound arrives undifferentiated and gets filtered in minutes by whoever opened it. The decision is usually right and it is never recorded, so the same company reads differently in January and June.</p><p>Give us your criteria, weighted by you, and every company that arrives is read against your thesis rather than a generic one. The threshold is yours. So is the reason attached to every pass.</p><p>The companies below the line are not rejected. They are the ones you can watch, because they rescore.</p>
+        </div>
+
+        <div class="plot">
+          <div class="plot-head">
+            <span class="plot-title">Illustrative: one quarter of inbound</span>
+            <div class="toggle" role="group" aria-label="View">
+              <button class="tgA" aria-pressed="true">What you report today</button>
+              <button class="tgB" aria-pressed="false">With the Score</button>
+            </div>
+          </div>
+          <svg id="pv" viewBox="0 0 640 220" role="img" aria-label="Inbound companies sorted against a weighted threshold">
+  <g id="pvDots"></g>
+  <line id="pvThr" x1="46" y1="96" x2="606" y2="96" stroke="var(--mark)" stroke-width="1" stroke-dasharray="4 4" opacity="0"></line>
+  <text id="pvThrLbl" x="606" y="88" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--mark)" opacity="0">your weighted threshold</text>
+  <text id="pvBlobLbl" x="320" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--mid)">140 decks this quarter</text>
+</svg>
+          <div class="preadout"><div>Companies clearing your threshold<b id="r1">0</b></div><div>Reason attached to each pass<b id="r2">None</b></div></div>
+          <p class="small" style="margin-top:12px;font-size:12.5px">An illustration of consistent filtering, not observed data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="wrap">
       <div class="grid2">
         <div>
           <p class="eyebrow">Your criteria, made explicit</p>
@@ -413,6 +444,48 @@ if(sb){ sb.addEventListener("click", function(){
   document.getElementById("formNote").textContent = "Prototype only. Nothing was sent. Wire this to the real inbox before launch."; }); }
 
 
+
+(function(){
+  var svg=document.getElementById("pv"); if(!svg) return;
+  var g=document.getElementById("pvDots"), N=140, seed=23;
+  function rnd(){ seed=(seed*1103515245+12345)%2147483648; return seed/2147483648; }
+  var dots=[];
+  for(var i=0;i<N;i++){
+    var cx=60+rnd()*530, cy=52+rnd()*140;
+    var score=(rnd()+rnd()+rnd())/3;
+    var tx=46+(606-46)*(i/(N-1));
+    var ty=182-(182-56)*score;
+    var c=document.createElementNS("http://www.w3.org/2000/svg","circle");
+    c.setAttribute("cx",cx); c.setAttribute("cy",cy); c.setAttribute("r",2.8);
+    c.setAttribute("fill","var(--ink)"); c.setAttribute("opacity",".38");
+    c.style.transition="all .9s cubic-bezier(.22,.9,.3,1)"; c.style.transitionDelay=(i*4)+"ms";
+    g.appendChild(c);
+    dots.push({el:c,fx:cx,fy:cy,tx:tx,ty:ty,over:ty<96});
+  }
+  var above=dots.filter(function(d){return d.over;}).length;
+  window.pvSet=function(on){
+    document.getElementById("pvThr").style.opacity=on?1:0;
+    document.getElementById("pvThrLbl").style.opacity=on?1:0;
+    document.getElementById("pvBlobLbl").style.opacity=on?0:1;
+    dots.forEach(function(d){
+      d.el.setAttribute("cx", on?d.tx:d.fx);
+      d.el.setAttribute("cy", on?d.ty:d.fy);
+      d.el.setAttribute("fill", on&&d.over?"var(--mark)":"var(--ink)");
+      d.el.setAttribute("opacity", on?(d.over?"1":".22"):".38");
+    });
+    document.getElementById("r1").textContent=on?String(above):"0";
+    document.getElementById("r2").textContent=on?"Recorded":"None";
+  };
+})();
+(function(){
+  var a=document.querySelector(".tgA"), b=document.querySelector(".tgB");
+  if(!a||!b||!window.pvSet) return;
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function set(on){ a.setAttribute("aria-pressed",on?"false":"true"); b.setAttribute("aria-pressed",on?"true":"false"); window.pvSet(on); }
+  a.addEventListener("click",function(){set(false);}); b.addEventListener("click",function(){set(true);});
+  set(false);
+  if(!reduce) setTimeout(function(){ set(true); }, 1400);
+})();
 </script>
 </body>
 </html>

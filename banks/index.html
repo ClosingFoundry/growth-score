@@ -286,6 +286,43 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
   <section>
     <div class="wrap">
+      <p class="eyebrow">The timing problem, drawn</p>
+      <div class="grid2" style="grid-template-columns:1fr 1.15fr;gap:46px;align-items:center">
+        <div>
+          <h2>By the time the account moves, the customer has already chosen someone else.</h2>
+          <p class="big">A business builds commercial capability quarters before that shows up in balances, borrowing or transaction volume. Your systems read the second line. The first one is invisible to you.</p><p>That gap is the entire relationship opportunity. It is when a customer is deciding who handles the lending, the foreign exchange and the corporate advice that comes next, and it closes before the account tells you anything.</p><p>Measured twice a year, the first line becomes visible.</p>
+        </div>
+
+        <div class="plot">
+          <div class="plot-head">
+            <span class="plot-title">Illustrative: one customer over two years</span>
+            <div class="toggle" role="group" aria-label="View">
+              <button class="tgA" aria-pressed="true">What you report today</button>
+              <button class="tgB" aria-pressed="false">With the Score</button>
+            </div>
+          </div>
+          <svg id="pv" viewBox="0 0 640 220" role="img" aria-label="Capability rises before the account behaviour does">
+  <line x1="46" y1="176" x2="606" y2="176" stroke="var(--rule)"></line>
+  <g id="pvAxis"></g>
+  <path id="pvGap" fill="var(--mark)" opacity="0" d=""></path>
+  <polyline id="pvCap" fill="none" stroke="var(--mark)" stroke-width="2.5" stroke-linecap="round" points="" opacity="0"></polyline>
+  <polyline id="pvAcc" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" points=""></polyline>
+  <text id="pvL1" x="52" y="42" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--mark)" opacity="0">Commercial capability</text>
+  <text x="52" y="196" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--mid)">Quarter 1</text>
+  <text x="606" y="196" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--mid)">Quarter 8</text>
+  <text id="pvL2" x="606" y="60" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink)">Account behaviour</text>
+  <text id="pvGapLbl" x="300" y="112" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--mark)" opacity="0">the window you currently miss</text>
+</svg>
+          <div class="preadout"><div>You see it from<b id="r1">Quarter 6</b></div><div>Customers you could act on<b id="r2">None</b></div></div>
+          <p class="small" style="margin-top:12px;font-size:12.5px">An illustration of the timing gap, not observed data. Both lines are indexed 0 to 100.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="wrap">
       <p class="eyebrow">Two buyers, one instrument</p>
       <h2>Every bank has this problem twice.</h2>
       <div class="grid2" style="margin-top:30px">
@@ -386,6 +423,39 @@ if(sb){ sb.addEventListener("click", function(){
   document.getElementById("formNote").textContent = "Prototype only. Nothing was sent. Wire this to the real inbox before launch."; }); }
 
 
+
+(function(){
+  var svg=document.getElementById("pv"); if(!svg) return;
+  var X0=46,X1=606,BASE=176,TOP=56,N=8;
+  var cap=[34,38,45,54,63,70,75,79], acc=[30,30,31,32,36,48,62,74];
+  function pt(i,v){ return [X0+(X1-X0)*(i/(N-1)), BASE-(BASE-TOP)*(v/100)]; }
+  var ax=document.getElementById("pvAxis");
+  for(var i=0;i<N;i++){ var x=pt(i,0)[0];
+    var l=document.createElementNS("http://www.w3.org/2000/svg","line");
+    l.setAttribute("x1",x);l.setAttribute("x2",x);l.setAttribute("y1",BASE);l.setAttribute("y2",BASE+5);
+    l.setAttribute("stroke","var(--rule)"); ax.appendChild(l); }
+  function poly(a){ return a.map(function(v,i){return pt(i,v).join(",");}).join(" "); }
+  document.getElementById("pvAcc").setAttribute("points", poly(acc));
+  document.getElementById("pvCap").setAttribute("points", poly(cap));
+  var d="M"+cap.map(function(v,i){return pt(i,v).join(",");}).join("L")+
+        "L"+acc.slice().reverse().map(function(v,i){return pt(N-1-i,v).join(",");}).join("L")+"Z";
+  document.getElementById("pvGap").setAttribute("d", d);
+  window.pvSet=function(on){
+    ["pvCap","pvL1","pvGapLbl"].forEach(function(id){ document.getElementById(id).style.opacity=on?1:0; });
+    document.getElementById("pvGap").style.opacity=on?0.10:0;
+    document.getElementById("r1").textContent=on?"Quarter 3":"Quarter 6";
+    document.getElementById("r2").textContent=on?"Named":"None";
+  };
+})();
+(function(){
+  var a=document.querySelector(".tgA"), b=document.querySelector(".tgB");
+  if(!a||!b||!window.pvSet) return;
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function set(on){ a.setAttribute("aria-pressed",on?"false":"true"); b.setAttribute("aria-pressed",on?"true":"false"); window.pvSet(on); }
+  a.addEventListener("click",function(){set(false);}); b.addEventListener("click",function(){set(true);});
+  set(false);
+  if(!reduce) setTimeout(function(){ set(true); }, 1400);
+})();
 </script>
 </body>
 </html>

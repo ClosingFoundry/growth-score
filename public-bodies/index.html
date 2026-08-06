@@ -286,6 +286,40 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
   <section>
     <div class="wrap">
+      <p class="eyebrow">The commissioning problem, drawn</p>
+      <div class="grid2" style="grid-template-columns:1fr 1.15fr;gap:46px;align-items:center">
+        <div>
+          <h2>Not two hundred problems. One problem, forty six times.</h2>
+          <p class="big">A throughput figure tells you the money was spent. It cannot tell you what to spend it on next, because it contains no information about what is actually wrong.</p><p>Measure the same cohort on one instrument and the picture concentrates. The weakness is rarely spread evenly. It clusters, and the cluster is commissionable.</p><p>That is the difference between reporting a programme and designing the next one.</p>
+        </div>
+
+        <div class="plot">
+          <div class="plot-head">
+            <span class="plot-title">Illustrative: one cohort, eight dimensions</span>
+            <div class="toggle" role="group" aria-label="View">
+              <button class="tgA" aria-pressed="true">What you report today</button>
+              <button class="tgB" aria-pressed="false">With the Score</button>
+            </div>
+          </div>
+          <svg id="pv" viewBox="0 0 640 220" role="img" aria-label="One aggregate figure resolving into eight dimensions of weakness">
+  <line x1="46" y1="176" x2="606" y2="176" stroke="var(--rule)"></line>
+  <g id="pvBars"></g>
+  <g id="pvBlob">
+    <rect x="286" y="86" width="68" height="90" fill="var(--ink)" rx="2"></rect>
+    <text x="320" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--mid)">200 businesses supported</text>
+  </g>
+  <g id="pvLabels"></g>
+</svg>
+          <div class="preadout"><div>Companies weakest in one dimension<b id="r1">0</b></div><div>Where to concentrate provision<b id="r2">Unknown</b></div></div>
+          <p class="small" style="margin-top:12px;font-size:12.5px">An illustration of how weakness concentrates in a cohort, not observed data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="wrap">
       <p class="eyebrow">What the report contains</p>
       <h2>The quarterly report, page by page.</h2>
       <div class="grid3" style="margin-top:30px">
@@ -390,6 +424,49 @@ if(sb){ sb.addEventListener("click", function(){
   document.getElementById("formNote").textContent = "Prototype only. Nothing was sent. Wire this to the real inbox before launch."; }); }
 
 
+
+(function(){
+  var svg=document.getElementById("pv"); if(!svg) return;
+  var L=["Demand","Sales Process","Closing","Expand","Product","People","Process","Repeat."];
+  var V=[36,33,38,37,33,34,39,46], MAX=50, X0=46,X1=606,BASE=176,TOP=62;
+  var g=document.getElementById("pvBars"), lb=document.getElementById("pvLabels"), w=(X1-X0)/L.length;
+  var bars=[];
+  L.forEach(function(n,i){
+    var h=(BASE-TOP)*(V[i]/MAX), x=X0+w*i+7, bw=w-14;
+    var r=document.createElementNS("http://www.w3.org/2000/svg","rect");
+    r.setAttribute("x",x); r.setAttribute("width",bw); r.setAttribute("y",BASE); r.setAttribute("height",0);
+    r.setAttribute("rx",2); r.setAttribute("fill", i===7?"var(--mark)":"var(--ink)");
+    r.setAttribute("opacity", i===7?"1":"0.55");
+    r.style.transition="all .7s cubic-bezier(.22,.9,.3,1)"; r.style.transitionDelay=(i*55)+"ms";
+    g.appendChild(r); bars.push({el:r,h:h,y:BASE-h});
+    var t=document.createElementNS("http://www.w3.org/2000/svg","text");
+    t.setAttribute("x",x+bw/2); t.setAttribute("y",BASE+15); t.setAttribute("text-anchor","middle");
+    t.setAttribute("font-family","IBM Plex Mono, monospace"); t.setAttribute("font-size","8.5");
+    t.setAttribute("fill","var(--mid)"); t.setAttribute("opacity","0"); t.textContent=n;
+    t.style.transition="opacity .4s"; lb.appendChild(t);
+    var v=document.createElementNS("http://www.w3.org/2000/svg","text");
+    v.setAttribute("x",x+bw/2); v.setAttribute("y",BASE-h-7); v.setAttribute("text-anchor","middle");
+    v.setAttribute("font-family","IBM Plex Mono, monospace"); v.setAttribute("font-size","10");
+    v.setAttribute("fill", i===7?"var(--mark)":"var(--mid)"); v.setAttribute("opacity","0"); v.textContent=V[i];
+    v.style.transition="opacity .4s"; v.style.transitionDelay=(i*55+250)+"ms"; lb.appendChild(v);
+  });
+  window.pvSet=function(on){
+    document.getElementById("pvBlob").style.opacity=on?0:1;
+    bars.forEach(function(b){ b.el.setAttribute("y", on?b.y:BASE); b.el.setAttribute("height", on?b.h:0); });
+    Array.prototype.forEach.call(lb.children,function(t){ t.setAttribute("opacity", on?"1":"0"); });
+    document.getElementById("r1").textContent=on?"46":"0";
+    document.getElementById("r2").textContent=on?"Repeatability":"Unknown";
+  };
+})();
+(function(){
+  var a=document.querySelector(".tgA"), b=document.querySelector(".tgB");
+  if(!a||!b||!window.pvSet) return;
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function set(on){ a.setAttribute("aria-pressed",on?"false":"true"); b.setAttribute("aria-pressed",on?"true":"false"); window.pvSet(on); }
+  a.addEventListener("click",function(){set(false);}); b.addEventListener("click",function(){set(true);});
+  set(false);
+  if(!reduce) setTimeout(function(){ set(true); }, 1400);
+})();
 </script>
 </body>
 </html>

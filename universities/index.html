@@ -286,6 +286,43 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
   <section>
     <div class="wrap">
+      <p class="eyebrow">The evidence problem, drawn</p>
+      <div class="grid2" style="grid-template-columns:1fr 1.15fr;gap:46px;align-items:center">
+        <div>
+          <h2>A headcount, or a line for every team.</h2>
+          <p class="big">Participation is a number you can report and nobody can argue with, because it says nothing. Sixty founders trained is true whether the cohort was transformed or untouched.</p><p>Measure each team at intake and again at exit and you have a line per team instead of a number per cohort. Some move a long way. Some do not, and knowing which is the point.</p><p>Attach that to the next bid and you are answering the question the funder actually asked.</p>
+        </div>
+
+        <div class="plot">
+          <div class="plot-head">
+            <span class="plot-title">Illustrative: one cohort, intake to exit</span>
+            <div class="toggle" role="group" aria-label="View">
+              <button class="tgA" aria-pressed="true">What you report today</button>
+              <button class="tgB" aria-pressed="false">With the Score</button>
+            </div>
+          </div>
+          <svg id="pv" viewBox="0 0 640 220" role="img" aria-label="Team positions at intake and at exit">
+  <line x1="150" y1="42" x2="150" y2="182" stroke="var(--rule)"></line>
+  <line x1="490" y1="42" x2="490" y2="182" stroke="var(--rule)"></line>
+  <g id="pvSlopes"></g>
+  <g id="pvBlob">
+    <circle cx="320" cy="112" r="26" fill="var(--ink)" opacity=".10"></circle>
+    <circle cx="320" cy="112" r="7" fill="var(--ink)"></circle>
+    <text x="320" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--mid)">60 founders trained</text>
+  </g>
+  <text x="150" y="202" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--mid)">Intake</text>
+  <text x="490" y="202" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--mid)">Exit</text>
+</svg>
+          <div class="preadout"><div>Teams you can evidence<b id="r1">None</b></div><div>What the bid contains<b id="r2">A headcount</b></div></div>
+          <p class="small" style="margin-top:12px;font-size:12.5px">An illustration of cohort movement, not observed data. Upward lines indicate improvement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="wrap">
       <div class="grid2">
         <div>
           <p class="eyebrow">The gap</p>
@@ -394,6 +431,52 @@ if(sb){ sb.addEventListener("click", function(){
   document.getElementById("formNote").textContent = "Prototype only. Nothing was sent. Wire this to the real inbox before launch."; }); }
 
 
+
+(function(){
+  var svg=document.getElementById("pv"); if(!svg) return;
+  var g=document.getElementById("pvSlopes"), N=18, seed=11;
+  function rnd(){ seed=(seed*1103515245+12345)%2147483648; return seed/2147483648; }
+  var rows=[];
+  for(var i=0;i<N;i++){
+    var a=44+rnd()*100, delta=(rnd()*46)-9, b=Math.max(46,Math.min(178,a-delta));
+    var ln=document.createElementNS("http://www.w3.org/2000/svg","line");
+    ln.setAttribute("x1",150);ln.setAttribute("x2",490);
+    ln.setAttribute("y1",a);ln.setAttribute("y2",a);
+    ln.setAttribute("stroke", b<a-4 ? "var(--mark)" : "var(--mid)");
+    ln.setAttribute("stroke-width", b<a-4 ? "1.6" : "1");
+    ln.setAttribute("opacity","0");
+    ln.style.transition="all .8s cubic-bezier(.22,.9,.3,1)"; ln.style.transitionDelay=(i*36)+"ms";
+    g.appendChild(ln);
+    [150,490].forEach(function(x,k){
+      var c=document.createElementNS("http://www.w3.org/2000/svg","circle");
+      c.setAttribute("cx",x); c.setAttribute("cy",a); c.setAttribute("r",2.6);
+      c.setAttribute("fill", k===0?"var(--ink)":(b<a-4?"var(--mark)":"var(--mid)"));
+      c.setAttribute("opacity","0");
+      c.style.transition="all .8s cubic-bezier(.22,.9,.3,1)"; c.style.transitionDelay=(i*36)+"ms";
+      g.appendChild(c); if(k===1) rows.push({dot:c,to:b});
+    });
+    rows[rows.length-1].line=ln; rows[rows.length-1].to=b; rows[rows.length-1].from=a;
+  }
+  window.pvSet=function(on){
+    document.getElementById("pvBlob").style.opacity=on?0:1;
+    Array.prototype.forEach.call(g.children,function(el){ el.setAttribute("opacity", on?"1":"0"); });
+    rows.forEach(function(r){
+      r.line.setAttribute("y2", on?r.to:r.from);
+      r.dot.setAttribute("cy", on?r.to:r.from);
+    });
+    document.getElementById("r1").textContent=on?"18 of 18":"None";
+    document.getElementById("r2").textContent=on?"Per team":"A headcount";
+  };
+})();
+(function(){
+  var a=document.querySelector(".tgA"), b=document.querySelector(".tgB");
+  if(!a||!b||!window.pvSet) return;
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function set(on){ a.setAttribute("aria-pressed",on?"false":"true"); b.setAttribute("aria-pressed",on?"true":"false"); window.pvSet(on); }
+  a.addEventListener("click",function(){set(false);}); b.addEventListener("click",function(){set(true);});
+  set(false);
+  if(!reduce) setTimeout(function(){ set(true); }, 1400);
+})();
 </script>
 </body>
 </html>
