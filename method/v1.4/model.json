@@ -9,22 +9,22 @@
     {
       "id": "demand",
       "name": "Demand",
-      "job": "Create enough qualified attention from the right kind of buyer"
+      "job": "Create enough qualified attention from the right kind of customer"
     },
     {
       "id": "sales_process",
       "name": "Sales Process",
-      "job": "Turn attention into qualified opportunities that progress"
+      "job": "Turn that attention into real, progressing opportunities"
     },
     {
       "id": "closing",
       "name": "Closing",
-      "job": "Convert late-stage opportunities into signed business with predictable timing"
+      "job": "Convert them into paying customers, with predictable timing"
     },
     {
       "id": "expand",
       "name": "Expand",
-      "job": "Turn signed customers into renewals, adoption and expansion"
+      "job": "Keep customers, and grow the value of the ones you have"
     }
   ],
   "root_causes": [
@@ -68,11 +68,85 @@
     "Control",
     "Expansion"
   ],
+  "motion_aware": {
+    "principle": "The construct is fixed for every company. The question wording and the indicator each question asks about vary by business model and maturity.",
+    "fixed": [
+      "stages",
+      "root_causes",
+      "matrix",
+      "scales",
+      "arithmetic",
+      "bands",
+      "diagnosis logic"
+    ],
+    "varies": [
+      "question wording",
+      "indicator per question",
+      "respondent-facing stage labels",
+      "report examples"
+    ],
+    "motions": [
+      {
+        "id": "b2b_subscription",
+        "name": "B2B subscription software and digital services",
+        "status": "in_method"
+      },
+      {
+        "id": "b2b_plg",
+        "name": "B2B product-led growth",
+        "status": "in_method"
+      },
+      {
+        "id": "b2b_physical",
+        "name": "B2B physical product, hardware and deeptech",
+        "status": "in_method"
+      },
+      {
+        "id": "b2c_dtc",
+        "name": "B2C physical product, direct to consumer and e-commerce",
+        "status": "in_method"
+      },
+      {
+        "id": "b2b_services",
+        "name": "B2B services, consulting and agency",
+        "status": "in_method"
+      },
+      {
+        "id": "marketplace",
+        "name": "Marketplaces and platforms",
+        "status": "under_consideration"
+      },
+      {
+        "id": "fmcg",
+        "name": "Fast moving consumer goods",
+        "status": "under_consideration"
+      }
+    ],
+    "maturity_levels": [
+      {
+        "id": "pre_revenue",
+        "name": "Pre-revenue",
+        "asks": "Is there evidence anyone will pay, found by a means that does not depend on the founder alone?"
+      },
+      {
+        "id": "early_revenue",
+        "name": "Early revenue",
+        "asks": "Did it work more than once, for reasons you can name and repeat?"
+      },
+      {
+        "id": "scaling",
+        "name": "Scaling",
+        "asks": "Does it work without the founder in the room, and does it survive more volume?"
+      }
+    ],
+    "comparability": "Scores are comparable across motions because the construct, scales and arithmetic are identical. Peer benchmarking is only valid within one motion at one maturity level."
+  },
   "scoring_path": "deterministic",
   "generative_model_in_scoring": false,
   "not_published": [
     "lens rule precedence and thresholds",
     "the 16-cell diagnostic and action library",
-    "routing to support"
+    "routing to support",
+    "per-motion question sets"
   ]
 }
