@@ -313,7 +313,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
             <div style="background:var(--ink);color:#fff;padding:26px 28px">
               <div style="display:flex;align-items:baseline;gap:14px">
                 <span id="rScore" style="font-size:56px;font-weight:700;letter-spacing:-.04em;line-height:1">50</span>
-                <span id="rBand" style="font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#8FB0F8">Ascent</span>
+                <span id="rBand" style="font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#8FB0F8">Developing</span>
               </div>
               <div style="font-family:var(--mono);font-size:12px;color:#94A3C4;margin-top:10px">
                 Capability <b id="rCap" style="color:#fff;font-weight:500">60</b>
@@ -467,10 +467,10 @@ if(sb){ sb.addEventListener("click", function(){
 
   function mean(a){ return a.reduce(function(x,y){return x+y;},0)/a.length; }
   function band(sc){
-    if(sc < 40) return "Base Camp";
-    if(sc < 60) return "Ascent";
-    if(sc < 80) return "Ridge";
-    return "Summit";
+    if(sc < 40) return "Forming";
+    if(sc < 60) return "Developing";
+    if(sc < 80) return "Established";
+    return "Durable";
   }
   function bars(el, names, vals){
     el.innerHTML = "";

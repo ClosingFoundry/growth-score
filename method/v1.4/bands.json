@@ -2,28 +2,28 @@
   "version": "v1.4",
   "bands": [
     {
-      "name": "Base Camp",
+      "name": "Forming",
       "min": 0,
       "max": 39,
-      "meaning": "Foundations still forming. Pick one stage and install the repeatable basics."
+      "meaning": "The commercial engine is not yet built. Pick one stage and install the basics before widening."
     },
     {
-      "name": "Ascent",
+      "name": "Developing",
       "min": 40,
       "max": 59,
-      "meaning": "Moving, but what is built and what is done daily are not pulling together."
+      "meaning": "Parts of it work. What has been built and what is done daily are not yet pulling together."
     },
     {
-      "name": "Ridge",
+      "name": "Established",
       "min": 60,
       "max": 79,
-      "meaning": "A working motion. The next move is repeatability at scale."
+      "meaning": "A working commercial engine. The next step is making it hold at greater volume."
     },
     {
-      "name": "Summit",
+      "name": "Durable",
       "min": 80,
       "max": 100,
-      "meaning": "Repeatable and defensible. Focus shifts to expansion and durability."
+      "meaning": "Works without the founder in the room and survives more volume. Attention shifts to keeping customers."
     }
   ],
   "note": "A few points either side of a band boundary is noise, not a difference in engine."
