@@ -295,7 +295,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
         <div class="plot">
           <div class="plot-head">
-            <span class="plot-title">One cohort, two resolutions</span>
+            <span class="plot-title">Illustrative: your cohort, two resolutions</span>
             <div class="toggle" role="group" aria-label="Resolution">
               <button id="btnAgg" aria-pressed="true">What you report today</button>
               <button id="btnPer" aria-pressed="false">Per company</button>
@@ -314,10 +314,11 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
             <text x="600" y="168" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--mid)">Investment ready</text>
           </svg>
           <div class="preadout">
-            <div>Companies you can name<b id="rB">0</b></div>
-            <div>Root causes identified<b id="rA">0</b></div>
+            <div>Companies you could name<b id="rB">None</b></div>
+            <div>Root causes identified<b id="rA">None</b></div>
             <div>Movement you can evidence<b id="rC">None</b></div>
           </div>
+          <p class="small" style="margin-top:12px;font-size:12.5px">An illustration of a typical 198-company programme, not our own figures. Our current numbers are below.</p>
         </div>
 
       </div>
@@ -578,8 +579,8 @@ if(sb){ sb.addEventListener("click", function(){
       t.style.transform = per ? "translateX(0) scaleY(1)"
                               : "translateX(" + (320 - t.getAttribute("x1")) + "px) scaleY(0.1)";
     });
-    document.getElementById("rB").textContent = per ? "198" : "0";
-    document.getElementById("rA").textContent = per ? "198" : "0";
+    document.getElementById("rB").textContent = per ? "198" : "None";
+    document.getElementById("rA").textContent = per ? "198" : "None";
     document.getElementById("rC").textContent = per ? "Per company" : "None";
   }
   document.getElementById("btnAgg").addEventListener("click", function(){ setView(false, false); });

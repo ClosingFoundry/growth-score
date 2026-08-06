@@ -287,7 +287,43 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
   <section>
     <div class="narrow">
-      <h2>1. What’s measured</h2>
+      <h2>1. Definitions</h2>
+      <p style="margin-top:16px">Each term below has one meaning in this specification and is used no other way. Where a word is in common use with a looser meaning, the definition here is the one that applies.</p>
+      <div class="tw"><table style="margin-top:22px">
+        <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+        <tbody>
+          <tr><td><b>Growth Score</b></td><td>The product: a commercial capability diagnostic taken by a company, and the reporting built on it. Also, in context, the headline number from 0 to 100 that the method returns.</td></tr>
+          <tr><td><b>Method</b></td><td>The published specification: the model, the questions, the scales, the arithmetic, the bands and the version record. Free to read and implement.</td></tr>
+          <tr><td><b>Capability</b></td><td>What a company has built and can evidence, measured by 32 questions across the sixteen cells. Reported 0 to 100.</td></tr>
+          <tr><td><b>Momentum</b></td><td>Whether the engine is producing output now, measured by 5 questions against what the company needs to be true. Reported 0 to 100, never merged into capability.</td></tr>
+          <tr><td><b>Stage</b></td><td>Where a problem shows up: Demand, Sales Process, Closing or Expand. One axis of the model.</td></tr>
+          <tr><td><b>Root cause</b></td><td>Why the problem exists: Product, People, Process or Repeatability. The other axis.</td></tr>
+          <tr><td><b>Cell</b></td><td>One intersection of a stage and a root cause. Sixteen in total, two questions each.</td></tr>
+          <tr><td><b>Local root cause</b></td><td>The weakest root cause within the primary stage. What to fix first, where it hurts.</td></tr>
+          <tr><td><b>Systemic root cause</b></td><td>The weakest root cause across all four stages. Usually the larger prize, because fixing it lifts more than one stage.</td></tr>
+          <tr><td><b>Lens</b></td><td>The plain-language summary of the diagnosis: Volume, Efficiency, Control or Expansion.</td></tr>
+          <tr><td><b>Band</b></td><td>The range the headline score falls into: Forming, Developing, Established or Durable. A description of state, not a grade.</td></tr>
+          <tr><td><b>Motion</b></td><td>A business model with a materially different commercial engine, such as subscription software or direct to consumer. Determines which questions are asked, never how they are scored.</td></tr>
+          <tr><td><b>Maturity level</b></td><td>Pre-revenue, early revenue or scaling. Also determines the questions, not the model.</td></tr>
+          <tr><td><b>Segment</b></td><td>One motion at one maturity level. The only group within which peer comparison is valid.</td></tr>
+          <tr><td><b>Fix</b></td><td>An action the company carries out itself, with an owner, a date and the evidence that would show it worked.</td></tr>
+          <tr><td><b>Route</b></td><td>Sending a company to a provider for the category of help the diagnosis indicates. Indicates support; never rations it.</td></tr>
+          <tr><td><b>Rescore</b></td><td>Taking the same measure again, at least 90 days later, on the same method version.</td></tr>
+          <tr><td><b>Movement</b></td><td>The difference between two measurements of the same company. Reported as change, never as improvement caused by anything.</td></tr>
+          <tr><td><b>Cohort</b></td><td>A defined group of companies measured under one licensee. The unit of institutional reporting.</td></tr>
+          <tr><td><b>Licensee</b></td><td>An institution licensing the reporting: a bank, a public body, a university, an accelerator or a fund. Companies are never licensees and never pay.</td></tr>
+          <tr><td><b>Conformance</b></td><td>An implementation returning the expected output for every published test vector at a stated version. Only a conforming implementation may use the name.</td></tr>
+          <tr><td><b>Register</b></td><td>The record of results taken through a conforming implementation. What makes a result verifiable by a third party. Not published.</td></tr>
+          <tr><td><b>Deterministic</b></td><td>The same answers return the same result every time. No generative model is in the scoring path.</td></tr>
+        </tbody>
+      </table></div>
+      <p class="small" style="margin-top:20px"><b>Terms deliberately not used.</b> This is not described as a rating, a ranking, a credit score, a benchmark position or a prediction. Each implies something the method does not do. See <a href="../limits/" style="color:var(--mark)">Limits</a>.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="narrow">
+      <h2>2. What’s measured</h2>
       <p style="margin-top:16px">Thirty seven questions. Thirty two measure <b>capability</b>, what the company has built. Five measure <b>momentum</b>, whether the engine is producing output now. The two are scored separately and averaged, because the gap between them is itself diagnostic.</p>
       <p>Capability questions sit in a four by four matrix: four go-to-market stages against four root causes, two questions per cell.</p>
       <table style="margin-top:24px">
@@ -313,7 +349,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
   <section class="alt">
     <div class="narrow">
-      <h2>2. The scales</h2>
+      <h2>3. The scales</h2>
       <p style="margin-top:16px">Both scales store a value from one to five. They ask different things, so the labels differ. Capability is scored on evidence and consistency, not intent.</p>
       <p class="mono" style="margin-top:24px">Capability scale &middot; questions 1 to 32</p>
       <table>
@@ -342,7 +378,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
   <section>
     <div class="narrow">
-      <h2>3. The arithmetic</h2>
+      <h2>4. The arithmetic</h2>
       <p style="margin-top:16px">Reproducible by hand. Nothing is weighted by sector, company size or anything else, and no generative model touches the scoring path. The same answers return the same score today and in five years.</p>
       <pre><span class="c">// every step, in order</span>
 <span class="k">cell</span>        = mean(its 2 questions)                  <span class="c">// 1 to 5</span>
@@ -367,7 +403,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
   <section class="alt">
     <div class="narrow">
-      <h2>4. The diagnosis</h2>
+      <h2>5. The diagnosis</h2>
       <p style="margin-top:16px">The score is the headline. The diagnosis is the point. A deterministic rule engine identifies three things, in this order:</p>
       <ul class="plain" style="margin-top:8px">
         <li><b>The primary stage.</b> Where the symptom is loudest.</li>
@@ -391,7 +427,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
   <section>
     <div class="narrow">
-      <h2>5. Capability against momentum</h2>
+      <h2>6. Capability against momentum</h2>
       <p style="margin-top:16px">Most assessments collapse these into one number and lose the finding. The gap between them is a diagnosis in itself.</p>
       <table style="margin-top:22px">
         <thead><tr><th>Capability</th><th>Momentum</th><th>What it usually means</th></tr></thead>
@@ -408,7 +444,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
   <section class="alt">
     <div class="narrow">
-      <h2>6. What happens after the diagnosis</h2>
+      <h2>7. What happens after the diagnosis</h2>
       <p style="margin-top:16px">A diagnosis with nothing attached to it is a report. Two things follow from it, and the diagnosis decides which.</p>
       <div class="tw"><table style="margin-top:20px">
         <thead><tr><th>Path</th><th>What it is</th><th>When</th></tr></thead>
@@ -424,7 +460,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
   <section>
     <div class="narrow">
-      <h2>7. Motions and maturity</h2>
+      <h2>8. Motions and maturity</h2>
       <p style="margin-top:16px">Startups are not all software companies, and a measure that assumes they are will produce confident nonsense for most of them. A direct-to-consumer brand and a deeptech hardware business do not have the same commercial engine, and scoring them against identical questions is a category error.</p>
       <p>So the instrument is <b>motion aware</b>. The construct never changes. The evidence used to populate it does.</p>
 
@@ -488,7 +524,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
   <section>
     <div class="narrow">
-      <h2>8. Machine-readable artefacts</h2>
+      <h2>9. Machine-readable artefacts</h2>
       <p style="margin-top:16px">The specification is published as data, not only prose, so a third party can implement against it.</p>
       <table>
         <thead><tr><th>Artefact</th><th>Contains</th><th>Status</th></tr></thead>
