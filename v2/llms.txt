@@ -21,7 +21,9 @@ The measurement method is published in full and may be implemented by anyone. Th
 ## What it does not claim
 It does not predict growth, does not predict or improve the likelihood of funding, is not a credit or risk signal, must not be used as an input to lending or eligibility decisions, does not rank companies against each other, and does not claim causation. Data is self-reported by the company.
 
-## Routing
+## After the diagnosis: fix or route
+Two paths follow a diagnosis and the diagnosis decides which. FIX: most root causes have a fix the company carries out itself, receiving three specific actions each with an owner, a date and the evidence that would show it worked. This is the core loop: measure, act, measure again. ROUTE: where the fix needs a person, or where an institution wants to deploy provision it funds, the company is routed to a support category.
+
 The diagnosis produces a stage and a root cause. That pair determines a category of support indicated. Licensees map their own existing provision (internal teams, framework providers, programmes) to those categories, so companies are routed to support the institution already funds. Routing indicates support and never rations it: it is not an eligibility decision, not a gate, and must not be used to withhold access to any programme or funding. A human can always override, and the override is recorded. Payment never influences which category is indicated; it can only affect which provider appears within an indicated category, and affiliated providers are disclosed. Routing is also what makes movement attributable, because a report can only state what support preceded a change if the intervention was recorded.
 
 ## Specification
