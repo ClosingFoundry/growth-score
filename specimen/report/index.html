@@ -988,6 +988,21 @@ section.page {
 }
 .method p { font-size: 10pt; line-height: 1.6; color: var(--brand-ink); max-width: 66ch; }
 </style>
+<style>
+footer{background:#0E1B2C;color:#94A3C4;padding:52px 0 32px;font-size:14px;font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;margin-top:60px}
+footer a{color:#D4DDF0;text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer h4{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 14px;font-weight:400}
+footer p{margin:0 0 14px}
+footer .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+footer .logo{display:flex;align-items:baseline;gap:10px}
+footer .logo .mk{font-size:21px;font-weight:700;letter-spacing:-.01em}
+footer .logo .sub{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#94A3C4}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
+.foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid #26364F;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media print{footer{display:none !important}}
+</style>
 </head>
 <body>
 <style>
@@ -1628,38 +1643,23 @@ section.page {
 </section>
 
 
-<style>
-.gsx-foot{background:#0E1B2C;color:#94A3C4;font-family:"IBM Plex Sans",system-ui,sans-serif;
-  font-size:14px;line-height:1.6;padding:52px 0 32px;margin-top:60px}
-.gsx-foot-in{max-width:1120px;margin:0 auto;padding:0 28px}
-.gsx-fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
-.gsx-foot h4{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.14em;
-  text-transform:uppercase;color:#fff;margin:0 0 14px;font-weight:400}
-.gsx-foot a{color:#D4DDF0;text-decoration:none}
-.gsx-foot a:hover{text-decoration:underline}
-.gsx-foot .m{font-size:21px;font-weight:700;letter-spacing:-.01em;color:#fff}
-.gsx-foot .s{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;
-  text-transform:uppercase;color:#94A3C4;margin-left:8px}
-.gsx-foot p{margin:0 0 14px}
-.gsx-fb{margin-top:40px;padding-top:22px;border-top:1px solid #26364F;
-  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;
-  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-@media(max-width:860px){.gsx-fg{grid-template-columns:1fr 1fr}}
-@media print{.gsx-foot{display:none !important}}
-</style>
-<footer class="gsx-foot">
-  <div class="gsx-foot-in">
-    <div class="gsx-fg">
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
       <div>
-        <p><span class="m">Growth Score</span><span class="s">An open measurement standard</span></p>
-        <p style="max-width:34ch">This report is what every company measured receives, free, whether or not it ever speaks to the institution that invited it.</p>
-        <p style="max-width:34ch;font-size:12.5px">Published and maintained by Closing Foundry Ltd.</p>
+        <div class="logo" style="margin-bottom:14px"><span class="mk" style="color:#fff">Growth Score</span><span class="sub">An open measurement standard</span></div>
+        <p style="max-width:34ch">An open measurement standard for commercial capability. Free for the companies measured, licensed to the institutions that fund them.</p>
+        <p style="max-width:34ch;font-size:12.5px;margin-top:12px">Published and maintained by Closing Foundry Ltd.</p>
       </div>
       <div><h4>The standard</h4><p>
         <a href="../../method/">Method v1.4</a><br>
+        <a href="../../routing/">Routing</a><br>
         <a href="../../the-experience/">The experience</a><br>
         <a href="../../run/">Run it now</a><br>
+        <a href="../../specimen/report/">Specimen report</a><br>
         <a href="../../conformance/">Conformance</a><br>
+        <a href="../../integrate/">Integrate</a><br>
+        <a href="../../versions/">Versions</a><br>
         <a href="../../limits/">Limits</a></p></div>
       <div><h4>Who licenses it</h4><p>
         <a href="../../banks/">Banks</a><br>
@@ -1668,14 +1668,13 @@ section.page {
         <a href="../../investors/">Investors</a></p></div>
       <div><h4>Company</h4><p>
         <a href="../../about/">About</a><br>
-        <a href="../">Specimen</a><br>
         <a href="../../contact/">Contact</a><br>
         <a href="../../privacy/">Privacy</a><br>
         <a href="../../terms/">Terms of use</a></p></div>
     </div>
-    <div class="gsx-fb">
+    <div class="foot-bottom">
       <span>Published by Closing Foundry Ltd, registered in England and Wales, company no. 14629519.</span>
-      <span>Not a credit signal. Not a decisioning tool.</span>
+      <span>Not a credit signal. Not a decisioning tool. &nbsp;&middot;&nbsp; <a href="../../v1/" style="color:#6B7C9C;text-decoration:none;border-bottom:1px solid #26364F">earlier version</a></span>
     </div>
   </div>
 </footer>
