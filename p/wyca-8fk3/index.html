@@ -39,7 +39,7 @@ a{color:inherit}
 .vswitch{background:var(--paper-alt);border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:12px;padding:9px 0;text-align:center;color:var(--mid)}
 .vswitch a{color:var(--mark);text-decoration:none;font-weight:500}
 
-header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--rule)}
+header{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--rule)}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 0}
 nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0;align-items:center}
 nav > ul > li > a{font-size:14px;text-decoration:none;color:var(--ink-soft);padding:8px 12px;border-radius:8px;display:block}
@@ -170,8 +170,8 @@ ul.plain li::before{content:"";position:absolute;left:0;top:22px;width:12px;heig
 .btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
 .btn{display:inline-block;text-decoration:none;font-family:var(--body);font-weight:600;font-size:15px;padding:14px 26px;border:1px solid var(--mark);border-radius:3px;background:var(--mark);color:#fff;cursor:pointer}
 .btn.ghost{background:none;color:var(--mark)}
-.dark .btn{background:#fff;color:var(--mark);border-color:#fff}
-.dark .btn.ghost{background:none;color:#fff;border-color:rgba(255,255,255,.5)}
+.dark .btn{background:var(--band-strong);color:var(--band-bg);border-color:var(--band-strong)}
+.dark .btn.ghost{background:none;color:var(--band-strong);border-color:var(--band-rule)}
 
 .plot{background:var(--white);border:1px solid var(--rule);border-radius:3px;padding:24px 24px 20px}
 .plot-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
@@ -327,7 +327,7 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
 @media print{ .logo .mk{color:#0E1B2C} }
 </style>
 <style>
-.pnav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--rule)}
+.pnav{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--rule)}
 .pnav-in{max-width:1120px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .pnav a{font-size:14px;text-decoration:none;color:var(--ink-soft);padding:7px 10px;border-radius:3px}
 .pnav a:hover{background:var(--paper-alt);color:var(--ink)}
