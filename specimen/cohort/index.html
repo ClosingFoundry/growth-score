@@ -6,27 +6,27 @@ var t=p||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').
 document.documentElement.setAttribute('data-theme',t);})();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Checking a result | Growth Score</title>
+<title>Specimen cohort report | Growth Score</title>
 <!-- social -->
-<link rel="canonical" href="https://score.closingfoundry.com/checking-a-result/">
+<link rel="canonical" href="https://score.closingfoundry.com/specimen/cohort/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Growth Score">
 <meta property="og:locale" content="en_GB">
-<meta property="og:url" content="https://score.closingfoundry.com/checking-a-result/">
-<meta property="og:title" content="Checking a result | Growth Score">
-<meta property="og:description" content="Every result carries a reference. Anyone shown one can confirm it is genuine, dated and produced by a stated method version, without seeing anything private.">
+<meta property="og:url" content="https://score.closingfoundry.com/specimen/cohort/">
+<meta property="og:title" content="Specimen cohort report | Growth Score">
+<meta property="og:description" content="What the Growth Score does not do, published rather than conceded in a meeting.">
 <meta property="og:image" content="https://score.closingfoundry.com/share.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Growth Score, an open measurement standard">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Checking a result | Growth Score">
-<meta name="twitter:description" content="Every result carries a reference. Anyone shown one can confirm it is genuine, dated and produced by a stated method version, without seeing anything private.">
+<meta name="twitter:title" content="Specimen cohort report | Growth Score">
+<meta name="twitter:description" content="What the Growth Score does not do, published rather than conceded in a meeting.">
 <meta name="twitter:image" content="https://score.closingfoundry.com/share.png">
 <!-- /social -->
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#0E1B2C">
-<meta name="description" content="Every result carries a reference. Anyone shown one can confirm it is genuine, dated and produced by a stated method version, without seeing anything private.">
+<meta name="description" content="The report an institution receives: coverage, distribution, where a cohort is concentrated, movement between intake and rescore, and what it does not say.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -355,52 +355,81 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
 @media(max-width:860px){ .logo{font-size:17px} }
 @media print{ .logo .mk{color:#0E1B2C} }
 </style>
+<style>
+.rpt{border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-top:30px}
+.rpt-head{background:var(--paper-alt);border-bottom:1px solid var(--rule);padding:22px 26px;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.rpt-head div span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:5px}
+.rpt-head div b{font-size:15px;font-weight:600}
+.rpt-body{padding:28px 26px}
+.big-move{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin:0 0 26px}
+.big-move div{background:var(--white);padding:18px}
+.big-move span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:8px}
+.big-move b{font-size:34px;font-weight:700;letter-spacing:-.03em;line-height:1.1;display:block}
+.big-move em{font-style:normal;font-family:var(--mono);font-size:12px;color:var(--mark)}
+.cellgrid{display:grid;grid-template-columns:110px repeat(4,1fr);gap:2px;margin-top:16px}
+.cellgrid .lab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);display:flex;align-items:center;padding:0 6px 0 0}
+.cellgrid .hd{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);text-align:center;padding-bottom:4px}
+.cellgrid .c{aspect-ratio:2.4/1;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:12px;border-radius:2px;color:var(--ink)}
+.rowtab{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+.rowtab th{text-align:left;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);font-weight:400;padding:0 12px 8px 0;border-bottom:1px solid var(--rule)}
+.rowtab td{padding:9px 12px 9px 0;border-bottom:1px solid var(--rule);font-variant-numeric:tabular-nums}
+.rowtab td.n{text-align:right;padding-right:22px}
+.up{color:var(--mark);font-weight:600}
+.flat{color:var(--mid)}
+@media(max-width:860px){
+  .rpt-head{grid-template-columns:1fr 1fr}
+  .big-move{grid-template-columns:1fr 1fr}
+  .cellgrid{grid-template-columns:78px repeat(4,1fr)}
+}
+</style>
 </head>
 <body>
 <header>
   <div class="wrap bar">
-    <a class="logo" href="../"><span class="row"><span class="mk">Growth Score</span><svg class="cohort" viewBox="0 0 30 24" aria-hidden="true"><rect x="0" y="16" width="1.6" height="8" fill="var(--logo-pop)"/><rect x="4" y="8" width="1.6" height="16" fill="var(--logo-pop)"/><rect x="7.2" y="12" width="1.6" height="12" fill="var(--logo-pop)"/><rect x="12.8" y="2" width="1.6" height="22" fill="var(--logo-pop)"/><rect x="16.4" y="9" width="1.6" height="15" fill="var(--logo-pop)"/><rect x="22.6" y="5" width="1.6" height="19" fill="var(--logo-tail)"/><rect x="28.4" y="15" width="1.6" height="9" fill="var(--logo-tail)"/></svg></span><span class="sub">An open measurement standard</span></a>
+    <a class="logo" href="../../"><span class="row"><span class="mk">Growth Score</span><svg class="cohort" viewBox="0 0 30 24" aria-hidden="true"><rect x="0" y="16" width="1.6" height="8" fill="var(--logo-pop)"/><rect x="4" y="8" width="1.6" height="16" fill="var(--logo-pop)"/><rect x="7.2" y="12" width="1.6" height="12" fill="var(--logo-pop)"/><rect x="12.8" y="2" width="1.6" height="22" fill="var(--logo-pop)"/><rect x="16.4" y="9" width="1.6" height="15" fill="var(--logo-pop)"/><rect x="22.6" y="5" width="1.6" height="19" fill="var(--logo-tail)"/><rect x="28.4" y="15" width="1.6" height="9" fill="var(--logo-tail)"/></svg></span><span class="sub">An open measurement standard</span></a>
     <button class="menu" id="menuBtn" aria-expanded="false">Menu</button>
     <nav class="gs-n" id="nav"><ul>
       <li class="drop">
         <button class="dtrig" aria-expanded="false">The measure <span class="caret">&#9662;</span></button>
         <div class="dmenu">
-          <a href="../how-it-works/"><b>How it works</b><em>The five parts, in one page</em></a>
-          <a href="../method/"><b>The method</b><em>Questions, scales, arithmetic, bands</em></a>
-          <a href="../specimen/report/"><b>Specimen report</b><em>Exactly what a company receives</em></a>
-          <a href="../specimen/cohort/"><b>Cohort report</b><em>What the institution receives</em></a>
-          <a href="../run/"><b>Run it yourself</b><em>The arithmetic, live in your browser</em></a>
+          <a href="../../how-it-works/"><b>How it works</b><em>The five parts, in one page</em></a>
+          <a href="../../method/"><b>The method</b><em>Questions, scales, arithmetic, bands</em></a>
+          <a href="../../specimen/report/"><b>Specimen report</b><em>Exactly what a company receives</em></a>
+          <a href="../../specimen/cohort/" class="on"><b>Cohort report</b><em>What the institution receives</em></a>
+          <a href="../../run/"><b>Run it yourself</b><em>The arithmetic, live in your browser</em></a>
         </div>
       </li>
       <li class="drop">
         <button class="dtrig" aria-expanded="false">Using it <span class="caret">&#9662;</span></button>
         <div class="dmenu">
-          <a href="../the-experience/"><b>The experience</b><em>Ninety days, from both sides</em></a>
-          <a href="../routing/"><b>Routing</b><em>From diagnosis to the right support</em></a>
-          <a href="../integrate/"><b>Ways to run it</b><em>Four levels, from a link to self-hosted</em></a>
+          <a href="../../the-experience/"><b>The experience</b><em>Ninety days, from both sides</em></a>
+          <a href="../../routing/"><b>Routing</b><em>From diagnosis to the right support</em></a>
+          <a href="../../integrate/"><b>Ways to run it</b><em>Four levels, from a link to self-hosted</em></a>
         </div>
       </li>
       <li class="drop">
         <button class="dtrig" aria-expanded="false">Can you trust it <span class="caret">&#9662;</span></button>
         <div class="dmenu">
-          <a href="../checking-a-result/" class="on"><b>Checking a result</b><em>Confirm a result is genuine</em></a>
-          <a href="../conformance/"><b>Conformance</b><em>Whether an implementation computes correctly</em></a>
-          <a href="../versions/"><b>Version history</b><em>Every change, and whether scores still compare</em></a>
-          <a href="../limits/"><b>Limits</b><em>What this does not do</em></a>
+          <a href="../../checking-a-result/"><b>Checking a result</b><em>Confirm a result is genuine</em></a>
+          <a href="../../conformance/"><b>Conformance</b><em>Whether an implementation computes correctly</em></a>
+          <a href="../../versions/"><b>Version history</b><em>Every change, and whether scores still compare</em></a>
+          <a href="../../limits/"><b>Limits</b><em>What this does not do</em></a>
         </div>
       </li>
       <li class="drop">
         <button class="dtrig" aria-expanded="false">Who it is for <span class="caret">&#9662;</span></button>
         <div class="dmenu">
-          <a href="../banks/"><b>Banks</b><em>Which customers are building capability</em></a>
-          <a href="../public-bodies/"><b>Public bodies</b><em>Movement, not throughput</em></a>
-          <a href="../universities/"><b>Universities</b><em>Evidence for the next bid</em></a>
-          <a href="../accelerators/"><b>Accelerators</b><em>Select, aim the hours, prove it moved</em></a>
-          <a href="../investors/"><b>Investors</b><em>Portfolio movement from day one</em></a>
+          <a href="../../banks/"><b>Banks</b><em>Which customers are building capability</em></a>
+          <a href="../../public-bodies/"><b>Public bodies</b><em>Movement, not throughput</em></a>
+          <a href="../../universities/"><b>Universities</b><em>Evidence for the next bid</em></a>
+          <a href="../../accelerators/"><b>Accelerators</b><em>Select, aim the hours, prove it moved</em></a>
+          <a href="../../investors/"><b>Investors</b><em>Portfolio movement from day one</em></a>
         </div>
       </li>
-      <li><a href="../about/">About</a></li>
-      <li><a class="navcta" href="../contact/">Demo</a></li>
+      <li><a href="../../about/">About</a></li>
+      <li><a class="navcta" href="../../contact/">Demo</a></li>
       <li class="themer" id="themer" role="group" aria-label="Colour theme"><button data-t="auto" aria-pressed="false" title="Follow your system setting">Auto</button><button data-t="light" aria-pressed="false">Light</button><button data-t="dark" aria-pressed="false">Dark</button></li>
     </ul></nav>
   </div>
@@ -408,57 +437,90 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
 <main>
 <div class="page on">
   <section class="hero">
-    <div class="narrow">
-      <p class="eyebrow">Checking a result</p>
-      <h1>Is this result genuine?</h1>
-      <p class="big" style="margin-top:22px">A report can be screenshotted and a number can be edited. Every Growth Score result carries a reference, and anyone shown one can confirm it is real without seeing anything the company did not choose to share.</p>
+    <div class="wrap">
+      <p class="eyebrow">Specimen cohort report</p>
+      <h1 style="max-width:22ch">What the institution receives.</h1>
+      <p class="big" style="margin-top:22px;max-width:64ch">The individual report shows what a company gets. This is the other artefact: the same results, aggregated across a cohort, at intake and again after ninety days.</p>
+      <p class="small">Illustrative. Built from a synthetic cohort, not observed data. The structure, the arithmetic and the limits are exactly as a real report would carry them. <a href="../report/" style="color:var(--mark)">See the individual report this aggregates from</a>.</p>
     </div>
   </section>
 
   <section>
-    <div class="narrow">
-      <h2>The register, and how anyone checks a result</h2>
-      <p class="big" style="margin-top:16px">A report can be screenshotted and a number can be edited. The register is what makes a shared result checkable, and it works like a certificate number.</p>
-      <div class="tw"><table style="margin-top:22px">
-        <thead><tr><th>Step</th><th>What happens</th></tr></thead>
-        <tbody>
-          <tr><td>1. A result gets a reference</td><td>Every assessment completed through a conforming implementation is recorded with a short reference, printed on the report. For example GS-4K2P-9QX7</td></tr>
-          <tr><td>2. The company shares it</td><td>The company decides who sees the report and who gets the reference. Nothing is shared by us without them choosing it</td></tr>
-          <tr><td>3. The recipient checks it</td><td>A funder, investor or procurement team enters the reference, or their system calls the endpoint, and gets an answer in a second</td></tr>
-          <tr><td>4. They learn only four things</td><td>Whether it is real, which method version produced it, when it was taken and whether it is still current, and its evidence level</td></tr>
-        </tbody>
-      </table></div>
-      <p style="margin-top:20px"><b>What it does not return: the score, the company name, or any answer.</b> Verification confirms that what the company showed you is authentic. It does not disclose anything the company did not choose to disclose.</p>
-      <p class="small">Same idea as checking a certificate number on a certification body’s site. You are not looking up their result. You are confirming the document in front of you is genuine, current, and produced by the method it claims.</p>
-      <p style="margin-top:22px">When a company shares a result with an investor or a programme, the recipient can confirm it’s real without seeing anything private. The endpoint returns whether it’s valid, which version produced it, when it was taken, whether it’s current, and its evidence level. Nothing else.</p>
-      <pre><span class="c">GET /verify/GS-4K2P-9QX7</span>
-{
-  <span class="s">"valid"</span>: <span class="k">true</span>,
-  <span class="s">"method_version"</span>: <span class="s">"v1.4"</span>,
-  <span class="s">"taken"</span>: <span class="s">"2026-06-14"</span>,
-  <span class="s">"status"</span>: <span class="s">"current"</span>,
-  <span class="s">"evidence_level"</span>: <span class="s">"self-assessed"</span>
-}</pre>
-      <p class="small">No score, no company name, no answers. The register is how a published method stays trustworthy, and it is the part that is not published.</p>
-      <p class="small"><span class="ph">Status: the register and the verification endpoint are specified and not yet live. Results taken today are recorded; verification opens with the next release.</span></p>
-    </div>
-  </section>
+    <div class="wrap">
+      <div class="rpt">
+        <div class="rpt-head">
+          <div><span>Cohort</span><b>Illustrative programme</b></div>
+          <div><span>Companies invited</span><b>48</b></div>
+          <div><span>Baseline / endline</span><b>41 / 29</b></div>
+          <div><span>Window</span><b>Feb to May 2026</b></div>
+          <div><span>Method version</span><b>v1.4</b></div>
+        </div>
+        <div class="rpt-body">
 
-  
+          <p class="eyebrow">What changed</p>
+          <div class="big-move">
+            <div><span>Mean capability</span><b>44 &rarr; 53</b><em>+9</em></div>
+            <div><span>Mean momentum</span><b>39 &rarr; 51</b><em>+12</em></div>
+            <div><span>Companies that moved 5 or more</span><b>19</b><em>of 29 rescored</em></div>
+            <div><span>Companies that did not move</span><b>10</b><em>of 29 rescored</em></div>
+          </div>
+          <p class="small">Movement is the difference between two measurements taken on the same method version. It is not attributed to any intervention. See the limits below.</p>
+
+          <hr class="rule" style="margin:32px 0">
+
+          <p class="eyebrow">Where the cohort is concentrated</p>
+          <h2 style="font-size:23px;margin-bottom:6px">Not 41 problems. One problem, 23 times.</h2>
+          <p style="max-width:62ch">Mean score per cell across the 41 companies measured at baseline, on a five point scale. Darker is weaker.</p>
+          <div class="cellgrid"><div></div><div class="hd">Product</div><div class="hd">People</div><div class="hd">Process</div><div class="hd">Repeatability</div><div class="lab">Demand</div><div class="c" style="background:var(--data-3);color:var(--ink)">3.1</div><div class="c" style="background:var(--data-3);color:var(--ink)">2.8</div><div class="c" style="background:var(--data-2);color:#fff">2.6</div><div class="c" style="background:var(--data-1);color:#fff">2.2</div><div class="lab">Sales Process</div><div class="c" style="background:var(--data-4);color:var(--ink)">3.4</div><div class="c" style="background:var(--data-3);color:var(--ink)">3.0</div><div class="c" style="background:var(--data-3);color:var(--ink)">2.7</div><div class="c" style="background:var(--data-1);color:#fff">2.1</div><div class="lab">Closing</div><div class="c" style="background:var(--data-4);color:var(--ink)">3.2</div><div class="c" style="background:var(--data-3);color:var(--ink)">2.9</div><div class="c" style="background:var(--data-2);color:#fff">2.3</div><div class="c" style="background:var(--data-1);color:#fff">1.9</div><div class="lab">Expand</div><div class="c" style="background:var(--data-3);color:var(--ink)">2.9</div><div class="c" style="background:var(--data-3);color:var(--ink)">2.7</div><div class="c" style="background:var(--data-2);color:#fff">2.4</div><div class="c" style="background:var(--data-1);color:#fff">2.0</div></div>
+          <p style="margin-top:20px;max-width:62ch"><b>Repeatability is the weakest column across every stage, and Closing is the weakest row.</b> Twenty three of the forty one companies carry Closing and Repeatability as their primary reading. That is a commissioning finding, not forty one separate coaching problems.</p>
+
+          <hr class="rule" style="margin:32px 0">
+
+          <p class="eyebrow">The aggregation, shown</p>
+          <h2 style="font-size:23px;margin-bottom:6px">Every figure above comes from here.</h2>
+          <p style="max-width:62ch">Twelve of forty one shown. Each row is one company's own result, the same one it received. Nothing in this report is calculated any other way.</p>
+          <div class="tw"><table class="rowtab">
+            <thead><tr><th>Ref</th><th style="text-align:right">Intake</th><th style="text-align:right">Endline</th><th style="text-align:right">Move</th><th>Stage</th><th>Root cause</th><th>Support indicated</th></tr></thead>
+            <tbody><tr><td>C-041</td><td class="n">38</td><td class="n">54</td><td class="n up">+16</td><td>Closing</td><td>Repeatability</td><td>Deal control clinic</td></tr><tr><td>C-017</td><td class="n">44</td><td class="n">61</td><td class="n up">+17</td><td>Demand</td><td>Repeatability</td><td>Proposition workshop</td></tr><tr><td>C-029</td><td class="n">51</td><td class="n">52</td><td class="n flat">+1</td><td>Expand</td><td>Process</td><td>Not taken up</td></tr><tr><td>C-008</td><td class="n">33</td><td class="n">49</td><td class="n up">+16</td><td>Sales Process</td><td>Process</td><td>Deal control clinic</td></tr><tr><td>C-035</td><td class="n">47</td><td class="n">47</td><td class="n flat">0</td><td>Closing</td><td>Repeatability</td><td>Not taken up</td></tr><tr><td>C-002</td><td class="n">56</td><td class="n">68</td><td class="n up">+12</td><td>Demand</td><td>Product</td><td>Self directed</td></tr><tr><td>C-023</td><td class="n">29</td><td class="n">41</td><td class="n up">+12</td><td>Closing</td><td>Repeatability</td><td>Deal control clinic</td></tr><tr><td>C-011</td><td class="n">62</td><td class="n">64</td><td class="n flat">+2</td><td>Expand</td><td>People</td><td>Self directed</td></tr><tr><td>C-046</td><td class="n">40</td><td class="n">55</td><td class="n up">+15</td><td>Demand</td><td>Repeatability</td><td>Proposition workshop</td></tr><tr><td>C-004</td><td class="n">35</td><td class="n">&mdash;</td><td class="n flat">&mdash;</td><td>Sales Process</td><td>Process</td><td>No endline</td></tr><tr><td>C-019</td><td class="n">48</td><td class="n">63</td><td class="n up">+15</td><td>Closing</td><td>Repeatability</td><td>Deal control clinic</td></tr><tr><td>C-030</td><td class="n">53</td><td class="n">58</td><td class="n up">+5</td><td>Demand</td><td>Process</td><td>Self directed</td></tr></tbody>
+          </table></div>
+          <p class="small" style="margin-top:14px">Twenty nine more rows in a real report. Company references are shown to the institution that invited the cohort. Companies outside the cohort never appear.</p>
+
+          <hr class="rule" style="margin:32px 0">
+
+          <p class="eyebrow">What was indicated, and what happened</p>
+          <div class="tw"><table style="margin-top:14px">
+            <thead><tr><th>Category of support indicated</th><th style="text-align:right">Companies</th><th style="text-align:right">Took it up</th><th>What that suggests</th></tr></thead>
+            <tbody>
+              <tr><td>Deal control and qualification</td><td style="text-align:right">18</td><td style="text-align:right">11</td><td>The largest single need, and provision exists</td></tr>
+              <tr><td>Proposition and segment definition</td><td style="text-align:right">12</td><td style="text-align:right">7</td><td>Well served by the existing workshop</td></tr>
+              <tr><td>Retention and expansion</td><td style="text-align:right">7</td><td style="text-align:right">2</td><td>Thin provision. Worth commissioning against</td></tr>
+              <tr><td>No provider needed</td><td style="text-align:right">4</td><td style="text-align:right">4</td><td>Acted on their own first action</td></tr>
+            </tbody>
+          </table></div>
+          <p class="small" style="margin-top:14px">The diagnosis names the category. Which provider appears within it is the institution's decision, from provision it already funds. Take-up is recorded; it is never required.</p>
+
+          <hr class="rule" style="margin:32px 0">
+
+          <p class="eyebrow">Limits, printed on the report</p>
+          <ul class="plain">
+            <li><b>The data is self reported by each company.</b> Every figure above inherits that</li>
+            <li><b>Twenty nine endline measurements is a small sample.</b> No comparison between providers, programmes or periods is drawn at this size, and none should be</li>
+            <li><b>Movement is not attributed.</b> This reports what preceded what. Companies also hired, lost customers and changed markets during the window</li>
+            <li><b>Twelve companies did not complete an endline.</b> They are excluded from movement figures, not counted as no change</li>
+            <li><b>No peer benchmark is shown.</b> The published gate is roughly 100 comparable observations within one business model at one maturity level. This cohort is well below it</li>
+            <li><b>This is not a credit, risk or eligibility assessment</b>, and must not inform funding decisions, grant eligibility or subsidy control</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="alt">
     <div class="narrow">
-      <h2>Two different checks, often confused</h2>
-      <div class="tw"><table style="margin-top:20px">
-        <thead><tr><th></th><th>Question it answers</th><th>Who asks it</th></tr></thead>
-        <tbody>
-          <tr><td><b>Checking a result</b><br>this page</td><td>Is this particular result genuine, current, and produced by the method it claims?</td><td>A funder, investor, auditor or procurement team who has been shown a result</td></tr>
-          <tr><td><b>Conformance</b><br><a href="../conformance/" style="color:var(--mark)">separate page</a></td><td>Does this implementation compute the method correctly?</td><td>Anyone running the method themselves, and any risk function assessing the instrument</td></tr>
-        </tbody>
-      </table></div>
-      <p style="margin-top:20px">The nearest analogy: conformance is a laboratory being accredited to run a test. Checking a result is the certificate number on one specific test.</p>
+      <h2>Why this is the artefact that matters</h2>
+      <p style="margin-top:16px">A company acts on its own report. An institution cannot: one company's diagnosis says nothing about where provision is short, which cohort is weakest, or whether last year's spend changed anything.</p>
+      <p class="big" style="margin-top:18px">This report is the same results read a level up. One instrument, two audiences, and no separate management view that can quietly disagree with what the companies were told.</p>
+      <div class="btns"><a class="btn" href="../../contact/">Book a demonstration</a><a class="btn ghost" href="../report/">The individual report</a><a class="btn ghost" href="../../the-experience/">How a cohort runs</a></div>
     </div>
   </section>
 
@@ -473,31 +535,31 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
         <p style="max-width:34ch;font-size:12px;margin-top:12px">Published and maintained by Closing Foundry Ltd.</p>
       </div>
       <div><h4>The measure</h4><p>
-        <a href="../how-it-works/">How it works</a><br>
-        <a href="../method/">The method</a><br>
-        <a href="../specimen/report/">Specimen report</a><br>
-        <a href="../specimen/cohort/">Cohort report</a><br>
-        <a href="../run/">Run it yourself</a></p></div>
+        <a href="../../how-it-works/">How it works</a><br>
+        <a href="../../method/">The method</a><br>
+        <a href="../../specimen/report/">Specimen report</a><br>
+        <a href="../../specimen/cohort/">Cohort report</a><br>
+        <a href="../../run/">Run it yourself</a></p></div>
       <div><h4>Using it</h4><p>
-        <a href="../the-experience/">The experience</a><br>
-        <a href="../routing/">Routing</a><br>
-        <a href="../integrate/">Ways to run it</a></p></div>
+        <a href="../../the-experience/">The experience</a><br>
+        <a href="../../routing/">Routing</a><br>
+        <a href="../../integrate/">Ways to run it</a></p></div>
       <div><h4>Can you trust it</h4><p>
-        <a href="../checking-a-result/">Checking a result</a><br>
-        <a href="../conformance/">Conformance</a><br>
-        <a href="../versions/">Version history</a><br>
-        <a href="../limits/">Limits</a></p></div>
+        <a href="../../checking-a-result/">Checking a result</a><br>
+        <a href="../../conformance/">Conformance</a><br>
+        <a href="../../versions/">Version history</a><br>
+        <a href="../../limits/">Limits</a></p></div>
       <div><h4>Who it is for</h4><p>
-        <a href="../banks/">Banks</a><br>
-        <a href="../public-bodies/">Public bodies</a><br>
-        <a href="../universities/">Universities</a><br>
-        <a href="../accelerators/">Accelerators</a><br>
-        <a href="../investors/">Investors</a></p></div>
+        <a href="../../banks/">Banks</a><br>
+        <a href="../../public-bodies/">Public bodies</a><br>
+        <a href="../../universities/">Universities</a><br>
+        <a href="../../accelerators/">Accelerators</a><br>
+        <a href="../../investors/">Investors</a></p></div>
       <div><h4>Company</h4><p>
-        <a href="../about/">About</a><br>
-        <a href="../contact/">Contact</a><br>
-        <a href="../privacy/">Privacy</a><br>
-        <a href="../terms/">Terms of use</a></p></div>
+        <a href="../../about/">About</a><br>
+        <a href="../../contact/">Contact</a><br>
+        <a href="../../privacy/">Privacy</a><br>
+        <a href="../../terms/">Terms of use</a></p></div>
     </div>
     <div class="foot-bottom">
       <span>Published by Closing Foundry Ltd, registered in England and Wales, company no. 14629519.</span>
