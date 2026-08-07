@@ -7,7 +7,8 @@ document.documentElement.setAttribute('data-theme',t);})();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Checking a result | Growth Score</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%273%27%20fill%3D%27%230E1B2C%27%2F%3E%3Crect%20x%3D%277%27%20y%3D%279%27%20width%3D%2718%27%20height%3D%273.4%27%20rx%3D%271%27%20fill%3D%27%23E2EAFA%27%2F%3E%3Crect%20x%3D%277%27%20y%3D%2714.3%27%20width%3D%2718%27%20height%3D%273.4%27%20rx%3D%271%27%20fill%3D%27%2385A7EB%27%2F%3E%3Crect%20x%3D%277%27%20y%3D%2719.6%27%20width%3D%2718%27%20height%3D%273.4%27%20rx%3D%271%27%20fill%3D%27%230B4ED6%27%2F%3E%3C%2Fsvg%3E">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0E1B2C">
 <meta name="description" content="Every result carries a reference. Anyone shown one can confirm it is genuine, dated and produced by a stated method version, without seeing anything private.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,10 +41,7 @@ a{color:inherit}
 
 header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--rule)}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:14px;padding-bottom:14px;flex-wrap:nowrap}
-.logo{flex-shrink:0}
 .logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
-.logo .mk{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
-.logo .sub{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);white-space:nowrap}
 nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0;align-items:center;flex-wrap:nowrap}
 nav > ul > li > a{font-size:14px;text-decoration:none;color:var(--ink-soft);padding:8px 10px;border-radius:3px;display:block;white-space:nowrap}
 nav > ul > li > a:hover{background:var(--paper-alt);color:var(--ink)}
@@ -307,12 +305,27 @@ html.theming,html.theming *{transition:background-color .22s ease,color .22s eas
   background:none;border:none;padding:5px 10px;cursor:pointer;color:var(--band-mid);line-height:1.4}
 .themer button+button{border-left:1px solid var(--band-rule)}
 .themer button[aria-pressed="true"]{background:var(--band-accent);color:#0E1B2C}
+
+/* ---------- logo lockup ---------- */
+:root{ --logo-pop:#0E1B2C; --logo-tail:#0B4ED6; --logo-pop-band:#FFFFFF; --logo-tail-band:var(--band-accent); }
+html[data-theme="dark"]{ --logo-pop:#E6EBF4; --logo-tail:var(--band-accent); --logo-pop-band:#E6EBF4; --logo-tail-band:var(--band-accent); }
+.logo{display:inline-flex;align-items:baseline;gap:.42em;text-decoration:none;font-size:20px;flex-shrink:0}
+.logo .mk{font-family:var(--display);font-size:1em;font-weight:700;letter-spacing:-.022em;line-height:1.1;color:var(--logo-pop);white-space:nowrap}
+.logo .cohort{height:.92em;width:1.15em;align-self:baseline;display:block;flex-shrink:0}
+.logo .sub{font-family:var(--mono);font-size:.45em;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);white-space:nowrap;line-height:1.4}
+footer .logo .mk{color:var(--band-strong)}
+footer .logo .sub{color:var(--band-mid)}
+footer .logo .cohort rect{fill:var(--logo-pop-band)}
+footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7){fill:var(--logo-tail-band)}
+@media(max-width:1180px){ .logo .sub{display:none} }
+@media(max-width:860px){ .logo{font-size:17px} }
+@media print{ .logo .mk{color:#0E1B2C} }
 </style>
 </head>
 <body>
 <header>
   <div class="wrap bar">
-    <a class="logo" href="../"><span class="mk">Growth Score</span><span class="sub">An open measurement standard</span></a>
+    <a class="logo" href="../"><span class="mk">Growth Score</span><svg class="cohort" viewBox="0 0 30 24" aria-hidden="true"><rect x="0" y="16" width="1.6" height="8" fill="var(--logo-pop)"/><rect x="4" y="8" width="1.6" height="16" fill="var(--logo-pop)"/><rect x="7.2" y="12" width="1.6" height="12" fill="var(--logo-pop)"/><rect x="12.8" y="2" width="1.6" height="22" fill="var(--logo-pop)"/><rect x="16.4" y="9" width="1.6" height="15" fill="var(--logo-pop)"/><rect x="22.6" y="5" width="1.6" height="19" fill="var(--logo-tail)"/><rect x="28.4" y="15" width="1.6" height="9" fill="var(--logo-tail)"/></svg><span class="sub">An open measurement standard</span></a>
     <button class="menu" id="menuBtn" aria-expanded="false">Menu</button>
     <nav class="gs-n" id="nav"><ul>
       <li class="drop">
@@ -419,7 +432,7 @@ html.theming,html.theming *{transition:background-color .22s ease,color .22s eas
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="logo" style="margin-bottom:14px"><span class="mk" style="color:#fff">Growth Score</span><span class="sub">An open measurement standard</span></div>
+        <div class="logo" style="margin-bottom:14px"><span class="mk">Growth Score</span><svg class="cohort" viewBox="0 0 30 24" aria-hidden="true"><rect x="0" y="16" width="1.6" height="8" fill="var(--logo-pop-band)"/><rect x="4" y="8" width="1.6" height="16" fill="var(--logo-pop-band)"/><rect x="7.2" y="12" width="1.6" height="12" fill="var(--logo-pop-band)"/><rect x="12.8" y="2" width="1.6" height="22" fill="var(--logo-pop-band)"/><rect x="16.4" y="9" width="1.6" height="15" fill="var(--logo-pop-band)"/><rect x="22.6" y="5" width="1.6" height="19" fill="var(--logo-tail-band)"/><rect x="28.4" y="15" width="1.6" height="9" fill="var(--logo-tail-band)"/></svg><span class="sub">An open measurement standard</span></div>
         <p style="max-width:34ch">An open measurement standard for commercial capability. Free for the companies measured, licensed to the institutions that fund them.</p>
         <p style="max-width:34ch;font-size:12px;margin-top:12px">Published and maintained by Closing Foundry Ltd.</p>
       </div>
