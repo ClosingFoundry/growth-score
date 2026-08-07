@@ -42,7 +42,8 @@ The diagnosis produces a stage and a root cause. That pair determines a category
 ## For institutions
 - [Banks](banks/)
 - [Public bodies](public-bodies/)
-- [Universities and accelerators](universities/)
+- [Universities](universities/)
+- [Accelerators and programme operators](accelerators/)
 - [Investors and funds](investors/)
 - [Integrate](integrate/): four distribution levels and machine access
 
