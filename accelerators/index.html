@@ -36,7 +36,7 @@ a{color:inherit}
 .vswitch a{color:var(--mark);text-decoration:none;font-weight:500}
 
 header{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--rule)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0;flex-wrap:nowrap}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:14px;padding-bottom:14px;flex-wrap:nowrap}
 .logo{flex-shrink:0}
 .logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
 .logo .mk{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
@@ -339,6 +339,42 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
     </div>
   </section>
 
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">The problem, drawn</p>
+      <div class="grid2" style="grid-template-columns:1fr 1.15fr;gap:44px;align-items:center">
+        <div>
+          <h2>Two programmes. Identical reports.</h2>
+          <p class="big" style="margin-top:18px">Applications, acceptances, mentor hours, funds raised. On every figure a sponsor is given, these two cohorts are the same programme.</p>
+          <p>They are not. One moved most of its companies and one moved a few. Nothing in the reporting shows it, so the sponsor renews on relationship rather than evidence, and the better programme gets no credit for being better.</p>
+          <p>Measure at intake and again at exit and the difference is the first thing you see.</p>
+        </div>
+        <div class="plot">
+          <div class="plot-head">
+            <span class="plot-title">Illustrative: two cohorts of twelve</span>
+            <div class="toggle" role="group" aria-label="View">
+              <button class="tgA" aria-pressed="true">What the reports show</button>
+              <button class="tgB" aria-pressed="false">What movement shows</button>
+            </div>
+          </div>
+          <svg id="pv" viewBox="0 0 640 240" role="img" aria-label="Two cohorts that report identically but move differently">
+            <text x="150" y="18" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--mid)">Programme A</text>
+            <text x="470" y="18" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--mid)">Programme B</text>
+            <line x1="320" y1="10" x2="320" y2="212" stroke="var(--rule)"></line>
+            <g id="pvA"></g><g id="pvB"></g>
+            <text x="150" y="232" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--mid)">intake to exit</text>
+            <text x="470" y="232" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--mid)">intake to exit</text>
+          </svg>
+          <div class="preadout">
+            <div>Told apart by the reports<b id="r1">No</b></div>
+            <div>Companies that moved<b id="r2">Not measured</b></div>
+          </div>
+          <p class="small" style="margin-top:12px;font-size:12px">An illustration of why identical reporting hides a real difference, not observed data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="alt">
     <div class="wrap">
       <p class="eyebrow">The three moments it matters</p>
@@ -406,6 +442,64 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
 </div>
 </main>
+<script>
+(function(){
+  var svg=document.getElementById('pv'); if(!svg) return;
+  var BASE=200, TOP=40, N=12;
+  // A: most companies move. B: few do. Same reported totals.
+  var A=[26,31,19,34,23,29,14,36,21,27,11,30];
+  var B=[5,3,24,4,2,6,28,3,5,1,26,4];
+  function build(g, vals, x0){
+    var els=[];
+    vals.forEach(function(v,i){
+      var x=x0+i*22;
+      var ln=document.createElementNS('http://www.w3.org/2000/svg','line');
+      ln.setAttribute('x1',x);ln.setAttribute('x2',x);
+      ln.setAttribute('y1',BASE);ln.setAttribute('y2',BASE);
+      ln.setAttribute('stroke', v>=12 ? 'var(--mark)' : 'var(--mid)');
+      ln.setAttribute('stroke-width', v>=12 ? '2.5' : '1.5');
+      ln.style.transition='all .8s cubic-bezier(.22,.9,.3,1)';
+      ln.style.transitionDelay=(i*30)+'ms';
+      g.appendChild(ln);
+      var d=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      d.setAttribute('cx',x);d.setAttribute('cy',BASE);d.setAttribute('r',3);
+      d.setAttribute('fill','var(--ink)');
+      g.appendChild(d);
+      var t=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      t.setAttribute('cx',x);t.setAttribute('cy',BASE);t.setAttribute('r',3);
+      t.setAttribute('fill', v>=12 ? 'var(--mark)' : 'var(--mid)');
+      t.style.transition='all .8s cubic-bezier(.22,.9,.3,1)';
+      t.style.transitionDelay=(i*30)+'ms';
+      g.appendChild(t);
+      els.push({line:ln,top:t,v:v});
+    });
+    return els;
+  }
+  var ea=build(document.getElementById('pvA'), A, 30);
+  var eb=build(document.getElementById('pvB'), B, 350);
+  var movedA=A.filter(function(v){return v>=12;}).length;
+  var movedB=B.filter(function(v){return v>=12;}).length;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function set(on){
+    document.querySelector('.tgA').setAttribute('aria-pressed', on?'false':'true');
+    document.querySelector('.tgB').setAttribute('aria-pressed', on?'true':'false');
+    [ea,eb].forEach(function(set2){
+      set2.forEach(function(e){
+        var y = on ? BASE-e.v*4.2 : BASE;
+        e.line.setAttribute('y2', y);
+        e.top.setAttribute('cy', y);
+      });
+    });
+    document.getElementById('r1').textContent = on ? 'Yes' : 'No';
+    document.getElementById('r2').textContent = on ? (movedA+' vs '+movedB+' of 12') : 'Not measured';
+  }
+  document.querySelector('.tgA').addEventListener('click',function(){set(false);});
+  document.querySelector('.tgB').addEventListener('click',function(){set(true);});
+  set(false);
+  if(!reduce) setTimeout(function(){ set(true); }, 1400);
+})();
+</script>
+
 <footer>
   <div class="wrap">
     <div class="foot-grid">
