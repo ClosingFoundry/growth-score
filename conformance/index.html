@@ -329,8 +329,20 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
   <section>
     <div class="narrow">
-      <h2>Verifying a result</h2>
-      <p style="margin-top:16px">When a company shares a result with an investor or a programme, the recipient can confirm it’s real without seeing anything private. The endpoint returns whether it’s valid, which version produced it, when it was taken, whether it’s current, and its evidence level. Nothing else.</p>
+      <h2>The register, and how anyone checks a result</h2>
+      <p class="big" style="margin-top:16px">A report can be screenshotted and a number can be edited. The register is what makes a shared result checkable, and it works like a certificate number.</p>
+      <div class="tw"><table style="margin-top:22px">
+        <thead><tr><th>Step</th><th>What happens</th></tr></thead>
+        <tbody>
+          <tr><td>1. A result gets a reference</td><td>Every assessment completed through a conforming implementation is recorded with a short reference, printed on the report. For example GS-4K2P-9QX7</td></tr>
+          <tr><td>2. The company shares it</td><td>The company decides who sees the report and who gets the reference. Nothing is shared by us without them choosing it</td></tr>
+          <tr><td>3. The recipient checks it</td><td>A funder, investor or procurement team enters the reference, or their system calls the endpoint, and gets an answer in a second</td></tr>
+          <tr><td>4. They learn only four things</td><td>Whether it is real, which method version produced it, when it was taken and whether it is still current, and its evidence level</td></tr>
+        </tbody>
+      </table></div>
+      <p style="margin-top:20px"><b>What it does not return: the score, the company name, or any answer.</b> Verification confirms that what the company showed you is authentic. It does not disclose anything the company did not choose to disclose.</p>
+      <p class="small">Same idea as checking a certificate number on a certification body’s site. You are not looking up their result. You are confirming the document in front of you is genuine, current, and produced by the method it claims.</p>
+      <p style="margin-top:22px">When a company shares a result with an investor or a programme, the recipient can confirm it’s real without seeing anything private. The endpoint returns whether it’s valid, which version produced it, when it was taken, whether it’s current, and its evidence level. Nothing else.</p>
       <pre><span class="c">GET /verify/GS-4K2P-9QX7</span>
 {
   <span class="s">"valid"</span>: <span class="k">true</span>,
@@ -339,7 +351,8 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
   <span class="s">"status"</span>: <span class="s">"current"</span>,
   <span class="s">"evidence_level"</span>: <span class="s">"self-assessed"</span>
 }</pre>
-      <p class="small">No score, no company name, no answers. The register is how a published method stays trustworthy, and it’s the part that’s not open.</p>
+      <p class="small">No score, no company name, no answers. The register is how a published method stays trustworthy, and it is the part that is not published.</p>
+      <p class="small"><span class="ph">Status: the register and the verification endpoint are specified and not yet live. Results taken today are recorded; verification opens with the next release.</span></p>
     </div>
   </section>
 
