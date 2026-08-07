@@ -263,6 +263,23 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 .calcout b{font-size:22px;font-weight:700;letter-spacing:-.02em}
 .big-num{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--mark)}
 </style>
+<style>
+.ppl{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px}
+.ppl .card{padding:24px}
+.ppl .ini{width:44px;height:44px;border-radius:3px;background:var(--ink);color:#fff;display:flex;
+  align-items:center;justify-content:center;font-weight:700;font-size:15px;letter-spacing:-.02em;margin-bottom:16px}
+.ppl h3{margin-bottom:2px}
+.ppl .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mark);margin-bottom:10px}
+.ppl .dom{font-size:12.5px;color:var(--mid);margin-bottom:12px;line-height:1.45}
+@media(max-width:860px){.ppl{grid-template-columns:1fr}}
+.wk{display:grid;grid-template-columns:120px 1fr;gap:0;border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-top:26px}
+.wk>div{padding:18px 20px;border-top:1px solid var(--rule)}
+.wk>div:nth-child(1),.wk>div:nth-child(2){border-top:none}
+.wk .w{background:var(--paper-alt);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);border-right:1px solid var(--rule)}
+.wk b{display:block;margin-bottom:4px}
+.wk .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mark);margin-top:8px}
+@media(max-width:700px){.wk{grid-template-columns:1fr}.wk .w{border-right:none}}
+</style>
 </head>
 <body>
 <header>
@@ -303,7 +320,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 <div class="page on">
   <div class="pnav"><div class="pnav-in">
     <span class="mono" style="color:var(--ink)"><b>Proposal</b> &middot; West Yorkshire Combined Authority &middot; 7 Aug 2026</span>
-    <span><a href="#pilot">The pilot</a><a href="#value">Cost</a><a href="#commercials">Commercials</a><a class="cta" href="#next">Next step</a></span>
+    <span><a href="#pilot">The pilot</a><a href="#team">Team</a><a href="#value">Cost</a><a href="#commercials">Commercials</a><a class="cta" href="#next">Next step</a></span>
   </div></div>
 
   <section class="hero">
@@ -360,6 +377,77 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
           <div class="btns"><a class="btn ghost" href="../../specimen/report/">See the report a company receives</a></div>
         </div>
       </div>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow" id="team">Who you would be working with</p>
+      <h2>Operators who have done the job, not a delivery team.</h2>
+      <p class="big" style="margin-top:16px;max-width:64ch">The instrument does the measuring. People are needed for the parts an instrument cannot do: setting the cohort up, reading the findings with you, and standing behind the report in front of your board.</p>
+      <div class="ppl">
+        <div class="card">
+          <div class="ini">CT</div>
+          <h3>Charles Talbot</h3>
+          <p class="role">Founder</p>
+          <p class="dom">Salestech, martech, CX, founder-led motions</p>
+          <p class="small">Built the instrument, originally for Scottish Enterprise, to make support routing more consistent and easier to justify. Twenty five years selling. Leads the engagement and writes the assessment.</p>
+        </div>
+        <div class="card">
+          <div class="ini">DM</div>
+          <h3>Douglas Mancini</h3>
+          <p class="role">Senior Operating Partner</p>
+          <p class="dom">Enterprise infrastructure, GTM turnaround, forecast discipline</p>
+          <p class="small">Enterprise turnaround operator across UKI and EMEA. Rebuilds teams and installs pipeline-to-forecast rigour. Reads cohort findings where the diagnosis points at process and control.</p>
+        </div>
+        <div class="card">
+          <div class="ini">LM</div>
+          <h3>Laurie Mascott</h3>
+          <p class="role">Senior Operating Partner</p>
+          <p class="dom">Data platforms, knowledge management, new market entry</p>
+          <p class="small">Works with start-ups and scale-ups building a first repeatable motion, across EMEA, USA and APAC. Relevant where a cohort is pre-revenue or entering a new market.</p>
+        </div>
+      </div>
+      <p class="small" style="margin-top:22px">Also on the team: Russell Palmer, Operating Partner, on workflow and enterprise platforms. Beyond the core operators there is a bench across US go-to-market, marketing, customer success, fintech and market expansion. We do not put everyone on every engagement.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="narrow">
+      <h2>The question behind the question</h2>
+      <p style="margin-top:16px"><b>Is this one person, and what happens if they are unavailable?</b> Worth answering directly, because it is the fair thing to ask of any small supplier.</p>
+      <ul class="plain" style="margin-top:18px">
+        <li><b>The measuring is not done by a person.</b> The instrument is deterministic and hosted. Companies complete it themselves. Nobody has to be available for a company to be measured or to get its result</li>
+        <li><b>Reporting is generated, not written.</b> The cohort report is produced from the data. A person reviews it; a person does not compose it from scratch</li>
+        <li><b>Four operators, not one.</b> Named above, with a bench beyond them</li>
+        <li><b>The pilot is bounded.</b> Ninety days, one cohort, fixed fee. If it does not work you have lost a quarter and GBP 9,000, and you keep the reports and the data</li>
+        <li><b>Nothing is locked in.</b> The method is published, so nothing about it is dependent on us continuing to exist. Companies keep their own results permanently</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Activation</p>
+      <h2>What the first two weeks look like.</h2>
+      <p class="big" style="margin-top:16px;max-width:64ch">The whole point of starting with a bounded cohort is that setup is small. There is no integration, no data migration and no platform for your team to learn.</p>
+      <div class="wk">
+        <div class="w">Days 1 to 3</div>
+        <div><b>Kickoff, 90 minutes</b>Agree the cohort, the named officers who will judge the output, and the success criteria in writing. Confirm the invitation route and the date it goes out.<span class="who">Both. Charles leads</span></div>
+        <div class="w">Days 3 to 7</div>
+        <div><b>Configure</b>Your branded cohort address, motion and maturity settings for the businesses in scope, report template agreed. We draft the invitation and the reminder wording.<span class="who">Us</span></div>
+        <div class="w">Days 5 to 8</div>
+        <div><b>Your sign-off</b>Brand, privacy wording and consent copy reviewed by whoever needs to see it. This is usually the longest step and it is entirely on your side, so start it early.<span class="who">You</span></div>
+        <div class="w">Day 10</div>
+        <div><b>Invitations go out</b>From you, not from us. A cohort invited by its own programme completes. A cohort emailed by an unfamiliar supplier does not.<span class="who">You send, we supply the wording</span></div>
+        <div class="w">Day 12 onward</div>
+        <div><b>Coverage reporting starts</b>A weekly count of who has completed, who has started and who has not opened it, with a chase list. No surprises at day 85.<span class="who">Us</span></div>
+        <div class="w">Day 45</div>
+        <div><b>Interim read</b>Enough of the cohort in to see the shape. Where provision is short, and which companies need a person rather than an action.<span class="who">Both</span></div>
+      </div>
+      <p class="small" style="margin-top:18px">What we need from you in total: a nominated cohort, the invitation sent by you, three named officers, and one contact who can make decisions inside the window. Nothing else.</p>
+      <div class="btns"><a class="btn ghost" href="../../the-experience/">The full ninety day cycle</a></div>
     </div>
   </section>
 
