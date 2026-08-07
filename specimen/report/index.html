@@ -289,7 +289,7 @@ section.page {
   font-weight: 800;
   font-size: 15pt;
   letter-spacing: -0.01em;
-  color: var(--brand-primary);
+  color: var(--brand-ink);
 }
 .cover-wordmark .dot { color: var(--brand-signal-ink); }
 
@@ -991,19 +991,44 @@ section.page {
 </head>
 <body>
 <style>
-.gs-backbar{position:sticky;top:0;z-index:99;background:#0E1B2C;color:#C4CFE4;
-  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;
-  padding:9px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-.gs-backbar a{color:#8FB0F8;text-decoration:none;border-bottom:1px solid rgba(143,176,248,.4)}
-.gs-backbar a:hover{color:#fff;border-bottom-color:#fff}
-.gs-backbar b{color:#fff;font-weight:500}
-@media print{.gs-backbar{display:none}}
+.gsx-bar{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);border-bottom:1px solid #E2E7F0;font-family:"IBM Plex Sans",system-ui,sans-serif}
+.gsx-in{max-width:1120px;margin:0 auto;padding:13px 28px;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;flex-wrap:wrap}
+.gsx-brand{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.gsx-brand .m{font-size:21px;font-weight:700;letter-spacing:-.01em;color:#0E1B2C}
+.gsx-brand .s{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:#5F6C85}
+.gsx-nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.gsx-nav a{font-size:14px;text-decoration:none;color:#33415C;padding:7px 11px;border-radius:3px}
+.gsx-nav a:hover{background:#F4F6FA;color:#0E1B2C}
+.gsx-nav a.cta{border:1px solid #E2E7F0;font-weight:600}
+.gsx-nav a.cta:hover{border-color:#0B4ED6;color:#0B4ED6}
+.gsx-note{background:#F4F6FA;border-bottom:1px solid #E2E7F0;
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;color:#5F6C85;
+  padding:8px 28px;text-align:center;letter-spacing:.04em}
+@media screen{ body{ padding-top:104px !important; } }
+@media(max-width:700px){
+  .gsx-in{padding:11px 18px}
+  .gsx-brand .s{display:none}
+  .gsx-nav a{padding:6px 8px;font-size:13px}
+  .gsx-note{font-size:10px;padding:7px 18px}
+  @media screen{ body{ padding-top:118px !important; } }
+}
+@media print{ .gsx-bar{display:none !important} body{padding-top:0 !important} }
 </style>
-<div class="gs-backbar">
-  <span>Specimen report <b>&middot;</b> illustrative company, not a client <b>&middot;</b> method v1.4</span>
-  <span><a href="../">Back to the specimen page</a> &nbsp;&middot;&nbsp; <a href="../../">Growth Score</a> &nbsp;&middot;&nbsp; <a href="../../method/">The method</a></span>
+<div class="gsx-bar">
+  <div class="gsx-in">
+    <a class="gsx-brand" href="../../"><span class="m">Growth Score</span><span class="s">An open measurement standard</span></a>
+    <nav class="gsx-nav">
+      <a href="../../method/">Method</a>
+      <a href="../../the-experience/">The experience</a>
+      <a href="../">Specimen</a>
+      <a class="cta" href="../../contact/">Contact</a>
+    </nav>
+  </div>
+  <div class="gsx-note">Specimen report &middot; an illustrative company, not a client &middot; method v1.4 &middot; this is exactly what a company receives</div>
 </div>
-
 
 <!-- ========================================================================
      1 · COVER
