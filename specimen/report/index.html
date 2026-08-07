@@ -119,15 +119,24 @@ html, body {
    warm-grey desk. Print is governed by @page above and the html/body
    canvas fill, and is unaffected by this block. */
 @media screen {
-  html { background: #F4F6FA; }
+  html { background: #FFFFFF; }
   body {
-    max-width: 100%;
-    min-height: 297mm;
-    margin: 12mm auto;
-    padding: 18mm;
+    max-width: 1176px;
+    min-height: 0;
+    margin: 0 auto;
+    padding: 0 28px 60px;
     background: var(--brand-canvas);
-    box-shadow: 0 8px 30px -12px rgba(18,34,54,0.28);
+    box-shadow: none;
   }
+  /* the cover is an A4 page in print, a normal opening block on screen */
+  .cover { min-height: 0; padding: 8px 0 40px; }
+  .cover-title-block { margin-top: 26px; }
+  /* continuous document on screen, separated by a rule instead of a page break */
+  .page { padding-top: 0; }
+  .page + .page,
+  .cover + .page { border-top: 1px solid var(--brand-border); margin-top: 44px; padding-top: 44px; }
+  /* one reading measure, left anchored, matching the rest of the site */
+  .section-head, .method, .glossary, .headline-copy { max-width: 820px; }
 }
 
 /* Belt-and-braces: if the renderer resolves screen media (PDFShift only
@@ -259,25 +268,6 @@ section.page {
   overflow: hidden;
 }
 
-.cover-logo {
-  position: relative;
-  z-index: 1;
-  height: 36px;
-  display: flex;
-  align-items: center;
-}
-.cover-logo-img {
-  height: 34px;
-  width: auto;
-  display: block;
-}
-.cover-wordmark {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 15pt;
-  letter-spacing: -0.01em;
-  color: var(--brand-ink);
-}
 .cover-wordmark .dot { color: var(--brand-signal-ink); }
 
 .cover-title-block {
@@ -1132,14 +1122,6 @@ footer .logo .sub{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:9
      ======================================================================== -->
 <section class="cover" data-screen-label="Cover">
 
-  <!-- BRAND SLOT. A licensee's own logo replaces the wordmark here.
-       Unbranded reports carry the Growth Score wordmark only. -->
-  <div class="cover-logo">
-    
-    <span class="cover-wordmark">Growth Score</span>
-    
-    
-  </div>
 
   <div class="cover-title-block">
     <h1 class="cover-scorename">
