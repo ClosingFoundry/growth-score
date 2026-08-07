@@ -398,6 +398,28 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
   border:1px solid var(--rule);border-radius:99px;padding:5px 12px;margin-bottom:16px;color:var(--mark)}
 .axis{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;fill:var(--mid)}
 </style>
+<style>
+.hiw{display:grid;grid-template-columns:1fr 1.25fr;gap:56px;align-items:start;margin-top:8px}
+.hiw-rail{position:sticky;top:96px}
+.stk{background:var(--white);border:1px solid var(--rule);border-radius:3px;padding:24px 22px}
+.stk svg{display:block;width:100%;height:auto}
+.band{cursor:pointer}
+.band-hit{cursor:pointer;fill:transparent}
+.axis{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;fill:var(--mid)}
+.hiw-sec{padding:0 0 72px;scroll-margin-top:120px}
+.hiw-sec:last-child{padding-bottom:8px}
+.hiw-num{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin:0 0 12px}
+.hiw-sec h2{font-size:26px;margin:0 0 6px}
+.hiw-lede{font-size:20px;line-height:1.4;color:var(--ink);margin:0 0 18px;max-width:36ch;font-weight:500}
+.hiw-sec p{margin:0 0 14px}
+.hiw-tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--rule);border-radius:99px;padding:5px 12px;margin-bottom:20px;color:var(--mark)}
+@media(max-width:1020px){
+  .hiw{grid-template-columns:1fr;gap:34px}
+  .hiw-rail{position:static}
+  .hiw-sec{padding-bottom:48px}
+}
+</style>
 </head>
 <body>
 <header>
@@ -459,48 +481,145 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
 
   <section>
     <div class="wrap">
-      <div class="grid2" style="grid-template-columns:1.15fr 1fr;gap:38px;align-items:start">
-        <div class="stk">
-          <svg id="stkSvg" viewBox="0 0 620 340" role="img" aria-label="Five parts, from the published method at the base to what the instrument learns at the top">
-            <text class="axis" x="8" y="40" transform="rotate(-90 8,40)">Last</text>
-            <text class="axis" x="8" y="318" transform="rotate(-90 8,318)">First</text>
-            <line x1="26" y1="14" x2="26" y2="330" stroke="var(--rule)"></line>
-            <g id="bands"></g>
-          </svg>
+      <div class="hiw">
+        <div class="hiw-rail">
+          <div class="stk">
+            <svg id="stkSvg" viewBox="0 0 460 300" role="img" aria-label="Five parts, from the published method at the base to how it improves at the top">
+              <text class="axis" x="8" y="36" transform="rotate(-90 8,36)">Last</text>
+              <text class="axis" x="8" y="282" transform="rotate(-90 8,282)">First</text>
+              <line x1="24" y1="12" x2="24" y2="292" stroke="var(--rule)"></line>
+              <g id="bands"></g>
+            </svg>
+          </div>
           <p class="small" style="margin-top:14px;font-size:12px">Each part rests on the one below it. Click any band.</p>
         </div>
-        <div class="stk-panel" id="stkPanel"></div>
+        <div>
+      <section class="hiw-sec" id="l1">
+        <p class="hiw-num">Part 1 of 5</p>
+        <h2>The method</h2>
+        <p class="hiw-lede">Everything that produces the number, written down.</p>
+        <span class="hiw-tag">Published in full</span>
+        <p>The model, the questions, both answer scales, the arithmetic, the bands, the version record and the conformance test vectors.</p>
+        <p>You do not have to trust us about how the number is made, because you can read exactly how it is made. Run it yourself in the browser, or implement it in your own systems and check your implementation against the published vectors. Everything above this part rests on it being inspectable by anyone.</p>
+      </section>
+      <section class="hiw-sec" id="l2">
+        <p class="hiw-num">Part 2 of 5</p>
+        <h2>The instrument</h2>
+        <p class="hiw-lede">Eight minutes, and the company keeps the result forever.</p>
+        <span class="hiw-tag">Free to every company, always</span>
+        <p>Thirty seven questions. A score from 0 to 100, capability reported separately from momentum, the stage where the problem shows up, the root cause underneath it, and the first actions.</p>
+        <p>No upgrade, no paywalled result, no charge at any point, whether or not the company ever speaks to anyone. That is not generosity. Commercial capability cannot be scraped from filings or web traffic, it can only be asked about, and a company only answers honestly if the answer is useful to them and costs them nothing.</p>
+      </section>
+      <section class="hiw-sec" id="l3">
+        <p class="hiw-num">Part 3 of 5</p>
+        <h2>Diagnosis and action</h2>
+        <p class="hiw-lede">A number nobody acts on is a report. This is the part that is not.</p>
+        <span class="hiw-tag">Where the work happens</span>
+        <p>The written diagnosis, the three actions that follow from it, the category of support it points to when a person is needed, and the reporting across a cohort.</p>
+        <p>Most of what a diagnosis calls for is work the company does itself. Where it needs a person, the diagnosis names the category of help, never the supplier: the institution decides who provides it, from provision it already funds. Ninety days later the measure is taken again, and the movement is the thing everyone was actually after.</p>
+      </section>
+      <section class="hiw-sec" id="l4">
+        <p class="hiw-num">Part 4 of 5</p>
+        <h2>Checking a result</h2>
+        <p class="hiw-lede">A result anyone can confirm, without seeing anything private.</p>
+        <span class="hiw-tag">Open to anyone shown one</span>
+        <p>Every result carries a short reference. Enter it and you learn four things: whether it is real, which method version produced it, when it was taken and whether it is still current, and its evidence level.</p>
+        <p>A report can be screenshotted and a number can be edited. A reference cannot. It returns no score, no company name and no answers, so a company can prove a result is genuine without disclosing anything it did not choose to share. Same idea as checking a certificate number.</p>
+      </section>
+      <section class="hiw-sec" id="l5">
+        <p class="hiw-num">Part 5 of 5</p>
+        <h2>How it improves</h2>
+        <p class="hiw-lede">The measure gets sharper because companies used it.</p>
+        <span class="hiw-tag">Over time</span>
+        <p>A record of which kind of support tends to move which part of the engine, for which kind of company. It builds only as companies measure, act, and measure again.</p>
+        <p>This is why a published, unchanging instrument is worth more than a bespoke one. Every company measured on the same method makes the next diagnosis a little better founded. Nothing about an individual company is ever published, and no peer benchmark is released until there are enough comparable observations to make one honest.</p>
+      </section>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="alt">
     <div class="narrow">
-      <h2>What that means in practice</h2>
+      <h2>Who does what</h2>
       <div class="tw"><table style="margin-top:22px">
         <thead><tr><th>If you are</th><th>What you actually do</th></tr></thead>
         <tbody>
           <tr><td><b>A company</b></td><td>Answer 37 questions in about eight minutes. Read your result. Do the first action. Take it again in ninety days. You are never charged and the result stays yours</td></tr>
           <tr><td><b>A programme, bank, university or fund</b></td><td>Invite a cohort. Watch coverage. Read the cohort report, and the movement report ninety days later</td></tr>
           <tr><td><b>Someone shown a result</b></td><td>Check the reference. Confirm it is real, dated and produced by the version it claims, without seeing anything private</td></tr>
-          <tr><td><b>Someone who wants to run the method themselves</b></td><td>Read the specification, implement it, and check your implementation against the published test vectors</td></tr>
+          <tr><td><b>Someone running the method themselves</b></td><td>Read the specification, implement it, and check your implementation against the published test vectors</td></tr>
         </tbody>
       </table></div>
-      <div class="btns"><a class="btn ghost" href="../the-experience/">The ninety days, in detail</a><a class="btn ghost" href="../method/">The specification</a></div>
-    </div>
-  </section>
-
-  <section>
-    <div class="narrow">
-      <h2>Why it is built this way</h2>
-      <p style="margin-top:16px">A measure of commercial capability cannot be scraped. Revenue, filings and web traffic are all observable from outside, and none of them tells you whether a company can sell what it has built. That can only be asked about.</p>
-      <p>Asking only works if the company wants to answer honestly, which means the result has to be useful to them and free, and the measure must never be used to decide anything about them. Every part above follows from that.</p>
-      <div class="btns"><a class="btn ghost" href="../limits/">What it deliberately does not do</a></div>
+      <div class="btns"><a class="btn ghost" href="../the-experience/">The ninety days, in detail</a><a class="btn ghost" href="../method/">The specification</a><a class="btn ghost" href="../limits/">What it does not do</a></div>
     </div>
   </section>
 
 </div>
 </main>
+<script>
+(function(){
+  var svg=document.getElementById('stkSvg'); if(!svg) return;
+  var L=[
+    {n:5,t:'How it improves',fill:'#0E1B2C',txt:'#fff'},
+    {n:4,t:'Checking a result',fill:'#4F80E2',txt:'#fff'},
+    {n:3,t:'Diagnosis and action',fill:'#85A7EB',txt:'#0E1B2C'},
+    {n:2,t:'The instrument',fill:'#B6CAF3',txt:'#0E1B2C'},
+    {n:1,t:'The method',fill:'#E2EAFA',txt:'#0E1B2C'}
+  ];
+  var g=document.getElementById('bands'), X=44, W=402, H=48, GAP=8, TOP=16, els={};
+  L.forEach(function(l,i){
+    var y=TOP+i*(H+GAP);
+    var r=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    r.setAttribute('x',X);r.setAttribute('y',y);r.setAttribute('width',W);r.setAttribute('height',H);
+    r.setAttribute('rx',2);r.setAttribute('fill',l.fill);r.setAttribute('class','band');
+    r.setAttribute('stroke','transparent');r.setAttribute('stroke-width','2');
+    r.style.transition='opacity .2s ease';
+    g.appendChild(r);
+    function t(x,anchor,size,weight,fill,op,content){
+      var e=document.createElementNS('http://www.w3.org/2000/svg','text');
+      e.setAttribute('x',x);e.setAttribute('y',y+H/2+(size>13?6:5));
+      if(anchor)e.setAttribute('text-anchor',anchor);
+      e.setAttribute('font-family',size>13?'IBM Plex Sans, sans-serif':'IBM Plex Mono, monospace');
+      e.setAttribute('font-size',size);if(weight)e.setAttribute('font-weight',weight);
+      e.setAttribute('letter-spacing',size>13?'-.02em':'.08em');
+      e.setAttribute('fill',fill);if(op)e.setAttribute('opacity',op);
+      e.textContent=content;e.style.pointerEvents='none';g.appendChild(e);
+    }
+    t(X+16,null,11.5,null,l.txt,'.6',l.n);
+    t(X+40,null,16,'700',l.txt,null,l.t);
+    var hit=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    hit.setAttribute('x',X);hit.setAttribute('y',y);hit.setAttribute('width',W);hit.setAttribute('height',H);
+    hit.setAttribute('class','band-hit');hit.setAttribute('tabindex','0');
+    hit.setAttribute('role','link');hit.setAttribute('aria-label',l.t);
+    hit.addEventListener('click',function(){go(l.n);});
+    hit.addEventListener('keydown',function(e){if(e.key==='Enter')go(l.n);});
+    g.appendChild(hit);
+    els[l.n]=r;
+  });
+  function go(n){
+    var el=document.getElementById('l'+n);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  function mark(n){
+    Object.keys(els).forEach(function(k){
+      var on = (+k===n);
+      els[k].setAttribute('stroke', on ? 'var(--ink)' : 'transparent');
+      els[k].style.opacity = on ? '1' : '.5';
+    });
+  }
+  mark(1);
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting) mark(+e.target.id.replace('l',''));
+      });
+    },{rootMargin:'-25% 0px -60% 0px'});
+    [1,2,3,4,5].forEach(function(n){ var el=document.getElementById('l'+n); if(el) io.observe(el); });
+  }
+})();
+</script>
+
 
 <script>
 (function(){
