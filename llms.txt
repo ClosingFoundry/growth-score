@@ -33,6 +33,7 @@ The diagnosis produces a stage and a root cause. That pair determines a category
 - [Scales as JSON](../method/v1.4/scales.json): both answer scales with labels and meanings
 - [Bands as JSON](../method/v1.4/bands.json): thresholds and definitions
 - [Run it](run/): reference implementation, deterministic, in the browser
+- [Specimen report](specimen/report/): the complete eleven-page report a company receives
 - [Conformance](conformance/): test vectors, conformance manifest, verification endpoint, licence
 - [Versions](versions/): changelog with a comparability verdict per version
 - [Limits](limits/): what the method does not do
