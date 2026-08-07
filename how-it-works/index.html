@@ -274,6 +274,18 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 .prin b{display:block;font-size:16px;margin-bottom:8px;letter-spacing:-.01em}
 @media(max-width:860px){.prin{grid-template-columns:1fr}}
 </style>
+<style>
+.stk{background:var(--white);border:1px solid var(--rule);border-radius:3px;padding:26px 24px}
+.stk svg{display:block;width:100%;height:auto}
+.band{cursor:pointer;transition:opacity .15s}
+.band:hover{opacity:.86}
+.stk-panel{border:1px solid var(--rule);border-radius:3px;padding:24px;min-height:210px}
+.stk-panel .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:8px}
+.stk-panel h3{font-size:23px;margin-bottom:6px}
+.stk-panel .st{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--rule);border-radius:99px;padding:5px 12px;margin-bottom:16px;color:var(--mark)}
+.axis{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;fill:var(--mid)}
+</style>
 </head>
 <body>
 <header>
@@ -333,41 +345,21 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
   <section>
     <div class="wrap">
-      <div class="stack">
-        <div class="lyr own">
-          <div class="n">5</div>
-          <div class="nm"><b>The Record</b><span>Not disclosed</span></div>
-          <div class="ds">Which intervention moved which cell, for which kind of company. It exists only because companies measured, acted, and measured again.</div>
-          <div class="st"><b>Not disclosed</b>It is what makes the instrument improve over time.</div>
+      <div class="grid2" style="grid-template-columns:1.15fr 1fr;gap:38px;align-items:start">
+        <div class="stk">
+          <svg id="stkSvg" viewBox="0 0 620 340" role="img" aria-label="Five stacked parts, from the published method at the base to the undisclosed record at the top">
+            <text class="axis" x="8" y="34" transform="rotate(-90 8,34)">Closed</text>
+            <text class="axis" x="8" y="322" transform="rotate(-90 8,322)">Open</text>
+            <line x1="26" y1="14" x2="26" y2="330" stroke="var(--rule)"></line>
+            <g id="bands"></g>
+          </svg>
+          <p class="small" style="margin-top:14px;font-size:12.5px">Each part rests on the one below it. Click any band.</p>
         </div>
-        <div class="lyr own">
-          <div class="n">4</div>
-          <div class="nm"><b>The Register</b><span>Not disclosed</span></div>
-          <div class="ds">That a result is real, dated, produced by a stated method version, and still current. A reference anyone can check without seeing anything private.</div>
-          <div class="st"><b>Checkable by anyone</b>Enter a reference and confirm a result is genuine. Nothing private is disclosed.</div>
-        </div>
-        <div class="lyr sell">
-          <div class="n">3</div>
-          <div class="nm"><b>The Loop</b><span>Licensed to institutions</span></div>
-          <div class="ds">Diagnose, then fix or route, then rescore. The sixteen-cell diagnostic library, the actions, the routing, and the cohort and portfolio reporting.</div>
-          <div class="st"><b>Licensed</b>What institutions license: reporting across a cohort, and the routing behind it.</div>
-        </div>
-        <div class="lyr open">
-          <div class="n">2</div>
-          <div class="nm"><b>The Instrument</b><span>Free and open</span></div>
-          <div class="ds">Thirty seven questions, eight minutes, and the full result: score, capability against momentum, stage, root cause, first actions.</div>
-          <div class="st"><b>Free forever</b>To the company measured. No upgrade, no paywalled result.</div>
-        </div>
-        <div class="lyr open">
-          <div class="n">1</div>
-          <div class="nm"><b>The Method</b><span>Free and open</span></div>
-          <div class="ds">The model, the scales, the arithmetic, the bands, the version record and the conformance vectors.</div>
-          <div class="st"><b>Published</b>Free to read and implement, including commercially.</div>
-        </div>
+        <div class="stk-panel" id="stkPanel"></div>
       </div>
-      <p class="big" style="margin-top:30px;max-width:62ch">The method and the instrument are open and free. The reporting is licensed. The register is checkable by anyone holding a reference, and the record behind it is never disclosed.</p>
     </div>
   </section>
+
 
   <section class="alt">
     <div class="wrap">
@@ -412,6 +404,61 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 
 </div>
 </main>
+<script>
+(function(){
+  var svg=document.getElementById('stkSvg'); if(!svg) return;
+  var L=[
+   {n:5,t:'The Record',s:'Not disclosed',fill:'#0E1B2C',txt:'#fff',
+    d:'Which kind of support moved which part of the engine, for which kind of company. It exists only because companies measured, acted, and measured again.',
+    w:'It is what makes the instrument improve over time. It is never published and never sold.'},
+   {n:4,t:'The Register',s:'Checkable by anyone',fill:'#4F80E2',txt:'#fff',
+    d:'That a result is real, dated, produced by a stated method version, and still current.',
+    w:'Anyone shown a reference can confirm a result is genuine, without seeing the score, the company name or any answer.'},
+   {n:3,t:'The Loop',s:'Licensed to institutions',fill:'#85A7EB',txt:'#0E1B2C',
+    d:'Diagnose, then fix or route, then measure again. The written diagnosis, the actions, the routing, and the reporting across a cohort.',
+    w:'This is what an institution licenses: evidence per company, and the routing that puts support where the diagnosis points.'},
+   {n:2,t:'The Instrument',s:'Free forever',fill:'#B6CAF3',txt:'#0E1B2C',
+    d:'Thirty seven questions, about eight minutes, and the full result: score, capability against momentum, stage, root cause and first actions.',
+    w:'Free to every company measured, permanently. No upgrade and no paywalled result.'},
+   {n:1,t:'The Method',s:'Published',fill:'#E2EAFA',txt:'#0E1B2C',
+    d:'The model, the scales, the arithmetic, the bands, the version record and the conformance vectors.',
+    w:'Free to read and implement, including commercially. Everything above it rests on this being inspectable.'}
+  ];
+  var g=document.getElementById('bands'), X=52, W=548, H=54, GAP=8, TOP=18;
+  L.forEach(function(l,i){
+    var y=TOP+i*(H+GAP);
+    var r=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    r.setAttribute('x',X);r.setAttribute('y',y);r.setAttribute('width',W);r.setAttribute('height',H);
+    r.setAttribute('rx',2);r.setAttribute('fill',l.fill);r.setAttribute('class','band');
+    if(l.fill==='#E2EAFA'||l.fill==='#B6CAF3'){r.setAttribute('stroke','var(--rule)');}
+    g.appendChild(r);
+    var num=document.createElementNS('http://www.w3.org/2000/svg','text');
+    num.setAttribute('x',X+18);num.setAttribute('y',y+H/2+5);num.setAttribute('font-family','IBM Plex Mono, monospace');
+    num.setAttribute('font-size','12');num.setAttribute('fill',l.txt);num.setAttribute('opacity','.6');num.textContent=l.n;
+    num.style.pointerEvents='none';g.appendChild(num);
+    var t=document.createElementNS('http://www.w3.org/2000/svg','text');
+    t.setAttribute('x',X+44);t.setAttribute('y',y+H/2+6);t.setAttribute('font-family','IBM Plex Sans, sans-serif');
+    t.setAttribute('font-size','17');t.setAttribute('font-weight','700');t.setAttribute('letter-spacing','-.02em');
+    t.setAttribute('fill',l.txt);t.textContent=l.t;t.style.pointerEvents='none';g.appendChild(t);
+    var st=document.createElementNS('http://www.w3.org/2000/svg','text');
+    st.setAttribute('x',X+W-16);st.setAttribute('y',y+H/2+5);st.setAttribute('text-anchor','end');
+    st.setAttribute('font-family','IBM Plex Mono, monospace');st.setAttribute('font-size','10.5');
+    st.setAttribute('letter-spacing','.08em');st.setAttribute('fill',l.txt);st.setAttribute('opacity','.75');
+    st.textContent=l.s.toUpperCase();st.style.pointerEvents='none';g.appendChild(st);
+    r.addEventListener('click',function(){show(i);});
+    r.addEventListener('keydown',function(e){if(e.key==='Enter'){show(i);}});
+    r.setAttribute('tabindex','0');
+  });
+  function show(i){
+    var l=L[i];
+    document.getElementById('stkPanel').innerHTML =
+      '<p class="lbl">Part '+l.n+' of 5</p><h3>'+l.t+'</h3><span class="st">'+l.s+'</span>'+
+      '<p style="margin:0 0 14px">'+l.d+'</p><p class="small" style="margin:0">'+l.w+'</p>';
+  }
+  show(2);
+})();
+</script>
+
 <footer>
   <div class="wrap">
     <div class="foot-grid">
