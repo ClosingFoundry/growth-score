@@ -404,11 +404,11 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
           <div class="btns"><a class="btn ghost" href="../the-experience/">What a cohort involves</a><a class="btn ghost" href="../specimen/report/">A specimen report</a></div>
         </div>
         <div class="card">
-          <label for="f1">Name</label><input id="f1" type="text" placeholder="Your name">
-          <label for="f2">Organisation</label><input id="f2" type="text" placeholder="Organisation">
-          <label for="f3">Email</label><input id="f3" type="email" placeholder="name@organisation.uk">
+          <label for="f1">Name</label><input id="f1" name="name" type="text" placeholder="Your name" required>
+          <label for="f2">Organisation</label><input id="f2" name="organisation" type="text" placeholder="Organisation">
+          <label for="f3">Email</label><input id="f3" name="email" type="email" placeholder="name@organisation.uk" required>
           <label for="f4">Which describes you</label>
-          <select id="f4">
+          <select id="f4" name="describes_you">
             <option>Bank or financial institution</option>
             <option>Combined authority, agency or growth hub</option>
             <option>University, accelerator or programme partner</option>
@@ -418,9 +418,10 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
             <option>Something else</option>
           </select>
           <label for="f5">What are you currently unable to measure</label>
-          <textarea id="f5" placeholder="One or two lines is enough"></textarea>
+          <textarea id="f5" name="currently_unable_to_measure" placeholder="One or two lines is enough"></textarea>
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
           <button class="btn" id="sendBtn" style="width:100%">Request a demonstration</button>
-          <p class="small" id="formNote" style="margin-top:14px">This opens your own email client with the details filled in. Nothing is submitted to a server and nothing is stored here. <span class="ph">confirm the destination address before launch</span></p>
+          <p class="small" id="formNote" style="margin-top:14px">Sent straight to us. We reply within one working day. If you would rather not use a form, write to <a href="mailto:charles@closingfoundry.com" style="color:var(--mark)">charles@closingfoundry.com</a>.</p>
         </div>
       </div>
     </div>
@@ -502,14 +503,45 @@ document.addEventListener("click", function(){
 document.addEventListener("keydown", function(e){ if(e.key === "Escape"){
   document.querySelectorAll(".drop").forEach(function(d){ d.classList.remove("open"); }); } });
 var sb = document.getElementById("sendBtn");
-if(sb){ sb.addEventListener("click", function(){
-  var TO = "hello@closingfoundry.com";
+if(sb){
+  var ACCESS_KEY = "WEB3FORMS_ACCESS_KEY";   /* paste the key from web3forms.com */
+  var note = document.getElementById("formNote");
   var v = function(id){ var e=document.getElementById(id); return e ? e.value.trim() : ""; };
-  var name=v("f1"), org=v("f2"), email=v("f3"), who=v("f4"), what=v("f5");
-  if(!name || !email){ document.getElementById("formNote").textContent = "Please add a name and an email address."; return; }
-  var body = "Name: "+name+"\nOrganisation: "+org+"\nEmail: "+email+"\nDescribes them: "+who+"\n\nCurrently unable to measure:\n"+what;
-  window.location.href = "mailto:"+TO+"?subject="+encodeURIComponent("Growth Score demonstration request: "+(org||name))+"&body="+encodeURIComponent(body);
-}); }
+  var say = function(msg, ok){ note.innerHTML = msg; note.style.color = ok ? "var(--mark)" : "var(--mid)"; };
+  sb.addEventListener("click", function(){
+    var name=v("f1"), email=v("f3");
+    if(!name || !email){ say("Please add a name and an email address so we can reply."); return; }
+    var payload = {
+      access_key: ACCESS_KEY,
+      subject: "Growth Score demonstration request: " + (v("f2") || name),
+      from_name: "Growth Score site",
+      name: name, organisation: v("f2"), email: email,
+      describes_you: v("f4"), currently_unable_to_measure: v("f5"),
+      botcheck: ""
+    };
+    if(ACCESS_KEY === "WEB3FORMS_ACCESS_KEY"){
+      window.location.href = "mailto:charles@closingfoundry.com?subject=" + encodeURIComponent(payload.subject)
+        + "&body=" + encodeURIComponent("Name: "+name+"\nOrganisation: "+v("f2")+"\nEmail: "+email
+        + "\nDescribes them: "+v("f4")+"\n\nCurrently unable to measure:\n"+v("f5"));
+      return;
+    }
+    sb.disabled = true; sb.textContent = "Sending";
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {"Content-Type":"application/json", "Accept":"application/json"},
+      body: JSON.stringify(payload)
+    }).then(function(r){ return r.json(); }).then(function(d){
+      if(d.success){
+        sb.textContent = "Sent";
+        say("Thank you. We will come back to you within one working day.", true);
+        ["f1","f2","f3","f5"].forEach(function(id){ var e=document.getElementById(id); if(e) e.value=""; });
+      } else { throw new Error("rejected"); }
+    }).catch(function(){
+      sb.disabled = false; sb.textContent = "Request a demonstration";
+      say("That did not send. Please write to <a href=\'mailto:charles@closingfoundry.com\' style=\'color:var(--mark)\'>charles@closingfoundry.com</a> instead.");
+    });
+  });
+}
 
 
 
