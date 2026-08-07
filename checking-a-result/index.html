@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Run the method | Growth Score</title>
-<meta name="description" content="Run method v1.4 in your browser. Set the sixteen cells and five momentum readings and see the deterministic output.">
+<title>Checking a result | Growth Score</title>
+<meta name="description" content="Every result carries a reference. Anyone shown one can confirm it is genuine, dated and produced by a stated method version, without seeing anything private.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -256,7 +256,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
           <a href="../how-it-works/"><b>How it works</b><em>The five parts, in one page</em></a>
           <a href="../method/"><b>The method</b><em>Questions, scales, arithmetic, bands</em></a>
           <a href="../specimen/report/"><b>Specimen report</b><em>Exactly what a company receives</em></a>
-          <a href="../run/" class="on"><b>Run it yourself</b><em>The arithmetic, live in your browser</em></a>
+          <a href="../run/"><b>Run it yourself</b><em>The arithmetic, live in your browser</em></a>
         </div>
       </li>
       <li class="drop">
@@ -270,7 +270,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
       <li class="drop">
         <button class="dtrig" aria-expanded="false">Can you trust it <span class="caret">&#9662;</span></button>
         <div class="dmenu">
-          <a href="../checking-a-result/"><b>Checking a result</b><em>Confirm a result is genuine</em></a>
+          <a href="../checking-a-result/" class="on"><b>Checking a result</b><em>Confirm a result is genuine</em></a>
           <a href="../conformance/"><b>Conformance</b><em>Whether an implementation computes correctly</em></a>
           <a href="../versions/"><b>Version history</b><em>Every change, and whether scores still compare</em></a>
           <a href="../limits/"><b>Limits</b><em>What this does not do</em></a>
@@ -293,87 +293,57 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 <main>
 <div class="page on">
   <section class="hero">
-    <div class="wrap">
-      <p class="eyebrow">Reference implementation &middot; v1.4</p>
-      <h1 style="max-width:20ch">Run the method yourself.</h1>
-      <p class="big" style="margin-top:22px;max-width:64ch">
-        Set a value for each of the sixteen cells and the five momentum readings. Everything below updates as you go:
-        the score, the band, the weakest stage, the local and systemic root causes, and the capability against momentum read.
-        Nothing is sent anywhere and nothing is stored. Close the tab and it's gone.
-      </p>
-      <p class="small" style="max-width:64ch">
-        <b>This is the arithmetic, not the questionnaire.</b> The real instrument asks 37 questions and derives these values from the answers. Those questions vary by business model and maturity, but the grid, the scales and the arithmetic on this page never do, which is what keeps two companies comparable.
-        It's here so you can confirm the published rules produce the published outputs, before you ask anyone to complete anything.
-      </p>
+    <div class="narrow">
+      <p class="eyebrow">Checking a result</p>
+      <h1>Is this result genuine?</h1>
+      <p class="big" style="margin-top:22px">A report can be screenshotted and a number can be edited. Every Growth Score result carries a reference, and anyone shown one can confirm it is real without seeing anything the company did not choose to share.</p>
     </div>
   </section>
 
   <section>
-    <div class="wrap">
-      <div class="grid2" style="grid-template-columns:1.15fr 1fr;align-items:start;gap:40px">
+    <div class="narrow">
+      <h2>The register, and how anyone checks a result</h2>
+      <p class="big" style="margin-top:16px">A report can be screenshotted and a number can be edited. The register is what makes a shared result checkable, and it works like a certificate number.</p>
+      <div class="tw"><table style="margin-top:22px">
+        <thead><tr><th>Step</th><th>What happens</th></tr></thead>
+        <tbody>
+          <tr><td>1. A result gets a reference</td><td>Every assessment completed through a conforming implementation is recorded with a short reference, printed on the report. For example GS-4K2P-9QX7</td></tr>
+          <tr><td>2. The company shares it</td><td>The company decides who sees the report and who gets the reference. Nothing is shared by us without them choosing it</td></tr>
+          <tr><td>3. The recipient checks it</td><td>A funder, investor or procurement team enters the reference, or their system calls the endpoint, and gets an answer in a second</td></tr>
+          <tr><td>4. They learn only four things</td><td>Whether it is real, which method version produced it, when it was taken and whether it is still current, and its evidence level</td></tr>
+        </tbody>
+      </table></div>
+      <p style="margin-top:20px"><b>What it does not return: the score, the company name, or any answer.</b> Verification confirms that what the company showed you is authentic. It does not disclose anything the company did not choose to disclose.</p>
+      <p class="small">Same idea as checking a certificate number on a certification body’s site. You are not looking up their result. You are confirming the document in front of you is genuine, current, and produced by the method it claims.</p>
+      <p style="margin-top:22px">When a company shares a result with an investor or a programme, the recipient can confirm it’s real without seeing anything private. The endpoint returns whether it’s valid, which version produced it, when it was taken, whether it’s current, and its evidence level. Nothing else.</p>
+      <pre><span class="c">GET /verify/GS-4K2P-9QX7</span>
+{
+  <span class="s">"valid"</span>: <span class="k">true</span>,
+  <span class="s">"method_version"</span>: <span class="s">"v1.4"</span>,
+  <span class="s">"taken"</span>: <span class="s">"2026-06-14"</span>,
+  <span class="s">"status"</span>: <span class="s">"current"</span>,
+  <span class="s">"evidence_level"</span>: <span class="s">"self-assessed"</span>
+}</pre>
+      <p class="small">No score, no company name, no answers. The register is how a published method stays trustworthy, and it is the part that is not published.</p>
+      <p class="small"><span class="ph">Status: the register and the verification endpoint are specified and not yet live. Results taken today are recorded; verification opens with the next release.</span></p>
+    </div>
+  </section>
 
-        <div>
-          <p class="eyebrow">Capability &middot; 16 cells</p>
-          <p class="small" style="margin-top:-8px">Score how true each is in practice today. Use evidence and consistency, not intent.</p>
-          <div id="cells"></div>
-
-          <p class="eyebrow" style="margin-top:36px">Momentum &middot; 5 readings</p>
-          <p class="small" style="margin-top:-8px">Is the engine producing output now?</p>
-          <div id="moms"></div>
-
-          <div class="btns">
-            <button class="btn ghost" id="resetBtn" type="button">Reset to 3</button>
-            <button class="btn ghost" id="exampleBtn" type="button">Load the worked example</button>
-          </div>
-        </div>
-
-        <div id="sticky">
-          <div class="card" style="padding:0;overflow:hidden;border-radius:3px">
-            <div style="background:var(--ink);color:#fff;padding:26px 28px">
-              <div style="display:flex;align-items:baseline;gap:14px">
-                <span id="rScore" style="font-size:56px;font-weight:700;letter-spacing:-.04em;line-height:1">50</span>
-                <span id="rBand" style="font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#8FB0F8">Developing</span>
-              </div>
-              <div style="font-family:var(--mono);font-size:12px;color:#94A3C4;margin-top:10px">
-                Capability <b id="rCap" style="color:#fff;font-weight:500">60</b>
-                &nbsp;&middot;&nbsp; Momentum <b id="rMom" style="color:#fff;font-weight:500">60</b>
-                &nbsp;&middot;&nbsp; Method v1.4
-              </div>
-              <div style="height:6px;background:#26364F;border-radius:99px;margin-top:18px;overflow:hidden">
-                <div id="rBar" style="height:100%;background:#8FB0F8;width:50%;transition:width .25s"></div>
-              </div>
-            </div>
-            <div style="padding:26px 28px">
-              <p class="mono">The read</p>
-              <p id="rRead" style="margin:0 0 20px">Set the values to see the diagnosis.</p>
-              <p class="mono">Capability against momentum</p>
-              <p id="rSplit" class="small" style="margin:0 0 20px"></p>
-              <p class="mono">Stage scores</p>
-              <div id="rStages" style="margin-bottom:18px"></div>
-              <p class="mono">Root cause scores</p>
-              <div id="rCauses"></div>
-            </div>
-          </div>
-          <p class="small" style="margin-top:16px">
-            The problem lens shown is the documented default mapping. The full rule precedence, its thresholds and the written
-            diagnosis for each cell are part of the licensed layer and aren’t published.
-          </p>
-        </div>
-
-      </div>
+  
     </div>
   </section>
 
   <section class="alt">
     <div class="narrow">
-      <h2>What this page proves</h2>
-      <ul class="plain" style="margin-top:18px">
-        <li><b>It’s deterministic.</b> Set the same values twice and you get the same result. There's no model in the scoring path and there never will be.</li>
-        <li><b>It’s reproducible by hand.</b> Every number here comes from the six lines of arithmetic published in the method. Nothing is hidden between the inputs and the output.</li>
-        <li><b>Nothing is weighted by sector or size.</b> The same rules apply to every company, which is the only reason two results can be compared.</li>
-        <li><b>The judgement isn’t in the maths.</b> Load the worked example. Expand scores lowest, yet it isn't what the diagnosis sends you to fix. That precedence is the part you license.</li>
-      </ul>
-      <div class="btns"><a class="btn ghost" href="../method/">The full specification</a><a class="btn" href="../specimen/report/">See the report a company receives</a></div>
+      <h2>Two different checks, often confused</h2>
+      <div class="tw"><table style="margin-top:20px">
+        <thead><tr><th></th><th>Question it answers</th><th>Who asks it</th></tr></thead>
+        <tbody>
+          <tr><td><b>Checking a result</b><br>this page</td><td>Is this particular result genuine, current, and produced by the method it claims?</td><td>A funder, investor, auditor or procurement team who has been shown a result</td></tr>
+          <tr><td><b>Conformance</b><br><a href="../conformance/" style="color:var(--mark)">separate page</a></td><td>Does this implementation compute the method correctly?</td><td>Anyone running the method themselves, and any risk function assessing the instrument</td></tr>
+        </tbody>
+      </table></div>
+      <p style="margin-top:20px">The nearest analogy: conformance is a laboratory being accredited to run a test. Checking a result is the certificate number on one specific test.</p>
     </div>
   </section>
 
@@ -453,141 +423,7 @@ var sb = document.getElementById("sendBtn");
 if(sb){ sb.addEventListener("click", function(){
   document.getElementById("formNote").textContent = "Prototype only. Nothing was sent. Wire this to the real inbox before launch."; }); }
 
-/* ---------------- reference implementation ---------------- */
-(function(){
-  var host = document.getElementById("cells");
-  if(!host) return;
-  var ST = ["Demand","Sales Process","Closing","Expand"];
-  var RC = ["Product","People","Process","Repeatability"];
-  var MOM = ["First meetings","Qualified opportunities","Deal pace and slippage","Forecast confidence","Expansion"];
-  var CAPLAB = ["Not in place","Inconsistent","Partly in place","Consistent","Proven and improving"];
-  var MOMLAB = ["Well below target","Below target","Partly on track","On track","Strong"];
-  var EX = [[3.5,3.0,2.5,2.5],[3.5,3.0,2.0,2.0],[3.0,2.5,1.5,2.0],[2.0,2.0,1.5,1.5]];
-  var cells = [[3,3,3,3],[3,3,3,3],[3,3,3,3],[3,3,3,3]];
-  var moms  = [3,3,3,3,3];
 
-  function seg(val, labels, onPick){
-    var w = document.createElement("div"); w.className = "seg";
-    for(var v=1; v<=5; v++){
-      (function(v){
-        var b = document.createElement("button");
-        b.type="button"; b.textContent = v;
-        b.title = labels[v-1];
-        b.setAttribute("aria-pressed", Math.round(val)===v ? "true":"false");
-        b.addEventListener("click", function(){ onPick(v); });
-        w.appendChild(b);
-      })(v);
-    }
-    return w;
-  }
-
-  function build(){
-    host.innerHTML = "";
-    ST.forEach(function(st,i){
-      RC.forEach(function(rc,j){
-        var row = document.createElement("div"); row.className="rrow";
-        var lab = document.createElement("div"); lab.className="lab";
-        lab.innerHTML = "<i>"+st+"</i>"+rc;
-        row.appendChild(lab);
-        row.appendChild(seg(cells[i][j], CAPLAB, function(v){ cells[i][j]=v; build(); calc(); }));
-        host.appendChild(row);
-      });
-    });
-    var mh = document.getElementById("moms"); mh.innerHTML="";
-    MOM.forEach(function(m,i){
-      var row = document.createElement("div"); row.className="rrow";
-      var lab = document.createElement("div"); lab.className="lab";
-      lab.innerHTML = "<i>Momentum</i>"+m;
-      row.appendChild(lab);
-      row.appendChild(seg(moms[i], MOMLAB, function(v){ moms[i]=v; build(); calc(); }));
-      mh.appendChild(row);
-    });
-  }
-
-  function mean(a){ return a.reduce(function(x,y){return x+y;},0)/a.length; }
-  function band(sc){
-    if(sc < 40) return "Forming";
-    if(sc < 60) return "Developing";
-    if(sc < 80) return "Established";
-    return "Durable";
-  }
-  function bars(el, names, vals){
-    el.innerHTML = "";
-    var min = Math.min.apply(null, vals);
-    names.forEach(function(n,i){
-      var d = document.createElement("div");
-      d.innerHTML = '<span'+(vals[i]===min?' style="font-weight:600"':'')+'>'+n+'</span>'+
-        '<span class="t"><i style="width:'+((vals[i]/5)*100).toFixed(1)+'%"></i></span>'+
-        '<b>'+vals[i].toFixed(1)+'</b>';
-      el.appendChild(d);
-    });
-  }
-
-  function calc(){
-    var stage = ST.map(function(_,i){ return mean(cells[i]); });
-    var cause = RC.map(function(_,j){ return mean(cells.map(function(r){ return r[j]; })); });
-    var flat = [].concat.apply([], cells);
-    var cap = mean(flat)/5*100;
-    var mom = mean(moms)/5*100;
-    var score = Math.round((cap+mom)/2);
-
-    /* primary stage: weakest, with the documented Expand suppression */
-    var order = stage.map(function(v,i){ return {i:i,v:v}; }).sort(function(a,b){ return a.v-b.v; });
-    var pi = order[0].i;
-    var newBizWeak = Math.min(stage[0],stage[1],stage[2]) < 2.5;
-    var suppressed = false;
-    if(pi === 3 && newBizWeak){ pi = order.filter(function(o){ return o.i!==3; })[0].i; suppressed = true; }
-
-    /* local root cause within the primary stage, systemic across all four */
-    var localIdx = cells[pi].indexOf(Math.min.apply(null, cells[pi]));
-    var sysIdx = cause.indexOf(Math.min.apply(null, cause));
-
-    /* documented default lens mapping */
-    var lens = ["Volume","Efficiency","Efficiency","Expansion"][pi];
-    if(pi === 2) lens = (RC[localIdx] === "Process" || RC[localIdx] === "People") ? "Control" : "Efficiency";
-
-    document.getElementById("rScore").textContent = score;
-    document.getElementById("rBand").textContent = band(score);
-    document.getElementById("rCap").textContent = Math.round(cap);
-    document.getElementById("rMom").textContent = Math.round(mom);
-    document.getElementById("rBar").style.width = score + "%";
-
-    var systemic = (cause[sysIdx]/5*100) <= (cells[pi][localIdx]/5*100) - 10;
-    var read = "Your problem lens is <b>"+lens+"</b>. It shows up most strongly in <b>"+ST[pi]+
-      "</b>, where the local weakness is <b>"+RC[localIdx]+"</b>.";
-    if(systemic || sysIdx !== localIdx){
-      read += " Across the whole engine the weakest root cause is <b>"+RC[sysIdx]+"</b>"+
-        (systemic ? ", materially weaker than the local one, so treat this as systemic rather than a "+ST[pi]+" problem." : ".");
-    } else {
-      read += " The same cause is weakest across the whole engine, so it’s systemic.";
-    }
-    if(suppressed){
-      read += " Expand scores lowest, but new business isn’t yet working, so an expansion finding is suppressed and the diagnosis routes to the stage that matters now.";
-    }
-    document.getElementById("rRead").innerHTML = read;
-
-    var gap = cap - mom, split;
-    if(cap >= 70 && mom < 45) split = "The engine is built and not being run. Usually about who inspects the pipeline and how often, rather than capability.";
-    else if(gap <= -30) split = "Results are coming from effort rather than from the engine. Capacity limited: when the effort stops, so does the output.";
-    else if(gap >= 30) split = "Considerably more has been built than is being used. Look at whether the team is running it, not at building more.";
-    else if(cap < 40 && mom < 40) split = "Neither built nor producing. Pick one stage and install the basics.";
-    else if(cap >= 70 && mom >= 70) split = "Built and producing. Focus shifts to expansion and durability.";
-    else split = "Capability and operating rhythm are broadly aligned. The gap between them isn’t itself the story.";
-    document.getElementById("rSplit").textContent = split;
-
-    bars(document.getElementById("rStages"), ST, stage);
-    bars(document.getElementById("rCauses"), RC, cause);
-  }
-
-  document.getElementById("resetBtn").addEventListener("click", function(){
-    cells = [[3,3,3,3],[3,3,3,3],[3,3,3,3],[3,3,3,3]]; moms = [3,3,3,3,3]; build(); calc();
-  });
-  document.getElementById("exampleBtn").addEventListener("click", function(){
-    cells = EX.map(function(r){ return r.slice(); }); moms = [3,3,3,2,3]; build(); calc();
-  });
-
-  build(); calc();
-})();
 </script>
 </body>
 </html>

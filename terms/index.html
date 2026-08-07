@@ -249,19 +249,31 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
   <div class="wrap bar">
     <a class="logo" href="../"><span class="mk">Growth Score</span><span class="sub">An open measurement standard</span></a>
     <button class="menu" id="menuBtn" aria-expanded="false">Menu</button>
-    <nav id="nav"><ul>
+    <nav class="gs-n" id="nav"><ul>
       <li class="drop">
-        <button class="dtrig" aria-expanded="false">The standard <span class="caret">&#9662;</span></button>
+        <button class="dtrig" aria-expanded="false">The measure <span class="caret">&#9662;</span></button>
         <div class="dmenu">
-          <a href="../method/"><b>Method v1.4</b><em>Questions, scales, arithmetic, bands</em></a>
+          <a href="../how-it-works/"><b>How it works</b><em>The five parts, in one page</em></a>
+          <a href="../method/"><b>The method</b><em>Questions, scales, arithmetic, bands</em></a>
+          <a href="../specimen/report/"><b>Specimen report</b><em>Exactly what a company receives</em></a>
+          <a href="../run/"><b>Run it yourself</b><em>The arithmetic, live in your browser</em></a>
+        </div>
+      </li>
+      <li class="drop">
+        <button class="dtrig" aria-expanded="false">Using it <span class="caret">&#9662;</span></button>
+        <div class="dmenu">
           <a href="../the-experience/"><b>The experience</b><em>Ninety days, from both sides</em></a>
-          <a href="../run/"><b>Run it now</b><em>Reference implementation, live in your browser</em></a>
-          <a href="../specimen/report/"><b>Specimen report</b><em>The full artefact a company receives</em></a>
-          <a href="../routing/"><b>Routing</b><em>From score to the right support</em></a>
-          <a href="../conformance/"><b>Conformance</b><em>Test vectors, manifest, verification</em></a>
-          <a href="../integrate/"><b>Integrate</b><em>Four ways to run it, machine access</em></a>
-          <a href="../versions/"><b>Versions</b><em>Changelog and comparability</em></a>
-          <a href="../limits/"><b>Limits</b><em>What this doesn’t do</em></a>
+          <a href="../routing/"><b>Routing</b><em>From diagnosis to the right support</em></a>
+          <a href="../integrate/"><b>Ways to run it</b><em>Four levels, from a link to self-hosted</em></a>
+        </div>
+      </li>
+      <li class="drop">
+        <button class="dtrig" aria-expanded="false">Can you trust it <span class="caret">&#9662;</span></button>
+        <div class="dmenu">
+          <a href="../checking-a-result/"><b>Checking a result</b><em>Confirm a result is genuine</em></a>
+          <a href="../conformance/"><b>Conformance</b><em>Whether an implementation computes correctly</em></a>
+          <a href="../versions/"><b>Version history</b><em>Every change, and whether scores still compare</em></a>
+          <a href="../limits/"><b>Limits</b><em>What this does not do</em></a>
         </div>
       </li>
       <li class="drop">
@@ -273,7 +285,6 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
           <a href="../investors/"><b>Investors</b><em>Portfolio movement from day one</em></a>
         </div>
       </li>
-      <li><a href="../specimen/">Specimen</a></li>
       <li><a href="../about/">About</a></li>
       <li><a class="navcta" href="../contact/">Contact</a></li>
     </ul></nav>
@@ -357,26 +368,28 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
         <p style="max-width:34ch">An open measurement standard for commercial capability. Free for the companies measured, licensed to the institutions that fund them.</p>
         <p style="max-width:34ch;font-size:12.5px;margin-top:12px">Published and maintained by Closing Foundry Ltd.</p>
       </div>
-      <div><h4>The standard</h4><p>
-        <a href="../method/">Method v1.4</a><br>
-        <a href="../routing/">Routing</a><br>
-        <a href="../the-experience/">The experience</a><br>
-        <a href="../run/">Run it now</a><br>
+      <div><h4>The measure</h4><p>
+        <a href="../how-it-works/">How it works</a><br>
+        <a href="../method/">The method</a><br>
         <a href="../specimen/report/">Specimen report</a><br>
+        <a href="../run/">Run it yourself</a><br>
+        <a href="../the-experience/">The experience</a><br>
+        <a href="../routing/">Routing</a><br>
+        <a href="../integrate/">Ways to run it</a></p></div>
+      <div><h4>Can you trust it</h4><p>
+        <a href="../checking-a-result/">Checking a result</a><br>
         <a href="../conformance/">Conformance</a><br>
-        <a href="../integrate/">Integrate</a><br>
-        <a href="../versions/">Versions</a><br>
+        <a href="../versions/">Version history</a><br>
         <a href="../limits/">Limits</a></p></div>
       <div><h4>Who licenses it</h4><p>
         <a href="../banks/">Banks</a><br>
         <a href="../public-bodies/">Public bodies</a><br>
         <a href="../universities/">Universities</a><br>
-        <a href="../investors/">Investors</a></p></div>
-      <div><h4>Company</h4><p>
+        <a href="../investors/">Investors</a><br><br>
         <a href="../about/">About</a><br>
         <a href="../contact/">Contact</a><br>
         <a href="../privacy/">Privacy</a><br>
-        <a href="../terms/">Terms of use</a></p></div>
+        <a href="../terms/" class="on">Terms of use</a></p></div>
     </div>
     <div class="foot-bottom">
       <span>Published by Closing Foundry Ltd, registered in England and Wales, company no. 14629519.</span>
