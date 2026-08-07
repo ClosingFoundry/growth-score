@@ -26,6 +26,12 @@ Two paths follow a diagnosis and the diagnosis decides which. FIX: most root cau
 
 The diagnosis produces a stage and a root cause. That pair determines a category of support indicated. Licensees map their own existing provision (internal teams, framework providers, programmes) to those categories, so companies are routed to support the institution already funds. Routing indicates support and never rations it: it is not an eligibility decision, not a gate, and must not be used to withhold access to any programme or funding. A human can always override, and the override is recorded. Payment never influences which category is indicated; it can only affect which provider appears within an indicated category, and affiliated providers are disclosed. Routing is also what makes movement attributable, because a report can only state what support preceded a change if the intervention was recorded.
 
+## The stack
+Five layers. 1 The Method (published, free to implement). 2 The Instrument (free forever to the company measured). 3 The Loop: diagnose, fix or route, rescore, plus the diagnostic library, routing and reporting (licensed; this is the product). 4 The Register: that a result is real, dated, versioned and current, checkable by reference without disclosing anything private (closed). 5 The Record: which intervention moved which cell for which kind of company (closed; cannot be reconstructed). Give away 1 and 2, sell 3, own 4 and 5. Gamification, community, invitation tokens and the action workspace are mechanisms serving layer 3, not layers.
+
+## The stack
+Five layers. 1 The Method (published, free to read and implement). 2 The Instrument (free forever to the company measured). 3 The Loop: diagnose, then fix or route, then rescore, plus the diagnostic library, routing and reporting (licensed; this is the product). 4 The Register: that a result is real, dated, versioned and current, checkable by reference without disclosing anything private (closed). 5 The Record: which intervention moved which cell for which kind of company (closed; cannot be reconstructed afterwards). Give away 1 and 2, sell 3, own 4 and 5. Gamification, community, invitation tokens and the action workspace are mechanisms serving layer 3, not layers of their own. The single test for anything new: does it produce more completed loops, or fewer?
+
 ## Specification
 - [Method v1.4](method/): questions, scales, arithmetic, bands, diagnosis, lenses
 - [Routing](routing/): from diagnosis to the right support

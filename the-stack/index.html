@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Integrate | Growth Score</title>
-<meta name="description" content="Four ways to run the method, from a cohort link to certified self-hosting. Machine and agent access.">
+<title>The stack | Growth Score</title>
+<meta name="description" content="Five layers: the method, the instrument, the loop, the register, the record. What is published, what is licensed, and what is never given away.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -243,6 +243,37 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 .vflip a{color:var(--mid);text-decoration:none;border-bottom:1px solid var(--rule)}
 .vflip a:hover{color:var(--mark);border-bottom-color:var(--mark)}
 </style>
+<style>
+.stack{border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-top:32px}
+.lyr{display:grid;grid-template-columns:70px 1fr 1.5fr 170px;border-top:1px solid var(--rule)}
+.lyr:first-child{border-top:none}
+.lyr>div{padding:20px 18px}
+.lyr .n{background:var(--paper-alt);font-family:var(--mono);font-size:12px;color:var(--mid);border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center}
+.lyr .nm{border-right:1px solid var(--rule)}
+.lyr .nm b{display:block;font-size:19px;font-weight:700;letter-spacing:-.02em;margin-bottom:3px}
+.lyr .nm span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
+.lyr .ds{border-right:1px solid var(--rule);font-size:14.5px;line-height:1.5}
+.lyr .st{font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--mid)}
+.lyr .st b{display:block;color:var(--ink);font-weight:500;margin-bottom:4px;letter-spacing:.08em;text-transform:uppercase;font-size:10px}
+.lyr.open{background:var(--paper)}
+.lyr.sell{background:rgba(11,78,214,.05)}
+.lyr.own{background:var(--ink);color:#fff}
+.lyr.own .n{background:#16273b;color:#94A3C4;border-right-color:#26364F}
+.lyr.own .nm,.lyr.own .ds{border-right-color:#26364F}
+.lyr.own .nm span{color:#8FB0F8}
+.lyr.own .st{color:#94A3C4}
+.lyr.own .st b{color:#fff}
+@media(max-width:860px){
+  .lyr{grid-template-columns:1fr}
+  .lyr .n{justify-content:flex-start;border-right:none;border-bottom:1px solid var(--rule)}
+  .lyr .nm,.lyr .ds{border-right:none}
+}
+.prin{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:28px}
+.prin .card{padding:22px}
+.prin .num{font-family:var(--mono);font-size:11px;color:var(--mark);letter-spacing:.12em;margin-bottom:10px}
+.prin b{display:block;font-size:16px;margin-bottom:8px;letter-spacing:-.01em}
+@media(max-width:860px){.prin{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <header>
@@ -260,7 +291,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
           <a href="../specimen/report/"><b>Specimen report</b><em>The full artefact a company receives</em></a>
           <a href="../routing/"><b>Routing</b><em>From score to the right support</em></a>
           <a href="../conformance/"><b>Conformance</b><em>Test vectors, manifest, verification</em></a>
-          <a href="../integrate/" class="on"><b>Integrate</b><em>Four ways to run it, machine access</em></a>
+          <a href="../integrate/"><b>Integrate</b><em>Four ways to run it, machine access</em></a>
           <a href="../versions/"><b>Versions</b><em>Changelog and comparability</em></a>
           <a href="../limits/"><b>Limits</b><em>What this doesn’t do</em></a>
         </div>
@@ -283,79 +314,89 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 <main>
 <div class="page on">
   <section class="hero">
-    <div class="narrow">
-      <p class="eyebrow">Distribution</p>
-      <h1>Four ways to run it.</h1>
-      <p class="big" style="margin-top:22px">The method is free to read and free to implement. What you’re choosing here is how the measurement reaches your companies and where the results live. Every route runs the identical published method, so results from any of them are comparable with results from any other.</p>
+    <div class="wrap">
+      <p class="eyebrow">The stack</p>
+      <h1 style="max-width:20ch">Five layers. Two given away, one sold, two never.</h1>
+      <p class="big" style="margin-top:22px;max-width:62ch">Everything about the Growth Score sits in one of five layers. If something does not fit here, it is a mechanism serving a layer rather than a layer of its own.</p>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <div class="grid2">
-        <div class="card">
-          <span class="mono">Level 1 &middot; nothing to build</span>
-          <h3>Cohort link</h3>
-          <p class="small">A dedicated address for your programme. Companies complete the measure, results are tagged to your cohort, and the report comes back to you. No engineering, no procurement of software, usually live the same week.</p>
-          <p class="small"><b>Right for:</b> accelerators, growth hubs, university programmes, first pilots of any kind.</p>
+      <div class="stack">
+        <div class="lyr own">
+          <div class="n">5</div>
+          <div class="nm"><b>The Record</b><span>Never given away</span></div>
+          <div class="ds">Which intervention moved which cell, for which kind of company. It exists only because the loop ran, and cannot be reconstructed afterwards by anyone.</div>
+          <div class="st"><b>Closed</b>Nobody outside sees it. It is what makes the instrument get better.</div>
         </div>
-        <div class="card">
-          <span class="mono">Level 2 &middot; your brand</span>
-          <h3>Embedded</h3>
-          <p class="small">The same measure inside your own site, carrying your brand, so the company never feels handed off. The method underneath is unchanged and the deployment declares its conformance at the same public path as every other.</p>
-          <p class="small"><b>Right for:</b> banks and institutions where the programme brand matters.</p>
+        <div class="lyr own">
+          <div class="n">4</div>
+          <div class="nm"><b>The Register</b><span>Never given away</span></div>
+          <div class="ds">That a result is real, dated, produced by a stated method version, and still current. A reference anyone can check without seeing anything private.</div>
+          <div class="st"><b>Closed</b>Anyone may check a reference. Nobody may hold the register.</div>
         </div>
-        <div class="card">
-          <span class="mono">Level 3 &middot; your systems</span>
-          <h3>API and webhooks</h3>
-          <p class="small">Submit answers, receive the full structured result. Positions and diagnoses land in your CRM, case management or programme system automatically, and a webhook fires when a company rescores.</p>
-          <p class="small"><b>Right for:</b> banks, larger authorities, anyone whose reporting has to live where their other data lives.</p>
+        <div class="lyr sell">
+          <div class="n">3</div>
+          <div class="nm"><b>The Loop</b><span>What is licensed</span></div>
+          <div class="ds">Diagnose, then fix or route, then rescore. The sixteen-cell diagnostic library, the actions, the routing, and the cohort and portfolio reporting.</div>
+          <div class="st"><b>Licensed</b>This is the product. Institutions pay for this and nothing else.</div>
         </div>
-        <div class="card">
-          <span class="mono">Level 4 &middot; your estate</span>
-          <h3>Certified self-hosted</h3>
-          <p class="small">You run the instrument inside your own infrastructure, pass the published conformance vectors, declare the version you run, and return anonymised aggregate movement. For cases where data genuinely can’t leave.</p>
-          <p class="small"><b>Right for:</b> a small number of buyers who can’t let data leave, for residency or risk reasons. The reporting obligation is the condition of using the name.</p>
+        <div class="lyr open">
+          <div class="n">2</div>
+          <div class="nm"><b>The Instrument</b><span>Given away</span></div>
+          <div class="ds">Thirty seven questions, eight minutes, and the full result: score, capability against momentum, stage, root cause, first actions.</div>
+          <div class="st"><b>Free forever</b>To the company measured. No upgrade, no paywalled result.</div>
+        </div>
+        <div class="lyr open">
+          <div class="n">1</div>
+          <div class="nm"><b>The Method</b><span>Given away</span></div>
+          <div class="ds">The model, the scales, the arithmetic, the bands, the version record and the conformance vectors.</div>
+          <div class="st"><b>Published</b>Free to read and implement, including commercially.</div>
         </div>
       </div>
-      <p class="big" style="margin-top:34px;max-width:64ch">Levels 1 to 3 keep results in the register, which is what makes them verifiable by someone else. Level 4 exists because refusing it would push a buyer into building an unverifiable clone, which is worse for everyone.</p>
+      <p class="big" style="margin-top:30px;max-width:62ch"><b>Give away one and two. Sell three. Own four and five.</b> Publishing the method costs nothing that was ever going to be kept, and the two layers that cannot be copied are the two that are never published.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Who enters where</p>
+      <h2>Nobody uses all five.</h2>
+      <div class="tw"><table style="margin-top:24px">
+        <thead><tr><th>Who</th><th>Enters at</th><th>What they are actually after</th></tr></thead>
+        <tbody>
+          <tr><td><b>A company</b></td><td>2, then 3</td><td>What is wrong, and what to do about it. Free, and their result stays theirs</td></tr>
+          <tr><td><b>A support provider</b></td><td>3</td><td>Clients who already know what they need, and a way to show their work moved something</td></tr>
+          <tr><td><b>An institution</b><br>bank, authority, university, fund</td><td>3, then 4</td><td>Evidence per company across a cohort, and a result their own auditor can check</td></tr>
+          <tr><td><b>Whoever holds them to account</b><br>central government, LPs, funders, boards</td><td>4 only</td><td>That a figure in a report is real, dated and produced by a stated method</td></tr>
+          <tr><td><b>An implementer</b><br>anyone running the method themselves</td><td>1</td><td>To measure the same way, without asking anyone</td></tr>
+        </tbody>
+      </table></div>
+      <p class="big" style="margin-top:26px;max-width:64ch">The last two rows are why layer 4 exists. <b>Nobody verifies a result for their own benefit. They verify because somebody above them will ask.</b></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">The principles</p>
+      <h2>Five rules everything is tested against.</h2>
+      <div class="prin">
+        <div class="card"><div class="num">01</div><b>Measure, never decide</b><p class="small">The moment a measure makes decisions about a company, that company stops answering honestly, and the measure is worthless.</p></div>
+        <div class="card"><div class="num">02</div><b>Free to the measured, licensed to the accountable</b><p class="small">Companies never pay. The people who have to prove something do.</p></div>
+        <div class="card"><div class="num">03</div><b>Open the method, close the register</b><p class="small">Publish what proves the number is honest. Keep what proves the number is real.</p></div>
+        <div class="card"><div class="num">04</div><b>One instrument, never forked</b><p class="small">Comparability is the entire asset. A modified copy carrying the same name destroys it for everyone.</p></div>
+        <div class="card"><div class="num">05</div><b>Everything serves the loop</b><p class="small">Measure, act, measure again. Anything that does not make that happen more often is decoration.</p></div>
+      </div>
     </div>
   </section>
 
   <section class="alt">
     <div class="narrow">
-      <h2>Where the line sits</h2>
-      <p style="margin-top:16px">Worth stating plainly, because it’s the whole commercial model.</p>
-      <table style="margin-top:20px">
-        <thead><tr><th>Free, forever</th><th>Licensed</th></tr></thead>
-        <tbody>
-          <tr><td>Reading the method</td><td>The cohort and portfolio reporting</td></tr>
-          <tr><td>Implementing it yourself</td><td>The sixteen cell diagnosis and the routing</td></tr>
-          <tr><td>A company taking the measure</td><td>Access to the hosted instrument at programme scale</td></tr>
-          <tr><td>A company's own full result</td><td>A verifiable result in the register</td></tr>
-        </tbody>
-      </table>
-      <p class="small" style="margin-top:20px">Anyone may rebuild the measurement from the published specification. Nobody gets the diagnosis library. And a self-run score can't be verified by anyone else, which is the only thing that matters once a funder, an investor or a committee is asked to trust it.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="narrow">
-      <h2>Machine and agent access</h2>
-      <p style="margin-top:16px">The specification is published as data, so software can read it without a human transcribing anything. That includes AI agents, and we would rather design for that deliberately than pretend it won’t happen.</p>
-      <table style="margin-top:22px">
-        <thead><tr><th>Surface</th><th>What it’s for</th><th>Status</th></tr></thead>
-        <tbody>
-          <tr><td><code class="inl">/method/v1.4/*.json</code></td><td>The model, scales and bands as structured data</td><td class="yes">Published</td></tr>
-          <tr><td><code class="inl">/llms.txt</code></td><td>A machine-readable index of the specification, so a model reads the method rather than guessing at it</td><td><span class="ph">pending</span></td></tr>
-          <tr><td><code class="inl">/.well-known/growth-score.json</code></td><td>Conformance declaration for any deployment</td><td><span class="ph">pending</span></td></tr>
-          <tr><td><code class="inl">/verify/{reference}</code></td><td>Confirm a result is real, without exposing anything private</td><td><span class="ph">pending</span></td></tr>
-          <tr><td>MCP server</td><td>Lets an agent administer the measure, retrieve a result, or check conformance on behalf of a consenting user</td><td><span class="ph">pending</span></td></tr>
-        </tbody>
-      </table>
-      <p class="big" style="margin-top:28px">An agent can already read 37 published questions and ask them. What it can't do is produce a result anyone else will accept.</p>
-      <p>That’s the point of publishing the method and keeping the register closed. Anything that calls itself a Growth Score can be checked: which version produced it, when it was taken, whether it’s current, and whether the implementation passes the published vectors. A number generated by a model that has read this website isn't a Growth Score, and it won't verify.</p>
-      <p class="small">The scoring path itself contains no generative model and never will. The same answers produce the same score every time, which is the only reason a second measurement can be compared with a first.</p>
+      <h2>Mechanisms are not layers</h2>
+      <p style="margin-top:16px">This is where it gets confusing, so it is worth stating. Gamification, community, invitation tokens, the action workspace, motion awareness and maturity levels are <b>not</b> peers of the method or the register.</p>
+      <p>They are mechanisms, and every one of them serves layer 3. They exist to make the loop close more often, because a diagnosis nobody acts on produces nothing to measure.</p>
+      <p class="big" style="margin-top:22px"><b>The single test for anything new:</b> does this produce more completed loops, or fewer? If it does not obviously produce more, it goes behind something that does.</p>
     </div>
   </section>
 
