@@ -49,11 +49,13 @@ a.navcta:hover{border-color:var(--mark);color:var(--mark)!important}
 .caret{font-size:9px;color:var(--mid);transition:transform .18s}
 .drop.open .caret{transform:rotate(180deg)}
 .dmenu{
+  display:none;
   position:absolute;top:calc(100% + 10px);left:0;min-width:310px;background:var(--white);
   border:1px solid var(--rule);border-radius:4px;box-shadow:0 10px 30px rgba(14,27,44,.10);
-  padding:8px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .16s ease;z-index:60;
+  padding:8px;z-index:60;
 }
-.drop.open .dmenu{opacity:1;visibility:visible;transform:translateY(0)}
+.drop.open .dmenu{display:block}
+.drop::after{content:"";position:absolute;top:100%;left:0;right:0;height:12px}
 .dmenu a{display:block;text-decoration:none;padding:10px 12px;border-radius:2px;color:var(--ink)}
 .dmenu a:hover{background:var(--paper-alt)}
 .dmenu a.on{background:var(--paper-alt)}
@@ -95,7 +97,8 @@ section:first-of-type{border-top:none}
   nav ul{flex-direction:column;gap:2px;padding:10px 0 4px;align-items:stretch}
   nav > ul > li > a{padding:11px 0}
   .dtrig{width:100%;justify-content:space-between;padding:11px 0;font-weight:600}
-  .dmenu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;
+  .drop::after{display:none}
+  .dmenu{position:static;box-shadow:none;border:none;
          border-left:2px solid var(--rule);border-radius:0;padding:0 0 6px 14px;margin-bottom:6px;display:none}
   .drop.open .dmenu{display:block}
   .dmenu a{padding:9px 0}
