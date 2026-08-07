@@ -99,6 +99,18 @@ section:first-of-type{border-top:none}
 @media(max-width:1180px){ .logo .sub{display:none} }
 @media(max-width:1040px){ nav > ul > li > a, .dtrig{font-size:13.2px;padding:8px 8px} }
 @media(max-width:860px){
+  /* .gs-mob-reset */
+  nav ul{flex-wrap:wrap!important}
+  nav > ul > li > a,.dtrig{white-space:normal!important;font-size:15px!important;padding:11px 0!important}
+  .bar{flex-wrap:wrap!important}
+  a.navcta{width:100%;text-align:center;padding:12px!important;margin-top:8px}
+  .narrow > *,.narrow > .tw{max-width:100%!important}
+  .stk{padding:16px 14px}
+  .stk-panel{min-height:0}
+  .ppl{grid-template-columns:1fr!important}
+  .lyr{grid-template-columns:1fr!important}
+  .wk{grid-template-columns:1fr!important}
+  .calcout{grid-template-columns:1fr!important}
   .grid2,.grid3,.grid4{grid-template-columns:1fr;gap:28px}
   nav{display:none;width:100%} nav.open{display:block}
   nav ul{flex-direction:column;gap:2px;padding:10px 0 4px;align-items:stretch}
@@ -255,7 +267,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 <body>
 <header>
   <div class="wrap bar">
-    <a class="logo" href="./" class="on"><span class="mk">Growth Score</span><span class="sub">An open measurement standard</span></a>
+    <a class="logo on" href="./"><span class="mk">Growth Score</span><span class="sub">An open measurement standard</span></a>
     <button class="menu" id="menuBtn" aria-expanded="false">Menu</button>
     <nav class="gs-n" id="nav"><ul>
       <li class="drop">
