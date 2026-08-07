@@ -485,13 +485,13 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
         <div class="hiw-rail">
           <div class="stk">
             <svg id="stkSvg" viewBox="0 0 460 300" role="img" aria-label="Five parts, from the published method at the base to how it improves at the top">
-              <text class="axis" x="8" y="36" transform="rotate(-90 8,36)">Last</text>
-              <text class="axis" x="8" y="282" transform="rotate(-90 8,282)">First</text>
+              <text class="axis" x="8" y="42" transform="rotate(-90 8,42)">First</text>
+              <text class="axis" x="8" y="286" transform="rotate(-90 8,286)">Last</text>
               <line x1="24" y1="12" x2="24" y2="292" stroke="var(--rule)"></line>
               <g id="bands"></g>
             </svg>
           </div>
-          <p class="small" style="margin-top:14px;font-size:12px">Each part rests on the one below it. Click any band.</p>
+          <p class="small" style="margin-top:14px;font-size:12px">Each part depends on the one before it. Click any part to jump to it.</p>
         </div>
         <div>
       <section class="hiw-sec" id="l1">
@@ -561,11 +561,11 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
 (function(){
   var svg=document.getElementById('stkSvg'); if(!svg) return;
   var L=[
-    {n:5,t:'How it improves',fill:'#0E1B2C',txt:'#fff'},
-    {n:4,t:'Checking a result',fill:'#4F80E2',txt:'#fff'},
-    {n:3,t:'Diagnosis and action',fill:'#85A7EB',txt:'#0E1B2C'},
+    {n:1,t:'The method',fill:'#E2EAFA',txt:'#0E1B2C'},
     {n:2,t:'The instrument',fill:'#B6CAF3',txt:'#0E1B2C'},
-    {n:1,t:'The method',fill:'#E2EAFA',txt:'#0E1B2C'}
+    {n:3,t:'Diagnosis and action',fill:'#85A7EB',txt:'#0E1B2C'},
+    {n:4,t:'Checking a result',fill:'#4F80E2',txt:'#fff'},
+    {n:5,t:'How it improves',fill:'#0E1B2C',txt:'#fff'}
   ];
   var g=document.getElementById('bands'), X=44, W=402, H=48, GAP=8, TOP=16, els={};
   L.forEach(function(l,i){
@@ -621,60 +621,7 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
 </script>
 
 
-<script>
-(function(){
-  var svg=document.getElementById('stkSvg'); if(!svg) return;
-  var L=[
-   {n:5,t:'How it improves',s:'Over time',fill:'#0E1B2C',txt:'#fff',
-    d:'A record of which kind of support tends to move which part of the engine, for which kind of company. It builds only as companies measure, act, and measure again.',
-    w:'It is why the diagnosis gets sharper the longer the instrument runs. Nothing about an individual company is ever published.'},
-   {n:4,t:'Checking a result',s:'Open to anyone with a reference',fill:'#4F80E2',txt:'#fff',
-    d:'Every result carries a short reference. Anyone a company shows it to can confirm the result is real, when it was taken, which version produced it, and whether it is still current.',
-    w:'A report can be edited. A reference cannot. It returns nothing private: no score, no company name, no answers.'},
-   {n:3,t:'Diagnosis and action',s:'Where the work happens',fill:'#85A7EB',txt:'#0E1B2C',
-    d:'The written diagnosis, the three actions that follow from it, the category of support it points to, and the reporting across a cohort.',
-    w:'A measurement on its own changes nothing. This is the part that turns a number into something a company does on Monday, and then measures again.'},
-   {n:2,t:'The instrument',s:'Free to every company, always',fill:'#B6CAF3',txt:'#0E1B2C',
-    d:'Thirty seven questions, about eight minutes, and the full result: score, capability against momentum, the stage where the problem shows up, the root cause, and the first actions.',
-    w:'No upgrade, no paywalled result, no charge at any point. That is not generosity. It is the only way to get an honest answer.'},
-   {n:1,t:'The method',s:'Published in full',fill:'#E2EAFA',txt:'#0E1B2C',
-    d:'The model, the questions, the scales, the arithmetic, the bands, the version record and the conformance test vectors.',
-    w:'Read it, check the arithmetic, run it yourself, or implement it. Everything above rests on this being inspectable by anyone.'}
-  ];
-  var g=document.getElementById('bands'), X=52, W=548, H=54, GAP=8, TOP=18;
-  L.forEach(function(l,i){
-    var y=TOP+i*(H+GAP);
-    var r=document.createElementNS('http://www.w3.org/2000/svg','rect');
-    r.setAttribute('x',X);r.setAttribute('y',y);r.setAttribute('width',W);r.setAttribute('height',H);
-    r.setAttribute('rx',2);r.setAttribute('fill',l.fill);r.setAttribute('class','band');
-    if(l.fill==='#E2EAFA'||l.fill==='#B6CAF3'){r.setAttribute('stroke','var(--rule)');}
-    g.appendChild(r);
-    var num=document.createElementNS('http://www.w3.org/2000/svg','text');
-    num.setAttribute('x',X+18);num.setAttribute('y',y+H/2+5);num.setAttribute('font-family','IBM Plex Mono, monospace');
-    num.setAttribute('font-size','12');num.setAttribute('fill',l.txt);num.setAttribute('opacity','.6');num.textContent=l.n;
-    num.style.pointerEvents='none';g.appendChild(num);
-    var t=document.createElementNS('http://www.w3.org/2000/svg','text');
-    t.setAttribute('x',X+44);t.setAttribute('y',y+H/2+6);t.setAttribute('font-family','IBM Plex Sans, sans-serif');
-    t.setAttribute('font-size','17');t.setAttribute('font-weight','700');t.setAttribute('letter-spacing','-.02em');
-    t.setAttribute('fill',l.txt);t.textContent=l.t;t.style.pointerEvents='none';g.appendChild(t);
-    var st=document.createElementNS('http://www.w3.org/2000/svg','text');
-    st.setAttribute('x',X+W-16);st.setAttribute('y',y+H/2+5);st.setAttribute('text-anchor','end');
-    st.setAttribute('font-family','IBM Plex Mono, monospace');st.setAttribute('font-size','10.5');
-    st.setAttribute('letter-spacing','.08em');st.setAttribute('fill',l.txt);st.setAttribute('opacity','.75');
-    st.textContent=l.s.toUpperCase();st.style.pointerEvents='none';g.appendChild(st);
-    r.addEventListener('click',function(){show(i);});
-    r.addEventListener('keydown',function(e){if(e.key==='Enter'){show(i);}});
-    r.setAttribute('tabindex','0');
-  });
-  function show(i){
-    var l=L[i];
-    document.getElementById('stkPanel').innerHTML =
-      '<p class="lbl">Part '+l.n+' of 5</p><h3>'+l.t+'</h3><span class="st">'+l.s+'</span>'+
-      '<p style="margin:0 0 14px">'+l.d+'</p><p class="small" style="margin:0">'+l.w+'</p>';
-  }
-  show(3);
-})();
-</script>
+
 
 <footer>
   <div class="wrap">
