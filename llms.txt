@@ -29,7 +29,7 @@ The diagnosis produces a stage and a root cause. That pair determines a category
 ## Specification
 - [Method v1.4](method/): questions, scales, arithmetic, bands, diagnosis, lenses
 - [Routing](routing/): from diagnosis to the right support
-- [How it runs](how-it-runs/): the ninety day cycle, showing what a company experiences and what the licensee sees at each point
+- [The experience](the-experience/): the ninety day cycle, showing what a company experiences and what the licensee sees at each point
 - [Model as JSON](../method/v1.4/model.json): stages, root causes, matrix, arithmetic
 - [Scales as JSON](../method/v1.4/scales.json): both answer scales with labels and meanings
 - [Bands as JSON](../method/v1.4/bands.json): thresholds and definitions
