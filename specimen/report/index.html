@@ -1019,8 +1019,8 @@ footer p{margin:0 0 14px}
 footer .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 footer footer footer .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
 .foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid var(--band-rule);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-@media(max-width:1020px){
-  /* tablet: 4-up and 3-up grids halve rather than squeeze */
+@media(min-width:861px) and (max-width:1020px){
+  /* tablet only: 4-up and 3-up grids halve rather than squeeze */
   .grid4{grid-template-columns:1fr 1fr!important}
   .grid3{grid-template-columns:1fr 1fr!important}
   .stats{grid-template-columns:1fr 1fr!important}
@@ -1031,13 +1031,20 @@ footer footer footer .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1
   /* two-column asymmetric layouts even out before they break */
   .grid2[style*="1.15fr"],.grid2[style*="1.25fr"],.grid2[style*="1.05fr"],.grid2[style*="1.1fr"]{grid-template-columns:1fr 1fr!important}
 }
-@media(max-width:900px){
+@media(min-width:861px) and (max-width:900px){
   .grid3,.prin,.ppl,.stats{grid-template-columns:1fr 1fr!important}
   .grid2[style]{grid-template-columns:1fr!important}
   .lyr{grid-template-columns:60px 1fr!important}
   .lyr .ds,.lyr .st{grid-column:2}
 }
 @media(max-width:860px){
+  /* phone footer */
+  .foot-grid{grid-template-columns:1fr!important;gap:26px!important}
+  .foot-bottom{flex-direction:column;align-items:flex-start;gap:12px}
+  .foot-bottom > span{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  footer{padding:40px 0 28px}
+  footer h4{margin-bottom:10px}
+  .grid3,.grid4,.prin,.ppl,.stats{grid-template-columns:1fr!important}
   /* .gs-mob-reset */
   nav ul{flex-wrap:wrap!important}
   nav > ul > li > a,.dtrig{white-space:normal!important;font-size:15px!important;padding:11px 0!important}

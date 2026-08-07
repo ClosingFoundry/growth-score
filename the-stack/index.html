@@ -95,8 +95,8 @@ section:first-of-type{border-top:none}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-@media(max-width:1020px){
-  /* tablet: 4-up and 3-up grids halve rather than squeeze */
+@media(min-width:861px) and (max-width:1020px){
+  /* tablet only: 4-up and 3-up grids halve rather than squeeze */
   .grid4{grid-template-columns:1fr 1fr!important}
   .grid3{grid-template-columns:1fr 1fr!important}
   .stats{grid-template-columns:1fr 1fr!important}
@@ -107,7 +107,7 @@ section:first-of-type{border-top:none}
   /* two-column asymmetric layouts even out before they break */
   .grid2[style*="1.15fr"],.grid2[style*="1.25fr"],.grid2[style*="1.05fr"],.grid2[style*="1.1fr"]{grid-template-columns:1fr 1fr!important}
 }
-@media(max-width:900px){
+@media(min-width:861px) and (max-width:900px){
   .grid3,.prin,.ppl,.stats{grid-template-columns:1fr 1fr!important}
   .grid2[style]{grid-template-columns:1fr!important}
   .lyr{grid-template-columns:60px 1fr!important}
