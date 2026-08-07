@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
+<script>(function(){var t=null;try{t=localStorage.getItem('gs-theme')}catch(e){}
+if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+document.documentElement.setAttribute('data-theme',t);})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Specimen report | Growth Score, Northwind Systems (Demo)</title>
@@ -896,7 +899,7 @@ section.page {
 .route-card .r-summary {
   font-size:12pt;
   line-height:1.6;
-  color: #C4CFE4;
+  color: var(--band-text);
   margin: 0 0 26px;
   max-width: 56ch;
 }
@@ -965,19 +968,44 @@ section.page {
   margin: 0 0 10px;
 }
 .method p { font-size:10pt; line-height:1.6; color: var(--brand-ink); max-width: 66ch; }
+
+/* ---------- theme: dark ---------- */
+html[data-theme="dark"]{
+  --ink:#E6EBF4; --ink-soft:#B7C3D8; --mid:#8494AD;
+  --paper:#0E1B2C; --paper-alt:#16273B; --rule:var(--band-rule);
+  --mark:#6E9DF2; --white:#16273B;
+  --band-bg:#16273B; --band-text:#B7C3D8; --band-strong:#E6EBF4;
+  --band-mid:#8494AD; --band-accent:var(--band-accent); --band-rule:#31435F;
+  --unv-bg:#33291280; --unv-text:#E0BE74; --unv-border:#7A5F26;
+}
+:root{
+  --band-bg:#0E1B2C; --band-text:var(--band-text); --band-strong:#FFFFFF;
+  --band-mid:var(--band-mid); --band-accent:var(--band-accent); --band-rule:var(--band-rule);
+  --unv-bg:var(--unv-bg); --unv-text:var(--unv-text); --unv-border:var(--unv-border);
+}
+html[data-theme="dark"] img,html[data-theme="dark"] .plot{background:var(--paper-alt)}
+html.theming,html.theming *{transition:background-color .22s ease,color .22s ease,border-color .22s ease,fill .22s ease,stroke .22s ease!important}
+@media print{ html[data-theme="dark"]{--ink:#0E1B2C;--ink-soft:#33415C;--mid:#5F6C85;--paper:#fff;--paper-alt:#F4F6FA;--rule:#E2E7F0;--mark:#0B4ED6;--white:#fff} }
+
+/* theme control */
+.themer{display:inline-flex;border:1px solid var(--band-rule);border-radius:3px;overflow:hidden;vertical-align:middle}
+.themer button{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  background:none;border:none;padding:5px 10px;cursor:pointer;color:var(--band-mid);line-height:1.4}
+.themer button+button{border-left:1px solid var(--band-rule)}
+.themer button[aria-pressed="true"]{background:var(--band-accent);color:#0E1B2C}
 </style>
 <style>
-footer{background:#0E1B2C;color:#94A3C4;padding:52px 0 32px;font-size:14px;font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;margin-top:60px}
-footer a{color:#D4DDF0;text-decoration:none}
+footer{background:#0E1B2C;color:var(--band-mid);padding:52px 0 32px;font-size:14px;font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;margin-top:60px}
+footer a{color:var(--band-text);text-decoration:none}
 footer a:hover{text-decoration:underline}
 footer h4{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 14px;font-weight:400}
 footer p{margin:0 0 14px}
 footer .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 footer .logo{display:flex;align-items:baseline;gap:10px}
 footer .logo .mk{font-size:20px;font-weight:700;letter-spacing:-.01em}
-footer .logo .sub{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#94A3C4}
+footer .logo .sub{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--band-mid)}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
-.foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid #26364F;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid var(--band-rule);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media(max-width:1020px){
   /* tablet: 4-up and 3-up grids halve rather than squeeze */
   .grid4{grid-template-columns:1fr 1fr!important}
@@ -1135,6 +1163,23 @@ footer .logo .sub{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:1
   });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'){
     document.querySelectorAll('.gsx-drop').forEach(function(d){d.classList.remove('open');}); } });
+})();
+
+(function(){
+  var box=document.getElementById('themer'); if(!box) return;
+  var H=document.documentElement;
+  function paint(){var t=H.getAttribute('data-theme');
+    box.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed', b.dataset.t===t?'true':'false');});}
+  box.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click',function(){
+      H.classList.add('theming');
+      H.setAttribute('data-theme', b.dataset.t);
+      try{localStorage.setItem('gs-theme', b.dataset.t)}catch(e){}
+      paint();
+      setTimeout(function(){H.classList.remove('theming')}, 260);
+    });
+  });
+  paint();
 })();
 </script>
 
@@ -1668,7 +1713,11 @@ footer .logo .sub{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:1
     </div>
     <div class="foot-bottom">
       <span>Published by Closing Foundry Ltd, registered in England and Wales, company no. 14629519.</span>
-      <span>Not a credit signal. Not a decisioning tool. &nbsp;&middot;&nbsp; <a href="../../v1/" style="color:#6B7C9C;text-decoration:none;border-bottom:1px solid #26364F">earlier version</a></span>
+      <span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span class="themer" id="themer" role="group" aria-label="Colour theme"><button data-t="light" aria-pressed="false">Light</button><button data-t="dark" aria-pressed="false">Dark</button></span>
+        <span>Not a credit signal. Not a decisioning tool.</span>
+        <a href="../../v1/" style="color:var(--band-mid);text-decoration:none;border-bottom:1px solid var(--band-rule)">earlier version</a>
+      </span>
     </div>
   </div>
 </footer>
