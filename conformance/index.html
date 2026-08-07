@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Conformance | Growth Score</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="3" fill="%230E1B2C"/><rect x="7" y="9" width="18" height="3.4" rx="1" fill="%23E2EAFA"/><rect x="7" y="14.3" width="18" height="3.4" rx="1" fill="%2385A7EB"/><rect x="7" y="19.6" width="18" height="3.4" rx="1" fill="%230B4ED6"/></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="3" fill="%230E1B2C"/><rect x="7" y="9" width="18" height="3.4" rx="1" fill="%23E2EAFA"/><rect x="7" y="14.3" width="18" height="3.4" rx="1" fill="%2385A7EB"/><rect x="7" y="19.6" width="18" height="3.4" rx="1" fill="%230B4ED6"/></svg>">
 <meta name="description" content="Test vectors, the conformance manifest, the verification endpoint and the licence.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,6 +100,24 @@ section:first-of-type{border-top:none}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 @media(max-width:1180px){ .logo .sub{display:none} }
 @media(max-width:1040px){ nav > ul > li > a, .dtrig{font-size:13.2px;padding:8px 8px} }
+@media(max-width:1020px){
+  /* tablet: 4-up and 3-up grids halve rather than squeeze */
+  .grid4{grid-template-columns:1fr 1fr!important}
+  .grid3{grid-template-columns:1fr 1fr!important}
+  .stats{grid-template-columns:1fr 1fr!important}
+  .prin{grid-template-columns:1fr 1fr!important}
+  .ppl{grid-template-columns:1fr 1fr!important}
+  .foot-grid{grid-template-columns:1.4fr 1fr 1fr!important}
+  .grid2{gap:30px}
+  /* two-column asymmetric layouts even out before they break */
+  .grid2[style*="1.15fr"],.grid2[style*="1.25fr"],.grid2[style*="1.05fr"],.grid2[style*="1.1fr"]{grid-template-columns:1fr 1fr!important}
+}
+@media(max-width:900px){
+  .grid3,.prin,.ppl,.stats{grid-template-columns:1fr 1fr!important}
+  .grid2[style]{grid-template-columns:1fr!important}
+  .lyr{grid-template-columns:60px 1fr!important}
+  .lyr .ds,.lyr .st{grid-column:2}
+}
 @media(max-width:860px){
   /* .gs-mob-reset */
   nav ul{flex-wrap:wrap!important}
@@ -444,7 +464,13 @@ document.addEventListener("keydown", function(e){ if(e.key === "Escape"){
   document.querySelectorAll(".drop").forEach(function(d){ d.classList.remove("open"); }); } });
 var sb = document.getElementById("sendBtn");
 if(sb){ sb.addEventListener("click", function(){
-  document.getElementById("formNote").textContent = "Prototype only. Nothing was sent. Wire this to the real inbox before launch."; }); }
+  var TO = "hello@closingfoundry.com";
+  var v = function(id){ var e=document.getElementById(id); return e ? e.value.trim() : ""; };
+  var name=v("f1"), org=v("f2"), email=v("f3"), who=v("f4"), what=v("f5");
+  if(!name || !email){ document.getElementById("formNote").textContent = "Please add a name and an email address."; return; }
+  var body = "Name: "+name+"\nOrganisation: "+org+"\nEmail: "+email+"\nDescribes them: "+who+"\n\nCurrently unable to measure:\n"+what;
+  window.location.href = "mailto:"+TO+"?subject="+encodeURIComponent("Growth Score demonstration request: "+(org||name))+"&body="+encodeURIComponent(body);
+}); }
 
 
 </script>
