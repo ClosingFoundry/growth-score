@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact | Growth Score</title>
-<meta name="description" content="Request a demonstration, or read the method first.">
+<title>Terms of use | Growth Score</title>
+<meta name="description" content="Using the site, the published method and the name. The method is free to implement; the name is reserved to conforming implementations.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -271,46 +271,75 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
       </li>
       <li><a href="../specimen/">Specimen</a></li>
       <li><a href="../about/">About</a></li>
-      <li><a class="navcta" href="../contact/" class="on">Contact</a></li>
+      <li><a class="navcta" href="../contact/">Contact</a></li>
     </ul></nav>
   </div>
 </header>
 <main>
 <div class="page on">
   <section class="hero">
-    <div class="wrap">
-      <div class="grid2">
-        <div>
-          <p class="eyebrow">Contact</p>
-          <h1 style="max-width:16ch">See it measure a real company.</h1>
-          <p class="big" style="margin-top:24px">A demonstration takes twenty minutes. Bring a company you know well and we’ll measure it live, in front of you, and you can tell us whether the diagnosis is right.</p>
-          <ul class="plain" style="margin-top:26px">
-            <li>No deck first. The instrument first. Read <a href="../specimen/report/" style="color:var(--mark)">the report a company receives</a> before you speak to us if you would rather.</li>
-            <li>The method is already public. Read it before you speak to us if you’d rather.</li>
-            <li>A bounded pilot is the only thing we’ll ask you to agree to.</li>
-          </ul>
-          <div class="btns"><a class="btn ghost" href="../method/">Read the method instead</a></div>
-        </div>
-        <div class="card">
-          <label for="f1">Name</label><input id="f1" type="text" placeholder="Your name">
-          <label for="f2">Organisation</label><input id="f2" type="text" placeholder="Organisation">
-          <label for="f3">Email</label><input id="f3" type="email" placeholder="name@organisation.uk">
-          <label for="f4">Which describes you</label>
-          <select id="f4">
-            <option>Bank or financial institution</option>
-            <option>Combined authority, agency or growth hub</option>
-            <option>University, accelerator or programme partner</option>
-            <option>Fund, syndicate or corporate finance</option>
-            <option>Founder or revenue leader</option>
-            <option>Implementing the method independently</option>
-            <option>Something else</option>
-          </select>
-          <label for="f5">What are you currently unable to measure</label>
-          <textarea id="f5" placeholder="One or two lines is enough"></textarea>
-          <button class="btn" id="sendBtn" style="width:100%">Request a demonstration</button>
-          <p class="small" id="formNote" style="margin-top:14px">Prototype form. Nothing is sent or stored.</p>
-        </div>
-      </div>
+    <div class="narrow">
+      <p class="eyebrow">Terms of use</p>
+      <h1>Using this site, the method, and the name.</h1>
+      <p class="big" style="margin-top:22px">Three different things with three different rules. The method is free to read and implement. The name is not free to use. Everything else is licensed.</p>
+      <p class="mono">Last updated 7 August 2026 &middot; <span class="ph">pending legal review</span></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="narrow">
+      <h2>1. Who and what</h2>
+      <p style="margin-top:16px">This site is operated by <b>Closing Foundry Ltd</b>, registered in England and Wales, company number 14629519. By using it you accept these terms.</p>
+      <p>These terms cover the site, the published method and the free assessment. They do not replace a signed licence agreement. Where an institution has one, that agreement governs its use and prevails over anything here.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="narrow">
+      <h2>2. The method licence</h2>
+      <p style="margin-top:16px">The published measurement method, comprising the model, the scales, the arithmetic, the bands and the version record, is free to read, implement and administer, <b>including commercially</b>, at no cost and without asking us.</p>
+      <p><b>The name is the thing that is protected.</b> Only an implementation that returns the expected output for every published conformance vector at a stated version may describe its output as a Growth Score. If your implementation does not pass the vectors, call it something else.</p>
+      <p>You may not modify the questions, scales, arithmetic or bands and continue to use the name. Comparability is the entire value of the measure, and a modified implementation carrying the same name destroys it for everyone.</p>
+      <p class="small">Not published, and not covered by this licence: the diagnostic library, the action and routing logic, the lens rule precedence, the confidence thresholds, the reporting layer, and the register of results.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="narrow">
+      <h2>3. What this is not</h2>
+      <ul class="plain" style="margin-top:18px">
+        <li><b>Not advice.</b> The Growth Score is a measurement instrument. It is not financial, legal, investment or professional advice, and decisions you take remain yours</li>
+        <li><b>Not a credit or risk assessment.</b> It must not be used as an input to lending, affordability, pricing, insurance, eligibility or employment decisions, or any decision producing legal or similarly significant effects for a person or business</li>
+        <li><b>Not verified data.</b> It is what a company reports about itself, and every result says so</li>
+        <li><b>Not a prediction.</b> It measures conditions upstream of growth and whether they are improving. It does not forecast growth, funding or any other outcome</li>
+      </ul>
+      <p style="margin-top:20px">The full list is on the <a href="../limits/" style="color:var(--mark)">limits page</a>, and it forms part of these terms.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="narrow">
+      <h2>4. Taking the assessment</h2>
+      <p style="margin-top:16px">It is free, and it stays free. There is no upgrade, no paywalled result and no charge at any point to the company being measured.</p>
+      <p>Answer honestly. A flattering answer set produces a flattering number and no movement at the rescore, which is the only part anyone downstream cares about.</p>
+      <p>You may share your own result with anyone you choose. We will not share it with an institution unless you consent.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="narrow">
+      <h2>5. Acceptable use</h2>
+      <p style="margin-top:16px">Do not attempt to reverse engineer the unpublished layers, scrape the site at volume, submit assessments on behalf of companies without their knowledge, misrepresent a result, present an unverified or modified output as a Growth Score, or use the site unlawfully.</p>
+      <h2 style="margin-top:44px">6. Intellectual property</h2>
+      <p style="margin-top:16px">The method is published under the licence in section 2. Everything else, including the diagnostic content, the reporting, the software and the name, remains ours. Nothing on this site transfers ownership of anything.</p>
+      <h2 style="margin-top:44px">7. Availability</h2>
+      <p style="margin-top:16px">The site and the free assessment are provided as they are, without warranty of uninterrupted availability. Service levels for licensees are in their agreement.</p>
+      <h2 style="margin-top:44px">8. Liability</h2>
+      <p style="margin-top:16px">We do not exclude liability for death or personal injury caused by negligence, for fraud, or for anything else that cannot lawfully be excluded.</p>
+      <p>Subject to that, and to the fullest extent the law allows, we are not liable for loss of profit, revenue, business, goodwill, or any indirect or consequential loss arising from use of this site, the free assessment or the published method. Our total liability in connection with free use of this site or the assessment is limited to <span class="ph">amount to confirm</span>.</p>
+      <h2 style="margin-top:44px">9. Changes and law</h2>
+      <p style="margin-top:16px">We may update these terms and will show a new date here. Superseded method versions remain published at their own permanent addresses regardless.</p>
+      <p>These terms are governed by the law of England and Wales, and the courts of England and Wales have exclusive jurisdiction.</p>
     </div>
   </section>
 
