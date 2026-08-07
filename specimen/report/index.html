@@ -124,15 +124,21 @@ html, body {
    warm-grey desk. Print is governed by @page above and the html/body
    canvas fill, and is unaffected by this block. */
 @media screen {
-  html { background: var(--brand-canvas); }
+  /* the desk follows the theme; the document sheet never does, because a report
+     is a printed artefact and no printed artefact has a dark mode */
+  html { background: var(--paper); }
   body {
     max-width: 1176px;
     min-height: 0;
     margin: 0 auto;
-    padding: 0 28px 60px;
+    padding: 0 28px 0;
     background: var(--brand-canvas);
     box-shadow: none;
+    overflow-x: clip;
   }
+  html[data-theme="dark"] body{ border-left:1px solid var(--rule); border-right:1px solid var(--rule); }
+  /* the footer is site chrome, not document, so it breaks out of the sheet */
+  footer{ margin-inline: calc(50% - 50vw); margin-top:0; }
   /* the cover is an A4 page in print, a normal opening block on screen */
   .cover { min-height: 0; padding: 8px 0 40px; }
   .cover-title-block { margin-top: 26px; }
@@ -1070,35 +1076,35 @@ footer footer footer .foot-grid{display:grid;grid-template-columns:1.6fr repeat(
 </head>
 <body>
 <style>
-.gsx-bar{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--brand-canvas);border-bottom:1px solid #E2E7F0;font-family:"IBM Plex Sans",system-ui,sans-serif}
+.gsx-bar{position:fixed;top:0;left:0;right:0;z-index:9999;background:var(--paper);border-bottom:1px solid var(--rule);font-family:"IBM Plex Sans",system-ui,sans-serif}
 .gsx-in{max-width:1120px;margin:0 auto;padding:13px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:nowrap}
 .gsx-brand{display:flex;align-items:baseline;gap:9px;text-decoration:none;flex-shrink:0}
 .gsx-cohort{height:19px;width:24px;align-self:baseline;display:block;flex-shrink:0}
 @media print{.gsx-cohort{display:none}}
-.gsx-brand .m{font-size:20px;font-weight:700;letter-spacing:-.01em;color:#0E1B2C;white-space:nowrap}
-.gsx-brand .s{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#5F6C85;white-space:nowrap}
+.gsx-brand .m{font-size:20px;font-weight:700;letter-spacing:-.01em;color:var(--ink);white-space:nowrap}
+.gsx-brand .s{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);white-space:nowrap}
 .gsx-nav{display:flex;align-items:center;gap:2px;flex-wrap:nowrap}
-.gsx-nav>a{font-size:14px;text-decoration:none;color:#33415C;padding:8px 10px;border-radius:3px;white-space:nowrap}
-.gsx-nav>a:hover{background:#F4F6FA;color:#0E1B2C}
-.gsx-nav>a.cta{background:#0B4ED6;color:#fff;border:1px solid #0B4ED6;font-weight:600;padding:6px 18px;transition:background-color .15s ease,color .15s ease}
-.gsx-nav>a.cta:hover{background:var(--brand-canvas);border-color:#0B4ED6;color:#0B4ED6}
+.gsx-nav>a{font-size:14px;text-decoration:none;color:var(--ink-soft);padding:8px 10px;border-radius:3px;white-space:nowrap}
+.gsx-nav>a:hover{background:var(--paper-alt);color:var(--ink)}
+.gsx-nav>a.cta{background:var(--mark);color:#fff;border:1px solid var(--mark);font-weight:600;padding:6px 18px;transition:background-color .15s ease,color .15s ease}
+.gsx-nav>a.cta:hover{background:var(--brand-canvas);border-color:var(--mark);color:var(--mark)}
 .gsx-drop{position:relative}
-.gsx-trig{font-family:inherit;font-size:14px;color:#33415C;background:none;border:none;cursor:pointer;
+.gsx-trig{font-family:inherit;font-size:14px;color:var(--ink-soft);background:none;border:none;cursor:pointer;
   padding:8px 10px;border-radius:3px;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.gsx-trig:hover,.gsx-drop.open .gsx-trig{background:#F4F6FA;color:#0E1B2C}
-.gsx-car{font-size:10px;color:#5F6C85}
+.gsx-trig:hover,.gsx-drop.open .gsx-trig{background:var(--paper-alt);color:var(--ink)}
+.gsx-car{font-size:10px;color:var(--mid)}
 .gsx-drop::after{content:"";position:absolute;top:100%;left:0;right:0;height:12px}
-.gsx-menu{display:none;position:absolute;top:calc(100% + 10px);left:0;min-width:310px;background:var(--brand-canvas);
-  border:1px solid #E2E7F0;border-top:2px solid #0B4ED6;border-radius:0 0 3px 3px;padding:8px;z-index:60}
+.gsx-menu{display:none;position:absolute;top:calc(100% + 10px);left:0;min-width:310px;background:var(--paper);
+  border:1px solid var(--rule);border-top:2px solid var(--mark);border-radius:0 0 3px 3px;padding:8px;z-index:60}
 .gsx-drop.open .gsx-menu{display:block}
-.gsx-menu a{display:block;text-decoration:none;padding:10px 12px;border-radius:2px;color:#0E1B2C}
-.gsx-menu a:hover{background:#F4F6FA}
+.gsx-menu a{display:block;text-decoration:none;padding:10px 12px;border-radius:2px;color:var(--ink)}
+.gsx-menu a:hover{background:var(--paper-alt)}
 .gsx-menu b{display:block;font-size:14px;font-weight:600;margin-bottom:1px}
-.gsx-menu em{display:block;font-style:normal;font-size:12px;color:#5F6C85;line-height:1.4}
-.gsx-note{background:var(--paper-alt);border-bottom:1px solid #E2E7F0;font-family:"IBM Plex Mono",ui-monospace,monospace;
-  font-size:11px;color:#5F6C85;padding:8px 28px;text-align:center;letter-spacing:.04em}
+.gsx-menu em{display:block;font-style:normal;font-size:12px;color:var(--mid);line-height:1.4}
+.gsx-note{background:var(--paper-alt);border-bottom:1px solid var(--rule);font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px;color:var(--mid);padding:8px 28px;text-align:center;letter-spacing:.04em}
 .gsx-burger{display:none;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.1em;
-  text-transform:uppercase;background:none;border:1px solid #E2E7F0;padding:7px 12px;border-radius:3px;cursor:pointer;color:#0E1B2C}
+  text-transform:uppercase;background:none;border:1px solid var(--rule);padding:7px 12px;border-radius:3px;cursor:pointer;color:var(--ink)}
 @media screen{ body{ padding-top:104px !important; } }
 @media(max-width:1180px){ .gsx-brand .s{display:none} }
 @media(max-width:1040px){ .gsx-nav>a,.gsx-trig{font-size:13px;padding:8px 8px} }
@@ -1111,7 +1117,7 @@ footer footer footer .foot-grid{display:grid;grid-template-columns:1.6fr repeat(
   .gsx-nav{display:none;width:100%;flex-direction:column;align-items:stretch;gap:2px;padding-top:8px}
   .gsx-nav.open{display:flex}
   .gsx-drop::after{display:none}
-  .gsx-menu{position:static;box-shadow:none;border:none;border-left:2px solid #E2E7F0;border-radius:0;
+  .gsx-menu{position:static;box-shadow:none;border:none;border-left:2px solid var(--rule);border-radius:0;
     padding:0 0 6px 14px;margin-bottom:6px;min-width:0}
   .gsx-menu em{display:none}
   .gsx-trig{width:100%;justify-content:space-between;font-weight:600}
