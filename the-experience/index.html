@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-<script>(function(){var t=null;try{t=localStorage.getItem('gs-theme')}catch(e){}
-if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+<script>(function(){var p=null;try{p=localStorage.getItem('gs-theme')}catch(e){}
+var t=p||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');
 document.documentElement.setAttribute('data-theme',t);})();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -307,13 +307,6 @@ html[data-theme="dark"] img,html[data-theme="dark"] .plot{background:var(--paper
 html.theming,html.theming *{transition:background-color .22s ease,color .22s ease,border-color .22s ease,fill .22s ease,stroke .22s ease!important}
 @media print{ html[data-theme="dark"]{--ink:#0E1B2C;--ink-soft:#33415C;--mid:#5F6C85;--paper:#fff;--paper-alt:#F4F6FA;--rule:#E2E7F0;--mark:#0B4ED6;--white:#fff} }
 
-/* theme control */
-.themer{display:inline-flex;border:1px solid var(--band-rule);border-radius:3px;overflow:hidden;vertical-align:middle}
-.themer button{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  background:none;border:none;padding:5px 10px;cursor:pointer;color:var(--band-mid);line-height:1.4}
-.themer button+button{border-left:1px solid var(--band-rule)}
-.themer button[aria-pressed="true"]{background:var(--band-accent);color:#0E1B2C}
-
 /* ---------- logo lockup ---------- */
 :root{ --logo-pop:#0E1B2C; --logo-tail:#0B4ED6; --logo-pop-band:#FFFFFF; --logo-tail-band:var(--band-accent); }
 html[data-theme="dark"]{ --logo-pop:#E6EBF4; --logo-tail:var(--band-accent); --logo-pop-band:#E6EBF4; --logo-tail-band:var(--band-accent); }
@@ -328,6 +321,21 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
 @media(max-width:1180px){ .logo .sub{display:none} }
 @media(max-width:860px){ .logo{font-size:17px} }
 @media print{ .logo .mk{color:#0E1B2C} }
+
+/* theme control, in the nav */
+.themer{display:inline-flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-left:10px;flex-shrink:0}
+.themer button{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  background:none;border:none;padding:6px 9px;cursor:pointer;color:var(--mid);line-height:1.4;transition:background-color .15s ease,color .15s ease}
+.themer button+button{border-left:1px solid var(--rule)}
+.themer button:hover{color:var(--ink)}
+.themer button[aria-pressed="true"]{background:var(--paper-alt);color:var(--ink);font-weight:500}
+@media(max-width:1320px){ .logo .sub{display:none} }
+@media(max-width:1120px){ .themer button{padding:6px 7px} }
+@media(max-width:860px){
+  .themer{margin:14px 0 0;width:100%}
+  .themer button{flex:1;padding:11px 0;font-size:11px}
+}
+@media print{ .themer{display:none!important} }
 </style>
 
 <style>
@@ -399,6 +407,7 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
       </li>
       <li><a href="../about/">About</a></li>
       <li><a class="navcta" href="../contact/">Demo</a></li>
+      <li class="themer" id="themer" role="group" aria-label="Colour theme"><button data-t="auto" aria-pressed="false" title="Follow your system setting">Auto</button><button data-t="light" aria-pressed="false">Light</button><button data-t="dark" aria-pressed="false">Dark</button></li>
     </ul></nav>
   </div>
 </header>
@@ -515,7 +524,6 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
     <div class="foot-bottom">
       <span>Published by Closing Foundry Ltd, registered in England and Wales, company no. 14629519.</span>
       <span style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-        <span class="themer" id="themer" role="group" aria-label="Colour theme"><button data-t="light" aria-pressed="false">Light</button><button data-t="dark" aria-pressed="false">Dark</button></span>
         <span>Not a credit signal. Not a decisioning tool.</span>
         <a href="../v1/" style="color:var(--band-mid);text-decoration:none;border-bottom:1px solid var(--band-rule)">earlier version</a>
       </span>
@@ -569,18 +577,24 @@ if(sb){ sb.addEventListener("click", function(){
 
 (function(){
   var box=document.getElementById('themer'); if(!box) return;
-  var H=document.documentElement;
-  function paint(){var t=H.getAttribute('data-theme');
-    box.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed', b.dataset.t===t?'true':'false');});}
+  var H=document.documentElement, mq=window.matchMedia('(prefers-color-scheme: dark)');
+  function resolve(pref){ return pref==='auto' ? (mq.matches?'dark':'light') : pref; }
+  function pref(){ try{ return localStorage.getItem('gs-theme') || 'auto'; }catch(e){ return 'auto'; } }
+  function paint(){ var p=pref();
+    box.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.t===p?'true':'false'); }); }
+  function apply(p, animate){
+    if(animate) H.classList.add('theming');
+    H.setAttribute('data-theme', resolve(p));
+    if(animate) setTimeout(function(){ H.classList.remove('theming'); }, 260);
+  }
   box.querySelectorAll('button').forEach(function(b){
-    b.addEventListener('click',function(){
-      H.classList.add('theming');
-      H.setAttribute('data-theme', b.dataset.t);
-      try{localStorage.setItem('gs-theme', b.dataset.t)}catch(e){}
-      paint();
-      setTimeout(function(){H.classList.remove('theming')}, 260);
+    b.addEventListener('click', function(){
+      var p=b.dataset.t;
+      try{ p==='auto' ? localStorage.removeItem('gs-theme') : localStorage.setItem('gs-theme', p); }catch(e){}
+      apply(p, true); paint();
     });
   });
+  if(mq.addEventListener) mq.addEventListener('change', function(){ if(pref()==='auto') apply('auto', true); });
   paint();
 })();
 </script>
