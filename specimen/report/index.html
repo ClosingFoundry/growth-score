@@ -991,44 +991,113 @@ section.page {
 </head>
 <body>
 <style>
-.gsx-bar{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(255,255,255,.94);
+.gsx-bar{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(255,255,255,.95);
   backdrop-filter:blur(8px);border-bottom:1px solid #E2E7F0;font-family:"IBM Plex Sans",system-ui,sans-serif}
-.gsx-in{max-width:1120px;margin:0 auto;padding:13px 28px;display:flex;align-items:center;
-  justify-content:space-between;gap:20px;flex-wrap:wrap}
+.gsx-in{max-width:1120px;margin:0 auto;padding:13px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .gsx-brand{display:flex;align-items:baseline;gap:10px;text-decoration:none}
 .gsx-brand .m{font-size:21px;font-weight:700;letter-spacing:-.01em;color:#0E1B2C}
-.gsx-brand .s{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;
-  text-transform:uppercase;color:#5F6C85}
-.gsx-nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.gsx-nav a{font-size:14px;text-decoration:none;color:#33415C;padding:7px 11px;border-radius:3px}
-.gsx-nav a:hover{background:#F4F6FA;color:#0E1B2C}
-.gsx-nav a.cta{border:1px solid #E2E7F0;font-weight:600}
-.gsx-nav a.cta:hover{border-color:#0B4ED6;color:#0B4ED6}
-.gsx-note{background:#F4F6FA;border-bottom:1px solid #E2E7F0;
-  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;color:#5F6C85;
-  padding:8px 28px;text-align:center;letter-spacing:.04em}
+.gsx-brand .s{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#5F6C85}
+.gsx-nav{display:flex;align-items:center;gap:4px}
+.gsx-nav>a{font-size:14.5px;text-decoration:none;color:#33415C;padding:8px 12px;border-radius:3px}
+.gsx-nav>a:hover{background:#F4F6FA;color:#0E1B2C}
+.gsx-nav>a.cta{border:1px solid #E2E7F0;font-weight:600}
+.gsx-nav>a.cta:hover{border-color:#0B4ED6;color:#0B4ED6}
+.gsx-drop{position:relative}
+.gsx-trig{font-family:inherit;font-size:14.5px;color:#33415C;background:none;border:none;cursor:pointer;
+  padding:8px 12px;border-radius:3px;display:flex;align-items:center;gap:7px}
+.gsx-trig:hover,.gsx-drop.open .gsx-trig{background:#F4F6FA;color:#0E1B2C}
+.gsx-car{font-size:9px;color:#5F6C85}
+.gsx-drop::after{content:"";position:absolute;top:100%;left:0;right:0;height:12px}
+.gsx-menu{display:none;position:absolute;top:calc(100% + 10px);left:0;min-width:310px;background:#fff;
+  border:1px solid #E2E7F0;border-radius:4px;box-shadow:0 10px 30px rgba(14,27,44,.10);padding:8px;z-index:60}
+.gsx-drop.open .gsx-menu{display:block}
+.gsx-menu a{display:block;text-decoration:none;padding:10px 12px;border-radius:2px;color:#0E1B2C}
+.gsx-menu a:hover{background:#F4F6FA}
+.gsx-menu b{display:block;font-size:14.5px;font-weight:600;margin-bottom:1px}
+.gsx-menu em{display:block;font-style:normal;font-size:12.5px;color:#5F6C85;line-height:1.4}
+.gsx-note{background:#F4F6FA;border-bottom:1px solid #E2E7F0;font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px;color:#5F6C85;padding:8px 28px;text-align:center;letter-spacing:.04em}
+.gsx-burger{display:none;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;background:none;border:1px solid #E2E7F0;padding:7px 12px;border-radius:3px;cursor:pointer;color:#0E1B2C}
 @media screen{ body{ padding-top:104px !important; } }
-@media(max-width:700px){
-  .gsx-in{padding:11px 18px}
+@media(max-width:860px){
+  .gsx-in{flex-wrap:wrap;padding:11px 18px}
+  .gsx-burger{display:block}
+  .gsx-nav{display:none;width:100%;flex-direction:column;align-items:stretch;gap:2px;padding-top:8px}
+  .gsx-nav.open{display:flex}
+  .gsx-drop::after{display:none}
+  .gsx-menu{position:static;box-shadow:none;border:none;border-left:2px solid #E2E7F0;border-radius:0;
+    padding:0 0 6px 14px;margin-bottom:6px;min-width:0}
+  .gsx-menu em{display:none}
+  .gsx-trig{width:100%;justify-content:space-between;font-weight:600}
   .gsx-brand .s{display:none}
-  .gsx-nav a{padding:6px 8px;font-size:13px}
-  .gsx-note{font-size:10px;padding:7px 18px}
-  @media screen{ body{ padding-top:118px !important; } }
+  @media screen{ body{ padding-top:120px !important; } }
 }
 @media print{ .gsx-bar{display:none !important} body{padding-top:0 !important} }
 </style>
 <div class="gsx-bar">
   <div class="gsx-in">
     <a class="gsx-brand" href="../../"><span class="m">Growth Score</span><span class="s">An open measurement standard</span></a>
-    <nav class="gsx-nav">
-      <a href="../../method/">Method</a>
-      <a href="../../the-experience/">The experience</a>
+    <button class="gsx-burger" id="gsxBurger" aria-expanded="false">Menu</button>
+    <nav class="gsx-nav" id="gsxNav">
+      <div class="gsx-drop">
+        <button class="gsx-trig" aria-expanded="false">The standard <span class="gsx-car">&#9662;</span></button>
+        <div class="gsx-menu">
+          <a href="../../method/"><b>Method v1.4</b><em>Questions, scales, arithmetic, bands</em></a>
+          <a href="../../the-experience/"><b>The experience</b><em>Ninety days, from both sides</em></a>
+          <a href="../../run/"><b>Run it now</b><em>Reference implementation, live in your browser</em></a>
+          <a href="../"><b>Specimen report</b><em>The full artefact a company receives</em></a>
+          <a href="../../routing/"><b>Routing</b><em>From score to the right support</em></a>
+          <a href="../../conformance/"><b>Conformance</b><em>Test vectors, manifest, verification</em></a>
+          <a href="../../integrate/"><b>Integrate</b><em>Four ways to run it, machine access</em></a>
+          <a href="../../versions/"><b>Versions</b><em>Changelog and comparability</em></a>
+          <a href="../../limits/"><b>Limits</b><em>What this doesn't do</em></a>
+        </div>
+      </div>
+      <div class="gsx-drop">
+        <button class="gsx-trig" aria-expanded="false">Who licenses it <span class="gsx-car">&#9662;</span></button>
+        <div class="gsx-menu">
+          <a href="../../banks/"><b>Banks</b><em>Which customers are building capability</em></a>
+          <a href="../../public-bodies/"><b>Public bodies</b><em>Movement, not throughput</em></a>
+          <a href="../../universities/"><b>Universities</b><em>Evidence for the next bid</em></a>
+          <a href="../../investors/"><b>Investors</b><em>Portfolio movement from day one</em></a>
+        </div>
+      </div>
       <a href="../">Specimen</a>
+      <a href="../../about/">About</a>
       <a class="cta" href="../../contact/">Contact</a>
     </nav>
   </div>
   <div class="gsx-note">Specimen report &middot; an illustrative company, not a client &middot; method v1.4 &middot; this is exactly what a company receives</div>
 </div>
+<script>
+(function(){
+  var burger=document.getElementById('gsxBurger'), nav=document.getElementById('gsxNav');
+  if(burger) burger.addEventListener('click',function(){
+    var o=nav.classList.toggle('open'); this.setAttribute('aria-expanded',o?'true':'false');
+  });
+  var touch=window.matchMedia('(max-width:860px)');
+  document.querySelectorAll('.gsx-drop').forEach(function(d){
+    var t=d.querySelector('.gsx-trig');
+    t.addEventListener('click',function(e){
+      e.stopPropagation();
+      var open=d.classList.contains('open');
+      document.querySelectorAll('.gsx-drop').forEach(function(o){o.classList.remove('open');o.querySelector('.gsx-trig').setAttribute('aria-expanded','false');});
+      if(!open){d.classList.add('open');t.setAttribute('aria-expanded','true');}
+    });
+    d.addEventListener('mouseenter',function(){ if(touch.matches) return;
+      document.querySelectorAll('.gsx-drop').forEach(function(o){o.classList.remove('open');});
+      d.classList.add('open'); t.setAttribute('aria-expanded','true'); });
+    d.addEventListener('mouseleave',function(){ if(touch.matches) return;
+      d.classList.remove('open'); t.setAttribute('aria-expanded','false'); });
+  });
+  document.addEventListener('click',function(){
+    document.querySelectorAll('.gsx-drop').forEach(function(d){d.classList.remove('open');d.querySelector('.gsx-trig').setAttribute('aria-expanded','false');});
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){
+    document.querySelectorAll('.gsx-drop').forEach(function(d){d.classList.remove('open');}); } });
+})();
+</script>
 
 <!-- ========================================================================
      1 · COVER
