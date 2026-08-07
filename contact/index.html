@@ -521,7 +521,7 @@ document.addEventListener("keydown", function(e){ if(e.key === "Escape"){
   document.querySelectorAll(".drop").forEach(function(d){ d.classList.remove("open"); }); } });
 var sb = document.getElementById("sendBtn");
 if(sb){
-  var ACCESS_KEY = "WEB3FORMS_ACCESS_KEY";   /* paste the key from web3forms.com */
+  var ACCESS_KEY = "fcd62fe9-10a4-42be-9820-1ca40f97b3a0";
   var note = document.getElementById("formNote");
   var v = function(id){ var e=document.getElementById(id); return e ? e.value.trim() : ""; };
   var say = function(msg, ok){ note.innerHTML = msg; note.style.color = ok ? "var(--mark)" : "var(--mid)"; };
@@ -536,12 +536,6 @@ if(sb){
       describes_you: v("f4"), currently_unable_to_measure: v("f5"),
       botcheck: ""
     };
-    if(ACCESS_KEY === "WEB3FORMS_ACCESS_KEY"){
-      window.location.href = "mailto:charles@closingfoundry.com?subject=" + encodeURIComponent(payload.subject)
-        + "&body=" + encodeURIComponent("Name: "+name+"\nOrganisation: "+v("f2")+"\nEmail: "+email
-        + "\nDescribes them: "+v("f4")+"\n\nCurrently unable to measure:\n"+v("f5"));
-      return;
-    }
     sb.disabled = true; sb.textContent = "Sending";
     fetch("https://api.web3forms.com/submit", {
       method: "POST",
