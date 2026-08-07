@@ -307,21 +307,6 @@ html[data-theme="dark"] img,html[data-theme="dark"] .plot{background:var(--paper
 html.theming,html.theming *{transition:background-color .22s ease,color .22s ease,border-color .22s ease,fill .22s ease,stroke .22s ease!important}
 @media print{ html[data-theme="dark"]{--ink:#0E1B2C;--ink-soft:#33415C;--mid:#5F6C85;--paper:#fff;--paper-alt:#F4F6FA;--rule:#E2E7F0;--mark:#0B4ED6;--white:#fff} }
 
-/* ---------- logo lockup ---------- */
-:root{ --logo-pop:#0E1B2C; --logo-tail:#0B4ED6; --logo-pop-band:#FFFFFF; --logo-tail-band:var(--band-accent); }
-html[data-theme="dark"]{ --logo-pop:#E6EBF4; --logo-tail:var(--band-accent); --logo-pop-band:#E6EBF4; --logo-tail-band:var(--band-accent); }
-.logo{display:inline-flex;align-items:baseline;gap:.42em;text-decoration:none;font-size:20px;flex-shrink:0}
-.logo .mk{font-family:var(--display);font-size:1em;font-weight:700;letter-spacing:-.022em;line-height:1.1;color:var(--logo-pop);white-space:nowrap}
-.logo .cohort{height:.92em;width:1.15em;align-self:baseline;display:block;flex-shrink:0}
-.logo .sub{font-family:var(--mono);font-size:.45em;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);white-space:nowrap;line-height:1.4}
-footer .logo .mk{color:var(--band-strong)}
-footer .logo .sub{color:var(--band-mid)}
-footer .logo .cohort rect{fill:var(--logo-pop-band)}
-footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7){fill:var(--logo-tail-band)}
-@media(max-width:1180px){ .logo .sub{display:none} }
-@media(max-width:860px){ .logo{font-size:17px} }
-@media print{ .logo .mk{color:#0E1B2C} }
-
 /* theme control, in the nav */
 .themer{display:inline-flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-left:10px;flex-shrink:0}
 .themer button{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
@@ -336,12 +321,28 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
   .themer button{flex:1;padding:11px 0;font-size:11px}
 }
 @media print{ .themer{display:none!important} }
+
+/* ---------- logo lockup ---------- */
+:root{ --logo-pop:#0E1B2C; --logo-tail:#0B4ED6; --logo-pop-band:#FFFFFF; --logo-tail-band:var(--band-accent); }
+html[data-theme="dark"]{ --logo-pop:#E6EBF4; --logo-tail:var(--band-accent); --logo-pop-band:#E6EBF4; --logo-tail-band:var(--band-accent); }
+.logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;font-size:20px;flex-shrink:0;line-height:1.1}
+.logo .row{display:flex;align-items:baseline;gap:.42em}
+.logo .mk{font-family:var(--display);font-size:1em;font-weight:700;letter-spacing:-.022em;line-height:1.1;color:var(--logo-pop);white-space:nowrap}
+.logo .cohort{height:.92em;width:1.15em;align-self:baseline;display:block;flex-shrink:0}
+.logo .sub{font-family:var(--mono);font-size:.45em;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);white-space:nowrap;line-height:1.4}
+footer .logo .mk{color:var(--band-strong)}
+footer .logo .sub{color:var(--band-mid)}
+footer .logo .cohort rect{fill:var(--logo-pop-band)}
+footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7){fill:var(--logo-tail-band)}
+@media(max-width:1040px){ .logo{font-size:20px} }
+@media(max-width:860px){ .logo{font-size:17px} }
+@media print{ .logo .mk{color:#0E1B2C} }
 </style>
 </head>
 <body>
 <header>
   <div class="wrap bar">
-    <a class="logo" href="../"><span class="mk">Growth Score</span><svg class="cohort" viewBox="0 0 30 24" aria-hidden="true"><rect x="0" y="16" width="1.6" height="8" fill="var(--logo-pop)"/><rect x="4" y="8" width="1.6" height="16" fill="var(--logo-pop)"/><rect x="7.2" y="12" width="1.6" height="12" fill="var(--logo-pop)"/><rect x="12.8" y="2" width="1.6" height="22" fill="var(--logo-pop)"/><rect x="16.4" y="9" width="1.6" height="15" fill="var(--logo-pop)"/><rect x="22.6" y="5" width="1.6" height="19" fill="var(--logo-tail)"/><rect x="28.4" y="15" width="1.6" height="9" fill="var(--logo-tail)"/></svg><span class="sub">An open measurement standard</span></a>
+    <a class="logo" href="../"><span class="row"><span class="mk">Growth Score</span><svg class="cohort" viewBox="0 0 30 24" aria-hidden="true"><rect x="0" y="16" width="1.6" height="8" fill="var(--logo-pop)"/><rect x="4" y="8" width="1.6" height="16" fill="var(--logo-pop)"/><rect x="7.2" y="12" width="1.6" height="12" fill="var(--logo-pop)"/><rect x="12.8" y="2" width="1.6" height="22" fill="var(--logo-pop)"/><rect x="16.4" y="9" width="1.6" height="15" fill="var(--logo-pop)"/><rect x="22.6" y="5" width="1.6" height="19" fill="var(--logo-tail)"/><rect x="28.4" y="15" width="1.6" height="9" fill="var(--logo-tail)"/></svg></span><span class="sub">An open measurement standard</span></a>
     <button class="menu" id="menuBtn" aria-expanded="false">Menu</button>
     <nav class="gs-n" id="nav"><ul>
       <li class="drop">
@@ -449,7 +450,7 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="logo" style="margin-bottom:14px"><span class="mk">Growth Score</span><svg class="cohort" viewBox="0 0 30 24" aria-hidden="true"><rect x="0" y="16" width="1.6" height="8" fill="var(--logo-pop-band)"/><rect x="4" y="8" width="1.6" height="16" fill="var(--logo-pop-band)"/><rect x="7.2" y="12" width="1.6" height="12" fill="var(--logo-pop-band)"/><rect x="12.8" y="2" width="1.6" height="22" fill="var(--logo-pop-band)"/><rect x="16.4" y="9" width="1.6" height="15" fill="var(--logo-pop-band)"/><rect x="22.6" y="5" width="1.6" height="19" fill="var(--logo-tail-band)"/><rect x="28.4" y="15" width="1.6" height="9" fill="var(--logo-tail-band)"/></svg><span class="sub">An open measurement standard</span></div>
+        <div class="logo" style="margin-bottom:14px"><span class="row"><span class="mk">Growth Score</span><svg class="cohort" viewBox="0 0 30 24" aria-hidden="true"><rect x="0" y="16" width="1.6" height="8" fill="var(--logo-pop-band)"/><rect x="4" y="8" width="1.6" height="16" fill="var(--logo-pop-band)"/><rect x="7.2" y="12" width="1.6" height="12" fill="var(--logo-pop-band)"/><rect x="12.8" y="2" width="1.6" height="22" fill="var(--logo-pop-band)"/><rect x="16.4" y="9" width="1.6" height="15" fill="var(--logo-pop-band)"/><rect x="22.6" y="5" width="1.6" height="19" fill="var(--logo-tail-band)"/><rect x="28.4" y="15" width="1.6" height="9" fill="var(--logo-tail-band)"/></svg></span><span class="sub">An open measurement standard</span></div>
         <p style="max-width:34ch">An open measurement standard for commercial capability. Free for the companies measured, licensed to the institutions that fund them.</p>
         <p style="max-width:34ch;font-size:12px;margin-top:12px">Published and maintained by Closing Foundry Ltd.</p>
       </div>
