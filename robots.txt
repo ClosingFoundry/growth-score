@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /p/
+Disallow: /the-stack/
