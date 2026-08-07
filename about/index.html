@@ -105,7 +105,7 @@ section:first-of-type{border-top:none}
   .stats{grid-template-columns:1fr 1fr!important}
   .prin{grid-template-columns:1fr 1fr!important}
   .ppl{grid-template-columns:1fr 1fr!important}
-  .foot-grid{grid-template-columns:1.4fr 1fr 1fr!important}
+  .foot-grid{grid-template-columns:1.6fr repeat(3,1fr)!important}
   .grid2{gap:30px}
   /* two-column asymmetric layouts even out before they break */
   .grid2[style*="1.15fr"],.grid2[style*="1.25fr"],.grid2[style*="1.05fr"],.grid2[style*="1.1fr"]{grid-template-columns:1fr 1fr!important}
@@ -233,7 +233,8 @@ footer{background:var(--band-bg);color:var(--band-mid);padding:52px 0 34px;font-
 footer a{color:var(--band-text);text-decoration:none}
 footer a:hover{text-decoration:underline}
 footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);margin:0 0 14px;font-weight:400}
-.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
+.foot-grid{display:grid;grid-template-columns:1.6fr repeat(5,1fr);gap:28px}
+@media(max-width:1180px){.foot-grid{grid-template-columns:1.4fr repeat(3,1fr)}}
 @media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
 .foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid var(--band-rule);font-family:var(--mono);font-size:11px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
@@ -294,13 +295,13 @@ html[data-theme="dark"]{
   --paper:#0E1B2C; --paper-alt:#16273B; --rule:var(--band-rule);
   --mark:#6E9DF2; --white:#16273B;
   --band-bg:#16273B; --band-text:#B7C3D8; --band-strong:#E6EBF4;
-  --band-mid:#8494AD; --band-accent:var(--band-accent); --band-rule:#31435F;
+  --band-mid:#8494AD; --band-accent:#8FB0F8; --band-rule:#31435F;
   --unv-bg:#33291280; --unv-text:#E0BE74; --unv-border:#7A5F26;
 }
 :root{
-  --band-bg:#0E1B2C; --band-text:var(--band-text); --band-strong:#FFFFFF;
-  --band-mid:var(--band-mid); --band-accent:var(--band-accent); --band-rule:var(--band-rule);
-  --unv-bg:var(--unv-bg); --unv-text:var(--unv-text); --unv-border:var(--unv-border);
+  --band-bg:#0E1B2C; --band-text:#C4CFE4; --band-strong:#FFFFFF;
+  --band-mid:#94A3C4; --band-accent:#8FB0F8; --band-rule:#26364F;
+  --unv-bg:#FFF4DE; --unv-text:#7A5200; --unv-border:#DDAE55;
 }
 html[data-theme="dark"] img,html[data-theme="dark"] .plot{background:var(--paper-alt)}
 html.theming,html.theming *{transition:background-color .22s ease,color .22s ease,border-color .22s ease,fill .22s ease,stroke .22s ease!important}
@@ -464,7 +465,8 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
         <a href="../how-it-works/">How it works</a><br>
         <a href="../method/">The method</a><br>
         <a href="../specimen/report/">Specimen report</a><br>
-        <a href="../run/">Run it yourself</a><br>
+        <a href="../run/">Run it yourself</a></p></div>
+      <div><h4>Using it</h4><p>
         <a href="../the-experience/">The experience</a><br>
         <a href="../routing/">Routing</a><br>
         <a href="../integrate/">Ways to run it</a></p></div>
@@ -478,8 +480,8 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
         <a href="../public-bodies/">Public bodies</a><br>
         <a href="../universities/">Universities</a><br>
         <a href="../accelerators/">Accelerators</a><br>
-        <a href="../investors/">Investors</a><br>
-        <br><br>
+        <a href="../investors/">Investors</a></p></div>
+      <div><h4>Company</h4><p>
         <a href="../about/">About</a><br>
         <a href="../contact/">Contact</a><br>
         <a href="../privacy/">Privacy</a><br>
