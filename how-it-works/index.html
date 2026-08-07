@@ -31,19 +31,20 @@ a{color:inherit}
 .vswitch a{color:var(--mark);text-decoration:none;font-weight:500}
 
 header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 0}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 0;flex-wrap:nowrap}
+.logo{flex-shrink:0}
 .logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
-.logo .mk{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-.01em}
-.logo .sub{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
-nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0;align-items:center}
-nav > ul > li > a{font-size:14.5px;text-decoration:none;color:var(--ink-soft);padding:8px 12px;border-radius:8px;display:block}
+.logo .mk{font-family:var(--display);font-size:21px;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
+.logo .sub{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);white-space:nowrap}
+nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0;align-items:center;flex-wrap:nowrap}
+nav > ul > li > a{font-size:14px;text-decoration:none;color:var(--ink-soft);padding:8px 10px;border-radius:3px;display:block;white-space:nowrap}
 nav > ul > li > a:hover{background:var(--paper-alt);color:var(--ink)}
 nav > ul > li > a.on{color:var(--mark)}
-a.navcta{border:1px solid var(--rule);font-weight:600}
+a.navcta{border:1px solid var(--rule);font-weight:600;padding:8px 18px!important}
 a.navcta:hover{border-color:var(--mark);color:var(--mark)!important}
 
 .drop{position:relative}
-.dtrig{font-family:var(--body);font-size:14.5px;color:var(--ink-soft);background:none;border:none;cursor:pointer;padding:8px 12px;border-radius:8px;display:flex;align-items:center;gap:7px}
+.dtrig{font-family:var(--body);font-size:14px;color:var(--ink-soft);background:none;border:none;cursor:pointer;padding:8px 10px;border-radius:3px;display:flex;align-items:center;gap:6px;white-space:nowrap}
 .dtrig:hover,.drop.open .dtrig{background:var(--paper-alt);color:var(--ink)}
 .drop.hason .dtrig{color:var(--mark)}
 .caret{font-size:9px;color:var(--mid);transition:transform .18s}
@@ -91,6 +92,8 @@ section:first-of-type{border-top:none}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:1180px){ .logo .sub{display:none} }
+@media(max-width:1040px){ nav > ul > li > a, .dtrig{font-size:13.2px;padding:8px 8px} }
 @media(max-width:860px){
   .grid2,.grid3,.grid4{grid-template-columns:1fr;gap:28px}
   nav{display:none;width:100%} nav.open{display:block}
@@ -329,7 +332,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
         </div>
       </li>
       <li><a href="../about/">About</a></li>
-      <li><a class="navcta" href="../contact/">Book a demonstration</a></li>
+      <li><a class="navcta" href="../contact/">Demo</a></li>
     </ul></nav>
   </div>
 </header>
