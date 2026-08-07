@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /p/
-Disallow: /the-stack/
 Disallow: /brand-marks/
 Sitemap: https://score.closingfoundry.com/sitemap.xml
