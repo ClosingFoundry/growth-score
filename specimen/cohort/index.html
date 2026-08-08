@@ -413,6 +413,20 @@ html[data-theme="dark"]{
 .rline{border:1px solid var(--mark);border-radius:3px;padding:24px 26px;margin-top:20px;background:var(--paper-alt)}
 .rline p.rq{font-size:23px;line-height:1.4;font-weight:600;margin:0;max-width:44ch}
 .rline .src{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);margin:0 0 12px}
+
+.lensbar{display:flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-top:18px}
+.lensbar button{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--white);border:none;border-left:1px solid var(--rule);padding:11px 17px;cursor:pointer;color:var(--mid);line-height:1.4}
+.lensbar button:first-child{border-left:none}
+.lensbar button:hover{color:var(--ink)}
+.lensbar button[aria-pressed=true]{background:var(--mark);color:#fff;font-weight:500}
+[data-theme="dark"] .lensbar button[aria-pressed=true]{color:var(--paper)!important}
+.lens[hidden]{display:none}
+.lens+.lens{margin-top:0}
+@media(max-width:860px){
+  .lensbar{flex-direction:column}
+  .lensbar button{border-left:none;border-top:1px solid var(--rule);text-align:left}
+  .lensbar button:first-child{border-top:none}
+}
 .mde{border-left:2px solid var(--rule);padding:2px 0 2px 16px;margin-top:20px;max-width:62ch}
 @media(max-width:860px){
   .rpt-head{grid-template-columns:1fr 1fr}
@@ -561,29 +575,109 @@ html[data-theme="dark"]{
           <hr class="rule" style="margin:32px 0">
 
           <p class="eyebrow">The reporting line</p>
-          <h2 style="font-size:23px;margin-bottom:6px">The sentence a return has to contain.</h2>
-          <p style="max-width:62ch">An institution does not file a heat grid. It files a number against a published indicator. This block shows how the same results read against one such indicator, as an example of the mapping rather than as a claim about any particular body.</p>
+          <h2 style="font-size:23px;margin-bottom:6px">The evidence is the same. The line you report against is not.</h2>
+          <p style="max-width:62ch">Every institution that commissions this reports to somebody else, and each reports against a different published line. <b>Nothing above this point changes when you switch.</b> The same 29 matched companies, the same grid, the same limits. Only the mapping changes, and every mapping is published here so that any of them can be disputed.</p>
 
-          <div class="rline">
-            <p class="src">Integrated Settlement Outcomes Framework &middot; Outcome 1 &middot; indicator 1.3 &middot; supported businesses demonstrating improved practice</p>
-            <p class="rq">Of 29 businesses measured twice in this period, 19 demonstrated improved practice on at least one dimension read by this instrument, and 4 on all three.</p>
+          <div class="lensbar" id="lensbar" role="group" aria-label="Choose a reporting line">
+            <button type="button" data-lens="public-bodies" aria-pressed="true">Public bodies</button>
+            <button type="button" data-lens="banks" aria-pressed="false">Banks</button>
+            <button type="button" data-lens="accelerators" aria-pressed="false">Accelerators</button>
+            <button type="button" data-lens="universities" aria-pressed="false">Universities</button>
+            <button type="button" data-lens="investors" aria-pressed="false">Investors</button>
           </div>
 
-          <div class="tw"><table style="margin-top:22px">
-            <thead><tr><th>Dimension, as published</th><th>Read here</th><th style="text-align:right">Improved</th><th>What it is read from</th></tr></thead>
-            <tbody>
-              <tr><td>Engaged in new markets</td><td>Yes</td><td style="text-align:right">13 of 29</td><td>The Demand row, Product and People cells</td></tr>
-              <tr><td>Adopting new to firm technologies or processes</td><td>Yes</td><td style="text-align:right">16 of 29</td><td>The Process and Repeatability columns, all four stages</td></tr>
-              <tr><td>Scaling</td><td>In part</td><td style="text-align:right">7 of 29</td><td>The Expand row. Read as the capability to grow existing accounts, not as headcount or turnover, neither of which this instrument measures</td></tr>
-              <tr><td>With new to market products or services</td><td>No</td><td style="text-align:right">Not read</td><td>Product innovation sits outside what this instrument asks about</td></tr>
-              <tr><td>Accessing better finance and funding</td><td>No</td><td style="text-align:right">Not read</td><td>Not asked, and deliberately so. This is not a credit or eligibility signal</td></tr>
-            </tbody>
-          </table></div>
-          <p class="small" style="margin-top:14px">Nineteen companies improved on at least one dimension: 4 on all three, 9 on two, 6 on one. Ten showed no improvement on any dimension read here. Counts are of companies, not of improvements, so they do not sum to the column above.</p>
+          <div class="lens" data-lens="public-bodies" role="region" aria-label="Reporting line for public bodies">
+            <div class="rline">
+              <p class="src">Integrated Settlement Outcomes Framework &middot; Outcome 1 &middot; indicator 1.3 &middot; supported businesses demonstrating improved practice</p>
+              <p class="rq">Of 29 businesses measured twice in this period, 19 demonstrated improved practice on at least one dimension read by this instrument, and 4 on all three.</p>
+            </div>
+            <div class="tw"><table style="margin-top:22px">
+              <thead><tr><th>Dimension, as published</th><th>Read here</th><th style="text-align:right">Improved</th><th>What it is read from</th></tr></thead>
+              <tbody>
+                <tr><td>Engaged in new markets</td><td>Yes</td><td style="text-align:right">13 of 29</td><td>The Demand row, Product and People cells</td></tr>
+                <tr><td>Adopting new to firm technologies or processes</td><td>Yes</td><td style="text-align:right">16 of 29</td><td>The Process and Repeatability columns, all four stages</td></tr>
+                <tr><td>Scaling</td><td>In part</td><td style="text-align:right">7 of 29</td><td>The Expand row. Read as the capability to grow existing accounts, not as headcount or turnover, neither of which this instrument measures</td></tr>
+                <tr><td>With new to market products or services</td><td>No</td><td style="text-align:right">Not read</td><td>Product innovation sits outside what this instrument asks about</td></tr>
+                <tr><td>Accessing better finance and funding</td><td>No</td><td style="text-align:right">Not read</td><td>Not asked, and deliberately so. This is not a credit or eligibility signal</td></tr>
+              </tbody>
+            </table></div>
+            <p class="small" style="margin-top:14px">Nineteen companies improved on at least one dimension: 4 on all three, 9 on two, 6 on one. Ten showed no improvement on any dimension read here. Counts are of companies, not of improvements, so they do not sum to the column above.</p>
+            <p style="margin-top:24px;max-width:62ch"><b>The arithmetic a commissioner can then do.</b> This cohort returned 19 companies demonstrating improved practice from 48 invited. A target of 500 over a settlement period would need roughly 26 cohorts run at this size and this rate. That number may be uncomfortable, and it is the point: it can only be calculated once improvement is measured rather than counted as activity. A count of businesses supported cannot produce it.</p>
+            <p class="small">The indicator, its five dimensions and its wording are taken from the published framework. The mapping is ours, is stated so it can be disputed, and is not endorsed by any authority.</p>
+          </div>
 
-          <p style="margin-top:24px;max-width:62ch"><b>The arithmetic a commissioner can then do.</b> This cohort returned 19 companies demonstrating improved practice from 48 invited. A target of 500 over a settlement period would need roughly 26 cohorts run at this size and this rate. That number may be uncomfortable, and it is the point: it can only be calculated once improvement is measured rather than counted as activity. A count of businesses supported cannot produce it.</p>
+          <div class="lens" data-lens="banks" role="region" aria-label="Reporting line for banks" hidden>
+            <div class="rline">
+              <p class="src">Portfolio band migration &middot; Forming 0 to 39 &middot; Developing 40 to 59 &middot; Established 60 to 79 &middot; Durable 80 to 100</p>
+              <p class="rq">Of 29 businesses measured twice, 12 moved up a band, 14 stayed in the same band, and 3 moved down.</p>
+            </div>
+            <div class="tw"><table style="margin-top:22px">
+              <thead><tr><th>Band</th><th style="text-align:right">At intake</th><th style="text-align:right">At rescore</th><th style="text-align:right">Change</th><th>What it means</th></tr></thead>
+              <tbody>
+                <tr><td>Forming, 0 to 39</td><td style="text-align:right">12</td><td style="text-align:right">4</td><td style="text-align:right" class="up">&minus;8 in band</td><td>The thinnest commercial capability. Eight companies left it</td></tr>
+                <tr><td>Developing, 40 to 59</td><td style="text-align:right">13</td><td style="text-align:right">15</td><td style="text-align:right">+2</td><td>Where the mass of this portfolio sits, before and after</td></tr>
+                <tr><td>Established, 60 to 79</td><td style="text-align:right">4</td><td style="text-align:right">10</td><td style="text-align:right" class="up">+6</td><td>Repeatable practice in most cells</td></tr>
+                <tr><td>Durable, 80 to 100</td><td style="text-align:right">0</td><td style="text-align:right">0</td><td style="text-align:right" class="flat">No change</td><td>No company in this cohort reached it, and the report says so</td></tr>
+              </tbody>
+            </table></div>
+            <p style="margin-top:24px;max-width:62ch"><b>Downward movement is reported with the same weight as upward.</b> Three companies moved down a band over the window. A programme buyer would rather that number were not on the page. For a portfolio holder it is the most useful figure in the report, which is why this is a lens on one document rather than a separate one.</p>
+            <p class="small"><b>This is not a credit signal and must not be used as one.</b> It is not an input to a lending, pricing or eligibility decision, and no covenant, limit or review should reference it. Published literature finds that baseline business practice scores are associated with survival and sales growth. That is context for why the measure is worth having. It is not a claim about this instrument, and it will not be until this register's own data supports it.</p>
+          </div>
 
-          <p class="small">The indicator, its five dimensions and its wording are taken from the published framework. The mapping above is ours, is stated so it can be disputed, and is not endorsed by any authority.</p>
+          <div class="lens" data-lens="accelerators" role="region" aria-label="Reporting line for accelerators" hidden>
+            <div class="rline">
+              <p class="src">Cohort over cohort &middot; same instrument &middot; same matched pair logic &middot; same programme</p>
+              <p class="rq">This cohort improved 19 of 29. The programme's previous cohort improved 13 of 24. At these sizes that difference cannot be told apart from noise, and the report says so rather than claiming a better year.</p>
+            </div>
+            <div class="tw"><table style="margin-top:22px">
+              <thead><tr><th>Measure</th><th style="text-align:right">Previous cohort</th><th style="text-align:right">This cohort</th><th>Reading</th></tr></thead>
+              <tbody>
+                <tr><td>Matched pairs</td><td style="text-align:right">24</td><td style="text-align:right">29</td><td>Both below the size at which a difference becomes readable</td></tr>
+                <tr><td>Improved on at least one dimension</td><td style="text-align:right">13 &middot; 54%</td><td style="text-align:right">19 &middot; 66%</td><td>Not distinguishable</td></tr>
+                <tr><td>Mean capability change</td><td style="text-align:right">+6</td><td style="text-align:right">+9</td><td>Not distinguishable</td></tr>
+                <tr><td>Cells that moved</td><td style="text-align:right">6 of 16</td><td style="text-align:right">9 of 16</td><td>Different cells moved, which is the readable finding</td></tr>
+                <tr><td>Cells that went backwards</td><td style="text-align:right">1</td><td style="text-align:right">3</td><td>All three in People, in the later stages</td></tr>
+              </tbody>
+            </table></div>
+            <p style="margin-top:24px;max-width:62ch"><b>Which cells moved is readable long before whether the cohort was better.</b> This programme shifted Process and Repeatability in both cohorts and has not yet shifted People in Closing or Expand in either. That is a curriculum finding, and it is available at this sample size when a headline comparison is not.</p>
+            <p class="small">A cohort is compared only against other cohorts run by the same programme on the same method version. No comparison is drawn against another provider's cohorts, at any sample size, and no such comparison appears anywhere in this product.</p>
+          </div>
+
+          <div class="lens" data-lens="universities" role="region" aria-label="Reporting line for universities" hidden>
+            <div class="rline">
+              <p class="src">Evidence for a funder &middot; commercial capability of supported ventures</p>
+              <p class="rq">Of 29 ventures measured twice, 19 demonstrated improved commercial practice on at least one dimension, and every underlying result can be checked by the funder without access to your systems.</p>
+            </div>
+            <div class="tw"><table style="margin-top:22px">
+              <thead><tr><th>What a funder asks at renewal</th><th>What this answers</th><th>What it does not</th></tr></thead>
+              <tbody>
+                <tr><td>How many ventures did you support</td><td>48 invited, 41 measured, 29 measured twice, stated with the exclusions</td><td>Nothing. This is the count you already report</td></tr>
+                <tr><td>Did their commercial capability change</td><td>19 of 29 improved on at least one dimension, at cell level, signed</td><td>It does not say your support caused it</td></tr>
+                <tr><td>Where is your provision short</td><td>People in Closing and Expand went backwards while Process rose</td><td>It does not rank your providers</td></tr>
+                <tr><td>Can we verify it</td><td>Published method, published version, published conformance vectors, and a per company result the venture also holds</td><td>It is not an audit and does not carry assurance</td></tr>
+              </tbody>
+            </table></div>
+            <p style="margin-top:24px;max-width:62ch"><b>The Knowledge Exchange Framework measures institutional activity, not the commercial capability of the companies.</b> Nothing here is a KEF metric and this report should not be submitted as one. It is supporting evidence for a working with business narrative, and it is the part of that narrative you currently cannot evidence.</p>
+            <p class="small">Spinouts, student ventures and externally referred companies are reported separately where the institution asks for it, on the same instrument and with the same exclusions stated.</p>
+          </div>
+
+          <div class="lens" data-lens="investors" role="region" aria-label="Reporting line for investors" hidden>
+            <div class="rline">
+              <p class="src">Portfolio reporting &middot; the same instrument applied across holdings</p>
+              <p class="rq">Of 29 portfolio companies measured twice, 12 moved up a band and 3 moved down. The three that moved down are the conversation this quarter.</p>
+            </div>
+            <div class="tw"><table style="margin-top:22px">
+              <thead><tr><th>Band</th><th style="text-align:right">At intake</th><th style="text-align:right">At rescore</th><th>What it changes in the job</th></tr></thead>
+              <tbody>
+                <tr><td>Forming, 0 to 39</td><td style="text-align:right">12</td><td style="text-align:right">4</td><td>The companies where a first commercial hire is premature</td></tr>
+                <tr><td>Developing, 40 to 59</td><td style="text-align:right">13</td><td style="text-align:right">15</td><td>Where most support hours go, and where they are hardest to aim</td></tr>
+                <tr><td>Established, 60 to 79</td><td style="text-align:right">4</td><td style="text-align:right">10</td><td>Ready for the introductions that are worth spending relationships on</td></tr>
+                <tr><td>Durable, 80 to 100</td><td style="text-align:right">0</td><td style="text-align:right">0</td><td>None yet, and the report does not round up to suggest otherwise</td></tr>
+              </tbody>
+            </table></div>
+            <p style="margin-top:24px;max-width:62ch"><b>The same judgement, applied the same way, across every holding.</b> One instrument across the portfolio means a company that looks weak is weak against the same yardstick as the one that looks strong, and the reason is written down rather than recalled from a board meeting.</p>
+            <p class="small"><b>Not a valuation input and not an eligibility signal.</b> It is not a mark, it does not belong in a fund report as a performance figure, and it must not inform a follow on decision on its own. Companies see their own result in full, which is a condition of running it, not a courtesy.</p>
+          </div>
 
           <hr class="rule" style="margin:32px 0">
 
@@ -722,6 +816,27 @@ if(sb){ sb.addEventListener("click", function(){
 }); }
 
 
+
+(function(){
+  var bar=document.getElementById('lensbar'); if(!bar) return;
+  var panels=[].slice.call(document.querySelectorAll('.lens'));
+  var keys=panels.map(function(p){ return p.getAttribute('data-lens'); });
+  function show(k){
+    panels.forEach(function(p){ p.hidden = (p.getAttribute('data-lens')!==k); });
+    bar.querySelectorAll('button').forEach(function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-lens')===k ? 'true':'false');
+    });
+  }
+  bar.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var k=b.getAttribute('data-lens');
+      show(k);
+      if(history.replaceState) history.replaceState(null,'','#'+k);
+    });
+  });
+  var h=(location.hash||'').replace('#','');
+  show(keys.indexOf(h)>-1 ? h : 'public-bodies');
+})();
 
 (function(){
   var box=document.getElementById('themer'); if(!box) return;
