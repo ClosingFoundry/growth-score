@@ -40,6 +40,11 @@ document.documentElement.setAttribute('data-theme',t);})();</script>
   --mono:"IBM Plex Mono",ui-monospace,monospace;
 }
 *{box-sizing:border-box}
+[data-theme="dark"] .btn,[data-theme="dark"] .navcta,[data-theme="dark"] .toggle button[aria-pressed=true]{color:var(--paper)!important}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:3px;font-size:14px;line-height:1.4;text-decoration:none}
+.skip:focus{left:8px;top:8px}
+
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
 a{color:inherit}
@@ -364,6 +369,7 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header>
   <div class="wrap bar">
     <a class="logo" href="../"><span class="row"><span class="mk">Growth Score</span><svg class="cohort" viewBox="0 0 30 24" aria-hidden="true"><rect x="0" y="16" width="1.6" height="8" fill="var(--logo-pop)"/><rect x="4" y="8" width="1.6" height="16" fill="var(--logo-pop)"/><rect x="7.2" y="12" width="1.6" height="12" fill="var(--logo-pop)"/><rect x="12.8" y="2" width="1.6" height="22" fill="var(--logo-pop)"/><rect x="16.4" y="9" width="1.6" height="15" fill="var(--logo-pop)"/><rect x="22.6" y="5" width="1.6" height="19" fill="var(--logo-tail)"/><rect x="28.4" y="15" width="1.6" height="9" fill="var(--logo-tail)"/></svg></span><span class="sub">An open measurement standard</span></a>
@@ -412,7 +418,7 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
     </ul></nav>
   </div>
 </header>
-<main>
+<main id="main">
 <div class="page on">
   <section class="hero">
     <div class="narrow">
