@@ -40,6 +40,11 @@ document.documentElement.setAttribute('data-theme',t);})();</script>
   --mono:"IBM Plex Mono",ui-monospace,monospace;
 }
 *{box-sizing:border-box}
+[data-theme="dark"] .btn,[data-theme="dark"] .navcta,[data-theme="dark"] .toggle button[aria-pressed=true]{color:var(--paper)!important}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:3px;font-size:14px;line-height:1.4;text-decoration:none}
+.skip:focus{left:8px;top:8px}
+
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
 a{color:inherit}
@@ -357,6 +362,7 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header>
   <div class="wrap bar">
     <a class="logo" href="../"><span class="row"><span class="mk">Growth Score</span><svg class="cohort" viewBox="0 0 30 24" aria-hidden="true"><rect x="0" y="16" width="1.6" height="8" fill="var(--logo-pop)"/><rect x="4" y="8" width="1.6" height="16" fill="var(--logo-pop)"/><rect x="7.2" y="12" width="1.6" height="12" fill="var(--logo-pop)"/><rect x="12.8" y="2" width="1.6" height="22" fill="var(--logo-pop)"/><rect x="16.4" y="9" width="1.6" height="15" fill="var(--logo-pop)"/><rect x="22.6" y="5" width="1.6" height="19" fill="var(--logo-tail)"/><rect x="28.4" y="15" width="1.6" height="9" fill="var(--logo-tail)"/></svg></span><span class="sub">An open measurement standard</span></a>
@@ -405,7 +411,7 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
     </ul></nav>
   </div>
 </header>
-<main>
+<main id="main">
 <div class="page on">
   <section class="hero">
     <div class="narrow">
@@ -418,20 +424,19 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
   <section>
     <div class="narrow">
       <h2>Test vectors</h2>
-      <pre><span class="c">// one vector from vectors.json</span>
+      <pre><span class="c">// v1.4-018, verbatim from /method/v1.4/vectors.json</span>
 {
-  <span class="s">"id"</span>: <span class="s">"v1.4-014"</span>,
-  <span class="s">"description"</span>: <span class="s">"systemic cause differs from local cause"</span>,
-  <span class="s">"input"</span>:  { <span class="s">"capability"</span>: [<span class="n">4,3,3,3,2,3,2,3</span>, <span class="c">/* ...32 */</span>],
-              <span class="s">"momentum"</span>:   [<span class="n">3,3,2,3,3</span>] },
+  <span class="s">"id"</span>: <span class="s">"v1.4-018"</span>,
+  <span class="s">"description"</span>: <span class="s">"seeded spread"</span>,
+  <span class="s">"input"</span>:  { <span class="s">"capability"</span>: [<span class="n">5,3,3,1,2,5,4,4</span>, <span class="c">/* ...32 in all */</span>],
+              <span class="s">"momentum"</span>:   [<span class="n">2,5,2,1,1</span>] },
   <span class="s">"expect"</span>: {
-    <span class="s">"score"</span>: <span class="n">52</span>,
+    <span class="s">"score"</span>: <span class="n">53</span>,
     <span class="s">"band"</span>: <span class="s">"Developing"</span>,
     <span class="s">"lens"</span>: <span class="s">"Control"</span>,
-    <span class="s">"primary_stage"</span>: <span class="s">"Closing"</span>,
-    <span class="s">"local_root_cause"</span>: <span class="s">"Process"</span>,
-    <span class="s">"systemic_root_cause"</span>: <span class="s">"Process"</span>,
-    <span class="s">"confidence"</span>: <span class="s">"Medium"</span>
+    <span class="s">"primary_stage"</span>: <span class="s">"Sales Process"</span>,
+    <span class="s">"local_root_cause"</span>: <span class="s">"Repeatability"</span>,
+    <span class="s">"systemic_root_cause"</span>: <span class="s">"People"</span>
   }
 }</pre>
       <p>A conforming implementation returns the expected output for every published vector. A non-conforming one doesn’t, and can’t use the name.</p>
