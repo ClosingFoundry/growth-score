@@ -18,6 +18,11 @@
   --mono:"IBM Plex Mono",ui-monospace,monospace;
 }
 *{box-sizing:border-box}
+[data-theme="dark"] .btn,[data-theme="dark"] .navcta,[data-theme="dark"] .toggle button[aria-pressed=true]{color:var(--paper)!important}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:3px;font-size:14px;line-height:1.4;text-decoration:none}
+.skip:focus{left:8px;top:8px}
+
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
 a{color:inherit}
@@ -267,6 +272,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header>
   <div class="wrap bar">
     <a class="logo" href="../"><span class="mk">Growth Score</span><span class="sub">An open measurement standard</span></a>
@@ -301,7 +307,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
     </ul></nav>
   </div>
 </header>
-<main>
+<main id="main">
 <div class="page on">
   <section class="hero">
     <div class="wrap">
