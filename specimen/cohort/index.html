@@ -363,7 +363,7 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
 <style>
 .rpt{border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-top:30px}
 .rpt-head{background:var(--paper-alt);border-bottom:1px solid var(--rule);padding:22px 26px;
-  display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+  display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
 .rpt-head div span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:5px}
 .rpt-head div b{font-size:15px;font-weight:600}
 .rpt-body{padding:28px 26px}
@@ -383,10 +383,42 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
 .rowtab td.n{text-align:right;padding-right:22px}
 .up{color:var(--mark);font-weight:600}
 .flat{color:var(--mid)}
+
+/* intensity ramp, from the published design system */
+:root{
+  --data-1:#4F80E2; --data-2:#85A7EB; --data-3:#B6CAF3; --data-4:#E2EAFA;
+  --data-1-t:#FFFFFF; --data-2-t:var(--ink); --data-3-t:var(--ink); --data-4-t:var(--ink);
+  --up-3:#2F62C9; --up-2:#7BA0E8; --up-1:#C7D8F7;
+  --dn-3:#A85A2E; --dn-2:#D69B72; --dn-1:#F0DACA;
+  --nil:#EEF1F6;
+  --up-3-t:#FFFFFF; --up-2-t:var(--ink); --up-1-t:var(--ink);
+  --dn-3-t:#FFFFFF; --dn-2-t:var(--ink); --dn-1-t:var(--ink); --nil-t:var(--mid);
+  --dn-text:#A85A2E;
+}
+html[data-theme="dark"]{
+  --data-1:#3D6BC4; --data-2:#2A4B85; --data-3:#1E3255; --data-4:#182742;
+  --data-1-t:#FFFFFF; --data-2-t:#FFFFFF; --data-3-t:#E6EBF4; --data-4-t:#E6EBF4;
+  --up-3:#3D6BC4; --up-2:#2A4B85; --up-1:#1E3255;
+  --dn-3:#A6653A; --dn-2:#6B452A; --dn-1:#3A2A1E;
+  --nil:#22344B;
+  --up-3-t:#FFFFFF; --up-2-t:#FFFFFF; --up-1-t:#E6EBF4;
+  --dn-3-t:#FFFFFF; --dn-2-t:#FFFFFF; --dn-1-t:#E6EBF4; --nil-t:#8494AD;
+  --dn-text:#D69B72;
+}
+.dn{color:var(--dn-text);font-weight:600}
+
+.mkey{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;font-family:var(--mono);font-size:11px;color:var(--mid);align-items:center}
+.mkey i{font-style:normal;display:inline-flex;align-items:center;gap:7px}
+.mkey b{display:inline-block;width:26px;height:12px;border-radius:2px}
+.rline{border:1px solid var(--mark);border-radius:3px;padding:24px 26px;margin-top:20px;background:var(--paper-alt)}
+.rline p.rq{font-size:23px;line-height:1.4;font-weight:600;margin:0;max-width:44ch}
+.rline .src{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);margin:0 0 12px}
+.mde{border-left:2px solid var(--rule);padding:2px 0 2px 16px;margin-top:20px;max-width:62ch}
 @media(max-width:860px){
   .rpt-head{grid-template-columns:1fr 1fr}
   .big-move{grid-template-columns:1fr 1fr}
   .cellgrid{grid-template-columns:78px repeat(4,1fr)}
+  .rline p.rq{font-size:20px}
 }
 </style>
 </head>
@@ -456,8 +488,9 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
       <div class="rpt">
         <div class="rpt-head">
           <div><span>Cohort</span><b>Illustrative programme</b></div>
-          <div><span>Companies invited</span><b>48</b></div>
+          <div><span>Invited</span><b>48</b></div>
           <div><span>Baseline / endline</span><b>41 / 29</b></div>
+          <div><span>Coverage</span><b>29 of 41 &middot; 71%</b></div>
           <div><span>Window</span><b>Feb to May 2026</b></div>
           <div><span>Method version</span><b>v1.4</b></div>
         </div>
@@ -476,9 +509,81 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
 
           <p class="eyebrow">Where the cohort is concentrated</p>
           <h2 style="font-size:23px;margin-bottom:6px">Not 41 problems. One problem, 23 times.</h2>
-          <p style="max-width:62ch">Mean score per cell across the 41 companies measured at baseline, on a five point scale. Darker is weaker.</p>
-          <div class="cellgrid"><div></div><div class="hd">Product</div><div class="hd">People</div><div class="hd">Process</div><div class="hd">Repeatability</div><div class="lab">Demand</div><div class="c" style="background:var(--data-3);color:var(--ink)">3.1</div><div class="c" style="background:var(--data-3);color:var(--ink)">2.8</div><div class="c" style="background:var(--data-2);color:#fff">2.6</div><div class="c" style="background:var(--data-1);color:#fff">2.2</div><div class="lab">Sales Process</div><div class="c" style="background:var(--data-4);color:var(--ink)">3.4</div><div class="c" style="background:var(--data-3);color:var(--ink)">3.0</div><div class="c" style="background:var(--data-3);color:var(--ink)">2.7</div><div class="c" style="background:var(--data-1);color:#fff">2.1</div><div class="lab">Closing</div><div class="c" style="background:var(--data-4);color:var(--ink)">3.2</div><div class="c" style="background:var(--data-3);color:var(--ink)">2.9</div><div class="c" style="background:var(--data-2);color:#fff">2.3</div><div class="c" style="background:var(--data-1);color:#fff">1.9</div><div class="lab">Expand</div><div class="c" style="background:var(--data-3);color:var(--ink)">2.9</div><div class="c" style="background:var(--data-3);color:var(--ink)">2.7</div><div class="c" style="background:var(--data-2);color:#fff">2.4</div><div class="c" style="background:var(--data-1);color:#fff">2.0</div></div>
+          <p style="max-width:62ch">Mean score per cell across the 41 companies measured at baseline, on a five point scale. Stronger blue is weaker. Every cell carries its number, so the colour is never the only thing saying it.</p>
+          <div class="cellgrid"><div></div><div class="hd">Product</div><div class="hd">People</div><div class="hd">Process</div><div class="hd">Repeatability</div><div class="lab">Demand</div><div class="c" style="background:var(--data-4);color:var(--data-4-t)">2.6</div><div class="c" style="background:var(--data-3);color:var(--data-3-t)">2.3</div><div class="c" style="background:var(--data-2);color:var(--data-2-t)">2.2</div><div class="c" style="background:var(--data-1);color:var(--data-1-t)">1.8</div><div class="lab">Sales Process</div><div class="c" style="background:var(--data-4);color:var(--data-4-t)">2.8</div><div class="c" style="background:var(--data-4);color:var(--data-4-t)">2.5</div><div class="c" style="background:var(--data-3);color:var(--data-3-t)">2.3</div><div class="c" style="background:var(--data-1);color:var(--data-1-t)">1.8</div><div class="lab">Closing</div><div class="c" style="background:var(--data-4);color:var(--data-4-t)">2.5</div><div class="c" style="background:var(--data-3);color:var(--data-3-t)">2.3</div><div class="c" style="background:var(--data-2);color:var(--data-2-t)">1.9</div><div class="c" style="background:var(--data-1);color:var(--data-1-t)">1.6</div><div class="lab">Expand</div><div class="c" style="background:var(--data-4);color:var(--data-4-t)">2.5</div><div class="c" style="background:var(--data-3);color:var(--data-3-t)">2.3</div><div class="c" style="background:var(--data-2);color:var(--data-2-t)">2.0</div><div class="c" style="background:var(--data-1);color:var(--data-1-t)">1.8</div></div>
           <p style="margin-top:20px;max-width:62ch"><b>Repeatability is the weakest column across every stage, and Closing is the weakest row.</b> Twenty three of the forty one companies carry Closing and Repeatability as their primary reading. That is a commissioning finding, not forty one separate coaching problems.</p>
+          <p class="small">Cell mean across all sixteen cells is 2.20, which is the 44 shown above. The twelve companies that did not return for an endline had a baseline mean of 43, within one point of the twenty nine that did, so the matched set is not visibly different from the set that dropped out. That check is printed because a reader should not have to ask for it.</p>
+
+          <hr class="rule" style="margin:32px 0">
+
+          <p class="eyebrow">What moved, cell by cell</p>
+          <h2 style="font-size:23px;margin-bottom:6px">Nine cells moved. Three went backwards.</h2>
+          <p style="max-width:62ch">Change per cell between intake and rescore, across the 29 companies measured twice, on the same five point scale. Every value carries its sign, so up and down are readable without relying on colour.</p>
+          <div class="cellgrid"><div></div><div class="hd">Product</div><div class="hd">People</div><div class="hd">Process</div><div class="hd">Repeatability</div><div class="lab">Demand</div><div class="c" style="background:var(--up-2);color:var(--up-2-t)">+0.5</div><div class="c" style="background:var(--nil);color:var(--nil-t)">+0.2</div><div class="c" style="background:var(--up-2);color:var(--up-2-t)">+0.6</div><div class="c" style="background:var(--up-3);color:var(--up-3-t)">+1.1</div><div class="lab">Sales Process</div><div class="c" style="background:var(--nil);color:var(--nil-t)">+0.3</div><div class="c" style="background:var(--nil);color:var(--nil-t)">+0.1</div><div class="c" style="background:var(--up-2);color:var(--up-2-t)">+0.7</div><div class="c" style="background:var(--up-3);color:var(--up-3-t)">+1.3</div><div class="lab">Closing</div><div class="c" style="background:var(--up-2);color:var(--up-2-t)">+0.6</div><div class="c" style="background:var(--dn-2);color:var(--dn-2-t)">&minus;0.5</div><div class="c" style="background:var(--up-3);color:var(--up-3-t)">+1.0</div><div class="c" style="background:var(--up-3);color:var(--up-3-t)">+1.5</div><div class="lab">Expand</div><div class="c" style="background:var(--dn-2);color:var(--dn-2-t)">&minus;0.4</div><div class="c" style="background:var(--dn-2);color:var(--dn-2-t)">&minus;0.6</div><div class="c" style="background:var(--up-2);color:var(--up-2-t)">+0.6</div><div class="c" style="background:var(--nil);color:var(--nil-t)">+0.2</div></div>
+          <div class="mkey">
+            <i><b style="background:var(--up-3)"></b>Improved, larger</i>
+            <i><b style="background:var(--up-2)"></b>Improved</i>
+            <i><b style="background:var(--nil)"></b>Not distinguishable from noise</i>
+            <i><b style="background:var(--dn-2)"></b>Declined</i>
+          </div>
+
+          <p style="margin-top:24px;max-width:62ch"><b>Process and Repeatability rose in every stage. People fell in the two later stages.</b> That is a specific finding, and it is not the one a programme would choose. The support this cohort took up was process shaped, and process work did not hold the People reading in Closing and Expand.</p>
+
+          <div class="mde">
+            <p class="small" style="margin:0"><b>What counts as movement here.</b> At 29 matched pairs, a change smaller than 0.4 on a cell, or 7 points on the 100 point scale, cannot be told apart from measurement noise at conventional confidence. Four cells fall below that threshold and are marked as such rather than counted as movement. The calculation assumes a test retest correlation of 0.7 and the spread observed in this cohort. Both are stated so the arithmetic can be checked.</p>
+          </div>
+
+          <p class="small" style="margin-top:22px">The four cells that did not move: Demand and People, Sales Process and Product, Sales Process and People, Expand and Repeatability.</p>
+
+          <div class="tw"><table class="rowtab">
+            <thead><tr><th>Stage</th><th>Root cause</th><th style="text-align:right">Intake</th><th style="text-align:right">Endline</th><th style="text-align:right">Change</th><th>Reading</th></tr></thead>
+            <tbody>
+              <tr><td>Demand</td><td>Product</td><td class="n">2.6</td><td class="n">3.1</td><td class="n up">+0.5</td><td>Improved</td></tr>
+              <tr><td>Demand</td><td>People</td><td class="n">2.3</td><td class="n">2.5</td><td class="n flat">+0.2</td><td>Not distinguishable</td></tr>
+              <tr><td>Demand</td><td>Process</td><td class="n">2.2</td><td class="n">2.8</td><td class="n up">+0.6</td><td>Improved</td></tr>
+              <tr><td>Demand</td><td>Repeatability</td><td class="n">1.8</td><td class="n">2.9</td><td class="n up">+1.1</td><td>Improved, larger</td></tr>
+              <tr><td>Sales Process</td><td>Product</td><td class="n">2.8</td><td class="n">3.1</td><td class="n flat">+0.3</td><td>Not distinguishable</td></tr>
+              <tr><td>Sales Process</td><td>People</td><td class="n">2.5</td><td class="n">2.6</td><td class="n flat">+0.1</td><td>Not distinguishable</td></tr>
+              <tr><td>Sales Process</td><td>Process</td><td class="n">2.3</td><td class="n">3.0</td><td class="n up">+0.7</td><td>Improved</td></tr>
+              <tr><td>Sales Process</td><td>Repeatability</td><td class="n">1.8</td><td class="n">3.1</td><td class="n up">+1.3</td><td>Improved, larger</td></tr>
+              <tr><td>Closing</td><td>Product</td><td class="n">2.5</td><td class="n">3.1</td><td class="n up">+0.6</td><td>Improved</td></tr>
+              <tr><td>Closing</td><td>People</td><td class="n">2.3</td><td class="n">1.8</td><td class="n dn">&minus;0.5</td><td>Declined</td></tr>
+              <tr><td>Closing</td><td>Process</td><td class="n">1.9</td><td class="n">2.9</td><td class="n up">+1.0</td><td>Improved, larger</td></tr>
+              <tr><td>Closing</td><td>Repeatability</td><td class="n">1.6</td><td class="n">3.1</td><td class="n up">+1.5</td><td>Improved, larger</td></tr>
+              <tr><td>Expand</td><td>Product</td><td class="n">2.5</td><td class="n">2.1</td><td class="n dn">&minus;0.4</td><td>Declined</td></tr>
+              <tr><td>Expand</td><td>People</td><td class="n">2.3</td><td class="n">1.7</td><td class="n dn">&minus;0.6</td><td>Declined</td></tr>
+              <tr><td>Expand</td><td>Process</td><td class="n">2.0</td><td class="n">2.6</td><td class="n up">+0.6</td><td>Improved</td></tr>
+              <tr><td>Expand</td><td>Repeatability</td><td class="n">1.8</td><td class="n">2.0</td><td class="n flat">+0.2</td><td>Not distinguishable</td></tr>
+            </tbody>
+          </table></div>
+          <p class="small" style="margin-top:14px">The table is on the page rather than behind a control, so the grid can be checked without a login and the figures survive if the grid fails to render.</p>
+
+          <hr class="rule" style="margin:32px 0">
+
+          <p class="eyebrow">The reporting line</p>
+          <h2 style="font-size:23px;margin-bottom:6px">The sentence a return has to contain.</h2>
+          <p style="max-width:62ch">An institution does not file a heat grid. It files a number against a published indicator. This block shows how the same results read against one such indicator, as an example of the mapping rather than as a claim about any particular body.</p>
+
+          <div class="rline">
+            <p class="src">Integrated Settlement Outcomes Framework &middot; Outcome 1 &middot; indicator 1.3 &middot; supported businesses demonstrating improved practice</p>
+            <p class="rq">Of 29 businesses measured twice in this period, 19 demonstrated improved practice on at least one dimension read by this instrument, and 4 on all three.</p>
+          </div>
+
+          <div class="tw"><table style="margin-top:22px">
+            <thead><tr><th>Dimension, as published</th><th>Read here</th><th style="text-align:right">Improved</th><th>What it is read from</th></tr></thead>
+            <tbody>
+              <tr><td>Engaged in new markets</td><td>Yes</td><td style="text-align:right">13 of 29</td><td>The Demand row, Product and People cells</td></tr>
+              <tr><td>Adopting new to firm technologies or processes</td><td>Yes</td><td style="text-align:right">16 of 29</td><td>The Process and Repeatability columns, all four stages</td></tr>
+              <tr><td>Scaling</td><td>In part</td><td style="text-align:right">7 of 29</td><td>The Expand row. Read as the capability to grow existing accounts, not as headcount or turnover, neither of which this instrument measures</td></tr>
+              <tr><td>With new to market products or services</td><td>No</td><td style="text-align:right">Not read</td><td>Product innovation sits outside what this instrument asks about</td></tr>
+              <tr><td>Accessing better finance and funding</td><td>No</td><td style="text-align:right">Not read</td><td>Not asked, and deliberately so. This is not a credit or eligibility signal</td></tr>
+            </tbody>
+          </table></div>
+          <p class="small" style="margin-top:14px">Nineteen companies improved on at least one dimension: 4 on all three, 9 on two, 6 on one. Ten showed no improvement on any dimension read here. Counts are of companies, not of improvements, so they do not sum to the column above.</p>
+
+          <p style="margin-top:24px;max-width:62ch"><b>The arithmetic a commissioner can then do.</b> This cohort returned 19 companies demonstrating improved practice from 48 invited. A target of 500 over a settlement period would need roughly 26 cohorts run at this size and this rate. That number may be uncomfortable, and it is the point: it can only be calculated once improvement is measured rather than counted as activity. A businesses supported figure cannot produce it.</p>
+
+          <p class="small">The indicator, its five dimensions and its wording are taken from the published framework. The mapping above is ours, is stated so it can be disputed, and is not endorsed by any authority.</p>
 
           <hr class="rule" style="margin:32px 0">
 
