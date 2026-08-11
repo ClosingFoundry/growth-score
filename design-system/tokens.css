@@ -1,0 +1,75 @@
+/* Growth Score design tokens
+   Published by Closing Foundry Ltd. Single source of truth.
+   Live reference: https://score.closingfoundry.com */
+
+:root {
+  /* --- colour --------------------------------------------------------- */
+  --gs-ink:            #0E1B2C;  /* all text, dark sections, nav, footer   */
+  --gs-ink-soft:       #33415C;  /* secondary body text                    */
+  --gs-mid:            #5F6C85;  /* captions, labels, metadata             */
+  --gs-canvas:         #FFFFFF;  /* default background                     */
+  --gs-surface:        #F4F6FA;  /* alternating bands, table headers       */
+  --gs-rule:           #E2E7F0;  /* every border, 1px, always              */
+  --gs-accent:         #0B4ED6;  /* the only colour                        */
+  --gs-accent-pressed: #0940AE;  /* hover and active on primary only       */
+
+  /* on dark backgrounds */
+  --gs-on-dark:        #C4CFE4;
+  --gs-on-dark-mid:    #94A3C4;
+  --gs-on-dark-accent: #8FB0F8;
+  --gs-on-dark-rule:   #26364F;
+
+  /* data intensity ramp, accent blended toward white */
+  --gs-data-1:         #4F80E2;
+  --gs-data-2:         #85A7EB;
+  --gs-data-3:         #B6CAF3;
+  --gs-data-4:         #E2EAFA;
+
+  /* unverified marker. means one thing only: this figure is not confirmed */
+  --gs-unverified-bg:     #FFF4DE;
+  --gs-unverified-text:   #7A5200;
+  --gs-unverified-border: #DDAE55;
+
+  /* --- type ----------------------------------------------------------- */
+  --gs-font-display: "IBM Plex Sans", system-ui, sans-serif;
+  --gs-font-body:    "IBM Plex Sans", system-ui, sans-serif;
+  --gs-font-mono:    "IBM Plex Mono", ui-monospace, monospace;
+
+  /* thirteen sizes, no others */
+  --gs-size-10: 10px;  --gs-size-11: 11px;  --gs-size-12: 12px;
+  --gs-size-13: 13px;  --gs-size-14: 14px;  --gs-size-15: 15px;
+  --gs-size-17: 17px;  --gs-size-20: 20px;  --gs-size-23: 23px;
+  --gs-size-26: 26px;  --gs-size-34: 34px;  --gs-size-44: 44px;
+  --gs-size-56: 56px;
+  --gs-size-h1: clamp(30px, 5.2vw, 60px);
+  --gs-size-h2: clamp(23px, 3.2vw, 38px);
+
+  /* three leading ratios, no others */
+  --gs-leading-display: 1.1;  /* h1, h2, large figures        */
+  --gs-leading-ui:      1.4;  /* nav, buttons, labels, cells  */
+  --gs-leading-read:    1.6;  /* body, lists, descriptions    */
+
+  --gs-tracking-display: -0.022em;
+  --gs-tracking-label:    0.12em;
+  --gs-weight-display:    700;
+  --gs-weight-strong:     600;
+  --gs-weight-body:       400;
+
+  /* --- shape and space ------------------------------------------------ */
+  --gs-radius:        3px;   /* everywhere. near square           */
+  --gs-border:        1px solid var(--gs-rule);
+  --gs-shadow:        none;  /* no shadows. focus ring is the only exception */
+  --gs-focus:         2px solid var(--gs-accent);
+  --gs-focus-offset:  3px;
+
+  --gs-space-section:       74px;
+  --gs-space-section-tight: 44px;
+  --gs-space-section-wide: 104px;
+  --gs-width-page:        1120px;
+  --gs-width-reading:      820px;
+  --gs-gutter:              28px;
+  --gs-gutter-mobile:       20px;
+}
+
+/* breakpoints: 1180 (hide descriptor), 1040 (nav steps down),
+   1020 and 900 (tablet grids), 860 (mobile), 480 (small phone) */

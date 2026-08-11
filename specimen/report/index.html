@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<script>(function(){var p=null;try{p=localStorage.getItem('gs-theme')}catch(e){}
+var t=p||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');
+document.documentElement.setAttribute('data-theme',t);})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Specimen report | Growth Score, Northwind Systems (Demo)</title>
+<meta name="description" content="The complete report a company receives: score, capability against momentum, the stage where the problem shows up, the root cause, and the first actions.">
+<!-- social -->
+<link rel="canonical" href="https://growthscore.co.uk/specimen/report/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Growth Score">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://growthscore.co.uk/specimen/report/">
+<meta property="og:title" content="Specimen report | Growth Score, Northwind Systems (Demo)">
+<meta property="og:description" content="The complete report a company receives: score, capability against momentum, the stage where the problem shows up, the root cause, and the first actions.">
+<meta property="og:image" content="https://growthscore.co.uk/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Growth Score, an open measurement standard">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Specimen report | Growth Score, Northwind Systems (Demo)">
+<meta name="twitter:description" content="The complete report a company receives: score, capability against momentum, the stage where the problem shows up, the root cause, and the first actions.">
+<meta name="twitter:image" content="https://growthscore.co.uk/share.png">
+<!-- /social -->
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0E1B2C">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Partner web fonts (Manrope, IBM Plex Sans, Montserrat, Open Sans). Inter and
+     Poppins stay embedded below as offline-safe fallbacks. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ---- Embedded fonts (base64 woff2, latin + latin-ext) ---- */
+/* =====================================================================
+   Growth Score REPORT, print-first A4 template
+   White-label: swap only the :root values below to re-brand.
+   No JavaScript. No external assets loaded at render time.
+   Target renderer: headless Chrome print-to-PDF.
+   ===================================================================== */
+
+:root {
+  /* ---- BRAND (tokenised - resolved server-side from brand_snapshot_json) ---- */
+  --brand-primary: #0B4ED6;
+  --brand-ink:     #0E1B2C;
+  --brand-accent:  #0B4ED6;
+  /* contrast-checked variants (derived server-side, see contrast.ts) */
+  --brand-accent-ink: #0B4ED6;
+  --brand-on-accent:  #FFFFFF;
+  --brand-on-accent-muted: rgba(255,255,255,0.82);
+  --brand-canvas:  #FFFFFF;
+
+  /* supporting neutrals (rarely change) */
+  --brand-section: #F4F6FA;
+  --brand-surface: #FFFFFF;
+  --brand-border:  #E2E7F0;
+  --brand-muted:   #5F6C85;
+  /* neutral grey for secondary cover/meta text (kept brand-agnostic so the
+     accent colour stays reserved for reporting marks) */
+  --brand-grey:    #5F6C85;
+  --brand-signal:  #0B4ED6;
+  --brand-signal-ink: #0B4ED6;
+
+  /* ---- TYPE (tokenised) ---- */
+  --font-heading: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* ---- VOCABULARY (tokenised) ---- */
+  --score-name: "Growth Score";
+  --band-1: "Forming";
+  --band-2: "Developing";
+  --band-3: "Established";
+  --band-4: "Durable";
+
+  /* ---- BRAND ---- */
+  /* Unbranded reports carry the Growth Score wordmark. A licensee logo, where one
+     applies, is supplied inline as a base64 data URI so nothing loads at render time. */
+}
+
+/* =====================================================================
+   PAGE GEOMETRY
+   ===================================================================== */
+@page {
+  size: A4;
+  /* Side gutters are handled by body padding, NOT @page margins: Chrome
+     (via PDFShift, which itself passes margin:'0') applies the left @page
+     margin but drops the right one, which clipped full-width panels off
+     the right edge. Vertical margins stay here for the running footer. */
+  margin: 10mm 0 14mm 0;
+
+  @bottom-left {
+    content: "Growth Score · Northwind Systems (Demo) · Confidential";
+    font-family: var(--font-heading);
+    font-size:8pt;
+    letter-spacing: 0.03em;
+    color: #5F6C85;
+    padding: 0 12mm 3mm 12mm;
+  }
+
+  @bottom-center {
+    content: "DE300000";
+    font-family: var(--font-heading);
+    font-size:8pt;
+    letter-spacing: 0.06em;
+    color: #5F6C85;
+    padding-bottom: 3mm;
+  }
+  @bottom-right {
+    content: "Page " counter(page);
+    font-family: var(--font-heading);
+    font-size:8pt;
+    letter-spacing: 0.03em;
+    color: #5F6C85;
+    padding: 0 12mm 3mm 2mm;
+    white-space: nowrap;
+  }
+}
+
+@page :first {
+  @bottom-left  { content: ""; }
+  @bottom-center{ content: ""; }
+  @bottom-right { content: ""; }
+}
+
+* { box-sizing: border-box; }
+
+/* Report canvas fills every sheet edge-to-edge in the PDF. The
+   "paper-on-a-desk" preview framing (see @media screen below) is
+   deliberately scoped to on-screen viewing only so it can never leak
+   into print. */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--brand-canvas);
+}
+
+/* On-screen preview only - render the flow as a centred A4 sheet on a
+   warm-grey desk. Print is governed by @page above and the html/body
+   canvas fill, and is unaffected by this block. */
+@media screen {
+  /* the desk follows the theme; the document sheet never does, because a report
+     is a printed artefact and no printed artefact has a dark mode */
+  html { background: var(--paper); }
+  body {
+    max-width: 1176px;
+    min-height: 0;
+    margin: 0 auto;
+    padding: 0 28px 0;
+    background: var(--brand-canvas);
+    box-shadow: none;
+    overflow-x: clip;
+  }
+  html[data-theme="dark"] body{ border-left:1px solid var(--rule); border-right:1px solid var(--rule); }
+  /* the footer is site chrome, not document, so it breaks out of the sheet */
+  footer{ margin-inline: calc(50% - 50vw); margin-top:0; }
+  /* the cover is an A4 page in print, a normal opening block on screen */
+  .cover { min-height: 0; padding: 8px 0 40px; }
+  .cover-title-block { margin-top: 26px; }
+  /* continuous document on screen, separated by a rule instead of a page break */
+  .page { padding-top: 0; }
+  .page + .page,
+  .cover + .page { border-top: 1px solid var(--brand-border); margin-top: 44px; padding-top: 44px; }
+  /* one reading measure, left anchored, matching the rest of the site */
+  .section-head, .method, .glossary, .headline-copy { max-width: 820px; }
+}
+
+/* Belt-and-braces: if the renderer resolves screen media (PDFShift only
+   switches to the print stylesheet when use_print is set), the fixed
+   210mm sheet above would overflow the printable area and clip content
+   on the right edge. Force the print geometry back. */
+.cap-mom-value, .stage-score, .cause-score, .chip { white-space: nowrap; }
+@media print {
+  html { background: var(--brand-canvas); }
+  body {
+    width: auto;
+    min-height: 0;
+    margin: 0;
+    /* Side gutters live here (see @page note above). */
+    padding: 0 12mm;
+    box-shadow: none;
+  }
+}
+
+
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--brand-ink);
+  font-size:10pt;
+  line-height:1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+h1, h2, h3, h4, .display,
+.eyebrow, .chip, .kicker, .stat-num, .bar-label, .bar-value,
+.footer, .toc, .cover-meta, .glossary dt, .band-scale, .route-cta {
+  font-family: var(--font-heading);
+}
+
+a { color: var(--brand-muted); text-decoration: none; }
+a:hover { color: var(--brand-accent-ink); }
+
+/* =====================================================================
+   SHARED PRIMITIVES
+   ===================================================================== */
+.eyebrow {
+  font-size:8pt;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brand-accent-ink);
+  margin: 0 0 9px;
+}
+
+.kicker {
+  font-size:8pt;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-muted);
+}
+
+h2.section-title {
+  font-weight: 700;
+  font-size:20pt;
+  line-height:1.1;
+  letter-spacing: -0.015em;
+  color: var(--brand-ink);
+  margin: 0 0 14px;
+  text-wrap: balance;
+  break-after: avoid;
+}
+
+h3 { break-after: avoid; }
+
+p { margin: 0 0 11px; max-width: 66ch; }
+p:last-child { margin-bottom: 0; }
+
+.lead {
+  font-size:12pt;
+  line-height:1.6;
+  color: var(--brand-ink);
+}
+
+/* a page-level section, each starts a fresh printed page */
+section.page {
+  break-before: page;
+  padding-top: 2mm;
+}
+
+.section-head { margin-bottom: 22px; }
+
+/* thin rule used to separate major regions */
+.rule {
+  border: 0;
+  border-top: 1px solid var(--brand-border);
+  margin: 0 0 22px;
+}
+
+.tick {
+  width: 40px;
+  height: 1px;
+  background: var(--brand-signal-ink);
+  margin: 0 0 18px;
+}
+
+/* card / stat / bar blocks never split across a page */
+.card, .stat, .bar-row, .glossary-item, .plan-col, .route-card, .finding {
+  break-inside: avoid;
+}
+
+.card {
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  padding: 22px 26px;
+}
+
+/* =====================================================================
+   PAGE 1, COVER
+   ===================================================================== */
+.cover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 246mm;
+  overflow: hidden;
+}
+
+.cover-wordmark .dot { color: var(--brand-signal-ink); }
+
+.cover-title-block {
+  position: relative;
+  z-index: 1;
+  margin-top: 66mm;
+}
+.cover-scorename {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size:44pt;
+  line-height:1.1;
+  letter-spacing: -0.02em;
+  color: var(--brand-ink);
+  margin: 0;
+}
+.cover-scorename .the-report {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size:12pt;
+  letter-spacing: 0.02em;
+  color: var(--brand-grey);
+  margin-top: 12px;
+}
+.cover-prepared {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size:14pt;
+  color: var(--brand-ink);
+  margin: 30px 0 0;
+}
+.cover-prepared .for {
+  display: block;
+  font-weight: 500;
+  font-size:9pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-grey);
+  margin-bottom: 4px;
+}
+
+.cover-meta {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: start;
+  gap: 0 42px;
+  border-top: 1px solid var(--brand-border);
+  padding-top: 20px;
+}
+.cover-meta .m-label {
+  font-family: var(--font-heading);
+  font-size:8pt;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-grey);
+  margin: 0 0 5px;
+}
+.cover-meta .m-value {
+  font-family: var(--font-heading);
+  font-size:10pt;
+  font-weight: 600;
+  color: var(--brand-ink);
+  margin: 0;
+}
+.cover-confidential {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size:8pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-grey);
+  margin: 18px 0 0;
+}
+.cover-confidential .mark {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--brand-signal-ink);
+  margin-right: 7px;
+  vertical-align: middle;
+}
+
+/* =====================================================================
+   PAGE 2, HOW TO READ
+   ===================================================================== */
+.layers {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 8px;
+}
+.layer {
+  display: grid;
+  grid-template-columns: 30mm 1fr;
+  gap: 0 20px;
+  padding: 16px 0;
+  border-top: 1px solid var(--brand-border);
+  break-inside: avoid;
+  align-items: baseline;
+}
+.layer:last-child { border-bottom: 1px solid var(--brand-border); }
+.layer .n {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size:9pt;
+  letter-spacing: 0.04em;
+  color: var(--brand-accent-ink);
+}
+.layer .n span {
+  display: block;
+  font-size:22pt;
+  line-height:1.1;
+  color: var(--brand-ink);
+  letter-spacing: -0.02em;
+  margin-top: 4px;
+}
+.layer h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size:12pt;
+  color: var(--brand-ink);
+  margin: 0 0 5px;
+}
+.layer p {
+  font-size:10pt;
+  line-height:1.6;
+  color: var(--brand-ink);
+  margin: 0;
+}
+
+.primer-note {
+  margin-top: 26px;
+  background: var(--brand-section);
+  border-left: 3px solid var(--brand-accent-ink);
+  padding: 18px 24px;
+  break-inside: avoid;
+}
+.primer-note p {
+  font-size:11pt;
+  line-height:1.6;
+  color: var(--brand-muted);
+  margin: 0;
+  max-width: 60ch;
+}
+
+/* =====================================================================
+   PAGE 3, HEADLINE
+   ===================================================================== */
+.headline-hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 42px;
+  align-items: center;
+  margin: 6px 0 30px;
+  break-inside: avoid;
+}
+.gri-block { text-align: center; min-width: 220px; flex-shrink: 0; }
+.gri-number {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size:92pt;
+  line-height:1.1;
+  letter-spacing: -0.04em;
+  color: var(--brand-primary);
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+.gri-outof {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size:13pt;
+  color: var(--brand-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+}
+.chip {
+  display: inline-block;
+  font-size:9pt;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-accent-ink);
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-accent-ink);
+  padding: 6px 13px;
+  margin-top: 16px;
+}
+.headline-copy .band-descriptor {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size:13pt;
+  line-height:1.4;
+  color: var(--brand-ink);
+  margin: 0 0 16px;
+  text-wrap: balance;
+}
+.headline-copy .headline-sentence {
+  font-size:13pt;
+  line-height:1.6;
+  color: var(--brand-ink);
+  border-top: 2px solid var(--brand-signal-ink);
+  padding-top: 16px;
+  max-width: 52ch;
+}
+
+/* band scale, where this score sits across the four bands */
+.band-scale {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--brand-border);
+  break-inside: avoid;
+}
+.band-scale .band {
+  padding: 12px 14px;
+  border-right: 1px solid var(--brand-border);
+  background: var(--brand-surface);
+}
+.band-scale .band:last-child { border-right: 0; }
+.band-scale .band.active { background: var(--brand-accent); }
+.band-scale .band .b-range {
+  font-size:8pt;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--brand-muted);
+  margin: 0 0 3px;
+}
+.band-scale .band .b-name {
+  font-size:10pt;
+  font-weight: 700;
+  color: var(--brand-primary);
+  margin: 0;
+}
+.band-scale .band.active .b-range { color: var(--brand-on-accent-muted); }
+.band-scale .band.active .b-name { color: var(--brand-on-accent); }
+
+/* =====================================================================
+   PAGE 4, CAPABILITY & MOMENTUM
+   ===================================================================== */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 6px;
+}
+.stat {
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  padding: 24px 26px;
+}
+.stat .stat-label {
+  font-size:8pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-accent-ink);
+  margin: 0 0 12px;
+}
+.stat .stat-num {
+  font-weight: 800;
+  font-size:44pt;
+  line-height:1.1;
+  letter-spacing: -0.03em;
+  color: var(--brand-primary);
+}
+.stat .stat-num .of { font-size:14pt; font-weight: 600; color: var(--brand-muted); }
+.stat .stat-what {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size:11pt;
+  color: var(--brand-ink);
+  margin: 14px 0 6px;
+}
+.stat .stat-def {
+  font-size:10pt;
+  line-height:1.6;
+  color: var(--brand-ink);
+  margin: 0;
+}
+.gap-read {
+  margin-top: 20px;
+  background: var(--brand-section);
+  border-left: 3px solid var(--brand-accent-ink);
+  padding: 16px 22px;
+  break-inside: avoid;
+}
+.gap-read p {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size:11pt;
+  line-height:1.4;
+  color: var(--brand-muted);
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* =====================================================================
+   PAGES 5 & 6, BARS (stages / roots)
+   ===================================================================== */
+.bars { margin-top: 8px; }
+.bar-row {
+  display: grid;
+  grid-template-columns: 46mm 1fr 14mm;
+  gap: 0 16px;
+  align-items: center;
+  padding: 15px 0;
+  border-top: 1px solid var(--brand-border);
+}
+.bars .bar-row:last-child { border-bottom: 1px solid var(--brand-border); }
+.bar-row .bar-head .bar-label {
+  font-weight: 700;
+  font-size:10pt;
+  color: var(--brand-ink);
+  margin: 0 0 3px;
+  line-height:1.1;
+}
+.bar-row .bar-head .bar-def {
+  font-size:9pt;
+  line-height:1.4;
+  color: var(--brand-muted);
+  margin: 0;
+  max-width: 40ch;
+}
+.bar-track {
+  position: relative;
+  height: 12px;
+  background: var(--brand-section);
+  border: 1px solid var(--brand-border);
+}
+.bar-fill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  /* Data-bearing fill - must stay readable against the pale track, so it uses
+     the contrast-checked accent rather than the raw partner accent. */
+  background: var(--brand-accent-ink);
+}
+
+.bar-value {
+  font-weight: 800;
+  font-size:14pt;
+  letter-spacing: -0.02em;
+  color: var(--brand-ink);
+  text-align: right;
+}
+
+/* =====================================================================
+   PAGE 7, DIAGNOSIS
+   ===================================================================== */
+.finding {
+  background: var(--brand-section);
+  border: 1px solid var(--brand-border);
+  border-left: 4px solid var(--brand-accent-ink);
+  color: var(--brand-ink);
+  padding: 28px 32px;
+  margin-bottom: 22px;
+}
+.finding .f-kicker {
+  font-family: var(--font-heading);
+  font-size:8pt;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-accent-ink);
+  margin: 0 0 10px;
+}
+.finding .f-lens {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size:22pt;
+  line-height:1.1;
+  letter-spacing: -0.02em;
+  color: var(--brand-primary);
+  margin: 0 0 12px;
+}
+.finding .f-lens .at {
+  font-weight: 500;
+  font-size:12pt;
+  color: var(--brand-muted);
+  letter-spacing: 0;
+}
+.finding .f-def {
+  font-size:11pt;
+  line-height:1.6;
+  color: var(--brand-ink);
+  margin: 0;
+  max-width: 62ch;
+}
+.diag-read p { font-size:10pt; line-height:1.6; color: var(--brand-ink); }
+.diag-read { margin-bottom: 20px; }
+
+.dont {
+  background: var(--brand-section);
+  border: 1px solid var(--brand-border);
+  border-top: 2px solid var(--brand-signal-ink);
+  padding: 18px 24px;
+  margin-bottom: 20px;
+  break-inside: avoid;
+}
+.dont .d-label {
+  font-family: var(--font-heading);
+  font-size:8pt;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-muted);
+  margin: 0 0 8px;
+}
+.dont .d-label .not { color: var(--brand-signal-ink); }
+.dont p {
+  font-size:10pt;
+  line-height:1.6;
+  color: var(--brand-ink);
+  margin: 0;
+}
+.kpis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  break-inside: avoid;
+}
+.kpi {
+  border: 1px solid var(--brand-border);
+  background: var(--brand-surface);
+  padding: 16px 20px;
+}
+.kpi .k-label {
+  font-family: var(--font-heading);
+  font-size:8pt;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-accent-ink);
+  margin: 0 0 6px;
+}
+.kpi p {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size:11pt;
+  line-height:1.4;
+  color: var(--brand-ink);
+  margin: 0;
+}
+
+/* =====================================================================
+   PAGE 8, WATCH NEXT
+   ===================================================================== */
+.adjacent-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size:8pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-muted);
+  border: 1px solid var(--brand-border);
+  background: var(--brand-section);
+  padding: 5px 11px;
+  margin-bottom: 16px;
+}
+.watch-card {
+  border: 1px solid var(--brand-border);
+  background: var(--brand-surface);
+  padding: 22px 26px;
+  margin-bottom: 22px;
+  break-inside: avoid;
+}
+.watch-card .w-rows {
+  display: grid;
+  grid-template-columns: 34mm 1fr;
+  gap: 10px 20px;
+}
+.watch-card dt {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size:9pt;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brand-accent-ink);
+  align-self: start;
+  padding-top: 2px;
+}
+.watch-card dd {
+  margin: 0;
+  font-size:10pt;
+  line-height:1.6;
+  color: var(--brand-ink);
+}
+.watch-card .w-divider {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--brand-border);
+}
+.other-actions h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size:12pt;
+  color: var(--brand-ink);
+  margin: 0 0 4px;
+}
+.other-actions ul {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+.other-actions li {
+  font-size:10pt;
+  line-height:1.6;
+  color: var(--brand-ink);
+  padding: 12px 0 12px 22px;
+  border-top: 1px solid var(--brand-border);
+  position: relative;
+  break-inside: avoid;
+}
+.other-actions li:last-child { border-bottom: 1px solid var(--brand-border); }
+.other-actions li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 19px;
+  width: 8px;
+  height: 1.5px;
+  background: var(--brand-accent-ink);
+}
+
+/* =====================================================================
+   PAGE 9, PLAN
+   ===================================================================== */
+.start-here {
+  background: var(--brand-section);
+  border: 1px solid var(--brand-border);
+  border-left: 3px solid var(--brand-signal-ink);
+  padding: 22px 28px;
+  margin: 6px 0 24px;
+  break-inside: avoid;
+}
+.start-here .s-label {
+  font-family: var(--font-heading);
+  font-size:8pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-signal-ink);
+  margin: 0 0 10px;
+}
+.start-here p {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size:14pt;
+  line-height:1.4;
+  color: var(--brand-ink);
+  margin: 0;
+  max-width: 58ch;
+}
+.plan-band {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.plan-col {
+  border: 1px solid var(--brand-border);
+  background: var(--brand-surface);
+  padding: 20px 22px;
+}
+.plan-col .p-when {
+  font-family: var(--font-heading);
+  font-size:8pt;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-accent-ink);
+  margin: 0 0 4px;
+}
+.plan-col .p-when .seq {
+  display: block;
+  font-size:20pt;
+  line-height:1.1;
+  color: var(--brand-border);
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+.plan-col p {
+  font-size:10pt;
+  line-height:1.6;
+  color: var(--brand-ink);
+  margin: 0;
+}
+
+/* =====================================================================
+   PAGE 10, WHERE WE CAN HELP (route)
+   ===================================================================== */
+.route-card {
+  background: var(--brand-primary);
+  color: #fff;
+  padding: 34px 38px;
+  margin-top: 8px;
+}
+.route-card .r-tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size:8pt;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-on-accent);
+  background: var(--brand-accent);
+  border: 1px solid var(--brand-accent);
+  padding: 5px 12px;
+  margin-bottom: 20px;
+}
+.route-card .r-label {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size:26pt;
+  line-height:1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+}
+.route-card .r-summary {
+  font-size:12pt;
+  line-height:1.6;
+  color: var(--band-text);
+  margin: 0 0 26px;
+  max-width: 56ch;
+}
+.route-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size:13pt;
+  color: var(--brand-on-accent);
+  border: 1px solid var(--brand-accent);
+  background: var(--brand-accent);
+  padding: 12px 22px;
+}
+.route-cta .arrow { color: var(--brand-on-accent); }
+.route-cta:hover { background: var(--brand-surface); border-color: var(--brand-surface); color: var(--brand-primary); }
+.route-cta:hover .arrow { color: var(--brand-primary); }
+.route-url {
+  font-family: var(--font-heading);
+  font-size:9pt;
+  letter-spacing: 0.02em;
+  /* Sits on the dark route card, so it must be light - not the accent ink,
+     which is contrast-checked against white. */
+  color: rgba(255, 255, 255, 0.75);
+  margin: 18px 0 0;
+}
+
+/* =====================================================================
+   PAGE 11, DEFINITIONS & METHODOLOGY
+   ===================================================================== */
+.glossary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 32px;
+  margin-top: 6px;
+}
+.glossary-item {
+  padding: 14px 0;
+  border-top: 1px solid var(--brand-border);
+}
+.glossary dt {
+  font-weight: 700;
+  font-size:10pt;
+  color: var(--brand-ink);
+  margin: 0 0 4px;
+}
+.glossary dd {
+  margin: 0;
+  font-size:9pt;
+  line-height:1.6;
+  color: var(--brand-ink);
+}
+.method {
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 2px solid var(--brand-accent-ink);
+  break-inside: avoid;
+}
+.method h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size:13pt;
+  color: var(--brand-ink);
+  margin: 0 0 10px;
+}
+.method p { font-size:10pt; line-height:1.6; color: var(--brand-ink); max-width: 66ch; }
+
+/* ---------- theme: dark ---------- */
+html[data-theme="dark"]{
+  --ink:#E6EBF4; --ink-soft:#B7C3D8; --mid:#8494AD;
+  --paper:#0E1B2C; --paper-alt:#16273B; --rule:var(--band-rule);
+  --mark:#6E9DF2; --white:#16273B;
+  --band-bg:#16273B; --band-text:#B7C3D8; --band-strong:#E6EBF4;
+  --band-mid:#8494AD; --band-accent:#8FB0F8; --band-rule:#31435F;
+  --unv-bg:#33291280; --unv-text:#E0BE74; --unv-border:#7A5F26;
+}
+:root{
+  --band-bg:#0E1B2C; --band-text:#C4CFE4; --band-strong:#FFFFFF;
+  --band-mid:#94A3C4; --band-accent:#8FB0F8; --band-rule:#26364F;
+  --unv-bg:#FFF4DE; --unv-text:#7A5200; --unv-border:#DDAE55;
+}
+html[data-theme="dark"] img,html[data-theme="dark"] .plot{background:var(--paper-alt)}
+html.theming,html.theming *{transition:background-color .22s ease,color .22s ease,border-color .22s ease,fill .22s ease,stroke .22s ease!important}
+@media print{ html[data-theme="dark"]{--ink:#0E1B2C;--ink-soft:#33415C;--mid:#5F6C85;--paper:#fff;--paper-alt:#F4F6FA;--rule:#E2E7F0;--mark:#0B4ED6;--white:#fff} }
+
+/* theme control, in the nav */
+.themer{display:inline-flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-left:10px;flex-shrink:0}
+.themer button{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  background:none;border:none;padding:6px 9px;cursor:pointer;color:var(--mid);line-height:1.4;transition:background-color .15s ease,color .15s ease}
+.themer button+button{border-left:1px solid var(--rule)}
+.themer button:hover{color:var(--ink)}
+.themer button[aria-pressed="true"]{background:var(--paper-alt);color:var(--ink);font-weight:500}
+@media(max-width:1320px){ .logo .sub{display:none} }
+@media(max-width:1120px){ .themer button{padding:6px 7px} }
+@media(max-width:860px){
+  .themer{margin:14px 0 0;width:100%}
+  .themer button{flex:1;padding:11px 0;font-size:11px}
+}
+@media print{ .themer{display:none!important} }
+
+/* ---------- logo lockup ---------- */
+:root{ --logo-pop:#0E1B2C; --logo-tail:#0B4ED6; --logo-pop-band:#FFFFFF; --logo-tail-band:var(--band-accent); }
+html[data-theme="dark"]{ --logo-pop:#E6EBF4; --logo-tail:var(--band-accent); --logo-pop-band:#E6EBF4; --logo-tail-band:var(--band-accent); }
+.logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;font-size:20px;flex-shrink:0;line-height:1.1}
+.logo .row{display:flex;align-items:baseline;gap:.42em}
+.logo .mk{font-family:var(--display);font-size:1em;font-weight:700;letter-spacing:-.022em;line-height:1.1;color:var(--logo-pop);white-space:nowrap}
+.logo .cohort{height:.92em;width:1.15em;align-self:baseline;display:block;flex-shrink:0}
+.logo .sub{font-family:var(--mono);font-size:.45em;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);white-space:nowrap;line-height:1.4}
+footer .logo .mk{color:var(--band-strong)}
+footer .logo .sub{color:var(--band-mid)}
+footer .logo .cohort rect{fill:var(--logo-pop-band)}
+footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7){fill:var(--logo-tail-band)}
+@media(max-width:1040px){ .logo{font-size:20px} }
+@media(max-width:860px){ .logo{font-size:17px} }
+@media print{ .logo .mk{color:#0E1B2C} }
+</style>
+<style>
+footer{background:#0E1B2C;color:var(--band-mid);padding:52px 0 32px;font-size:14px;font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;margin-top:60px}
+footer a{color:var(--band-text);text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer h4{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:0 0 14px;font-weight:400}
+footer p{margin:0 0 14px}
+footer .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+footer footer footer .foot-grid{display:grid;grid-template-columns:1.6fr repeat(5,1fr);gap:28px}
+.foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid var(--band-rule);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(min-width:861px) and (max-width:1020px){
+  /* tablet only: 4-up and 3-up grids halve rather than squeeze */
+  .grid4{grid-template-columns:1fr 1fr!important}
+  .grid3{grid-template-columns:1fr 1fr!important}
+  .stats{grid-template-columns:1fr 1fr!important}
+  .prin{grid-template-columns:1fr 1fr!important}
+  .ppl{grid-template-columns:1fr 1fr!important}
+  .foot-grid{grid-template-columns:1.6fr repeat(3,1fr)!important}
+  .grid2{gap:30px}
+  /* two-column asymmetric layouts even out before they break */
+  .grid2[style*="1.15fr"],.grid2[style*="1.25fr"],.grid2[style*="1.05fr"],.grid2[style*="1.1fr"]{grid-template-columns:1fr 1fr!important}
+}
+@media(min-width:861px) and (max-width:900px){
+  .grid3,.prin,.ppl,.stats{grid-template-columns:1fr 1fr!important}
+  .grid2[style]{grid-template-columns:1fr!important}
+  .lyr{grid-template-columns:60px 1fr!important}
+  .lyr .ds,.lyr .st{grid-column:2}
+}
+@media(max-width:860px){
+  /* phone footer */
+  .foot-grid{grid-template-columns:1fr!important;gap:26px!important}
+  .foot-bottom{flex-direction:column;align-items:flex-start;gap:12px}
+  .foot-bottom > span{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  footer{padding:40px 0 28px}
+  footer h4{margin-bottom:10px}
+  .grid3,.grid4,.prin,.ppl,.stats{grid-template-columns:1fr!important}
+  /* .gs-mob-reset */
+  nav ul{flex-wrap:wrap!important}
+  nav > ul > li > a,.dtrig{white-space:normal!important;font-size:15px!important;padding:11px 0!important}
+  .bar{flex-wrap:wrap!important}
+  a.navcta{width:100%;text-align:center;padding:12px!important;margin-top:8px}
+  .narrow > *,.narrow > .tw{max-width:100%!important}
+  .stk{padding:16px 14px}
+  .stk-panel{min-height:0}
+  .ppl{grid-template-columns:1fr!important}
+  .lyr{grid-template-columns:1fr!important}
+  .wk{grid-template-columns:1fr!important}
+  .calcout{grid-template-columns:1fr!important}.foot-grid{grid-template-columns:1fr 1fr}}
+@media print{footer{display:none !important}}
+</style>
+<style>
+/* Site navigation for the specimen report. Self-contained, static flow, hidden in print. */
+.gsx-bar{background:var(--paper);border-bottom:1px solid var(--rule);font-family:"IBM Plex Sans",system-ui,sans-serif}
+.gsx-in{max-width:1120px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.gsx-brand{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--ink)}
+.gsx-brand .m{font-weight:700;font-size:19px;letter-spacing:-.01em}
+.gsx-brand .s{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--mid)}
+.gsx-links{display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center}
+.gsx-links a{text-decoration:none;color:var(--ink);font-size:14px;white-space:nowrap}
+.gsx-links a:hover{color:var(--mark)}
+.gsx-foot{background:var(--paper);border-top:1px solid var(--rule);margin-top:44px;font-family:"IBM Plex Sans",system-ui,sans-serif}
+.gsx-fin{max-width:1120px;margin:0 auto;padding:30px 28px 38px}
+.gsx-fgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px 26px}
+.gsx-fgrid h4{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--mid);font-weight:400;margin:0 0 10px}
+.gsx-fgrid a{display:block;text-decoration:none;color:var(--ink);font-size:14px;margin-bottom:7px}
+.gsx-fgrid a:hover{color:var(--mark)}
+.gsx-legal{margin-top:26px;padding-top:16px;border-top:1px solid var(--rule);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.04em;color:var(--mid);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:860px){.gsx-fgrid{grid-template-columns:1fr 1fr}.gsx-links{gap:6px 14px}.gsx-links a{font-size:13px}}
+@media print{.gsx-bar,.gsx-foot{display:none!important}}
+</style>
+</head>
+<body>
+<div class="gsx-bar">
+  <div class="gsx-in">
+    <a class="gsx-brand" href="../../"><span class="m">Growth Score</span><span class="s">An open measurement standard</span></a>
+    <nav class="gsx-links" aria-label="Growth Score">
+      <a href="../../how-it-works/">How it works</a>
+      <a href="../../method/">The method</a>
+      <a href="../../specimen/cohort/">Cohort report</a>
+      <a href="../../run/">Run it yourself</a>
+      <a href="../../checking-a-result/">Checking a result</a>
+      <a href="../../limits/">Limits</a>
+      <a href="../../about/">About</a>
+    </nav>
+  </div>
+</div>
+<div style="max-width:1120px;margin:0 auto;padding:14px 28px 0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mid)">Specimen report &middot; an illustrative company, not a client &middot; method v1.4 &middot; this is exactly what a company receives</div>
+
+<!-- ========================================================================
+     1 · COVER
+     ======================================================================== -->
+<section class="cover" data-screen-label="Cover">
+
+
+  <div class="cover-title-block">
+    <h1 class="cover-scorename">
+      Growth Score Results
+      <span class="the-report">A read on how reliably you win and keep customers, and what to fix first.</span>
+    </h1>
+    <p class="cover-prepared">
+      <span class="for">Prepared for</span>
+      Northwind Systems (Demo)
+    </p>
+  </div>
+
+  <div class="cover-meta">
+    <div>
+      <p class="m-label">Sector</p>
+      <p class="m-value">B2B SaaS</p>
+    </div>
+    <div>
+      <p class="m-label">Revenue band</p>
+      <p class="m-value">£1m to £5m</p>
+    </div>
+    <div>
+      <p class="m-label">Issued</p>
+      <p class="m-value">07 Aug 2026</p>
+    </div>
+    <div>
+      <p class="m-label">Report</p>
+      <p class="m-value">DE300000</p>
+    </div>
+  </div>
+
+  <p class="cover-confidential">Confidential · Prepared for Northwind Systems (Demo) · Not for distribution</p>
+</section>
+
+<!-- ========================================================================
+     2 · HOW TO READ THIS REPORT
+     ======================================================================== -->
+<section class="page" data-screen-label="How to read">
+  <div class="section-head">
+    <div class="tick"></div>
+    <p class="eyebrow">How to read this report</p>
+    <h2 class="section-title">Six layers, from the one number down to your plan</h2>
+    <p class="lead">Each layer explains the one beneath it. You can stop at the headline and still know where you stand, or read through and see exactly why the number is what it is, and what to do about it.</p>
+  </div>
+
+  <div class="layers">
+    <div class="layer">
+      <div class="n">Layer 1<span>01</span></div>
+      <div>
+        <h3>The overall score</h3>
+        <p>One number out of 100 for how reliably the company turns effort into won and retained customers right now.</p>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="n">Layer 2<span>02</span></div>
+      <div>
+        <h3>Two halves, capability and momentum</h3>
+        <p>What you've built (the system that should work) against what you're actually doing week to week. The gap is the story.</p>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="n">Layer 3<span>03</span></div>
+      <div>
+        <h3>Four commercial stages</h3>
+        <p>Where the score sits across the customer journey: how demand is created, qualified, advanced and kept. Each stage scored on its own.</p>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="n">Layer 4<span>04</span></div>
+      <div>
+        <h3>Root causes</h3>
+        <p>Why the stages score as they do, the underlying disciplines, from stage definitions to buyer evidence to how the week is run.</p>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="n">Layer 5<span>05</span></div>
+      <div>
+        <h3>What needs improving</h3>
+        <p>The one lens that best explains the miss, named, defined, and read commercially. Fix this first.</p>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="n">Layer 6<span>06</span></div>
+      <div>
+        <h3>Your plan</h3>
+        <p>The first operating fix, then what to do this week, in thirty days, and the proof to have in ninety.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="primer-note">
+    <p>Read it in order or skip to the diagnosis, everything you need to act on is in layers five and six. Nothing here uses a term the definitions on the final page hasn't explained.</p>
+  </div>
+</section>
+
+<!-- ========================================================================
+     3 · YOUR HEADLINE
+     ======================================================================== -->
+<section class="page" data-screen-label="Headline">
+  <div class="section-head">
+    <div class="tick"></div>
+    <p class="eyebrow">Your headline</p>
+    <h2 class="section-title">Where Northwind Systems (Demo) stands today</h2>
+  </div>
+
+  <div class="headline-hero">
+    <div class="gri-block">
+      <div class="gri-number">58</div>
+      <div class="gri-outof">out of 100</div>
+      <div class="chip">Developing</div>
+    </div>
+    <div class="headline-copy">
+      <p class="band-descriptor">It's working, but inconsistently. What you've built and what you're doing aren't yet pulling together. The fix is alignment, not more activity.</p>
+      <p class="headline-sentence">Demand is the binding limitation.</p>
+    </div>
+  </div>
+
+  <div class="band-scale">
+    <!-- Active band highlighted server-side (band_N_active token = "active" or empty). -->
+    <div class="band ">
+      <p class="b-range">0 to 39</p>
+      <p class="b-name">Forming</p>
+    </div>
+    <div class="band active">
+      <p class="b-range">40 to 59</p>
+      <p class="b-name">Developing</p>
+    </div>
+    <div class="band ">
+      <p class="b-range">60 to 79</p>
+      <p class="b-name">Established</p>
+    </div>
+    <div class="band ">
+      <p class="b-range">80 to 100</p>
+      <p class="b-name">Durable</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     4 · CAPABILITY & MOMENTUM
+     ======================================================================== -->
+<section class="page" data-screen-label="Capability & Momentum">
+  <div class="section-head">
+    <div class="tick"></div>
+    <p class="eyebrow">Capability &amp; momentum</p>
+    <h2 class="section-title">What you've built, and what you're doing now</h2>
+    <p class="lead">The overall score is the average of two halves. One measures the system you have in place; the other measures whether it's actually being run this week.</p>
+  </div>
+
+  <div class="split">
+    <div class="stat">
+      <p class="stat-label">Capability</p>
+      <div class="stat-num">62<span class="of"> / 100</span></div>
+      <p class="stat-what">What you've built</p>
+      <p class="stat-def">The system that should produce the number, stage definitions, qualification, the motion written down and ready to run.</p>
+    </div>
+    <div class="stat">
+      <p class="stat-label">Momentum</p>
+      <div class="stat-num">54<span class="of"> / 100</span></div>
+      <p class="stat-what">What you're doing now</p>
+      <p class="stat-def">Whether that system is actually being run week to week, deals worked to the standard, the weekly rhythm held, evidence captured.</p>
+    </div>
+  </div>
+
+  <div class="gap-read">
+    <p>When capability sits well above momentum, the system is sound but it isn't being run, the fix is operating discipline, not redesign. When they match low, the system itself needs building first.</p>
+  </div>
+</section>
+
+<!-- ========================================================================
+     5 · WHERE IT LIVES, GTM STAGE SCORES
+     ======================================================================== -->
+<section class="page" data-screen-label="Where it lives">
+  <div class="section-head">
+    <div class="tick"></div>
+    <p class="eyebrow">Where it lives</p>
+    <h2 class="section-title">The score, stage by stage</h2>
+    <p class="lead">The same execution measured across the deal. A low stage isn't a verdict on the people working it, it's where the motion is being run with the most room for interpretation.</p>
+  </div>
+
+  <!-- Radar: same four stage scores that feed the bars below.
+       Axis order (12 o'clock clockwise): Demand, Sales Process, Closing, Expand.
+       Polygon points computed server-side and injected as 110.00,66.32 167.12,110.00 110.00,160.40 73.04,110.00. -->
+  <figure class="stage-radar" style="margin: 0 0 18px; display:flex; justify-content:center;">
+    <svg viewBox="0 0 220 220" width="240" height="240" role="img" aria-label="Stage scores radar">
+      <g fill="none" stroke="var(--brand-border)" stroke-width="0.8">
+        <polygon points="110,26 194,110 110,194 26,110"/>
+        <polygon points="110,47 173,110 110,173 47,110"/>
+        <polygon points="110,68 152,110 110,152 68,110"/>
+        <polygon points="110,89 131,110 110,131 89,110"/>
+      </g>
+      <g stroke="var(--brand-border)" stroke-width="0.8">
+        <line x1="110" y1="26" x2="110" y2="194"/>
+        <line x1="26" y1="110" x2="194" y2="110"/>
+      </g>
+      <polygon points="110.00,66.32 167.12,110.00 110.00,160.40 73.04,110.00"
+               fill="var(--brand-accent)" fill-opacity="0.22"
+               stroke="var(--brand-accent-ink)" stroke-width="1.6"/>
+      <g font-family="var(--font-heading)" font-size="8.5" fill="var(--brand-muted)" text-anchor="middle">
+        <text x="110" y="18">Demand</text>
+        <text x="206" y="113">Sales Process</text>
+        <text x="110" y="210">Closing</text>
+        <text x="14" y="113">Expand</text>
+      </g>
+    </svg>
+  </figure>
+
+
+
+  <div class="bars">
+    
+    <div class="bar-row">
+      <div class="bar-head">
+        <p class="bar-label">Demand</p>
+        <p class="bar-def">Creating awareness and enough qualified first conversations with the right buyers.</p>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width: 52%;"></div>
+      </div>
+      <div class="bar-value">2.6</div>
+    </div>
+    
+    <div class="bar-row">
+      <div class="bar-head">
+        <p class="bar-label">Sales Process</p>
+        <p class="bar-def">Running real discovery and moving opportunities forward on evidence.</p>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width: 68%;"></div>
+      </div>
+      <div class="bar-value">3.4</div>
+    </div>
+    
+    <div class="bar-row">
+      <div class="bar-head">
+        <p class="bar-label">Closing</p>
+        <p class="bar-def">Turning late-stage deals into committed, paid decisions.</p>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width: 60%;"></div>
+      </div>
+      <div class="bar-value">3.0</div>
+    </div>
+    
+    <div class="bar-row">
+      <div class="bar-head">
+        <p class="bar-label">Expand</p>
+        <p class="bar-def">Customers reaching value, renewing, and buying more.</p>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width: 44%;"></div>
+      </div>
+      <div class="bar-value">2.2</div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- ========================================================================
+     6 · WHY, ROOT-CAUSE SCORES
+     ======================================================================== -->
+<section class="page" data-screen-label="Why">
+  <div class="section-head">
+    <div class="tick"></div>
+    <p class="eyebrow">Why</p>
+    <h2 class="section-title">The disciplines underneath the stages</h2>
+    <p class="lead">Stages score the way they do for reasons. These are the underlying disciplines, the things that, once fixed, move several stages at once.</p>
+  </div>
+
+  <div class="bars">
+    
+    <div class="bar-row">
+      <div class="bar-head">
+        <p class="bar-label">Product</p>
+        <p class="bar-def">How clearly your proposition lands: who it's for, the problem you solve, and why it matters now.</p>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width: 70%;"></div>
+      </div>
+      <div class="bar-value">3.5</div>
+    </div>
+    
+    <div class="bar-row">
+      <div class="bar-head">
+        <p class="bar-label">People</p>
+        <p class="bar-def">Whether the people doing the work can do it well.</p>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width: 58%;"></div>
+      </div>
+      <div class="bar-value">2.9</div>
+    </div>
+    
+    <div class="bar-row">
+      <div class="bar-head">
+        <p class="bar-label">Process</p>
+        <p class="bar-def">Whether there's a consistent, inspectable way of working.</p>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width: 62%;"></div>
+      </div>
+      <div class="bar-value">3.1</div>
+    </div>
+    
+    <div class="bar-row">
+      <div class="bar-head">
+        <p class="bar-label">Repeatability</p>
+        <p class="bar-def">Whether what works is captured and reused, not reinvented each time.</p>
+      </div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width: 48%;"></div>
+      </div>
+      <div class="bar-value">2.4</div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- ========================================================================
+     7 · THE DIAGNOSIS
+     ======================================================================== -->
+<section class="page" data-screen-label="Diagnosis">
+  <div class="section-head">
+    <div class="tick"></div>
+    <p class="eyebrow">The diagnosis</p>
+    <h2 class="section-title">What needs improving</h2>
+  </div>
+
+  <div class="finding">
+    <p class="f-kicker">Primary lens · shows up most at Demand</p>
+    <h3 class="f-lens">Volume <span class="at">,  rooted in Repeatability</span></h3>
+    <p class="f-def">Not enough qualified conversations are entering the funnel to support the growth target, so every later stage is working with too little raw material.</p>
+  </div>
+
+  <div class="diag-read">
+    <p class="kicker" style="display:block; margin-bottom:8px;">The commercial read</p>
+    <p>Demand is the binding limitation. The team can run a credible process once a conversation exists, but there are not enough of the right conversations to make the quarter safe. Pipeline coverage is thin and heavily dependent on a small number of referral sources.</p>
+  </div>
+
+  <div class="dont">
+    <p class="d-label">What <span class="not">not</span> to do</p>
+    <p>Do not add headcount or a new outbound channel yet. Adding capacity on top of an unproven demand motion multiplies cost without improving the coverage ratio.</p>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi">
+      <p class="k-label">KPI under pressure</p>
+      <p>Qualified meetings per month</p>
+    </div>
+    <div class="kpi">
+      <p class="k-label">KPI under pressure</p>
+      <p>Pipeline coverage ratio</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     8 · WHAT TO LOOK AT NEXT
+     ======================================================================== -->
+
+<section class="page" data-screen-label="What to look at next">
+  <div class="section-head">
+    <div class="tick"></div>
+    <p class="eyebrow">What to look at next</p>
+    <h2 class="section-title">The adjacent signal</h2>
+  </div>
+
+  <span class="adjacent-tag">Adjacent, not your second priority</span>
+  <div class="watch-card">
+    <dl class="w-rows">
+      <dt>Where</dt>
+      <dd>Expand</dd>
+      <div class="w-divider"></div>
+      <dt>Root cause</dt>
+      <dd>Process</dd>
+      <div class="w-divider"></div>
+      <dt>The read</dt>
+      <dd>Existing customers reach value slowly and renewal conversations start late, so expansion revenue is unpredictable and concentrated in a handful of accounts.</dd>
+      <div class="w-divider"></div>
+      <dt>If you act</dt>
+      <dd>List every account renewing in the next two quarters and mark the ones with no documented value milestone.</dd>
+    </dl>
+  </div>
+
+</section>
+
+
+
+<!-- ========================================================================
+     9 · YOUR PLAN
+     ======================================================================== -->
+<section class="page" data-screen-label="Your plan">
+  <div class="section-head">
+    <div class="tick"></div>
+    <p class="eyebrow">Your plan</p>
+    <h2 class="section-title">Fix one thing, then make it stick</h2>
+  </div>
+
+  <div class="start-here">
+    <p class="s-label">Start here</p>
+    <p>Define one repeatable demand play, a single segment with a single message on a single channel, and run it weekly with a named owner.</p>
+  </div>
+
+  <div class="plan-band">
+    <div class="plan-col">
+      <p class="p-when"><span class="seq">01</span>This week</p>
+      <p>Pick the segment with the two fastest recent wins and write the one-page play for it.</p>
+    </div>
+    <div class="plan-col">
+      <p class="p-when"><span class="seq">02</span>Within 30 days</p>
+      <p>Run the play for four consecutive weeks and log every conversation created, so the conversion rate is measured rather than assumed.</p>
+    </div>
+    <div class="plan-col">
+      <p class="p-when"><span class="seq">03</span>90-day proof</p>
+      <p>Qualified meetings per month up 40% with at least 3x pipeline coverage against the next quarter target.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================================
+     10 · WHERE WE CAN HELP
+     ======================================================================== -->
+<section class="page" data-screen-label="Getting support">
+  <div class="section-head">
+    <div class="tick"></div>
+    <p class="eyebrow">Getting support</p>
+    <h2 class="section-title">What kind of help this points to</h2>
+    <p class="lead">Most of the plan on the previous page is work Northwind Systems (Demo) can carry out itself. Where a person is needed, the diagnosis indicates the category of support, and the programme or institution that invited you decides who provides it.</p>
+  </div>
+
+  <div class="route-card">
+    <span class="r-tag">Category indicated</span>
+    <h3 class="r-label">Demand: proposition and repeatability</h3>
+    <p class="r-summary">Turning one segment and one message into a play that runs weekly without being reinvented. That is the category. Who delivers it is not decided by this report.</p>
+    <p class="route-url">The diagnosis decides the category of support. It never decides who is paid to provide it, and it is never a condition of access to any programme or funding.</p>
+  </div>
+</section>
+
+<!-- ========================================================================
+     11 · DEFINITIONS & METHODOLOGY
+     ======================================================================== -->
+<section class="page" data-screen-label="Definitions & methodology">
+  <div class="section-head">
+    <div class="tick"></div>
+    <p class="eyebrow">Definitions &amp; methodology</p>
+    <h2 class="section-title">Every term, defined</h2>
+  </div>
+
+  <dl class="glossary">
+    <div class="glossary-item">
+      <dt>Growth Score</dt>
+      <dd>A single 0 to 100 measure of how reliably a company turns effort into won and retained customers. The average of capability and momentum.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Capability</dt>
+      <dd>What you've built: the system that should produce the number, stage definitions, qualification, the winning motion written down.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Momentum</dt>
+      <dd>What you're doing now: whether that system is actually run week to week, with deals worked to the standard and evidence captured.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Bands</dt>
+      <dd>Four ranges the score falls into, Forming (0 to 39), Developing (40 to 59), Established (60 to 79), Durable (80 to 100). One band per report.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Commercial stages</dt>
+      <dd>The path of a deal, create demand, qualify, advance, close, each scored on how consistently the motion is run there.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Root causes</dt>
+      <dd>The underlying disciplines beneath the stages, stage definitions, buyer evidence, weekly review, forecast discipline.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Primary limitation</dt>
+      <dd>The single thing that best explains the miss. Fixing it first moves several stages at once.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Lens</dt>
+      <dd>The named way we read the primary limitation, the commercial angle that makes the fix obvious once you see it.</dd>
+    </div>
+  </dl>
+
+  <div class="method">
+    <h3>How it's scored</h3>
+    <p>The Growth Score is built from a structured diagnostic of how revenue is actually executed, not opinion, and not activity counts. Responses map to the four commercial stages and the root-cause disciplines beneath them. Capability and momentum are scored separately so the report can tell a system problem from an operating one, and the overall score is their average. Confidence for this report: high. Method version v1.4. This is a directional operating read to focus the first fix. It is not an audit, not a credit or risk assessment, not a prediction of growth or funding, and not a guarantee of any outcome. The data is self-reported by the company.</p>
+  </div>
+</section>
+<footer class="gsx-foot">
+  <div class="gsx-fin">
+    <div class="gsx-fgrid">
+      <div>
+        <h4>The measure</h4>
+        <a href="../../how-it-works/">How it works</a>
+        <a href="../../method/">The method</a>
+        <a href="../../specimen/report/">Specimen report</a>
+        <a href="../../specimen/cohort/">Cohort report</a>
+        <a href="../../run/">Run it yourself</a>
+      </div>
+      <div>
+        <h4>Using it</h4>
+        <a href="../../the-experience/">The experience</a>
+        <a href="../../routing/">Routing</a>
+        <a href="../../integrate/">Ways to run it</a>
+      </div>
+      <div>
+        <h4>Can you trust it</h4>
+        <a href="../../checking-a-result/">Checking a result</a>
+        <a href="../../conformance/">Conformance</a>
+        <a href="../../versions/">Version history</a>
+        <a href="../../limits/">Limits</a>
+      </div>
+      <div>
+        <h4>Who it is for</h4>
+        <a href="../../banks/">Banks</a>
+        <a href="../../public-bodies/">Public bodies</a>
+        <a href="../../universities/">Universities</a>
+        <a href="../../accelerators/">Accelerators</a>
+        <a href="../../investors/">Investors</a>
+      </div>
+    </div>
+    <div class="gsx-legal">
+      <span>Published by Closing Foundry Ltd, registered in England and Wales, company no. 14629519.</span>
+      <span>Not a credit signal. Not an automated decision-making tool.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

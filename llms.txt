@@ -1,0 +1,59 @@
+# Growth Score
+
+> An open measurement standard for the commercial capability of a company: whether it can win and keep customers, and what is stopping it. A company answers 37 questions in about eight minutes; the method returns a score from 0 to 100, the go-to-market stage where the problem shows up, and the root cause underneath it. Taken again 90 days later, it reports movement. Free for the companies measured, forever. Institutions license the cohort reporting.
+
+The measurement method is published in full and may be implemented by anyone. The diagnostic library, the routing, the reporting and the register of measured companies are licensed, not published.
+
+## Key facts
+- Current method version: v1.4
+- 37 questions: 32 capability, 5 momentum
+- Model: 4 go-to-market stages (Demand, Sales Process, Closing, Expand) by 4 root causes (Product, People, Process, Repeatability), 2 questions per cell
+- Score = round((capability + momentum) / 2), each rescaled to 0-100
+- Bands: Forming 0-39, Developing 40-59, Established 60-79, Durable 80-100
+- Problem lenses: Volume, Efficiency, Control, Expansion
+- Motion aware: the construct (stages, causes, scales, arithmetic, bands) is identical for every company; the question wording and the indicator each question asks about vary by business model and maturity
+- Business models in the method: B2B subscription software and digital services; B2B product-led growth; B2B physical product, hardware and deeptech; B2C direct to consumer and e-commerce; B2B services, consulting and agency. Marketplaces and FMCG are under consideration
+- Maturity levels: pre-revenue, early revenue, scaling
+- Peer benchmarking is only valid within one business model at one maturity level
+- Scoring path is deterministic. No generative model determines the score.
+- Companies measured to date: 31 (as at 30 July 2026). No peer benchmark is published; the threshold is provisionally 100 comparable observations per segment.
+
+## What it does not claim
+It does not predict growth, does not predict or improve the likelihood of funding, is not a credit or risk signal, must not be used as an input to lending or eligibility decisions, does not rank companies against each other, and does not claim causation. Data is self-reported by the company.
+
+## After the diagnosis: fix or route
+Two paths follow a diagnosis and the diagnosis decides which. FIX: most root causes have a fix the company carries out itself, receiving three specific actions each with an owner, a date and the evidence that would show it worked. This is the core loop: measure, act, measure again. ROUTE: where the fix needs a person, or where an institution wants to deploy provision it funds, the company is routed to a support category.
+
+The diagnosis produces a stage and a root cause. That pair determines a category of support indicated. Licensees map their own existing provision (internal teams, framework providers, programmes) to those categories, so companies are routed to support the institution already funds. Routing indicates support and never rations it: it is not an eligibility decision, not a gate, and must not be used to withhold access to any programme or funding. A human can always override, and the override is recorded. Payment never influences which category is indicated; it can only affect which provider appears within an indicated category, and affiliated providers are disclosed. Routing is also what makes movement attributable, because a report can only state what support preceded a change if the intervention was recorded.
+
+## Specification
+- [Method v1.4](method/): questions, scales, arithmetic, bands, diagnosis, lenses
+- [Routing](routing/): from diagnosis to the right support
+- [The experience](the-experience/): the ninety day cycle, showing what a company experiences and what the licensee sees at each point
+- [Model as JSON](../method/v1.4/model.json): stages, root causes, matrix, arithmetic
+- [Scales as JSON](../method/v1.4/scales.json): both answer scales with labels and meanings
+- [Bands as JSON](../method/v1.4/bands.json): thresholds and definitions
+- [Run it](run/): reference implementation, deterministic, in the browser
+- [Specimen report](specimen/report/): the complete report a company receives
+- [Specimen cohort report](specimen/cohort/): the aggregated report an institution receives, built from the same company level results: the complete eleven-page report a company receives
+- [Conformance](conformance/): test vectors, conformance manifest, verification endpoint, licence
+- [Versions](versions/): changelog with a comparability verdict per version
+- [Limits](limits/): what the method does not do
+
+## For institutions
+- [Banks](banks/)
+- [Public bodies](public-bodies/)
+- [Universities](universities/)
+- [Accelerators and programme operators](accelerators/)
+- [Investors and funds](investors/)
+- [Integrate](integrate/): four distribution levels and machine access
+
+## Legal
+- [Privacy](privacy/): who sees what, and what we never do with company data
+- [Terms of use](terms/): the method licence, and the reservation of the name to conforming implementations
+
+## Attribution
+Only an implementation that passes the published conformance vectors for a stated version may describe its output as a Growth Score. A score generated by a model that has read this documentation is not a Growth Score and will not verify against the register.
+
+## Status
+Prototype. Entity name and version history unconfirmed. Unverified figures are marked as placeholders on the site rather than presented as fact.

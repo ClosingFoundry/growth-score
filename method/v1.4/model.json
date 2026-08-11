@@ -1,0 +1,152 @@
+{
+  "version": "v1.4",
+  "questions": {
+    "total": 37,
+    "capability": 32,
+    "momentum": 5
+  },
+  "stages": [
+    {
+      "id": "demand",
+      "name": "Demand",
+      "job": "Create enough qualified attention from the right kind of customer"
+    },
+    {
+      "id": "sales_process",
+      "name": "Sales Process",
+      "job": "Turn that attention into real, progressing opportunities"
+    },
+    {
+      "id": "closing",
+      "name": "Closing",
+      "job": "Convert them into paying customers, with predictable timing"
+    },
+    {
+      "id": "expand",
+      "name": "Expand",
+      "job": "Keep customers, and grow the value of the ones you have"
+    }
+  ],
+  "root_causes": [
+    {
+      "id": "product",
+      "name": "Product",
+      "asks": "Is the proposition, value and business case sharp enough?"
+    },
+    {
+      "id": "people",
+      "name": "People",
+      "asks": "Are the right people, with the right judgement and accountability, owning it?"
+    },
+    {
+      "id": "process",
+      "name": "Process",
+      "asks": "Is there a defined, evidenced way of working that can be inspected?"
+    },
+    {
+      "id": "repeatability",
+      "name": "Repeatability",
+      "asks": "Is what works captured, codified and reused rather than reinvented?"
+    }
+  ],
+  "matrix": {
+    "rows": "stages",
+    "cols": "root_causes",
+    "questions_per_cell": 2
+  },
+  "arithmetic": [
+    "cell = mean(its 2 questions)",
+    "stage = mean(the 4 cells in that row)",
+    "rootCause = mean(that cause across all 4 stages)",
+    "capability = mean(all 16 cells) / 5 * 100",
+    "momentum = mean(the 5 momentum answers) / 5 * 100",
+    "score = round((capability + momentum) / 2)"
+  ],
+  "lenses": [
+    "Volume",
+    "Efficiency",
+    "Control",
+    "Expansion"
+  ],
+  "motion_aware": {
+    "principle": "The construct is fixed for every company. The question wording and the indicator each question asks about vary by business model and maturity.",
+    "fixed": [
+      "stages",
+      "root_causes",
+      "matrix",
+      "scales",
+      "arithmetic",
+      "bands",
+      "diagnosis logic"
+    ],
+    "varies": [
+      "question wording",
+      "indicator per question",
+      "respondent-facing stage labels",
+      "report examples"
+    ],
+    "motions": [
+      {
+        "id": "b2b_subscription",
+        "name": "B2B subscription software and digital services",
+        "status": "in_method"
+      },
+      {
+        "id": "b2b_plg",
+        "name": "B2B product-led growth",
+        "status": "in_method"
+      },
+      {
+        "id": "b2b_physical",
+        "name": "B2B physical product, hardware and deeptech",
+        "status": "in_method"
+      },
+      {
+        "id": "b2c_dtc",
+        "name": "B2C physical product, direct to consumer and e-commerce",
+        "status": "in_method"
+      },
+      {
+        "id": "b2b_services",
+        "name": "B2B services, consulting and agency",
+        "status": "in_method"
+      },
+      {
+        "id": "marketplace",
+        "name": "Marketplaces and platforms",
+        "status": "under_consideration"
+      },
+      {
+        "id": "fmcg",
+        "name": "Fast moving consumer goods",
+        "status": "under_consideration"
+      }
+    ],
+    "maturity_levels": [
+      {
+        "id": "pre_revenue",
+        "name": "Pre-revenue",
+        "asks": "Is there evidence anyone will pay, found by a means that does not depend on the founder alone?"
+      },
+      {
+        "id": "early_revenue",
+        "name": "Early revenue",
+        "asks": "Did it work more than once, for reasons you can name and repeat?"
+      },
+      {
+        "id": "scaling",
+        "name": "Scaling",
+        "asks": "Does it work without the founder in the room, and does it survive more volume?"
+      }
+    ],
+    "comparability": "Scores are comparable across motions because the construct, scales and arithmetic are identical. Peer benchmarking is only valid within one motion at one maturity level."
+  },
+  "scoring_path": "deterministic",
+  "generative_model_in_scoring": false,
+  "not_published": [
+    "lens rule precedence and thresholds",
+    "the 16-cell diagnostic and action library",
+    "routing to support",
+    "per-motion question sets"
+  ]
+}

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run the method | Growth Score</title>
+<meta name="description" content="Run method v1.4 in your browser. Set the sixteen cells and five momentum readings and see the deterministic output.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1B2C; --ink-soft:#33415C; --mid:#5F6C85;
+  --paper:#FFFFFF; --paper-alt:#F4F6FA; --rule:#E2E7F0;
+  --mark:#0B4ED6; --white:#FFFFFF;
+  --display:"IBM Plex Sans",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+[data-theme="dark"] .btn,[data-theme="dark"] .navcta,[data-theme="dark"] .toggle button[aria-pressed=true]{color:var(--paper)!important}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:3px;font-size:14px;line-height:1.4;text-decoration:none}
+.skip:focus{left:8px;top:8px}
+
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--mark);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.narrow{max-width:820px;margin:0 auto;padding:0 28px}
+
+.draft{background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:8px 0;text-align:center}
+.draft b{color:#9DB9F5;font-weight:500}
+.vswitch{background:var(--paper-alt);border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:12px;padding:9px 0;text-align:center;color:var(--mid)}
+.vswitch a{color:var(--mark);text-decoration:none;font-weight:500}
+
+header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 0}
+.logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+.logo .mk{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-.01em}
+.logo .sub{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid)}
+nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0;align-items:center}
+nav > ul > li > a{font-size:14.5px;text-decoration:none;color:var(--ink-soft);padding:8px 12px;border-radius:8px;display:block}
+nav > ul > li > a:hover{background:var(--paper-alt);color:var(--ink)}
+nav > ul > li > a.on{color:var(--mark)}
+a.navcta{border:1px solid var(--rule);font-weight:600}
+a.navcta:hover{border-color:var(--mark);color:var(--mark)!important}
+
+.drop{position:relative}
+.dtrig{font-family:var(--body);font-size:14.5px;color:var(--ink-soft);background:none;border:none;cursor:pointer;padding:8px 12px;border-radius:8px;display:flex;align-items:center;gap:7px}
+.dtrig:hover,.drop.open .dtrig{background:var(--paper-alt);color:var(--ink)}
+.drop.hason .dtrig{color:var(--mark)}
+.caret{font-size:9px;color:var(--mid);transition:transform .18s}
+.drop.open .caret{transform:rotate(180deg)}
+.dmenu{
+  position:absolute;top:calc(100% + 10px);left:0;min-width:310px;background:var(--white);
+  border:1px solid var(--rule);border-radius:4px;box-shadow:0 10px 30px rgba(14,27,44,.10);
+  padding:8px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .16s ease;z-index:60;
+}
+.drop.open .dmenu{opacity:1;visibility:visible;transform:translateY(0)}
+.dmenu a{display:block;text-decoration:none;padding:10px 12px;border-radius:2px;color:var(--ink)}
+.dmenu a:hover{background:var(--paper-alt)}
+.dmenu a.on{background:var(--paper-alt)}
+.dmenu b{display:block;font-size:14.5px;font-weight:600;margin-bottom:1px}
+.dmenu em{display:block;font-style:normal;font-size:12.5px;color:var(--mid);line-height:1.4}
+.menu{display:none;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--rule);padding:7px 12px;cursor:pointer;color:var(--ink);border-radius:8px}
+
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.022em;margin:0}
+h1{font-size:clamp(36px,5.2vw,60px);line-height:1.06}
+h2{font-size:clamp(26px,3.2vw,38px);line-height:1.14}
+h3{font-size:19px;line-height:1.3;font-weight:600}
+p{margin:0 0 18px}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:0;text-transform:none;color:var(--mid);margin:0 0 14px}
+.eyebrow::before{content:"§ ";color:var(--rule)}
+.big{font-size:20px;line-height:1.55;color:var(--ink-soft)}
+.small{font-size:15px;color:var(--mid)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--mid)}
+
+section{padding:74px 0;border-top:1px solid var(--rule)}
+section.tight{padding:44px 0}
+section.wide{padding:104px 0}
+section:first-of-type{border-top:none}
+.hero{padding:84px 0 56px}
+.dark{background:var(--ink);color:var(--paper);border-top:none}
+.dark h1,.dark h2,.dark h3{color:var(--white)}
+.dark .big{color:#C4CFE4}
+.dark .eyebrow{color:#94A3C4}
+.dark .eyebrow::before{color:#3C4E6B}
+.dark .small,.dark .mono{color:#94A3C4}
+.dark ul.plain li{border-bottom-color:#26364F}
+.alt{background:var(--paper-alt)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:860px){
+  .grid2,.grid3,.grid4{grid-template-columns:1fr;gap:28px}
+  nav{display:none;width:100%} nav.open{display:block}
+  nav ul{flex-direction:column;gap:2px;padding:10px 0 4px;align-items:stretch}
+  nav > ul > li > a{padding:11px 0}
+  .dtrig{width:100%;justify-content:space-between;padding:11px 0;font-weight:600}
+  .dmenu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;
+         border-left:2px solid var(--rule);border-radius:0;padding:0 0 6px 14px;margin-bottom:6px;display:none}
+  .drop.open .dmenu{display:block}
+  .dmenu a{padding:9px 0}
+  .dmenu em{display:none}
+  a.navcta{text-align:center;margin-top:8px;padding:12px}
+  .menu{display:block} .bar{flex-wrap:wrap}
+  section{padding:56px 0}
+}
+
+.card{background:var(--white);border:1px solid var(--rule);border-radius:3px;padding:26px}
+.card .mono{display:block;margin-bottom:12px}
+a.card{text-decoration:none;display:block;transition:all .2s}
+a.card:hover{border-color:var(--ink)}
+
+table{width:100%;border-collapse:collapse;font-size:15.5px}
+th{text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);font-weight:400;padding:0 14px 10px 0;border-bottom:1px solid var(--ink);vertical-align:bottom}
+td{padding:14px 14px 14px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+td:first-child{font-weight:500}
+.no{color:var(--mid)} .yes{color:var(--mark)}
+
+label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:7px}
+input,select,textarea{width:100%;font-family:var(--body);font-size:16px;padding:12px;background:var(--white);border:1px solid var(--rule);color:var(--ink);margin-bottom:20px;border-radius:3px}
+textarea{min-height:110px;resize:vertical}
+ul.plain{list-style:none;margin:0;padding:0}
+ul.plain li{padding:13px 0 13px 26px;border-bottom:1px solid var(--rule);position:relative}
+ul.plain li::before{content:"";position:absolute;left:0;top:22px;width:12px;height:1px;background:var(--mark)}
+
+.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;text-decoration:none;font-family:var(--body);font-weight:600;font-size:15px;padding:14px 26px;border:1px solid var(--mark);border-radius:3px;background:var(--mark);color:#fff;cursor:pointer}
+.btn.ghost{background:none;color:var(--mark)}
+.dark .btn{background:#fff;color:var(--mark);border-color:#fff}
+.dark .btn.ghost{background:none;color:#fff;border-color:rgba(255,255,255,.5)}
+
+.plot{background:var(--white);border:1px solid var(--rule);border-radius:3px;padding:24px 24px 20px}
+.plot-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.plot-title{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--mid)}
+.toggle{display:inline-flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.toggle button{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;background:var(--white);border:none;padding:8px 12px;cursor:pointer;color:var(--mid)}
+.toggle button+button{border-left:1px solid var(--rule)}
+.toggle button[aria-pressed=true]{background:var(--mark);color:#fff}
+.plot svg{display:block;width:100%;height:auto}
+.tick{transition:opacity .5s ease, transform .85s cubic-bezier(.22,.9,.3,1)}
+.blob{transition:opacity .4s ease}
+.preadout{display:flex;gap:26px;flex-wrap:wrap;margin-top:16px;padding-top:15px;border-top:1px solid var(--rule)}
+.preadout div{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--mid)}
+.preadout b{display:block;font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:-.03em;color:var(--ink);margin-top:3px}
+@media(prefers-reduced-motion:reduce){.tick,.blob{transition:none}}
+.rrow{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--rule)}
+.rrow .lab{font-size:14.5px}
+.rrow .lab i{font-style:normal;color:var(--mid);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:2px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.seg button{font-family:var(--mono);font-size:13px;width:36px;height:34px;background:var(--white);border:none;border-left:1px solid var(--rule);cursor:pointer;color:var(--mid)}
+.seg button:first-child{border-left:none}
+.seg button[aria-pressed=true]{background:var(--mark);color:#fff}
+.bars div{display:grid;grid-template-columns:110px 1fr 34px;gap:10px;align-items:center;margin-bottom:7px;font-size:13.5px}
+.bars .t{height:8px;background:var(--paper-alt);border-radius:99px;overflow:hidden}
+.bars .t i{display:block;height:100%;background:var(--mark);border-radius:99px}
+.bars b{font-family:var(--mono);font-size:12.5px;font-weight:500;text-align:right}
+@media(min-width:861px){#sticky{position:sticky;top:96px}}
+.ph{font-family:var(--mono);font-size:13px;background:#FFF4DE;color:#7A5200;padding:1px 6px;border:1px dashed #DDAE55;border-radius:5px}
+
+/* ---- spec / code ---- */
+pre{background:#0B1524;color:#CBD9F0;border-radius:3px;padding:22px;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.65;margin:0 0 18px}
+pre .k{color:#8FB0F8} pre .s{color:#9BE3B4} pre .n{color:#F2C572} pre .c{color:#6C7C99}
+code.inl{font-family:var(--mono);font-size:.92em;background:var(--paper-alt);border:1px solid var(--rule);border-radius:5px;padding:1px 5px}
+
+/* ---- live counters ---- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);overflow:hidden}
+.stats div{background:var(--white);padding:22px 20px}
+.stats b{display:block;font-size:34px;font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:5px}
+.stats span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
+@media(max-width:860px){.stats{grid-template-columns:1fr 1fr}}
+
+/* ---- matrix ---- */
+.matrix{width:100%;border-collapse:separate;border-spacing:4px;font-size:14px}
+.matrix th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);border:none;padding:0 0 6px;text-align:center}
+.matrix th.row{text-align:right;padding-right:12px;vertical-align:middle}
+.matrix td{border:none;padding:0}
+.cell{border-radius:2px;padding:14px 8px;text-align:center;font-weight:600;font-size:16px;cursor:pointer;border:1px solid transparent;transition:transform .12s}
+.cell:hover{transform:translateY(-2px);border-color:var(--ink)}
+.cell.sel{border-color:var(--ink);box-shadow:0 0 0 2px rgba(14,27,44,.12)}
+.readout{margin-top:20px;border:1px solid var(--rule);border-radius:12px;padding:20px;background:var(--white);min-height:96px}
+.readout .mono{display:block;margin-bottom:6px}
+
+.page{display:none} .page.on{display:block}
+
+footer{background:var(--ink);color:#94A3C4;padding:52px 0 34px;font-size:14px}
+footer a{color:#D4DDF0;text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);margin:0 0 14px;font-weight:400}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
+@media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
+.foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid #26364F;font-family:var(--mono);font-size:11px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* ---------- mobile ---------- */
+@media(max-width:860px){
+  /* inline grid-template-columns must be beaten explicitly */
+  .grid2,.grid3,.grid4{grid-template-columns:1fr!important;gap:26px!important}
+  section,section.tight,section.wide{padding:48px 0}
+  .hero{padding:40px 0 34px}
+  h1{font-size:clamp(30px,8.2vw,40px)}
+  h2{font-size:clamp(23px,6.2vw,30px)}
+  .big{font-size:17.5px}
+  body{font-size:16px}
+  .wrap,.narrow{padding:0 20px}
+  .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
+  table{font-size:14px;min-width:520px}
+  th{font-size:10px;padding-right:10px}
+  td{padding:11px 10px 11px 0}
+  pre{font-size:11px;padding:16px;border-radius:2px}
+  .stats b{font-size:26px}
+  .stats div{padding:16px 14px}
+  .plot{padding:18px 16px 14px}
+  .plot-head{gap:10px}
+  .toggle{width:100%}
+  .toggle button{flex:1;padding:9px 6px;font-size:10px}
+  .preadout{gap:18px}
+  .preadout b{font-size:22px}
+  .matrix{border-spacing:3px;min-width:0}
+  .matrix th{font-size:9px}
+  .matrix th.row{padding-right:6px;font-size:9.5px}
+  .cell{padding:11px 2px;font-size:14px}
+  .seg button{width:32px;height:38px}
+  .rrow{gap:10px}
+  .rrow .lab{font-size:13.5px}
+  .bars div{grid-template-columns:88px 1fr 30px;font-size:12.5px}
+  .btns{gap:10px}
+  .btn{width:100%;text-align:center;padding:14px 18px}
+  .readout{padding:16px}
+  ul.plain li{padding:12px 0 12px 20px}
+  ul.plain li::before{top:20px;width:9px}
+  .draft{font-size:9.5px;letter-spacing:.08em;padding:7px 14px}
+  .vswitch{font-size:11px;padding:8px 14px;line-height:1.5}
+  .foot-grid{grid-template-columns:1fr;gap:24px}
+}
+@media(max-width:480px){
+  .logo .sub{display:none}
+  .grid2 > .card, .grid3 > .card, .grid4 > .card{padding:20px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="draft">Prototype V2 <b>&middot;</b> Placeholder name <b>&middot;</b> Not for external issue</div>
+<div class="vswitch">Viewing <b>V2, the published standard</b> &nbsp;|&nbsp; <a href="../../">V1, the institutional brochure</a> &nbsp;|&nbsp; Specification v1.4, last revised 30 July 2026</div>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="../"><span class="mk">Growth Score</span><span class="sub">An open measurement standard</span></a>
+    <button class="menu" id="menuBtn" aria-expanded="false">Menu</button>
+    <nav id="nav"><ul>
+      <li class="drop">
+        <button class="dtrig" aria-expanded="false">The standard <span class="caret">&#9662;</span></button>
+        <div class="dmenu">
+          <a href="../method/"><b>Method v1.4</b><em>Questions, scales, arithmetic, bands</em></a>
+          <a href="../run/" class="on"><b>Run it now</b><em>Reference implementation, live in your browser</em></a>
+          <a href="../routing/"><b>Routing</b><em>From score to the right support</em></a>
+          <a href="../conformance/"><b>Conformance</b><em>Test vectors, manifest, verification</em></a>
+          <a href="../integrate/"><b>Integrate</b><em>Four ways to run it, machine access</em></a>
+          <a href="../versions/"><b>Versions</b><em>Changelog and comparability</em></a>
+          <a href="../limits/"><b>Limits</b><em>What this doesn’t do</em></a>
+        </div>
+      </li>
+      <li class="drop">
+        <button class="dtrig" aria-expanded="false">Who licenses it <span class="caret">&#9662;</span></button>
+        <div class="dmenu">
+          <a href="../banks/"><b>Banks</b><em>Which customers are building capability</em></a>
+          <a href="../public-bodies/"><b>Public bodies</b><em>Movement, not throughput</em></a>
+          <a href="../universities/"><b>Universities</b><em>Evidence for the next bid</em></a>
+          <a href="../investors/"><b>Investors</b><em>Portfolio movement from day one</em></a>
+        </div>
+      </li>
+      <li><a href="../specimen/">Specimen</a></li>
+      <li><a href="../about/">About</a></li>
+      <li><a class="navcta" href="../contact/">Contact</a></li>
+    </ul></nav>
+  </div>
+</header>
+<main id="main">
+<div class="page on">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Reference implementation &middot; v1.4</p>
+      <h1 style="max-width:20ch">Run the method yourself.</h1>
+      <p class="big" style="margin-top:22px;max-width:64ch">
+        Set a value for each of the sixteen cells and the five momentum readings. Everything below updates as you go:
+        the score, the band, the weakest stage, the local and systemic root causes, and the capability against momentum read.
+        Nothing is sent anywhere and nothing is stored. Close the tab and it's gone.
+      </p>
+      <p class="small" style="max-width:64ch">
+        <b>This is the arithmetic, not the questionnaire.</b> The real instrument asks 37 questions and derives these values from the answers. Those questions vary by business model and maturity, but the grid, the scales and the arithmetic on this page never do, which is what keeps two companies comparable.
+        It's here so you can confirm the published rules produce the published outputs, before you ask anyone to complete anything.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="grid2" style="grid-template-columns:1.15fr 1fr;align-items:start;gap:40px">
+
+        <div>
+          <p class="eyebrow">Capability &middot; 16 cells</p>
+          <p class="small" style="margin-top:-8px">Score how true each is in practice today. Use evidence and consistency, not intent.</p>
+          <div id="cells"></div>
+
+          <p class="eyebrow" style="margin-top:36px">Momentum &middot; 5 readings</p>
+          <p class="small" style="margin-top:-8px">Is the engine producing output now?</p>
+          <div id="moms"></div>
+
+          <div class="btns">
+            <button class="btn ghost" id="resetBtn" type="button">Reset to 3</button>
+            <button class="btn ghost" id="exampleBtn" type="button">Load the worked example</button>
+          </div>
+        </div>
+
+        <div id="sticky">
+          <div class="card" style="padding:0;overflow:hidden;border-radius:3px">
+            <div style="background:var(--band-bg);color:var(--band-strong);padding:26px 28px">
+              <div style="display:flex;align-items:baseline;gap:14px">
+                <span id="rScore" style="font-size:56px;font-weight:700;letter-spacing:-.04em;line-height:1">50</span>
+                <span id="rBand" style="font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#8FB0F8">Developing</span>
+              </div>
+              <div style="font-family:var(--mono);font-size:12px;color:#94A3C4;margin-top:10px">
+                Capability <b id="rCap" style="color:#fff;font-weight:500">60</b>
+                &nbsp;&middot;&nbsp; Momentum <b id="rMom" style="color:#fff;font-weight:500">60</b>
+                &nbsp;&middot;&nbsp; Method v1.4
+              </div>
+              <div style="height:6px;background:#26364F;border-radius:99px;margin-top:18px;overflow:hidden">
+                <div id="rBar" style="height:100%;background:#8FB0F8;width:50%;transition:width .25s"></div>
+              </div>
+            </div>
+            <div style="padding:26px 28px">
+              <p class="mono">The read</p>
+              <p id="rRead" style="margin:0 0 20px">Set the values to see the diagnosis.</p>
+              <p class="mono">Capability against momentum</p>
+              <p id="rSplit" class="small" style="margin:0 0 20px"></p>
+              <p class="mono">Stage scores</p>
+              <div id="rStages" style="margin-bottom:18px"></div>
+              <p class="mono">Root cause scores</p>
+              <div id="rCauses"></div>
+            </div>
+          </div>
+          <p class="small" style="margin-top:16px">
+            The problem lens shown is the documented default mapping. The full rule precedence, its thresholds and the written
+            diagnosis for each cell are part of the licensed layer and aren’t published.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="narrow">
+      <h2>What this page proves</h2>
+      <ul class="plain" style="margin-top:18px">
+        <li><b>It’s deterministic.</b> Set the same values twice and you get the same result. There's no model in the scoring path and there never will be.</li>
+        <li><b>It’s reproducible by hand.</b> Every number here comes from the six lines of arithmetic published in the method. Nothing is hidden between the inputs and the output.</li>
+        <li><b>Nothing is weighted by sector or size.</b> The same rules apply to every company, which is the only reason two results can be compared.</li>
+        <li><b>The judgement isn’t in the maths.</b> Load the worked example. Expand scores lowest, yet it isn't what the diagnosis sends you to fix. That precedence is the part you license.</li>
+      </ul>
+      <div class="btns"><a class="btn ghost" href="../method/">The full specification</a><a class="btn ghost" href="../specimen/">A complete report</a></div>
+    </div>
+  </section>
+
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="margin-bottom:14px"><span class="mk" style="color:#fff">Growth Score</span><span class="sub">An open measurement standard</span></div>
+        <p style="max-width:34ch">An open measurement standard for commercial capability. Free for the companies measured, licensed to the institutions that fund them.</p>
+      </div>
+      <div><h4>The standard</h4><p><a href="../method/">Method v1.4</a><br><a href="../run/">Run it now</a><br><a href="../conformance/">Conformance</a><br><a href="../integrate/">Integrate</a><br><a href="../versions/">Versions</a><br><a href="../limits/">Limits</a></p></div>
+      <div><h4>Sectors</h4><p><a href="../banks/">Banks</a><br><a href="../public-bodies/">Public bodies</a><br><a href="../universities/">Universities</a><br><a href="../investors/">Investors</a></p></div>
+      <div><h4>Company</h4><p><a href="../about/">About</a><br><a href="../specimen/">Specimen report</a><br><a href="../contact/">Contact</a><br><span class="ph">Privacy</span><br><span class="ph">Terms</span></p></div>
+    </div>
+    <div class="foot-bottom">
+      <span>Prototype V2. Name, entity and version history unconfirmed.</span>
+      <span>Not a credit signal. Not a decisioning tool.</span>
+    </div>
+  </div>
+</footer>
+<script>
+
+document.querySelectorAll("table").forEach(function(t){
+  if(t.parentElement && t.parentElement.classList.contains("tw")) return;
+  var w = document.createElement("div"); w.className = "tw";
+  t.parentNode.insertBefore(w, t); w.appendChild(t);
+});
+
+document.getElementById("menuBtn").addEventListener("click", function(){
+  var open = document.getElementById("nav").classList.toggle("open");
+  this.setAttribute("aria-expanded", open ? "true":"false");
+});
+var isTouch = window.matchMedia("(max-width:860px)");
+document.querySelectorAll(".drop").forEach(function(d){
+  var t = d.querySelector(".dtrig");
+  if(d.querySelector('a.on')) d.classList.add("hason");
+  t.addEventListener("click", function(e){
+    e.stopPropagation();
+    var open = d.classList.contains("open");
+    document.querySelectorAll(".drop").forEach(function(o){ o.classList.remove("open"); o.querySelector(".dtrig").setAttribute("aria-expanded","false"); });
+    if(!open){ d.classList.add("open"); t.setAttribute("aria-expanded","true"); }
+  });
+  d.addEventListener("mouseenter", function(){ if(isTouch.matches) return;
+    document.querySelectorAll(".drop").forEach(function(o){ o.classList.remove("open"); });
+    d.classList.add("open"); t.setAttribute("aria-expanded","true"); });
+  d.addEventListener("mouseleave", function(){ if(isTouch.matches) return;
+    d.classList.remove("open"); t.setAttribute("aria-expanded","false"); });
+});
+document.addEventListener("click", function(){
+  document.querySelectorAll(".drop").forEach(function(d){ d.classList.remove("open"); d.querySelector(".dtrig").setAttribute("aria-expanded","false"); });
+});
+document.addEventListener("keydown", function(e){ if(e.key === "Escape"){
+  document.querySelectorAll(".drop").forEach(function(d){ d.classList.remove("open"); }); } });
+var sb = document.getElementById("sendBtn");
+if(sb){ sb.addEventListener("click", function(){
+  document.getElementById("formNote").textContent = "Prototype only. Nothing was sent. Wire this to the real inbox before launch."; }); }
+
+/* ---------------- reference implementation ---------------- */
+(function(){
+  var host = document.getElementById("cells");
+  if(!host) return;
+  var ST = ["Demand","Sales Process","Closing","Expand"];
+  var RC = ["Product","People","Process","Repeatability"];
+  var MOM = ["First meetings","Qualified opportunities","Deal pace and slippage","Forecast confidence","Expansion"];
+  var CAPLAB = ["Not in place","Inconsistent","Partly in place","Consistent","Proven and improving"];
+  var MOMLAB = ["Well below target","Below target","Partly on track","On track","Strong"];
+  var EX = [[3.5,3.0,2.5,2.5],[3.5,3.0,2.0,2.0],[3.0,2.5,1.5,2.0],[2.0,2.0,1.5,1.5]];
+  var cells = [[3,3,3,3],[3,3,3,3],[3,3,3,3],[3,3,3,3]];
+  var moms  = [3,3,3,3,3];
+
+  function seg(val, labels, onPick){
+    var w = document.createElement("div"); w.className = "seg";
+    for(var v=1; v<=5; v++){
+      (function(v){
+        var b = document.createElement("button");
+        b.type="button"; b.textContent = v;
+        b.title = labels[v-1];
+        b.setAttribute("aria-pressed", Math.round(val)===v ? "true":"false");
+        b.addEventListener("click", function(){ onPick(v); });
+        w.appendChild(b);
+      })(v);
+    }
+    return w;
+  }
+
+  function build(){
+    host.innerHTML = "";
+    ST.forEach(function(st,i){
+      RC.forEach(function(rc,j){
+        var row = document.createElement("div"); row.className="rrow";
+        var lab = document.createElement("div"); lab.className="lab";
+        lab.innerHTML = "<i>"+st+"</i>"+rc;
+        row.appendChild(lab);
+        row.appendChild(seg(cells[i][j], CAPLAB, function(v){ cells[i][j]=v; build(); calc(); }));
+        host.appendChild(row);
+      });
+    });
+    var mh = document.getElementById("moms"); mh.innerHTML="";
+    MOM.forEach(function(m,i){
+      var row = document.createElement("div"); row.className="rrow";
+      var lab = document.createElement("div"); lab.className="lab";
+      lab.innerHTML = "<i>Momentum</i>"+m;
+      row.appendChild(lab);
+      row.appendChild(seg(moms[i], MOMLAB, function(v){ moms[i]=v; build(); calc(); }));
+      mh.appendChild(row);
+    });
+  }
+
+  function mean(a){ return a.reduce(function(x,y){return x+y;},0)/a.length; }
+  function band(sc){
+    if(sc < 40) return "Forming";
+    if(sc < 60) return "Developing";
+    if(sc < 80) return "Established";
+    return "Durable";
+  }
+  function bars(el, names, vals){
+    el.innerHTML = "";
+    var min = Math.min.apply(null, vals);
+    names.forEach(function(n,i){
+      var d = document.createElement("div");
+      d.innerHTML = '<span'+(vals[i]===min?' style="font-weight:600"':'')+'>'+n+'</span>'+
+        '<span class="t"><i style="width:'+((vals[i]/5)*100).toFixed(1)+'%"></i></span>'+
+        '<b>'+vals[i].toFixed(1)+'</b>';
+      el.appendChild(d);
+    });
+  }
+
+  function calc(){
+    var stage = ST.map(function(_,i){ return mean(cells[i]); });
+    var cause = RC.map(function(_,j){ return mean(cells.map(function(r){ return r[j]; })); });
+    var flat = [].concat.apply([], cells);
+    var cap = mean(flat)/5*100;
+    var mom = mean(moms)/5*100;
+    var score = Math.round((cap+mom)/2);
+
+    /* primary stage: weakest, with the documented Expand suppression */
+    var order = stage.map(function(v,i){ return {i:i,v:v}; }).sort(function(a,b){ return a.v-b.v; });
+    var pi = order[0].i;
+    var newBizWeak = Math.min(stage[0],stage[1],stage[2]) < 2.5;
+    var suppressed = false;
+    if(pi === 3 && newBizWeak){ pi = order.filter(function(o){ return o.i!==3; })[0].i; suppressed = true; }
+
+    /* local root cause within the primary stage, systemic across all four */
+    var localIdx = cells[pi].indexOf(Math.min.apply(null, cells[pi]));
+    var sysIdx = cause.indexOf(Math.min.apply(null, cause));
+
+    /* documented default lens mapping */
+    var lens = ["Volume","Efficiency","Efficiency","Expansion"][pi];
+    if(pi === 2) lens = (RC[localIdx] === "Process" || RC[localIdx] === "People") ? "Control" : "Efficiency";
+
+    document.getElementById("rScore").textContent = score;
+    document.getElementById("rBand").textContent = band(score);
+    document.getElementById("rCap").textContent = Math.round(cap);
+    document.getElementById("rMom").textContent = Math.round(mom);
+    document.getElementById("rBar").style.width = score + "%";
+
+    var systemic = (cause[sysIdx]/5*100) <= (cells[pi][localIdx]/5*100) - 10;
+    var read = "Your problem lens is <b>"+lens+"</b>. It shows up most strongly in <b>"+ST[pi]+
+      "</b>, where the local weakness is <b>"+RC[localIdx]+"</b>.";
+    if(systemic || sysIdx !== localIdx){
+      read += " Across the whole engine the weakest root cause is <b>"+RC[sysIdx]+"</b>"+
+        (systemic ? ", materially weaker than the local one, so treat this as systemic rather than a "+ST[pi]+" problem." : ".");
+    } else {
+      read += " The same cause is weakest across the whole engine, so it’s systemic.";
+    }
+    if(suppressed){
+      read += " Expand scores lowest, but new business isn’t yet working, so an expansion finding is suppressed and the diagnosis routes to the stage that matters now.";
+    }
+    document.getElementById("rRead").innerHTML = read;
+
+    var gap = cap - mom, split;
+    if(cap >= 70 && mom < 45) split = "The engine is built and not being run. Usually about who inspects the pipeline and how often, rather than capability.";
+    else if(gap <= -30) split = "Results are coming from effort rather than from the engine. Capacity limited: when the effort stops, so does the output.";
+    else if(gap >= 30) split = "Considerably more has been built than is being used. Look at whether the team is running it, not at building more.";
+    else if(cap < 40 && mom < 40) split = "Neither built nor producing. Pick one stage and install the basics.";
+    else if(cap >= 70 && mom >= 70) split = "Built and producing. Focus shifts to expansion and durability.";
+    else split = "Capability and operating rhythm are broadly aligned. The gap between them isn’t itself the story.";
+    document.getElementById("rSplit").textContent = split;
+
+    bars(document.getElementById("rStages"), ST, stage);
+    bars(document.getElementById("rCauses"), RC, cause);
+  }
+
+  document.getElementById("resetBtn").addEventListener("click", function(){
+    cells = [[3,3,3,3],[3,3,3,3],[3,3,3,3],[3,3,3,3]]; moms = [3,3,3,3,3]; build(); calc();
+  });
+  document.getElementById("exampleBtn").addEventListener("click", function(){
+    cells = EX.map(function(r){ return r.slice(); }); moms = [3,3,3,2,3]; build(); calc();
+  });
+
+  build(); calc();
+})();
+</script>
+</body>
+</html>

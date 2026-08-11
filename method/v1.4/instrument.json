@@ -1,0 +1,936 @@
+{
+  "note": "The construct is fixed for every company: four stages, four root causes, sixteen cells, two questions per cell, five momentum readings, the same scales and arithmetic. This file publishes the construct each question populates. Question wording and the indicator each question asks about vary by motion and maturity and are not published; superseded wording stays recorded internally against the version.",
+  "banks": [
+    {
+      "motion": "B2C direct-to-consumer and ecommerce",
+      "questions": [
+        {
+          "n": 1,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 2,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 3,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "People"
+        },
+        {
+          "n": 4,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "People"
+        },
+        {
+          "n": 5,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 6,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 7,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 8,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 9,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Product"
+        },
+        {
+          "n": 10,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Product"
+        },
+        {
+          "n": 11,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "People"
+        },
+        {
+          "n": 12,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "People"
+        },
+        {
+          "n": 13,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Process"
+        },
+        {
+          "n": 14,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Process"
+        },
+        {
+          "n": 15,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 16,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 17,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Product"
+        },
+        {
+          "n": 18,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Product"
+        },
+        {
+          "n": 19,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "People"
+        },
+        {
+          "n": 20,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "People"
+        },
+        {
+          "n": 21,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Process"
+        },
+        {
+          "n": 22,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Process"
+        },
+        {
+          "n": 23,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 24,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 25,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 26,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 27,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "People"
+        },
+        {
+          "n": 28,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "People"
+        },
+        {
+          "n": 29,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 30,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 31,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 32,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 33,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 34,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 35,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 36,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 37,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        }
+      ],
+      "bank_version": "dtc_pre_v1",
+      "maturity_stage": "Pre-trading",
+      "stage_display_labels": {
+        "Demand": "Demand",
+        "Expand": "Retention & Growth",
+        "Closing": "Purchase",
+        "Sales Process": "Conversion"
+      }
+    },
+    {
+      "motion": "B2C direct-to-consumer and ecommerce",
+      "questions": [
+        {
+          "n": 1,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 2,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 3,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "People"
+        },
+        {
+          "n": 4,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "People"
+        },
+        {
+          "n": 5,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 6,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 7,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 8,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 9,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Product"
+        },
+        {
+          "n": 10,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Product"
+        },
+        {
+          "n": 11,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "People"
+        },
+        {
+          "n": 12,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "People"
+        },
+        {
+          "n": 13,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Process"
+        },
+        {
+          "n": 14,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Process"
+        },
+        {
+          "n": 15,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 16,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 17,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Product"
+        },
+        {
+          "n": 18,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Product"
+        },
+        {
+          "n": 19,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "People"
+        },
+        {
+          "n": 20,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "People"
+        },
+        {
+          "n": 21,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Process"
+        },
+        {
+          "n": 22,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Process"
+        },
+        {
+          "n": 23,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 24,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 25,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 26,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 27,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "People"
+        },
+        {
+          "n": 28,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "People"
+        },
+        {
+          "n": 29,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 30,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 31,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 32,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 33,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 34,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 35,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 36,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 37,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        }
+      ],
+      "bank_version": "dtc_v1.5",
+      "maturity_stage": "Trading",
+      "stage_display_labels": {
+        "Demand": "Demand",
+        "Expand": "Retention & Growth",
+        "Closing": "Purchase",
+        "Sales Process": "Conversion"
+      }
+    },
+    {
+      "motion": "B2B human-led sales",
+      "questions": [
+        {
+          "n": 1,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 2,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 3,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "People"
+        },
+        {
+          "n": 4,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "People"
+        },
+        {
+          "n": 5,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 6,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 7,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 8,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 9,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Product"
+        },
+        {
+          "n": 10,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Product"
+        },
+        {
+          "n": 11,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "People"
+        },
+        {
+          "n": 12,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "People"
+        },
+        {
+          "n": 13,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Process"
+        },
+        {
+          "n": 14,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Process"
+        },
+        {
+          "n": 15,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 16,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 17,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Product"
+        },
+        {
+          "n": 18,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Product"
+        },
+        {
+          "n": 19,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "People"
+        },
+        {
+          "n": 20,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "People"
+        },
+        {
+          "n": 21,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Process"
+        },
+        {
+          "n": 22,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Process"
+        },
+        {
+          "n": 23,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 24,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 25,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 26,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 27,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "People"
+        },
+        {
+          "n": 28,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "People"
+        },
+        {
+          "n": 29,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 30,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 31,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 32,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 33,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 34,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 35,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 36,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 37,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        }
+      ],
+      "bank_version": "s1_v1.5",
+      "maturity_stage": "Pre-revenue and early founder-led",
+      "stage_display_labels": null
+    },
+    {
+      "motion": "B2B human-led sales",
+      "questions": [
+        {
+          "n": 1,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 2,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 3,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "People"
+        },
+        {
+          "n": 4,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "People"
+        },
+        {
+          "n": 5,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 6,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 7,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 8,
+          "type": "capability",
+          "stage": "Demand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 9,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Product"
+        },
+        {
+          "n": 10,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Product"
+        },
+        {
+          "n": 11,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "People"
+        },
+        {
+          "n": 12,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "People"
+        },
+        {
+          "n": 13,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Process"
+        },
+        {
+          "n": 14,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Process"
+        },
+        {
+          "n": 15,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 16,
+          "type": "capability",
+          "stage": "Sales Process",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 17,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Product"
+        },
+        {
+          "n": 18,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Product"
+        },
+        {
+          "n": 19,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "People"
+        },
+        {
+          "n": 20,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "People"
+        },
+        {
+          "n": 21,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Process"
+        },
+        {
+          "n": 22,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Process"
+        },
+        {
+          "n": 23,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 24,
+          "type": "capability",
+          "stage": "Closing",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 25,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 26,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Product"
+        },
+        {
+          "n": 27,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "People"
+        },
+        {
+          "n": 28,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "People"
+        },
+        {
+          "n": 29,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 30,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Process"
+        },
+        {
+          "n": 31,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 32,
+          "type": "capability",
+          "stage": "Expand",
+          "root_cause": "Repeatability"
+        },
+        {
+          "n": 33,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 34,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 35,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 36,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        },
+        {
+          "n": 37,
+          "type": "momentum",
+          "stage": null,
+          "root_cause": null
+        }
+      ],
+      "bank_version": "v1.5",
+      "maturity_stage": "Trading (team selling)",
+      "stage_display_labels": null
+    }
+  ],
+  "version": "v1.4"
+}

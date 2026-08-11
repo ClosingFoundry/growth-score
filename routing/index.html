@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<script>(function(){var p=null;try{p=localStorage.getItem('gs-theme')}catch(e){}
+var t=p||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');
+document.documentElement.setAttribute('data-theme',t);})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Routing | Growth Score</title>
+<!-- social -->
+<link rel="canonical" href="https://growthscore.co.uk/routing/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Growth Score">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://growthscore.co.uk/routing/">
+<meta property="og:title" content="Routing | Growth Score">
+<meta property="og:description" content="How Growth Score indicates a support category, records the route chosen and reports movement alongside the intervention that preceded it.">
+<meta property="og:image" content="https://growthscore.co.uk/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Growth Score, an open measurement standard">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Routing | Growth Score">
+<meta name="twitter:description" content="How Growth Score indicates a support category, records the route chosen and reports movement alongside the intervention that preceded it.">
+<meta name="twitter:image" content="https://growthscore.co.uk/share.png">
+<!-- /social -->
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0E1B2C">
+<meta name="description" content="How Growth Score indicates a support category, records the route chosen and reports movement alongside the intervention that preceded it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1B2C; --ink-soft:#33415C; --mid:#5F6C85;
+  --paper:#FFFFFF; --paper-alt:#F4F6FA; --rule:#E2E7F0;
+  --mark:#0B4ED6; --white:#FFFFFF;
+  --display:"IBM Plex Sans",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+[data-theme="dark"] .btn,[data-theme="dark"] .navcta,[data-theme="dark"] .toggle button[aria-pressed=true],[data-theme="dark"] .seg button[aria-pressed=true]{color:var(--paper)!important}
+[data-theme="dark"] .btn.ghost{color:var(--band-strong)!important;background:none;border-color:var(--band-rule)}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:3px;font-size:14px;line-height:1.4;text-decoration:none}
+.skip:focus{left:8px;top:8px}
+
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--mark);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.narrow{max-width:1120px;margin:0 auto;padding:0 28px}
+.narrow > *{max-width:820px}
+.narrow > .tw{max-width:1064px}
+.narrow.mid{text-align:center}
+.narrow.mid > *{margin-left:auto;margin-right:auto}
+
+.draft{background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:8px 0;text-align:center}
+.draft b{color:#9DB9F5;font-weight:500}
+.vswitch{background:var(--paper-alt);border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:12px;padding:9px 0;text-align:center;color:var(--mid)}
+.vswitch a{color:var(--mark);text-decoration:none;font-weight:500}
+
+header{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--rule)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:14px;padding-bottom:14px;flex-wrap:nowrap}
+.logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0;align-items:center;flex-wrap:nowrap}
+nav > ul > li > a{font-size:14px;text-decoration:none;color:var(--ink-soft);padding:8px 10px;border-radius:3px;display:block;white-space:nowrap}
+nav > ul > li > a:hover{background:var(--paper-alt);color:var(--ink)}
+nav > ul > li > a.on{color:var(--mark)}
+a.navcta{background:var(--mark);color:#fff!important;border:1px solid var(--mark);font-weight:600;padding:6px 18px!important;transition:background-color .15s ease,color .15s ease,border-color .15s ease}
+a.navcta:hover,a.navcta:focus-visible{background:var(--paper);border-color:var(--mark);color:var(--mark)!important}
+
+.drop{position:relative}
+.dtrig{font-family:var(--body);font-size:14px;color:var(--ink-soft);background:none;border:none;cursor:pointer;padding:8px 10px;border-radius:3px;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.dtrig:hover,.drop.open .dtrig{background:var(--paper-alt);color:var(--ink)}
+.drop.hason .dtrig{color:var(--mark)}
+.caret{display:inline-block;line-height:0;vertical-align:baseline;margin-left:5px}
+.caret svg{display:block;overflow:visible}
+.caret rect{fill:var(--logo-pop);transition:fill .18s ease,y .18s ease,height .18s ease}
+.drop.open .caret rect{fill:var(--logo-tail);y:0;height:12}
+@media(prefers-reduced-motion:reduce){.caret rect{transition:fill .18s ease}.drop.open .caret rect{y:auto;height:auto}}
+
+.dmenu{
+  display:none;
+  position:absolute;top:calc(100% + 10px);left:0;min-width:310px;background:var(--white);
+  border:1px solid var(--rule);border-top:2px solid var(--mark);border-radius:0 0 3px 3px;
+  padding:8px;z-index:60;
+}
+.drop.open .dmenu{display:block}
+.drop::after{content:"";position:absolute;top:100%;left:0;right:0;height:12px}
+.dmenu a{display:block;text-decoration:none;padding:10px 12px;border-radius:2px;color:var(--ink)}
+.dmenu a:hover{background:var(--paper-alt)}
+.dmenu a.on{background:var(--paper-alt)}
+.dmenu b{display:block;font-size:14px;font-weight:600;margin-bottom:1px}
+.dmenu em{display:block;font-style:normal;font-size:12px;color:var(--mid);line-height:1.4}
+.menu{display:none;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--rule);padding:7px 12px;cursor:pointer;color:var(--ink);border-radius:8px}
+
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.022em;margin:0}
+h1{font-size:clamp(36px,5.2vw,60px);line-height:1.1}
+h2{font-size:clamp(26px,3.2vw,38px);line-height:1.1}
+h3{font-size:20px;line-height:1.4;font-weight:600}
+p{margin:0 0 18px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:0;text-transform:none;color:var(--mid);margin:0 0 14px}
+.big{font-size:20px;line-height:1.6;color:var(--ink-soft)}
+.small{font-size:15px;color:var(--mid)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--mid)}
+
+section{padding:74px 0;border-top:1px solid var(--rule)}
+section.tight{padding:44px 0}
+section.wide{padding:104px 0}
+section:first-of-type{border-top:none}
+.hero{padding:84px 0 56px}
+.dark{background:var(--band-bg);color:var(--band-text);border-top:none}
+.dark h1,.dark h2,.dark h3{color:var(--band-strong)}
+.dark .big{color:var(--band-text)}
+.dark .eyebrow{color:var(--band-mid)}
+.dark .small,.dark .mono{color:var(--band-mid)}
+.dark ul.plain li{border-bottom-color:var(--band-rule)}
+.alt{background:var(--paper-alt)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:1180px){ .logo .sub{display:none} }
+@media(max-width:1040px){ nav > ul > li > a, .dtrig{font-size:13px;padding:8px 8px} }
+@media(min-width:861px) and (max-width:1020px){
+  /* tablet only: 4-up and 3-up grids halve rather than squeeze */
+  .grid4{grid-template-columns:1fr 1fr!important}
+  .grid3{grid-template-columns:1fr 1fr!important}
+  .stats{grid-template-columns:1fr 1fr!important}
+  .prin{grid-template-columns:1fr 1fr!important}
+  .ppl{grid-template-columns:1fr 1fr!important}
+  .foot-grid{grid-template-columns:1.6fr repeat(3,1fr)!important}
+  .grid2{gap:30px}
+  /* two-column asymmetric layouts even out before they break */
+  .grid2[style*="1.15fr"],.grid2[style*="1.25fr"],.grid2[style*="1.05fr"],.grid2[style*="1.1fr"]{grid-template-columns:1fr 1fr!important}
+}
+@media(min-width:861px) and (max-width:900px){
+  .grid3,.prin,.ppl,.stats{grid-template-columns:1fr 1fr!important}
+  .grid2[style]{grid-template-columns:1fr!important}
+  .lyr{grid-template-columns:60px 1fr!important}
+  .lyr .ds,.lyr .st{grid-column:2}
+}
+@media(max-width:860px){
+  /* phone footer */
+  .foot-grid{grid-template-columns:1fr!important;gap:26px!important}
+  .foot-bottom{flex-direction:column;align-items:flex-start;gap:12px}
+  .foot-bottom > span{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  footer{padding:40px 0 28px}
+  footer h4{margin-bottom:10px}
+  .grid3,.grid4,.prin,.ppl,.stats{grid-template-columns:1fr!important}
+  /* .gs-mob-reset */
+  nav ul{flex-wrap:wrap!important}
+  nav > ul > li > a,.dtrig{white-space:normal!important;font-size:15px!important;padding:11px 0!important}
+  .bar{flex-wrap:wrap!important}
+  a.navcta{width:100%;text-align:center;padding:12px!important;margin-top:8px}
+  .narrow > *,.narrow > .tw{max-width:100%!important}
+  .stk{padding:16px 14px}
+  .stk-panel{min-height:0}
+  .ppl{grid-template-columns:1fr!important}
+  .lyr{grid-template-columns:1fr!important}
+  .wk{grid-template-columns:1fr!important}
+  .calcout{grid-template-columns:1fr!important}
+  .grid2,.grid3,.grid4{grid-template-columns:1fr;gap:28px}
+  nav{display:none;width:100%} nav.open{display:block}
+  nav ul{flex-direction:column;gap:2px;padding:10px 0 4px;align-items:stretch}
+  nav > ul > li > a{padding:11px 0}
+  .dtrig{width:100%;justify-content:space-between;padding:11px 0;font-weight:600}
+  .drop::after{display:none}
+  .dmenu{position:static;box-shadow:none;border:none;
+         border-left:2px solid var(--rule);border-radius:0;padding:0 0 6px 14px;margin-bottom:6px;display:none}
+  .drop.open .dmenu{display:block}
+  .dmenu a{padding:9px 0}
+  .dmenu em{display:none}
+  a.navcta{text-align:center;margin-top:8px;padding:12px}
+  .menu{display:block} .bar{flex-wrap:wrap}
+  section{padding:56px 0}
+}
+
+.card{background:var(--white);border:1px solid var(--rule);border-radius:3px;padding:26px}
+.card .mono{display:block;margin-bottom:12px}
+a.card{text-decoration:none;display:block;transition:all .2s}
+a.card:hover{border-color:var(--ink)}
+
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);font-weight:400;padding:0 14px 10px 0;border-bottom:1px solid var(--ink);vertical-align:bottom}
+td{padding:14px 14px 14px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+td:first-child{font-weight:500}
+.no{color:var(--mid)} .yes{color:var(--mark)}
+
+label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:7px}
+input,select,textarea{width:100%;font-family:var(--body);font-size:15px;padding:12px;background:var(--white);border:1px solid var(--rule);color:var(--ink);margin-bottom:20px;border-radius:3px}
+textarea{min-height:110px;resize:vertical}
+ul.plain{list-style:none;margin:0;padding:0}
+ul.plain li{padding:13px 0 13px 26px;border-bottom:1px solid var(--rule);position:relative}
+ul.plain li::before{content:"";position:absolute;left:0;top:22px;width:12px;height:1px;background:var(--mark)}
+
+.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;text-decoration:none;font-family:var(--body);font-weight:600;font-size:15px;padding:14px 26px;border:1px solid var(--mark);border-radius:3px;background:var(--mark);color:#fff;cursor:pointer}
+.btn.ghost{background:none;color:var(--mark)}
+.dark .btn{background:var(--band-strong);color:var(--band-bg);border-color:var(--band-strong)}
+.dark .btn.ghost{background:none;color:var(--band-strong);border-color:var(--band-rule)}
+
+.plot{background:var(--white);border:1px solid var(--rule);border-radius:3px;padding:24px 24px 20px}
+.plot-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.plot-title{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--mid)}
+.toggle{display:inline-flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.toggle button{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--white);border:none;padding:8px 12px;cursor:pointer;color:var(--mid)}
+.toggle button+button{border-left:1px solid var(--rule)}
+.toggle button[aria-pressed=true]{background:var(--mark);color:#fff}
+.plot svg{display:block;width:100%;height:auto}
+.tick{transition:opacity .5s ease, transform .85s cubic-bezier(.22,.9,.3,1)}
+.blob{transition:opacity .4s ease}
+.preadout{display:flex;gap:26px;flex-wrap:wrap;margin-top:16px;padding-top:15px;border-top:1px solid var(--rule)}
+.preadout div{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--mid)}
+.preadout b{display:block;font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:-.03em;color:var(--ink);margin-top:3px}
+@media(prefers-reduced-motion:reduce){.tick,.blob{transition:none}}
+.rrow{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--rule)}
+.rrow .lab{font-size:14px}
+.rrow .lab i{font-style:normal;color:var(--mid);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:2px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.seg button{font-family:var(--mono);font-size:13px;width:36px;height:34px;background:var(--white);border:none;border-left:1px solid var(--rule);cursor:pointer;color:var(--mid)}
+.seg button:first-child{border-left:none}
+.seg button[aria-pressed=true]{background:var(--mark);color:#fff}
+.bars div{display:grid;grid-template-columns:110px 1fr 34px;gap:10px;align-items:center;margin-bottom:7px;font-size:13px}
+.bars .t{height:8px;background:var(--paper-alt);border-radius:99px;overflow:hidden}
+.bars .t i{display:block;height:100%;background:var(--mark);border-radius:99px}
+.bars b{font-family:var(--mono);font-size:12px;font-weight:500;text-align:right}
+@media(min-width:861px){#sticky{position:sticky;top:96px}}
+.ph{font-family:var(--mono);font-size:13px;background:var(--unv-bg);color:var(--unv-text);padding:1px 6px;border:1px dashed var(--unv-border);border-radius:5px}
+
+/* ---- spec / code ---- */
+pre{background:#0B1524;color:#CBD9F0;border-radius:3px;padding:22px;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.6;margin:0 0 18px}
+pre .k{color:var(--band-accent)} pre .s{color:#9BE3B4} pre .n{color:#F2C572} pre .c{color:#6C7C99}
+code.inl{font-family:var(--mono);font-size:.92em;background:var(--paper-alt);border:1px solid var(--rule);border-radius:5px;padding:1px 5px}
+
+/* ---- live counters ---- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);overflow:hidden}
+.stats div{background:var(--white);padding:22px 20px}
+.stats b{display:block;font-size:34px;font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:5px}
+.stats span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
+@media(max-width:860px){.stats{grid-template-columns:1fr 1fr}}
+
+/* ---- matrix ---- */
+.matrix{width:100%;border-collapse:separate;border-spacing:4px;font-size:14px}
+.matrix th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);border:none;padding:0 0 6px;text-align:center}
+.matrix th.row{text-align:right;padding-right:12px;vertical-align:middle}
+.matrix td{border:none;padding:0}
+.cell{border-radius:2px;padding:14px 8px;text-align:center;font-weight:600;font-size:15px;cursor:pointer;border:1px solid transparent;transition:transform .12s}
+.cell:hover{transform:translateY(-2px);border-color:var(--ink)}
+.cell.sel{border-color:var(--ink);box-shadow:0 0 0 2px rgba(14,27,44,.12)}
+.readout{margin-top:20px;border:1px solid var(--rule);border-radius:12px;padding:20px;background:var(--white);min-height:96px}
+.readout .mono{display:block;margin-bottom:6px}
+
+.page{display:none} .page.on{display:block}
+
+footer{background:var(--band-bg);color:var(--band-mid);padding:52px 0 34px;font-size:14px}
+footer a{color:var(--band-text);text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--band-strong);margin:0 0 14px;font-weight:400}
+.foot-grid{display:grid;grid-template-columns:1.6fr repeat(5,1fr);gap:28px}
+@media(max-width:1180px){.foot-grid{grid-template-columns:1.4fr repeat(3,1fr)}}
+@media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
+.foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid var(--band-rule);font-family:var(--mono);font-size:11px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* ---------- mobile ---------- */
+@media(max-width:860px){
+  /* inline grid-template-columns must be beaten explicitly */
+  .grid2,.grid3,.grid4{grid-template-columns:1fr!important;gap:26px!important}
+  section,section.tight,section.wide{padding:48px 0}
+  .hero{padding:40px 0 34px}
+  h1{font-size:clamp(30px,8.2vw,40px)}
+  h2{font-size:clamp(23px,6.2vw,30px)}
+  .big{font-size:17px}
+  body{font-size:15px}
+  .wrap,.narrow{padding:0 20px}
+  .narrow > *{max-width:100%}
+  .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
+  table{font-size:14px;min-width:520px}
+  th{font-size:10px;padding-right:10px}
+  td{padding:11px 10px 11px 0}
+  pre{font-size:11px;padding:16px;border-radius:2px}
+  .stats b{font-size:26px}
+  .stats div{padding:16px 14px}
+  .plot{padding:18px 16px 14px}
+  .plot-head{gap:10px}
+  .toggle{width:100%}
+  .toggle button{flex:1;padding:9px 6px;font-size:10px}
+  .preadout{gap:18px}
+  .preadout b{font-size:23px}
+  .matrix{border-spacing:3px;min-width:0}
+  .matrix th{font-size:10px}
+  .matrix th.row{padding-right:6px;font-size:10px}
+  .cell{padding:11px 2px;font-size:14px}
+  .seg button{width:32px;height:38px}
+  .rrow{gap:10px}
+  .rrow .lab{font-size:13px}
+  .bars div{grid-template-columns:88px 1fr 30px;font-size:12px}
+  .btns{gap:10px}
+  .btn{width:100%;text-align:center;padding:14px 18px}
+  .readout{padding:16px}
+  ul.plain li{padding:12px 0 12px 20px}
+  ul.plain li::before{top:20px;width:9px}
+  .draft{font-size:10px;letter-spacing:.08em;padding:7px 14px}
+  .vswitch{font-size:11px;padding:8px 14px;line-height:1.6}
+  .foot-grid{grid-template-columns:1fr;gap:24px}
+}
+@media(max-width:480px){
+  .logo .sub{display:none}
+  .grid2 > .card, .grid3 > .card, .grid4 > .card{padding:20px}
+}
+
+.vflip{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--mid);text-align:right;padding:10px 0 0}
+.vflip a{color:var(--mid);text-decoration:none;border-bottom:1px solid var(--rule)}
+.vflip a:hover{color:var(--mark);border-bottom-color:var(--mark)}
+
+/* ---------- theme: dark ---------- */
+html[data-theme="dark"]{
+  --ink:#E6EBF4; --ink-soft:#B7C3D8; --mid:#8494AD;
+  --paper:#0E1B2C; --paper-alt:#16273B; --rule:var(--band-rule);
+  --mark:#6E9DF2; --white:#16273B;
+  --band-bg:#16273B; --band-text:#B7C3D8; --band-strong:#E6EBF4;
+  --band-mid:#8494AD; --band-accent:#8FB0F8; --band-rule:#31435F;
+  --unv-bg:#33291280; --unv-text:#E0BE74; --unv-border:#7A5F26;
+}
+:root{
+  --band-bg:#0E1B2C; --band-text:#C4CFE4; --band-strong:#FFFFFF;
+  --band-mid:#94A3C4; --band-accent:#8FB0F8; --band-rule:#26364F;
+  --unv-bg:#FFF4DE; --unv-text:#7A5200; --unv-border:#DDAE55;
+}
+html[data-theme="dark"] img,html[data-theme="dark"] .plot{background:var(--paper-alt)}
+html.theming,html.theming *{transition:background-color .22s ease,color .22s ease,border-color .22s ease,fill .22s ease,stroke .22s ease!important}
+@media print{ html[data-theme="dark"]{--ink:#0E1B2C;--ink-soft:#33415C;--mid:#5F6C85;--paper:#fff;--paper-alt:#F4F6FA;--rule:#E2E7F0;--mark:#0B4ED6;--white:#fff} }
+
+/* theme control, in the nav */
+.themer{display:inline-flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-left:10px;flex-shrink:0}
+.themer button{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  background:none;border:none;padding:6px 9px;cursor:pointer;color:var(--mid);line-height:1.4;transition:background-color .15s ease,color .15s ease}
+.themer button+button{border-left:1px solid var(--rule)}
+.themer button:hover{color:var(--ink)}
+.themer button[aria-pressed="true"]{background:var(--paper-alt);color:var(--ink);font-weight:500}
+@media(max-width:1320px){ .logo .sub{display:none} }
+@media(max-width:1120px){ .themer button{padding:6px 7px} }
+@media(max-width:860px){
+  .themer{margin:14px 0 0;width:100%}
+  .themer button{flex:1;padding:11px 0;font-size:11px}
+}
+@media print{ .themer{display:none!important} }
+
+/* ---------- logo lockup ---------- */
+:root{ --logo-pop:#0E1B2C; --logo-tail:#0B4ED6; --logo-pop-band:#FFFFFF; --logo-tail-band:var(--band-accent); }
+html[data-theme="dark"]{ --logo-pop:#E6EBF4; --logo-tail:var(--band-accent); --logo-pop-band:#E6EBF4; --logo-tail-band:var(--band-accent); }
+.logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;font-size:20px;flex-shrink:0;line-height:1.1}
+.logo .row{display:flex;align-items:baseline;gap:.42em}
+.logo .mk{font-family:var(--display);font-size:1em;font-weight:700;letter-spacing:-.022em;line-height:1.1;color:var(--logo-pop);white-space:nowrap}
+.logo .cohort{height:.92em;width:1.15em;align-self:baseline;display:block;flex-shrink:0}
+.logo .sub{font-family:var(--mono);font-size:.45em;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);white-space:nowrap;line-height:1.4}
+footer .logo .mk{color:var(--band-strong)}
+footer .logo .sub{color:var(--band-mid)}
+footer .logo .cohort rect{fill:var(--logo-pop-band)}
+footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7){fill:var(--logo-tail-band)}
+@media(max-width:1040px){ .logo{font-size:20px} }
+@media(max-width:860px){ .logo{font-size:17px} }
+@media print{ .logo .mk{color:#0E1B2C} }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="../"><span class="row"><span class="mk">Growth Score</span><svg class="cohort" viewBox="0 0 30 24" aria-hidden="true"><rect x="0" y="16" width="1.6" height="8" fill="var(--logo-pop)"/><rect x="4" y="8" width="1.6" height="16" fill="var(--logo-pop)"/><rect x="7.2" y="12" width="1.6" height="12" fill="var(--logo-pop)"/><rect x="12.8" y="2" width="1.6" height="22" fill="var(--logo-pop)"/><rect x="16.4" y="9" width="1.6" height="15" fill="var(--logo-pop)"/><rect x="22.6" y="5" width="1.6" height="19" fill="var(--logo-tail)"/><rect x="28.4" y="15" width="1.6" height="9" fill="var(--logo-tail)"/></svg></span><span class="sub">An open measurement standard</span></a>
+    <button class="menu" id="menuBtn" aria-expanded="false">Menu</button>
+    <nav class="gs-n" id="nav"><ul>
+      <li class="drop">
+        <button class="dtrig" aria-expanded="false">The measure <span class="caret" aria-hidden="true"><svg viewBox="0 0 1.6 12" width="1.6" height="12"><rect x="0" y="2.5" width="1.6" height="9.5"/></svg></span></button>
+        <div class="dmenu">
+          <a href="../how-it-works/"><b>How it works</b><em>The five parts, in one page</em></a>
+          <a href="../method/"><b>The method</b><em>Questions, scales, arithmetic and bands</em></a>
+          <a href="../specimen/report/"><b>Specimen report</b><em>What a company receives</em></a>
+          <a href="../specimen/cohort/"><b>Cohort report</b><em>What an institution receives</em></a>
+          <a href="../run/"><b>Run it yourself</b><em>The arithmetic in your browser</em></a>
+        </div>
+      </li>
+      <li class="drop">
+        <button class="dtrig" aria-expanded="false">Using it <span class="caret" aria-hidden="true"><svg viewBox="0 0 1.6 12" width="1.6" height="12"><rect x="0" y="2.5" width="1.6" height="9.5"/></svg></span></button>
+        <div class="dmenu">
+          <a href="../the-experience/"><b>The experience</b><em>Ninety days, from both sides</em></a>
+          <a href="../routing/" class="on"><b>Routing</b><em>From a result to relevant support</em></a>
+          <a href="../integrate/"><b>Ways to run it</b><em>Four levels, from a link to self-hosted</em></a>
+        </div>
+      </li>
+      <li class="drop">
+        <button class="dtrig" aria-expanded="false">Can you trust it <span class="caret" aria-hidden="true"><svg viewBox="0 0 1.6 12" width="1.6" height="12"><rect x="0" y="2.5" width="1.6" height="9.5"/></svg></span></button>
+        <div class="dmenu">
+          <a href="../checking-a-result/"><b>Checking a result</b><em>Confirm that a result is genuine</em></a>
+          <a href="../conformance/"><b>Conformance</b><em>Check whether an implementation computes correctly</em></a>
+          <a href="../versions/"><b>Version history</b><em>Changes to the method and score comparability</em></a>
+          <a href="../limits/"><b>Limits</b><em>What Growth Score does not measure or decide</em></a>
+        </div>
+      </li>
+      <li class="drop">
+        <button class="dtrig" aria-expanded="false">Who it is for <span class="caret" aria-hidden="true"><svg viewBox="0 0 1.6 12" width="1.6" height="12"><rect x="0" y="2.5" width="1.6" height="9.5"/></svg></span></button>
+        <div class="dmenu">
+          <a href="../banks/"><b>Banks</b><em>Which customers are building capability</em></a>
+          <a href="../public-bodies/"><b>Public bodies</b><em>Movement, not throughput</em></a>
+          <a href="../universities/"><b>Universities</b><em>Evidence for the next bid</em></a>
+          <a href="../accelerators/"><b>Accelerators</b><em>Select, direct support and measure movement</em></a>
+          <a href="../investors/"><b>Investors</b><em>Portfolio movement from day one</em></a>
+        </div>
+      </li>
+      <li><a href="../about/">About</a></li>
+      <li><a class="navcta" href="../contact/">Demo</a></li>
+      <li class="themer" id="themer" role="group" aria-label="Colour theme"><button data-t="auto" aria-pressed="false" title="Follow your system setting">Auto</button><button data-t="light" aria-pressed="false">Light</button><button data-t="dark" aria-pressed="false">Dark</button></li>
+    </ul></nav>
+  </div>
+</header>
+<main id="main">
+<div class="page on">
+  <section class="hero">
+    <div class="narrow">
+      <p class="eyebrow">Routing</p>
+      <h1>The result indicates the constraint. Routing records the support response.</h1>
+      <p class="big" style="margin-top:22px">A diagnosis is useful only if it leads to a next step. Some companies can act on the indicated actions themselves. Where external support is needed, the institution can record the support category, choose an appropriate provider from its own provision and record whether the support was taken up. Without that record, later reporting cannot show what preceded the next measurement.</p>
+      <p class="big">Routing connects a result to a support category and records the response that follows. It allows a report to show which intervention preceded a later measurement. It does not establish that the intervention caused the movement.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="narrow">
+      <h2>Not everything needs a provider</h2>
+      <p style="margin-top:16px">Routing is one of two paths from a diagnosis. It is used when the indicated work needs external support or when an institution chooses to offer funded provision.</p>
+      <p>Most root causes have a fix the company can carry out itself. It receives three specific actions, each with an owner, a date and the evidence that would show it worked, and it can act on them the same afternoon. That is the loop the instrument is built around: measure, act, measure again. It scales, because it needs nobody’s diary.</p>
+      <p>Routing is for cases where the indicated work needs a person or where an institution wants to use provision it already funds. The result indicates the support category. The institution decides whether to offer it, which provider to use and how to record the outcome.</p>
+      <p class="big" style="margin-top:20px">Keeping the two paths separate helps institutions understand demand for support. A cohort report can show how many companies used external provision, which categories they used and how many reported self-directed action.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">The gap this closes</p>
+      <div class="grid2">
+        <div>
+          <h2>Most people holding the score cannot fix what it finds.</h2>
+          <p style="margin-top:18px">A programme manager at a combined authority, a relationship manager at a bank, an enterprise team at a university: all of them can read a result and understand it. None of them is a commercial practitioner, and none of them should have to be.</p>
+          <p>They do not need to know how to fix a qualification problem. They need to know that this company has one, that it is the thing to fix first, and which of the providers they already fund is the right one to do it.</p>
+        </div>
+        <div class="card">
+          <span class="mono">What routing helps replace</span>
+          <ul class="plain">
+            <li>Support allocated without a recorded link to the company’s indicated need</li>
+            <li>The same workshop offered to every company regardless of its result</li>
+            <li>Adviser judgement recorded without the result or reason that informed it</li>
+            <li>No record of which support was offered, taken up or followed by a rescore</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="narrow">
+      <h2>How it works</h2>
+      <p style="margin-top:16px">The diagnosis produces a stage and a root cause. That pair determines a <b>support category</b>: the kind of help indicated. You map your own provision to those categories once, and from then on every company that completes the measure arrives at the right door.</p>
+      <div class="tw"><table style="margin-top:24px">
+        <thead><tr><th>Root cause</th><th>Support category indicated</th></tr></thead>
+        <tbody>
+          <tr><td>Product</td><td>Proposition, value and business-case work: who the offer is for, what problem it solves and why a buyer would pay</td></tr>
+          <tr><td>People</td><td>Ownership, capability and leadership: who is accountable and whether the team can carry out the work</td></tr>
+          <tr><td>Process</td><td>Operating rhythm: qualification, stage discipline, inspection and forecasting</td></tr>
+          <tr><td>Repeatability</td><td>Codification and enablement: capturing what works so the team can repeat it</td></tr>
+        </tbody>
+      </table></div>
+      <p style="margin-top:22px">The stage adds the domain. For example, Closing plus Process indicates deal governance and close planning; Demand plus Product indicates proposition and segment work. The 16 stage-and-root-cause combinations define the support categories in the licensed layer.</p>
+      <p class="small">The rules that select the category are part of the licensed layer, not the published method. What is published is that the mapping exists, is deterministic, and does not change between two companies with the same result.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Your provision, not ours</p>
+      <div class="grid2">
+        <div>
+          <h2>You keep the providers you already have.</h2>
+          <p style="margin-top:18px">This is not a marketplace we bring to you. Most institutions already fund the support: an in-house commercial team, a framework of approved providers, a mentor pool, existing programmes. What is missing is the mechanism that matches a company to the right one at the point of need.</p>
+          <p>You map your provision to the categories once, in your own directory. Where you have a gap, you can fill it from ours, or leave it empty and see how often it comes up before spending anything.</p>
+        </div>
+        <div class="card">
+          <span class="mono">What a directory holds</span>
+          <ul class="plain">
+            <li>Your internal commercial or business-support team</li>
+            <li>Providers on your existing framework, mapped by category</li>
+            <li>Your programmes and clinics, with eligibility and capacity</li>
+            <li>Referral routes you already use, recorded explicitly</li>
+          </ul>
+          <p class="small" style="margin-top:16px">Advisers and programmes keep their client relationships and fees. Routing directs existing provision; it does not replace the institution’s procurement or provider decisions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="narrow">
+      <h2>Three non-negotiable rules</h2>
+      <ul class="plain" style="margin-top:18px;font-size:17px">
+        <li><b>Routing indicates support. It never rations it.</b> A routing outcome is not an eligibility decision, a gate, or a reason to withhold anything from a company. It must not be used to decide who gets access to a programme or to funding.</li>
+        <li><b>A person with relevant knowledge can override the indicated route.</b> Record the alternative route and the reason. Those overrides provide evidence for reviewing the mapping rules.</li>
+        <li><b>Payment does not influence the indicated category.</b> The result determines the type of support indicated; commercial considerations can affect which provider appears within that category. Disclose any provider we own or are affiliated with.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="narrow">
+      <h2>What it produces</h2>
+      <p style="margin-top:16px">Routing adds the intervention record to the measurement.</p>
+      <div class="tw"><table style="margin-top:20px">
+        <thead><tr><th>Recorded at routing</th><th>What it makes possible</th></tr></thead>
+        <tbody>
+          <tr><td>The category indicated and the provider chosen</td><td>Report what was offered, to whom and why</td></tr>
+          <tr><td>Whether it was taken up</td><td>See take-up by category and where provision may be missing or unattractive</td></tr>
+          <tr><td>The result at the next measurement</td><td>Report movement alongside the intervention that preceded it</td></tr>
+          <tr><td>Overrides and their reasons</td><td>Review where the indicated route did not fit and improve the mapping</td></tr>
+        </tbody>
+      </table></div>
+      <p style="margin-top:22px">Without routing, a cohort report can show the proportion of companies whose results changed. With routing, it can also show which support was offered or taken up before the next measurement. That gives a funder or programme board a fuller account of the intervention record, with its limits stated.</p>
+      <p class="small">The report records sequence, not causation: which support preceded the next measurement. It does not claim that the intervention caused the movement.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="narrow">
+      <h2>Getting started</h2>
+      <p style="margin-top:16px">Routing can begin without engineering if the institution already has a directory of provision. The first version maps that provision to the 16 support categories; the time required depends on the number of providers, categories and rules to record.</p>
+      <div class="tw"><table style="margin-top:20px">
+        <thead><tr><th>Step</th><th>What happens</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>We provide the 16 support categories and the mapping template</td></tr>
+          <tr><td>2</td><td>You map your existing provision to them and record the gaps</td></tr>
+          <tr><td>3</td><td>Companies completing the measure receive the indicated category and, where configured, the route selected by the institution</td></tr>
+          <tr><td>4</td><td>Take-up and subsequent results are included in the cohort report</td></tr>
+        </tbody>
+      </table></div>
+      <div class="btns"><a class="btn" href="../contact/">Discuss a routing pilot</a><a class="btn ghost" href="../specimen/report/">See routing in a specimen report</a></div>
+    </div>
+  </section>
+
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="margin-bottom:14px"><span class="row"><span class="mk">Growth Score</span><svg class="cohort" viewBox="0 0 30 24" aria-hidden="true"><rect x="0" y="16" width="1.6" height="8" fill="var(--logo-pop-band)"/><rect x="4" y="8" width="1.6" height="16" fill="var(--logo-pop-band)"/><rect x="7.2" y="12" width="1.6" height="12" fill="var(--logo-pop-band)"/><rect x="12.8" y="2" width="1.6" height="22" fill="var(--logo-pop-band)"/><rect x="16.4" y="9" width="1.6" height="15" fill="var(--logo-pop-band)"/><rect x="22.6" y="5" width="1.6" height="19" fill="var(--logo-tail-band)"/><rect x="28.4" y="15" width="1.6" height="9" fill="var(--logo-tail-band)"/></svg></span><span class="sub">An open measurement standard</span></div>
+        <p style="max-width:34ch">Whether a company can win and keep customers, and what&rsquo;s stopping it.</p>
+        <p style="max-width:34ch;font-size:12px;margin-top:12px">Published and maintained by Closing Foundry Ltd.</p>
+      </div>
+      <div><h4>The measure</h4><p>
+        <a href="../how-it-works/">How it works</a><br>
+        <a href="../method/">The method</a><br>
+        <a href="../specimen/report/">Specimen report</a><br>
+        <a href="../specimen/cohort/">Cohort report</a><br>
+        <a href="../run/">Run it yourself</a></p></div>
+      <div><h4>Using it</h4><p>
+        <a href="../the-experience/">The experience</a><br>
+        <a href="../routing/">Routing</a><br>
+        <a href="../integrate/">Ways to run it</a></p></div>
+      <div><h4>Can you trust it</h4><p>
+        <a href="../checking-a-result/">Checking a result</a><br>
+        <a href="../conformance/">Conformance</a><br>
+        <a href="../versions/">Version history</a><br>
+        <a href="../limits/">Limits</a></p></div>
+      <div><h4>Who it is for</h4><p>
+        <a href="../banks/">Banks</a><br>
+        <a href="../public-bodies/">Public bodies</a><br>
+        <a href="../universities/">Universities</a><br>
+        <a href="../accelerators/">Accelerators</a><br>
+        <a href="../investors/">Investors</a></p></div>
+      <div><h4>Company</h4><p>
+        <a href="../about/">About</a><br>
+        <a href="../contact/">Contact</a><br>
+        <a href="../privacy/">Privacy</a><br>
+        <a href="../terms/">Terms of use</a></p></div>
+    </div>
+    <div class="foot-bottom">
+      <span>Published by Closing Foundry Ltd, registered in England and Wales, company no. 14629519.</span>
+      <span>Not a credit signal. Not an automated decision-making tool.</span>
+    </div>
+  </div>
+</footer>
+<script>
+
+document.querySelectorAll("table").forEach(function(t){
+  if(t.parentElement && t.parentElement.classList.contains("tw")) return;
+  var w = document.createElement("div"); w.className = "tw";
+  t.parentNode.insertBefore(w, t); w.appendChild(t);
+});
+
+document.getElementById("menuBtn").addEventListener("click", function(){
+  var open = document.getElementById("nav").classList.toggle("open");
+  this.setAttribute("aria-expanded", open ? "true":"false");
+});
+var isTouch = window.matchMedia("(max-width:860px)");
+document.querySelectorAll(".drop").forEach(function(d){
+  var t = d.querySelector(".dtrig");
+  if(d.querySelector('a.on')) d.classList.add("hason");
+  t.addEventListener("click", function(e){
+    e.stopPropagation();
+    var open = d.classList.contains("open");
+    document.querySelectorAll(".drop").forEach(function(o){ o.classList.remove("open"); o.querySelector(".dtrig").setAttribute("aria-expanded","false"); });
+    if(!open){ d.classList.add("open"); t.setAttribute("aria-expanded","true"); }
+  });
+  d.addEventListener("mouseenter", function(){ if(isTouch.matches) return;
+    document.querySelectorAll(".drop").forEach(function(o){ o.classList.remove("open"); });
+    d.classList.add("open"); t.setAttribute("aria-expanded","true"); });
+  d.addEventListener("mouseleave", function(){ if(isTouch.matches) return;
+    d.classList.remove("open"); t.setAttribute("aria-expanded","false"); });
+});
+document.addEventListener("click", function(){
+  document.querySelectorAll(".drop").forEach(function(d){ d.classList.remove("open"); d.querySelector(".dtrig").setAttribute("aria-expanded","false"); });
+});
+document.addEventListener("keydown", function(e){ if(e.key === "Escape"){
+  document.querySelectorAll(".drop").forEach(function(d){ d.classList.remove("open"); }); } });
+var sb = document.getElementById("sendBtn");
+if(sb){ sb.addEventListener("click", function(){
+  var TO = "hello@closingfoundry.com";
+  var v = function(id){ var e=document.getElementById(id); return e ? e.value.trim() : ""; };
+  var name=v("f1"), org=v("f2"), email=v("f3"), who=v("f4"), what=v("f5");
+  if(!name || !email){ document.getElementById("formNote").textContent = "Please add a name and an email address."; return; }
+  var body = "Name: "+name+"\nOrganisation: "+org+"\nEmail: "+email+"\nDescribes them: "+who+"\n\nCurrently unable to measure:\n"+what;
+  window.location.href = "mailto:"+TO+"?subject="+encodeURIComponent("Growth Score demonstration request: "+(org||name))+"&body="+encodeURIComponent(body);
+}); }
+
+
+
+(function(){
+  var box=document.getElementById('themer'); if(!box) return;
+  var H=document.documentElement, mq=window.matchMedia('(prefers-color-scheme: dark)');
+  function resolve(pref){ return pref==='auto' ? (mq.matches?'dark':'light') : pref; }
+  function pref(){ try{ return localStorage.getItem('gs-theme') || 'auto'; }catch(e){ return 'auto'; } }
+  function paint(){ var p=pref();
+    box.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.t===p?'true':'false'); }); }
+  function apply(p, animate){
+    if(animate) H.classList.add('theming');
+    H.setAttribute('data-theme', resolve(p));
+    if(animate) setTimeout(function(){ H.classList.remove('theming'); }, 260);
+  }
+  box.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var p=b.dataset.t;
+      try{ p==='auto' ? localStorage.removeItem('gs-theme') : localStorage.setItem('gs-theme', p); }catch(e){}
+      apply(p, true); paint();
+    });
+  });
+  if(mq.addEventListener) mq.addEventListener('change', function(){ if(pref()==='auto') apply('auto', true); });
+  paint();
+})();
+</script>
+</body>
+</html>

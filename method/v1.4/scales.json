@@ -1,0 +1,62 @@
+{
+  "version": "v1.4",
+  "capability": {
+    "instruction": "Score how true this is in practice today. Use evidence and consistency, not intent.",
+    "options": [
+      {
+        "score": 1,
+        "label": "Not in place",
+        "meaning": "This is not true in practice yet, or we do not really do it."
+      },
+      {
+        "score": 2,
+        "label": "Inconsistent",
+        "meaning": "It happens in some cases, but not reliably, consistently or with clear evidence."
+      },
+      {
+        "score": 3,
+        "label": "Partly in place",
+        "meaning": "We have a working version, but usage, ownership or evidence is uneven."
+      },
+      {
+        "score": 4,
+        "label": "Consistent",
+        "meaning": "It is part of how we normally operate and we can evidence it."
+      },
+      {
+        "score": 5,
+        "label": "Proven and improving",
+        "meaning": "It works, is evidenced, and we review or improve it over time."
+      }
+    ]
+  },
+  "momentum": {
+    "options": [
+      {
+        "score": 1,
+        "label": "Well below target",
+        "meaning": "This area is materially short of where it needs to be."
+      },
+      {
+        "score": 2,
+        "label": "Below target",
+        "meaning": "There is some movement, but it is not enough or not reliable."
+      },
+      {
+        "score": 3,
+        "label": "Partly on track",
+        "meaning": "There is usable movement, but it is uneven or not yet enough."
+      },
+      {
+        "score": 4,
+        "label": "On track",
+        "meaning": "This area is broadly where it needs to be."
+      },
+      {
+        "score": 5,
+        "label": "Strong",
+        "meaning": "This area is ahead of target or clearly working."
+      }
+    ]
+  }
+}
