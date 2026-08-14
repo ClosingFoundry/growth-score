@@ -916,6 +916,7 @@ CAUSES.forEach(function(rc,j){
 (function(){
 var root=document.documentElement;
 if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+if(document.visibilityState==='hidden')return;
 var fly=document.getElementById('sigfly'),svg=document.getElementById('sigflySvg');
 var target=document.querySelector('header .logo .sig'),row=document.querySelector('header .logo .row');
 if(!fly||!svg||!target||!row)return;
@@ -1020,20 +1021,33 @@ function land(){
   var done=false;
   function finish(){
     if(done)return;done=true;
+    clearTimeout(FAILSAFE);
+    over=true;
     root.classList.remove('sigfly-run');
     setTimeout(function(){fly.style.display='none'},200);
   }
   fly.addEventListener('transitionend',finish,{once:true});
   setTimeout(finish,1150);
 }
-var t0=null;
+var t0=null,over=false;
+function reveal(){
+  if(over)return;over=true;
+  root.classList.remove('sigfly-run');
+  fly.style.display='none';
+}
 function run(ts){
+  if(over)return;
   if(t0===null)t0=ts;
   var t=ts-t0;
   frame(Math.min(t*RATE,HOLD));
   if(t<DUR)requestAnimationFrame(run);
-  else{frame(HOLD);setTimeout(land,340)}
+  else{frame(HOLD);setTimeout(function(){if(!over)land()},340)}
 }
+// wall-clock failsafe: the page must never stay hidden behind the animation
+var FAILSAFE=setTimeout(reveal,DUR+2600);
+document.addEventListener('visibilitychange',function(){
+  if(document.visibilityState==='hidden')reveal();
+});
 requestAnimationFrame(run);
 })();
 </script>
