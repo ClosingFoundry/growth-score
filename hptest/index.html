@@ -363,11 +363,13 @@ html[data-theme="dark"]{ --logo-pop:#E6EBF4; --logo-tail:var(--band-accent); --l
 .logo .cohort{height:.92em;width:1.15em;align-self:baseline;display:block;flex-shrink:0}
 .logo .sig{height:.92em;width:1.79em;align-self:baseline;display:block;flex-shrink:0}
 html.sigfly-run header .logo .row{opacity:0}
-header .logo .row{transition:opacity .25s ease}
+header .logo .row{transition:opacity .35s ease}
+#heroCopy{transition:opacity .55s ease,transform .55s ease}
+html.sigfly-run #heroCopy{opacity:0;transform:translateY(10px)}
 #sigfly{position:fixed;z-index:60;pointer-events:none;transform-origin:0 0;will-change:transform}
 #sigfly svg{display:block;width:100%;height:auto;overflow:visible}
 #sigfly.go{transition:transform 1000ms cubic-bezier(.62,0,.32,1)}
-@media(prefers-reduced-motion:reduce){html.sigfly-run header .logo .row{opacity:1}#sigfly{display:none}}
+@media(prefers-reduced-motion:reduce){html.sigfly-run header .logo .row{opacity:1}html.sigfly-run #heroCopy{opacity:1;transform:none}#sigfly{display:none}}
 .logo .sub{font-family:var(--mono);font-size:.45em;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);white-space:nowrap;line-height:1.4}
 footer .logo .mk{color:var(--band-strong)}
 footer .logo .sub{color:var(--band-mid)}
@@ -433,7 +435,7 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
   <section class="hero">
     <div class="wrap">
       <div class="grid2" style="grid-template-columns:1fr 1.05fr;gap:56px;align-items:center">
-        <div>
+        <div id="heroCopy">
           <p class="eyebrow">An open measurement standard</p>
           <h1 style="max-width:24ch">Results are measured. Commercial capability is harder to see.</h1>
           <p class="big" style="margin-top:24px">
@@ -981,12 +983,17 @@ function frame(t){
   st.text.setAttribute('transform','translate('+(8*(1-to)).toFixed(2)+',0)');
 }
 function place(){
+  var col=document.getElementById('heroCopy');
   var wrap=document.querySelector('main .wrap')||document.body;
-  var wr=wrap.getBoundingClientRect();
-  var w=Math.min(420,Math.max(220,wr.width-8));
+  var r=(col||wrap).getBoundingClientRect();
+  var w=Math.min(420,Math.max(220,r.width-8));
   fly.style.width=w+'px';
-  fly.style.left=Math.round(wr.left)+'px';
-  fly.style.top=Math.round(Math.min(190,window.innerHeight*0.30))+'px';
+  fly.style.left=Math.round(r.left)+'px';
+  var h=w*30/180;
+  var top=r.top+Math.max(0,(r.height-h)/2);
+  var hdr=document.querySelector('header');
+  var floor=hdr?hdr.getBoundingClientRect().bottom+28:80;
+  fly.style.top=Math.round(Math.max(floor,Math.min(top,window.innerHeight-h-24)))+'px';
   fly.style.transform='none';
   return w;
 }
@@ -1000,11 +1007,12 @@ function land(){
   var dy=tr.bottom-(fr.top+27*unit);   // baseline at v=24, viewBox y0=-3
   fly.classList.add('go');
   fly.style.transform='translate('+dx.toFixed(1)+'px,'+dy.toFixed(1)+'px) scale('+s.toFixed(4)+')';
+  setTimeout(function(){root.classList.remove('sigfly-run')},420);
   var done=false;
   function finish(){
     if(done)return;done=true;
     root.classList.remove('sigfly-run');
-    setTimeout(function(){fly.style.display='none'},260);
+    setTimeout(function(){fly.style.display='none'},200);
   }
   fly.addEventListener('transitionend',finish,{once:true});
   setTimeout(finish,1400);
