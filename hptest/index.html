@@ -364,12 +364,13 @@ html[data-theme="dark"]{ --logo-pop:#E6EBF4; --logo-tail:var(--band-accent); --l
 .logo .sig{height:.92em;width:1.79em;align-self:baseline;display:block;flex-shrink:0}
 html.sigfly-run header .logo .row{opacity:0}
 header .logo .row{transition:opacity .35s ease}
-#heroCopy{transition:opacity .55s ease,transform .55s ease}
-html.sigfly-run #heroCopy{opacity:0;transform:translateY(10px)}
+#heroCopy,.heroright{transition:opacity .5s ease,transform .5s ease}
+html.sigfly-run #heroCopy,html.sigfly-run .heroright{opacity:0;transform:translateY(8px)}
+html.sigfly-run .heroright{transition-delay:.08s}
 #sigfly{position:fixed;z-index:60;pointer-events:none;transform-origin:0 0;will-change:transform}
 #sigfly svg{display:block;width:100%;height:auto;overflow:visible}
-#sigfly.go{transition:transform 1000ms cubic-bezier(.62,0,.32,1)}
-@media(prefers-reduced-motion:reduce){html.sigfly-run header .logo .row{opacity:1}html.sigfly-run #heroCopy{opacity:1;transform:none}#sigfly{display:none}}
+#sigfly.go{transition:transform 820ms cubic-bezier(.62,0,.32,1)}
+@media(prefers-reduced-motion:reduce){html.sigfly-run header .logo .row{opacity:1}html.sigfly-run #heroCopy,html.sigfly-run .heroright{opacity:1;transform:none}#sigfly{display:none}}
 .logo .sub{font-family:var(--mono);font-size:.45em;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);white-space:nowrap;line-height:1.4}
 footer .logo .mk{color:var(--band-strong)}
 footer .logo .sub{color:var(--band-mid)}
@@ -921,7 +922,7 @@ if(!fly||!svg||!target||!row)return;
 root.classList.add('sigfly-run');
 function lcg(s){return function(){s=(s*1664525+1013904223)%4294967296;return s/4294967296}}
 var FINAL=[[0,9],[3.8,16],[7,6],[12.2,21],[15.6,12],[19,18,1],[24.2,8],[27.8,14],[32.8,23],[36.4,10,1],[41.4,19],[45,7]];
-var W=176,BASE=24,FX=11.5,N=44,NSEL=16,HOLD=5200;
+var W=176,BASE=24,FX=11.5,N=44,NSEL=16,HOLD=5200,RATE=1.63,DUR=HOLD/RATE;
 function eo(t){return 1-Math.pow(1-t,3)}
 function eio(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
 function cl(t){return t<0?0:t>1?1:t}
@@ -1016,7 +1017,6 @@ function land(){
   var dy=tr.bottom-(fr.top+27*unit);   // baseline at v=24, viewBox y0=-3
   fly.classList.add('go');
   fly.style.transform='translate('+dx.toFixed(1)+'px,'+dy.toFixed(1)+'px) scale('+s.toFixed(4)+')';
-  setTimeout(function(){root.classList.remove('sigfly-run')},420);
   var done=false;
   function finish(){
     if(done)return;done=true;
@@ -1024,15 +1024,15 @@ function land(){
     setTimeout(function(){fly.style.display='none'},200);
   }
   fly.addEventListener('transitionend',finish,{once:true});
-  setTimeout(finish,1400);
+  setTimeout(finish,1150);
 }
 var t0=null;
 function run(ts){
   if(t0===null)t0=ts;
   var t=ts-t0;
-  frame(Math.min(t,HOLD));
-  if(t<HOLD)requestAnimationFrame(run);
-  else{frame(HOLD);setTimeout(land,650)}
+  frame(Math.min(t*RATE,HOLD));
+  if(t<DUR)requestAnimationFrame(run);
+  else{frame(HOLD);setTimeout(land,340)}
 }
 requestAnimationFrame(run);
 })();
