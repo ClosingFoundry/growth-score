@@ -361,6 +361,15 @@ html[data-theme="dark"]{ --logo-pop:#E6EBF4; --logo-tail:var(--band-accent); --l
 .logo .mk{font-family:var(--display);font-size:1em;font-weight:700;letter-spacing:-.022em;line-height:1.1;color:var(--logo-pop);white-space:nowrap}
 .logo .cohort{height:.92em;width:1.15em;align-self:baseline;display:block;flex-shrink:0}
 .logo .sig{height:.92em;width:1.79em;align-self:baseline;display:block;flex-shrink:0}
+html.sigfly-run header .logo .row{opacity:0}
+header .logo .row{transition:opacity .35s ease}
+#heroCopy,.heroright{transition:opacity .5s ease,transform .5s ease}
+html.sigfly-run #heroCopy,html.sigfly-run .heroright{opacity:0;transform:translateY(8px)}
+html.sigfly-run .heroright{transition-delay:.08s}
+#sigfly{position:fixed;z-index:60;pointer-events:none;transform-origin:0 0;will-change:transform}
+#sigfly svg{display:block;width:100%;height:auto;overflow:visible}
+#sigfly.go{transition:transform 1050ms cubic-bezier(.6,0,.3,1)}
+@media(prefers-reduced-motion:reduce){html.sigfly-run header .logo .row{opacity:1}html.sigfly-run #heroCopy,html.sigfly-run .heroright{opacity:1;transform:none}#sigfly{display:none}
 .logo .sub{font-family:var(--mono);font-size:.45em;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);white-space:nowrap;line-height:1.4}
 footer .logo .mk{color:var(--band-strong)}
 footer .logo .sub{color:var(--band-mid)}
@@ -426,7 +435,7 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
   <section class="hero">
     <div class="wrap">
       <div class="grid2" style="grid-template-columns:1fr 1.05fr;gap:56px;align-items:center">
-        <div>
+        <div id="heroCopy">
           <p class="eyebrow">An open measurement standard</p>
           <h1 style="max-width:24ch">Results are measured. Commercial capability is harder to see.</h1>
           <p class="big" style="margin-top:24px">
@@ -899,6 +908,140 @@ CAUSES.forEach(function(rc,j){
   });
   if(mq.addEventListener) mq.addEventListener('change', function(){ if(pref()==='auto') apply('auto', true); });
   paint();
+})();
+</script>
+<div id="sigfly" aria-hidden="true"><svg id="sigflySvg" viewBox="-2 -3 180 30"></svg></div>
+<script>
+(function(){
+var root=document.documentElement;
+try{if(sessionStorage.getItem('fac16sig')==='1')return;sessionStorage.setItem('fac16sig','1');}catch(e){}
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+if(document.visibilityState==='hidden')return;
+var fly=document.getElementById('sigfly'),svg=document.getElementById('sigflySvg');
+var target=document.querySelector('header .logo .sig'),row=document.querySelector('header .logo .row');
+if(!fly||!svg||!target||!row)return;
+root.classList.add('sigfly-run');
+function lcg(s){return function(){s=(s*1664525+1013904223)%4294967296;return s/4294967296}}
+var FINAL=[[0,9],[3.8,16],[7,6],[12.2,21],[15.6,12],[19,18,1],[24.2,8],[27.8,14],[32.8,23],[36.4,10,1],[41.4,19],[45,7]];
+var W=176,BASE=24,FX=11.5,N=44,NSEL=16,HOLD=5200,RATE=1.63,DUR=HOLD/RATE;
+function eo(t){return 1-Math.pow(1-t,3)}
+function eio(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+function cl(t){return t<0?0:t>1?1:t}
+function tone(n){return getComputedStyle(root).getPropertyValue(n).trim()}
+var st=(function(){
+  var rnd=lcg(20260813),bars=[],x=0,i;
+  for(i=0;i<N;i++){bars.push({x0:x,h0:Math.round((4+rnd()*20)*10)/10});x+=1.2+(1.2+rnd()*3.4)}
+  var sc=(W-2)/(x-1.2);bars.forEach(function(b){b.x0=Math.round(b.x0*sc*10)/10});
+  var idx=bars.map(function(b,i){return i}),sel=[];
+  while(sel.length<NSEL){var j=Math.floor(rnd()*idx.length);sel.push(idx.splice(j,1)[0])}
+  var selSet={};sel.forEach(function(v){selSet[v]=1});
+  var blueSurv=sel.slice().sort(function(a,b){return a-b}).filter(function(v,i){return i===3||i===9}).slice(0,2);
+  var inkPool=bars.map(function(b,i){return i}).filter(function(i){return !selSet[i]});
+  var step=inkPool.length/10,inkSurv=[],k;
+  for(k=0;k<10;k++)inkSurv.push(inkPool[Math.floor(k*step)]);
+  var surv=inkSurv.concat(blueSurv).sort(function(a,b){return a-b});
+  var blueSlots=[],inkSlots=[];
+  FINAL.forEach(function(f,i){if(f[2])blueSlots.push(i);else inkSlots.push(i)});
+  var map={},bi=0,ii=0;
+  surv.forEach(function(s){map[s]=blueSurv.indexOf(s)>=0?blueSlots[bi++]:inkSlots[ii++]});
+  var ns='http://www.w3.org/2000/svg';
+  svg.innerHTML='';
+  var g=document.createElementNS(ns,'g');svg.appendChild(g);
+  var text=document.createElementNS(ns,'text');
+  text.setAttribute('x','69.06');text.setAttribute('y',String(BASE));
+  text.setAttribute('font-size','26');
+  text.setAttribute('font-family','IBM Plex Sans, system-ui, sans-serif');
+  text.setAttribute('font-weight','700');text.setAttribute('letter-spacing','-0.57');
+  text.textContent='fac16';svg.appendChild(text);
+  bars.forEach(function(b,i){
+    var r=document.createElementNS(ns,'rect');
+    r.setAttribute('x',b.x0);r.setAttribute('width',1.2);
+    r.setAttribute('y',BASE);r.setAttribute('height',0);
+    g.appendChild(r);b.el=r;b.sel=!!selSet[i];
+    b.slot=(map[i]!==undefined)?map[i]:null;
+  });
+  return {bars:bars,text:text};
+})();
+function frame(t){
+  var ink=tone('--logo-pop'),acc=tone('--logo-tail');
+  st.bars.forEach(function(b,i){
+    var grow=eo(cl((t-i*22)/560));
+    var x=b.x0,h=b.h0*grow,w=1.2,op=1,fill=ink;
+    if(t>1500&&b.sel&&cl((t-1500-(i%16)*55)/260)>0)fill=acc;
+    var cv=eio(cl((t-3000-i*12)/1100));
+    if(cv>0){
+      var f=b.slot!==null?FINAL[b.slot]:null;
+      if(f){x=b.x0+(FX+f[0]-b.x0)*cv;h=b.h0+(f[1]-b.h0)*cv;w=1.2+.4*cv;fill=f[2]?acc:ink}
+      else{x=b.x0+((FX+20)-b.x0)*cv;op=1-cl(cv*1.6);h=b.h0*(1-cv*.5)}
+    }
+    b.el.setAttribute('x',x.toFixed(2));b.el.setAttribute('width',w.toFixed(2));
+    b.el.setAttribute('height',Math.max(0,h).toFixed(2));
+    b.el.setAttribute('y',(BASE-Math.max(0,h)).toFixed(2));
+    b.el.setAttribute('fill',fill);b.el.setAttribute('opacity',op.toFixed(2));
+  });
+  var to=eo(cl((t-3550)/700));
+  st.text.setAttribute('opacity',to.toFixed(2));
+  st.text.setAttribute('fill',tone('--logo-pop'));
+  st.text.setAttribute('transform','translate('+(8*(1-to)).toFixed(2)+',0)');
+}
+function place(){
+  var wrap=document.querySelector('main .wrap')||document.body;
+  var wr=wrap.getBoundingClientRect();
+  var hdr=document.querySelector('header');
+  var hb=hdr?hdr.getBoundingClientRect().bottom:64;
+  // fill the content width: the signature is the page while it plays
+  var w=Math.min(wr.width, window.innerWidth*0.86);
+  var h=w*30/180;
+  var room=window.innerHeight-hb;
+  if(h>room*0.55){ h=room*0.55; w=h*180/30; }      // never crowd the viewport vertically
+  fly.style.width=w+'px';
+  fly.style.left=Math.round(wr.left+(wr.width-w)/2)+'px';
+  fly.style.top=Math.round(hb+(room-h)*0.42)+'px';  // optically centred, biased up
+  fly.style.transform='none';
+  return w;
+}
+
+var flyW=place();
+function land(){
+  var tr=target.getBoundingClientRect(), fr=fly.getBoundingClientRect();
+  var unit=tr.width/46.6;              // px per svg unit in the header mark
+  var funit=flyW/180;                  // px per unit in the flyer
+  var s=unit/funit;
+  var dx=tr.left-(fr.left+13.5*unit);  // field starts at u=11.5, viewBox x0=-2
+  var dy=tr.bottom-(fr.top+27*unit);   // baseline at v=24, viewBox y0=-3
+  fly.classList.add('go');
+  fly.style.transform='translate('+dx.toFixed(1)+'px,'+dy.toFixed(1)+'px) scale('+s.toFixed(4)+')';
+  var done=false;
+  function finish(){
+    if(done)return;done=true;
+    clearTimeout(FAILSAFE);
+    over=true;
+    root.classList.remove('sigfly-run');
+    setTimeout(function(){fly.style.display='none'},200);
+  }
+  fly.addEventListener('transitionend',finish,{once:true});
+  setTimeout(finish,1380);
+}
+var t0=null,over=false;
+function reveal(){
+  if(over)return;over=true;
+  root.classList.remove('sigfly-run');
+  fly.style.display='none';
+}
+function run(ts){
+  if(over)return;
+  if(t0===null)t0=ts;
+  var t=ts-t0;
+  frame(Math.min(t*RATE,HOLD));
+  if(t<DUR)requestAnimationFrame(run);
+  else{frame(HOLD);setTimeout(function(){if(!over)land()},340)}
+}
+// wall-clock failsafe: the page must never stay hidden behind the animation
+var FAILSAFE=setTimeout(reveal,DUR+3000);
+document.addEventListener('visibilitychange',function(){
+  if(document.visibilityState==='hidden')reveal();
+});
+requestAnimationFrame(run);
 })();
 </script>
 </body>
