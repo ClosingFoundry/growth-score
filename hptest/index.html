@@ -369,7 +369,7 @@ html.sigfly-run #heroCopy,html.sigfly-run .heroright{opacity:0;transform:transla
 html.sigfly-run .heroright{transition-delay:.08s}
 #sigfly{position:fixed;z-index:60;pointer-events:none;transform-origin:0 0;will-change:transform}
 #sigfly svg{display:block;width:100%;height:auto;overflow:visible}
-#sigfly.go{transition:transform 820ms cubic-bezier(.62,0,.32,1)}
+#sigfly.go{transition:transform 1050ms cubic-bezier(.6,0,.3,1)}
 @media(prefers-reduced-motion:reduce){html.sigfly-run header .logo .row{opacity:1}html.sigfly-run #heroCopy,html.sigfly-run .heroright{opacity:1;transform:none}#sigfly{display:none}}
 .logo .sub{font-family:var(--mono);font-size:.45em;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);white-space:nowrap;line-height:1.4}
 footer .logo .mk{color:var(--band-strong)}
@@ -985,29 +985,22 @@ function frame(t){
   st.text.setAttribute('transform','translate('+(8*(1-to)).toFixed(2)+',0)');
 }
 function place(){
-  var col=document.getElementById('heroCopy');
   var wrap=document.querySelector('main .wrap')||document.body;
-  var r=(col||wrap).getBoundingClientRect();
-  var w=Math.min(420,Math.max(220,r.width-8));
-  fly.style.width=w+'px';
-  fly.style.left=Math.round(r.left)+'px';
-  var h=w*30/180;
-  // align with the top of the right-hand column's first line, so the two read as a pair
-  var anchor=document.querySelector('.heroright .hero-sub')||document.querySelector('.heroright');
-  var top;
-  if(anchor){
-    var ar=anchor.getBoundingClientRect();
-    var line=parseFloat(getComputedStyle(anchor).lineHeight)||ar.height;
-    top=ar.top+(Math.min(line,ar.height)-h)/2;   // optically centred on that first line
-  }else{
-    top=r.top+Math.max(0,(r.height-h)/2);
-  }
+  var wr=wrap.getBoundingClientRect();
   var hdr=document.querySelector('header');
-  var floor=hdr?hdr.getBoundingClientRect().bottom+24:80;
-  fly.style.top=Math.round(Math.max(floor,Math.min(top,window.innerHeight-h-24)))+'px';
+  var hb=hdr?hdr.getBoundingClientRect().bottom:64;
+  // fill the content width: the signature is the page while it plays
+  var w=Math.min(wr.width, window.innerWidth*0.86);
+  var h=w*30/180;
+  var room=window.innerHeight-hb;
+  if(h>room*0.55){ h=room*0.55; w=h*180/30; }      // never crowd the viewport vertically
+  fly.style.width=w+'px';
+  fly.style.left=Math.round(wr.left+(wr.width-w)/2)+'px';
+  fly.style.top=Math.round(hb+(room-h)*0.42)+'px';  // optically centred, biased up
   fly.style.transform='none';
   return w;
 }
+
 var flyW=place();
 function land(){
   var tr=target.getBoundingClientRect(), fr=fly.getBoundingClientRect();
@@ -1027,7 +1020,7 @@ function land(){
     setTimeout(function(){fly.style.display='none'},200);
   }
   fly.addEventListener('transitionend',finish,{once:true});
-  setTimeout(finish,1150);
+  setTimeout(finish,1380);
 }
 var t0=null,over=false;
 function reveal(){
@@ -1044,7 +1037,7 @@ function run(ts){
   else{frame(HOLD);setTimeout(function(){if(!over)land()},340)}
 }
 // wall-clock failsafe: the page must never stay hidden behind the animation
-var FAILSAFE=setTimeout(reveal,DUR+2600);
+var FAILSAFE=setTimeout(reveal,DUR+3000);
 document.addEventListener('visibilitychange',function(){
   if(document.visibilityState==='hidden')reveal();
 });
