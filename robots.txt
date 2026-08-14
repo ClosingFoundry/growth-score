@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /p/
-Sitemap: https://growthscore.co.uk/sitemap.xml
+Sitemap: https://fac16.com/sitemap.xml
