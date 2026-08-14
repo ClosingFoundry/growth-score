@@ -990,9 +990,18 @@ function place(){
   fly.style.width=w+'px';
   fly.style.left=Math.round(r.left)+'px';
   var h=w*30/180;
-  var top=r.top+Math.max(0,(r.height-h)/2);
+  // align with the top of the right-hand column's first line, so the two read as a pair
+  var anchor=document.querySelector('.heroright .hero-sub')||document.querySelector('.heroright');
+  var top;
+  if(anchor){
+    var ar=anchor.getBoundingClientRect();
+    var line=parseFloat(getComputedStyle(anchor).lineHeight)||ar.height;
+    top=ar.top+(Math.min(line,ar.height)-h)/2;   // optically centred on that first line
+  }else{
+    top=r.top+Math.max(0,(r.height-h)/2);
+  }
   var hdr=document.querySelector('header');
-  var floor=hdr?hdr.getBoundingClientRect().bottom+28:80;
+  var floor=hdr?hdr.getBoundingClientRect().bottom+24:80;
   fly.style.top=Math.round(Math.max(floor,Math.min(top,window.innerHeight-h-24)))+'px';
   fly.style.transform='none';
   return w;
