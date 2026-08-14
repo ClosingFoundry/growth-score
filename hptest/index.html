@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<script>(function(){var p=null;try{p=localStorage.getItem('gs-theme')}catch(e){}
+var t=p||((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');
+document.documentElement.setAttribute('data-theme',t);})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Growth Score | An open measurement standard</title>
+<!-- social -->
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://fac16.com/hptest/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Growth Score">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://fac16.com/hptest/">
+<meta property="og:title" content="Growth Score | An open measurement standard">
+<meta property="og:description" content="A published measurement standard for commercial capability and movement over time. Free for companies measured; licensed to institutions that fund them.">
+<meta property="og:image" content="https://fac16.com/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Growth Score, an open measurement standard">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Growth Score | An open measurement standard">
+<meta name="twitter:description" content="A published measurement standard for commercial capability and movement over time. Free for companies measured; licensed to institutions that fund them.">
+<meta name="twitter:image" content="https://fac16.com/share.png">
+<!-- /social -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Growth Score","alternateName":"An open measurement standard","url":"https://fac16.com/","description":"An open measurement standard for commercial capability: whether a company can win and keep customers, and what’s stopping it.","publisher":{"@type":"Organization","name":"Closing Foundry Ltd","url":"https://www.closingfoundry.com/","identifier":"14629519","address":{"@type":"PostalAddress","addressCountry":"GB"}}}</script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0E1B2C">
+<meta name="description" content="A published measurement standard for commercial capability and movement over time. Free for companies measured; licensed to institutions that fund them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1B2C; --ink-soft:#33415C; --mid:#5F6C85;
+  --paper:#FFFFFF; --paper-alt:#F4F6FA; --rule:#E2E7F0;
+  --mark:#0B4ED6; --white:#FFFFFF;
+  --display:"IBM Plex Sans",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+[data-theme="dark"] .btn,[data-theme="dark"] .navcta,[data-theme="dark"] .toggle button[aria-pressed=true],[data-theme="dark"] .seg button[aria-pressed=true]{color:var(--paper)!important}
+[data-theme="dark"] .btn.ghost{color:var(--band-strong)!important;background:none;border-color:var(--band-rule)}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:3px;font-size:14px;line-height:1.4;text-decoration:none}
+.skip:focus{left:8px;top:8px}
+
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--mark);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.narrow{max-width:1120px;margin:0 auto;padding:0 28px}
+.narrow > *{max-width:820px}
+.narrow > .tw{max-width:1064px}
+.narrow.mid{text-align:center}
+.narrow.mid > *{margin-left:auto;margin-right:auto}
+
+.draft{background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:8px 0;text-align:center}
+.draft b{color:#9DB9F5;font-weight:500}
+.vswitch{background:var(--paper-alt);border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:12px;padding:9px 0;text-align:center;color:var(--mid)}
+.vswitch a{color:var(--mark);text-decoration:none;font-weight:500}
+
+header{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--rule)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:14px;padding-bottom:14px;flex-wrap:nowrap}
+.logo{display:flex;align-items:baseline;gap:10px;text-decoration:none}
+nav ul{display:flex;gap:2px;list-style:none;margin:0;padding:0;align-items:center;flex-wrap:nowrap}
+nav > ul > li > a{font-size:14px;text-decoration:none;color:var(--ink-soft);padding:8px 10px;border-radius:3px;display:block;white-space:nowrap}
+nav > ul > li > a:hover{background:var(--paper-alt);color:var(--ink)}
+nav > ul > li > a.on{color:var(--mark)}
+a.navcta{background:var(--mark);color:#fff!important;border:1px solid var(--mark);font-weight:600;padding:6px 18px!important;transition:background-color .15s ease,color .15s ease,border-color .15s ease}
+a.navcta:hover,a.navcta:focus-visible{background:var(--paper);border-color:var(--mark);color:var(--mark)!important}
+
+.drop{position:relative}
+.dtrig{font-family:var(--body);font-size:14px;color:var(--ink-soft);background:none;border:none;cursor:pointer;padding:8px 10px;border-radius:3px;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.dtrig:hover,.drop.open .dtrig{background:var(--paper-alt);color:var(--ink)}
+.drop.hason .dtrig{color:var(--mark)}
+.caret{display:inline-block;line-height:0;vertical-align:baseline;margin-left:5px}
+.caret svg{display:block;overflow:visible}
+.caret rect{fill:var(--logo-pop);transition:fill .18s ease,y .18s ease,height .18s ease}
+.drop.open .caret rect{fill:var(--logo-tail);y:0;height:12}
+@media(prefers-reduced-motion:reduce){.caret rect{transition:fill .18s ease}.drop.open .caret rect{y:auto;height:auto}}
+
+.dmenu{
+  display:none;
+  position:absolute;top:calc(100% + 10px);left:0;min-width:310px;background:var(--white);
+  border:1px solid var(--rule);border-top:2px solid var(--mark);border-radius:0 0 3px 3px;
+  padding:8px;z-index:60;
+}
+.drop.open .dmenu{display:block}
+.drop::after{content:"";position:absolute;top:100%;left:0;right:0;height:12px}
+.dmenu a{display:block;text-decoration:none;padding:10px 12px;border-radius:2px;color:var(--ink)}
+.dmenu a:hover{background:var(--paper-alt)}
+.dmenu a.on{background:var(--paper-alt)}
+.dmenu b{display:block;font-size:14px;font-weight:600;margin-bottom:1px}
+.dmenu em{display:block;font-style:normal;font-size:12px;color:var(--mid);line-height:1.4}
+.menu{display:none;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--rule);padding:7px 12px;cursor:pointer;color:var(--ink);border-radius:8px}
+
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.022em;margin:0}
+h1{font-size:clamp(36px,5.2vw,60px);line-height:1.1}
+h2{font-size:clamp(26px,3.2vw,38px);line-height:1.1}
+h3{font-size:20px;line-height:1.4;font-weight:600}
+p{margin:0 0 18px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:0;text-transform:none;color:var(--mid);margin:0 0 14px}
+.big{font-size:20px;line-height:1.6;color:var(--ink-soft)}
+.small{font-size:15px;color:var(--mid)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--mid)}
+
+section{padding:74px 0;border-top:1px solid var(--rule)}
+section.tight{padding:44px 0}
+section.wide{padding:104px 0}
+section:first-of-type{border-top:none}
+.hero{padding:84px 0 56px}
+.dark{background:var(--band-bg);color:var(--band-text);border-top:none}
+.dark h1,.dark h2,.dark h3{color:var(--band-strong)}
+.dark .hero-sub{color:var(--band-strong)}
+.dark .big{color:var(--band-text)}
+.dark .eyebrow{color:var(--band-mid)}
+.dark .small,.dark .mono{color:var(--band-mid)}
+.dark ul.plain li{border-bottom-color:var(--band-rule)}
+.alt{background:var(--paper-alt)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:1180px){ .logo .sub{display:none} }
+@media(max-width:1040px){ nav > ul > li > a, .dtrig{font-size:13px;padding:8px 8px} }
+@media(min-width:861px) and (max-width:1020px){
+  /* tablet only: 4-up and 3-up grids halve rather than squeeze */
+  .grid4{grid-template-columns:1fr 1fr!important}
+  .grid3{grid-template-columns:1fr 1fr!important}
+  .stats{grid-template-columns:1fr 1fr!important}
+  .prin{grid-template-columns:1fr 1fr!important}
+  .ppl{grid-template-columns:1fr 1fr!important}
+  .foot-grid{grid-template-columns:1.6fr repeat(3,1fr)!important}
+  .grid2{gap:30px}
+  /* two-column asymmetric layouts even out before they break */
+  .grid2[style*="1.15fr"],.grid2[style*="1.25fr"],.grid2[style*="1.05fr"],.grid2[style*="1.1fr"]{grid-template-columns:1fr 1fr!important}
+}
+@media(min-width:861px) and (max-width:900px){
+  .grid3,.prin,.ppl,.stats{grid-template-columns:1fr 1fr!important}
+  .grid2[style]{grid-template-columns:1fr!important}
+  .lyr{grid-template-columns:60px 1fr!important}
+  .lyr .ds,.lyr .st{grid-column:2}
+}
+@media(max-width:860px){
+  .hero-sub{margin:0 0 18px;max-width:none}
+  /* phone footer */
+  .foot-grid{grid-template-columns:1fr!important;gap:26px!important}
+  .foot-bottom{flex-direction:column;align-items:flex-start;gap:12px}
+  .foot-bottom > span{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  footer{padding:40px 0 28px}
+  footer h4{margin-bottom:10px}
+  .grid3,.grid4,.prin,.ppl,.stats{grid-template-columns:1fr!important}
+  /* .gs-mob-reset */
+  nav ul{flex-wrap:wrap!important}
+  nav > ul > li > a,.dtrig{white-space:normal!important;font-size:15px!important;padding:11px 0!important}
+  .bar{flex-wrap:wrap!important}
+  a.navcta{width:100%;text-align:center;padding:12px!important;margin-top:8px}
+  .narrow > *,.narrow > .tw{max-width:100%!important}
+  .stk{padding:16px 14px}
+  .stk-panel{min-height:0}
+  .ppl{grid-template-columns:1fr!important}
+  .lyr{grid-template-columns:1fr!important}
+  .wk{grid-template-columns:1fr!important}
+  .calcout{grid-template-columns:1fr!important}
+  .grid2,.grid3,.grid4{grid-template-columns:1fr;gap:28px}
+  nav{display:none;width:100%} nav.open{display:block}
+  nav ul{flex-direction:column;gap:2px;padding:10px 0 4px;align-items:stretch}
+  nav > ul > li > a{padding:11px 0}
+  .dtrig{width:100%;justify-content:space-between;padding:11px 0;font-weight:600}
+  .drop::after{display:none}
+  .dmenu{position:static;box-shadow:none;border:none;
+         border-left:2px solid var(--rule);border-radius:0;padding:0 0 6px 14px;margin-bottom:6px;display:none}
+  .drop.open .dmenu{display:block}
+  .dmenu a{padding:9px 0}
+  .dmenu em{display:none}
+  a.navcta{text-align:center;margin-top:8px;padding:12px}
+  .menu{display:block} .bar{flex-wrap:wrap}
+  section{padding:56px 0}
+}
+
+.card{background:var(--white);border:1px solid var(--rule);border-radius:3px;padding:26px}
+.card .mono{display:block;margin-bottom:12px}
+a.card{text-decoration:none;display:block;transition:all .2s}
+a.card:hover{border-color:var(--ink)}
+
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);font-weight:400;padding:0 14px 10px 0;border-bottom:1px solid var(--ink);vertical-align:bottom}
+td{padding:14px 14px 14px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+td:first-child{font-weight:500}
+.no{color:var(--mid)} .yes{color:var(--mark)}
+
+label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:7px}
+input,select,textarea{width:100%;font-family:var(--body);font-size:15px;padding:12px;background:var(--white);border:1px solid var(--rule);color:var(--ink);margin-bottom:20px;border-radius:3px}
+textarea{min-height:110px;resize:vertical}
+ul.plain{list-style:none;margin:0;padding:0}
+ul.plain li{padding:13px 0 13px 26px;border-bottom:1px solid var(--rule);position:relative}
+ul.plain li::before{content:"";position:absolute;left:0;top:22px;width:12px;height:1px;background:var(--mark)}
+
+.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;text-decoration:none;font-family:var(--body);font-weight:600;font-size:15px;padding:14px 26px;border:1px solid var(--mark);border-radius:3px;background:var(--mark);color:#fff;cursor:pointer}
+.btn.ghost{background:none;color:var(--mark)}
+.dark .btn{background:var(--band-strong);color:var(--band-bg);border-color:var(--band-strong)}
+.dark .btn.ghost{background:none;color:var(--band-strong);border-color:var(--band-rule)}
+
+.plot{background:var(--white);border:1px solid var(--rule);border-radius:3px;padding:24px 24px 20px}
+.hero-sub{font-family:var(--display);font-weight:600;font-size:clamp(26px,3.4vw,46px);line-height:1.18;letter-spacing:-.018em;color:var(--ink);margin:0 0 26px;max-width:22ch}
+.plot-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.plot-title{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--mid)}
+.toggle{display:inline-flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.toggle button{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--white);border:none;padding:8px 12px;cursor:pointer;color:var(--mid)}
+.toggle button+button{border-left:1px solid var(--rule)}
+.toggle button[aria-pressed=true]{background:var(--mark);color:#fff}
+.plot svg{display:block;width:100%;height:auto}
+.tick{transition:opacity .5s ease, transform .85s cubic-bezier(.22,.9,.3,1)}
+.blob{transition:opacity .4s ease}
+.preadout{display:flex;gap:26px;flex-wrap:wrap;margin-top:16px;padding-top:15px;border-top:1px solid var(--rule)}
+.preadout div{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--mid)}
+.preadout b{display:block;font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:-.03em;color:var(--ink);margin-top:3px}
+@media(prefers-reduced-motion:reduce){.tick,.blob{transition:none}}
+.rrow{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--rule)}
+.rrow .lab{font-size:14px}
+.rrow .lab i{font-style:normal;color:var(--mid);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:2px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.seg button{font-family:var(--mono);font-size:13px;width:36px;height:34px;background:var(--white);border:none;border-left:1px solid var(--rule);cursor:pointer;color:var(--mid)}
+.seg button:first-child{border-left:none}
+.seg button[aria-pressed=true]{background:var(--mark);color:#fff}
+.bars div{display:grid;grid-template-columns:110px 1fr 34px;gap:10px;align-items:center;margin-bottom:7px;font-size:13px}
+.bars .t{height:8px;background:var(--paper-alt);border-radius:99px;overflow:hidden}
+.bars .t i{display:block;height:100%;background:var(--mark);border-radius:99px}
+.bars b{font-family:var(--mono);font-size:12px;font-weight:500;text-align:right}
+@media(min-width:861px){#sticky{position:sticky;top:96px}}
+.ph{font-family:var(--mono);font-size:13px;background:var(--unv-bg);color:var(--unv-text);padding:1px 6px;border:1px dashed var(--unv-border);border-radius:5px}
+
+/* ---- spec / code ---- */
+pre{background:#0B1524;color:#CBD9F0;border-radius:3px;padding:22px;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.6;margin:0 0 18px}
+pre .k{color:var(--band-accent)} pre .s{color:#9BE3B4} pre .n{color:#F2C572} pre .c{color:#6C7C99}
+code.inl{font-family:var(--mono);font-size:.92em;background:var(--paper-alt);border:1px solid var(--rule);border-radius:5px;padding:1px 5px}
+
+/* ---- live counters ---- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);overflow:hidden}
+.stats div{background:var(--white);padding:22px 20px}
+.stats b{display:block;font-size:34px;font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:5px}
+.stats span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid)}
+@media(max-width:860px){.stats{grid-template-columns:1fr 1fr}}
+
+/* ---- matrix ---- */
+.matrix{width:100%;border-collapse:separate;border-spacing:4px;font-size:14px}
+.matrix th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);border:none;padding:0 0 6px;text-align:center}
+.matrix th.row{text-align:right;padding-right:12px;vertical-align:middle}
+.matrix td{border:none;padding:0}
+.cell{border-radius:2px;padding:14px 8px;text-align:center;font-weight:600;font-size:15px;cursor:pointer;border:1px solid transparent;transition:transform .12s}
+.cell:hover{transform:translateY(-2px);border-color:var(--ink)}
+.cell.sel{border-color:var(--ink);box-shadow:0 0 0 2px rgba(14,27,44,.12)}
+.readout{margin-top:20px;border:1px solid var(--rule);border-radius:12px;padding:20px;background:var(--white);min-height:96px}
+.readout .mono{display:block;margin-bottom:6px}
+
+.page{display:none} .page.on{display:block}
+
+footer{background:var(--band-bg);color:var(--band-mid);padding:52px 0 34px;font-size:14px}
+footer a{color:var(--band-text);text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--band-strong);margin:0 0 14px;font-weight:400}
+.foot-grid{display:grid;grid-template-columns:1.6fr repeat(5,1fr);gap:28px}
+@media(max-width:1180px){.foot-grid{grid-template-columns:1.4fr repeat(3,1fr)}}
+@media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
+.foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid var(--band-rule);font-family:var(--mono);font-size:11px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* ---------- mobile ---------- */
+@media(max-width:860px){
+  /* inline grid-template-columns must be beaten explicitly */
+  .grid2,.grid3,.grid4{grid-template-columns:1fr!important;gap:26px!important}
+  section,section.tight,section.wide{padding:48px 0}
+  .hero{padding:40px 0 34px}
+  h1{font-size:clamp(30px,8.2vw,40px)}
+  h2{font-size:clamp(23px,6.2vw,30px)}
+  .big{font-size:17px}
+  body{font-size:15px}
+  .wrap,.narrow{padding:0 20px}
+  .narrow > *{max-width:100%}
+  .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
+  table{font-size:14px;min-width:520px}
+  th{font-size:10px;padding-right:10px}
+  td{padding:11px 10px 11px 0}
+  pre{font-size:11px;padding:16px;border-radius:2px}
+  .stats b{font-size:26px}
+  .stats div{padding:16px 14px}
+  .plot{padding:18px 16px 14px}
+  .plot-head{gap:10px}
+  .toggle{width:100%}
+  .toggle button{flex:1;padding:9px 6px;font-size:10px}
+  .preadout{gap:18px}
+  .preadout b{font-size:23px}
+  .matrix{border-spacing:3px;min-width:0}
+  .matrix th{font-size:10px}
+  .matrix th.row{padding-right:6px;font-size:10px}
+  .cell{padding:11px 2px;font-size:14px}
+  .seg button{width:32px;height:38px}
+  .rrow{gap:10px}
+  .rrow .lab{font-size:13px}
+  .bars div{grid-template-columns:88px 1fr 30px;font-size:12px}
+  .btns{gap:10px}
+  .btn{width:100%;text-align:center;padding:14px 18px}
+  .readout{padding:16px}
+  ul.plain li{padding:12px 0 12px 20px}
+  ul.plain li::before{top:20px;width:9px}
+  .draft{font-size:10px;letter-spacing:.08em;padding:7px 14px}
+  .vswitch{font-size:11px;padding:8px 14px;line-height:1.6}
+  .foot-grid{grid-template-columns:1fr;gap:24px}
+}
+@media(max-width:480px){
+  .logo .sub{display:none}
+  .grid2 > .card, .grid3 > .card, .grid4 > .card{padding:20px}
+}
+
+.vflip{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--mid);text-align:right;padding:10px 0 0}
+.vflip a{color:var(--mid);text-decoration:none;border-bottom:1px solid var(--rule)}
+.vflip a:hover{color:var(--mark);border-bottom-color:var(--mark)}
+
+/* ---------- theme: dark ---------- */
+html[data-theme="dark"]{
+  --ink:#E6EBF4; --ink-soft:#B7C3D8; --mid:#8494AD;
+  --paper:#0E1B2C; --paper-alt:#16273B; --rule:var(--band-rule);
+  --mark:#6E9DF2; --white:#16273B;
+  --band-bg:#16273B; --band-text:#B7C3D8; --band-strong:#E6EBF4;
+  --band-mid:#8494AD; --band-accent:#8FB0F8; --band-rule:#31435F;
+  --unv-bg:#33291280; --unv-text:#E0BE74; --unv-border:#7A5F26;
+}
+:root{
+  --band-bg:#0E1B2C; --band-text:#C4CFE4; --band-strong:#FFFFFF;
+  --band-mid:#94A3C4; --band-accent:#8FB0F8; --band-rule:#26364F;
+  --unv-bg:#FFF4DE; --unv-text:#7A5200; --unv-border:#DDAE55;
+}
+html[data-theme="dark"] img,html[data-theme="dark"] .plot{background:var(--paper-alt)}
+html.theming,html.theming *{transition:background-color .22s ease,color .22s ease,border-color .22s ease,fill .22s ease,stroke .22s ease!important}
+@media print{ html[data-theme="dark"]{--ink:#0E1B2C;--ink-soft:#33415C;--mid:#5F6C85;--paper:#fff;--paper-alt:#F4F6FA;--rule:#E2E7F0;--mark:#0B4ED6;--white:#fff} }
+
+/* theme control, in the nav */
+.themer{display:inline-flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-left:10px;flex-shrink:0}
+.themer button{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  background:none;border:none;padding:6px 9px;cursor:pointer;color:var(--mid);line-height:1.4;transition:background-color .15s ease,color .15s ease}
+.themer button+button{border-left:1px solid var(--rule)}
+.themer button:hover{color:var(--ink)}
+.themer button[aria-pressed="true"]{background:var(--paper-alt);color:var(--ink);font-weight:500}
+@media(max-width:1320px){ .logo .sub{display:none} }
+@media(max-width:1120px){ .themer button{padding:6px 7px} }
+@media(max-width:860px){
+  .themer{margin:14px 0 0;width:100%}
+  .themer button{flex:1;padding:11px 0;font-size:11px}
+}
+@media print{ .themer{display:none!important} }
+
+/* ---------- logo lockup ---------- */
+:root{ --logo-pop:#0E1B2C; --logo-tail:#0B4ED6; --logo-pop-band:#FFFFFF; --logo-tail-band:var(--band-accent); }
+html[data-theme="dark"]{ --logo-pop:#E6EBF4; --logo-tail:var(--band-accent); --logo-pop-band:#E6EBF4; --logo-tail-band:var(--band-accent); }
+.logo{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;text-decoration:none;font-size:20px;flex-shrink:0;line-height:1.1}
+.logo .row{display:flex;align-items:baseline;gap:.42em}
+.logo .mk{font-family:var(--display);font-size:1em;font-weight:700;letter-spacing:-.022em;line-height:1.1;color:var(--logo-pop);white-space:nowrap}
+.logo .cohort{height:.92em;width:1.15em;align-self:baseline;display:block;flex-shrink:0}
+.logo .sig{height:.92em;width:1.79em;align-self:baseline;display:block;flex-shrink:0}
+html.sigfly-run header .logo .row{opacity:0}
+header .logo .row{transition:opacity .25s ease}
+#sigfly{position:fixed;z-index:60;pointer-events:none;transform-origin:0 0;will-change:transform}
+#sigfly svg{display:block;width:100%;height:auto;overflow:visible}
+#sigfly.go{transition:transform 1000ms cubic-bezier(.62,0,.32,1)}
+@media(prefers-reduced-motion:reduce){html.sigfly-run header .logo .row{opacity:1}#sigfly{display:none}}
+.logo .sub{font-family:var(--mono);font-size:.45em;letter-spacing:.13em;text-transform:uppercase;color:var(--mid);white-space:nowrap;line-height:1.4}
+footer .logo .mk{color:var(--band-strong)}
+footer .logo .sub{color:var(--band-mid)}
+footer .logo .cohort rect{fill:var(--logo-pop-band)}
+footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7){fill:var(--logo-tail-band)}
+@media(max-width:1040px){ .logo{font-size:20px} }
+@media(max-width:860px){ .logo{font-size:17px} }
+@media print{ .logo .mk{color:#0E1B2C} }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <div class="wrap bar">
+    <a class="logo on" href="/" aria-label="fac16"><span class="row"><svg class="sig" viewBox="0 0 46.6 24" aria-hidden="true"><rect x="0" y="15" width="1.6" height="9" fill="var(--logo-pop)"/><rect x="3.8" y="8" width="1.6" height="16" fill="var(--logo-pop)"/><rect x="7" y="18" width="1.6" height="6" fill="var(--logo-pop)"/><rect x="12.2" y="3" width="1.6" height="21" fill="var(--logo-pop)"/><rect x="15.6" y="12" width="1.6" height="12" fill="var(--logo-pop)"/><rect x="19" y="6" width="1.6" height="18" fill="var(--logo-tail)"/><rect x="24.2" y="16" width="1.6" height="8" fill="var(--logo-pop)"/><rect x="27.8" y="10" width="1.6" height="14" fill="var(--logo-pop)"/><rect x="32.8" y="1" width="1.6" height="23" fill="var(--logo-pop)"/><rect x="36.4" y="14" width="1.6" height="10" fill="var(--logo-tail)"/><rect x="41.4" y="5" width="1.6" height="19" fill="var(--logo-pop)"/><rect x="45" y="17" width="1.6" height="7" fill="var(--logo-pop)"/></svg><span class="mk">fac16</span></span><span class="sub">An open measurement standard</span></a>
+    <button class="menu" id="menuBtn" aria-expanded="false">Menu</button>
+    <nav class="gs-n" id="nav"><ul>
+      <li class="drop">
+        <button class="dtrig" aria-expanded="false">The measure <span class="caret" aria-hidden="true"><svg viewBox="0 0 1.6 12" width="1.6" height="12"><rect x="0" y="2.5" width="1.6" height="9.5"/></svg></span></button>
+        <div class="dmenu">
+          <a href="/how-it-works/"><b>How it works</b><em>The five parts, in one page</em></a>
+          <a href="/method/"><b>The method</b><em>Questions, scales, arithmetic and bands</em></a>
+          <a href="/specimen/report/"><b>Specimen report</b><em>What a company receives</em></a>
+          <a href="/specimen/cohort/"><b>Cohort report</b><em>What an institution receives</em></a>
+          <a href="/run/"><b>Run it yourself</b><em>The arithmetic in your browser</em></a>
+        </div>
+      </li>
+      <li class="drop">
+        <button class="dtrig" aria-expanded="false">Using it <span class="caret" aria-hidden="true"><svg viewBox="0 0 1.6 12" width="1.6" height="12"><rect x="0" y="2.5" width="1.6" height="9.5"/></svg></span></button>
+        <div class="dmenu">
+          <a href="/the-experience/"><b>The experience</b><em>Ninety days, from both sides</em></a>
+          <a href="/routing/"><b>Routing</b><em>From a result to relevant support</em></a>
+          <a href="/integrate/"><b>Ways to run it</b><em>Four levels, from a link to self-hosted</em></a>
+        </div>
+      </li>
+      <li class="drop">
+        <button class="dtrig" aria-expanded="false">Can you trust it <span class="caret" aria-hidden="true"><svg viewBox="0 0 1.6 12" width="1.6" height="12"><rect x="0" y="2.5" width="1.6" height="9.5"/></svg></span></button>
+        <div class="dmenu">
+          <a href="/checking-a-result/"><b>Checking a result</b><em>Confirm that a result is genuine</em></a>
+          <a href="/conformance/"><b>Conformance</b><em>Check whether an implementation computes correctly</em></a>
+          <a href="/versions/"><b>Version history</b><em>Changes to the method and score comparability</em></a>
+          <a href="/limits/"><b>Limits</b><em>What Growth Score does not measure or decide</em></a>
+        </div>
+      </li>
+      <li class="drop">
+        <button class="dtrig" aria-expanded="false">Who it is for <span class="caret" aria-hidden="true"><svg viewBox="0 0 1.6 12" width="1.6" height="12"><rect x="0" y="2.5" width="1.6" height="9.5"/></svg></span></button>
+        <div class="dmenu">
+          <a href="/banks/"><b>Banks</b><em>Which customers are building capability</em></a>
+          <a href="/public-bodies/"><b>Public bodies</b><em>Movement, not throughput</em></a>
+          <a href="/universities/"><b>Universities</b><em>Evidence for the next bid</em></a>
+          <a href="/accelerators/"><b>Accelerators</b><em>Select, direct support and measure movement</em></a>
+          <a href="/investors/"><b>Investors</b><em>Portfolio movement from day one</em></a>
+        </div>
+      </li>
+      <li><a href="/about/">About</a></li>
+      <li><a class="navcta" href="/contact/">Demo</a></li>
+      <li class="themer" id="themer" role="group" aria-label="Colour theme"><button data-t="auto" aria-pressed="false" title="Follow your system setting">Auto</button><button data-t="light" aria-pressed="false">Light</button><button data-t="dark" aria-pressed="false">Dark</button></li>
+    </ul></nav>
+  </div>
+</header>
+<main id="main">
+<div class="page on">
+  <section class="hero">
+    <div class="wrap">
+      <div class="grid2" style="grid-template-columns:1fr 1.05fr;gap:56px;align-items:center">
+        <div>
+          <p class="eyebrow">An open measurement standard</p>
+          <h1 style="max-width:24ch">Results are measured. Commercial capability is harder to see.</h1>
+          <p class="big" style="margin-top:24px">
+            A measure of whether a company can win and keep customers, and what&rsquo;s stopping it. It indicates the stage and root cause behind the constraint, points to a relevant support category where needed, and can be taken again after at least 90 days to show movement before it appears in the accounts.
+          </p>
+          <p class="big"><b>The method is published in full.</b> Read it, check the arithmetic and run it yourself.</p>
+          <div class="btns">
+            <a class="btn" href="/run/">Run it yourself</a>
+            <a class="btn ghost" href="/method/">Read the method</a>
+          </div>
+        </div>
+
+        <div class="heroright">
+          <p class="hero-sub">Growth Score shows what to fix and what changes over time.</p>
+          <div class="plot">
+          <div class="plot-head">
+            <span class="plot-title">Illustrative cohort: aggregate and per-company views</span>
+            <div class="toggle" role="group" aria-label="Chart view">
+              <button id="btnAgg" aria-pressed="true">Aggregate view</button>
+              <button id="btnPer" aria-pressed="false">Per-company view</button>
+            </div>
+          </div>
+          <svg id="plotSvg" viewBox="0 0 640 190" role="img" aria-label="Illustration of an aggregate view resolving into individual company positions along a commercial-capability scale">
+            <line x1="40" y1="140" x2="600" y2="140" stroke="var(--rule)" stroke-width="1"></line>
+            <g id="axis"></g>
+            <g id="ticks"></g>
+            <g id="blob" class="blob">
+              <circle cx="320" cy="112" r="28" fill="var(--mark)" opacity=".10"></circle>
+              <circle cx="320" cy="112" r="8" fill="var(--mark)"></circle>
+              <text x="320" y="70" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="var(--mid)">198 companies in the cohort</text>
+            </g>
+            <text x="40" y="168" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--mid)">Lower commercial capability</text>
+            <text x="600" y="168" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="var(--mid)">Investment ready</text>
+          </svg>
+          <div class="preadout">
+            <div>Companies you could name<b id="rB">None</b></div>
+            <div>Root causes identified<b id="rA">None</b></div>
+            <div>Movement you can evidence<b id="rC">None</b></div>
+          </div>
+          <p class="small" style="margin-top:12px;font-size:12px">Illustrative only: 198 companies in a programme, not observed figures. Our current counts appear below.</p>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="alt tight">
+    <div class="wrap">
+      <p class="eyebrow">Current state</p>
+      <div class="stats">
+        <div><b>v1.4</b><span>Current method version</span></div>
+        <div><b>32+5</b><span>Questions: capability and momentum</span></div>
+        <div><b>81</b><span>Companies measured</span></div>
+        <div><b>0</b><span>Peer benchmarks published</span></div>
+      </div>
+      <p class="small" style="margin-top:20px;max-width:70ch">
+        Counts as at 14 August 2026, excluding test and duplicate records. Eighty-one measurements are enough to illustrate a company-level result. They are not enough to compare companies reliably, so no peer benchmark is published. The threshold for publishing one is set out in the method.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">The problem</p>
+      <div class="grid2">
+        <div><h2>Activity is counted early. Outcomes arrive late. The commercial middle is harder to see.</h2></div>
+        <div>
+          <p class="big">At the front, the attendance register: applications, attendees and companies supported. It tells you who arrived and what was delivered, but not whether commercial capability changed.</p>
+          <p class="big">At the back, the accounts: revenue, headcount and survival. They are real outcomes, but often arrive after the relevant decision and do not show what to work on next.</p>
+          <p>Between them is the missing middle: where commercial capability can be measured while there is still time to act.</p>
+        </div>
+      </div>
+      <div class="grid3" style="margin-top:40px">
+        <div>
+          <p class="mono">Counted at the front</p>
+          <ul class="plain">
+            <li>Applications received</li>
+            <li>Companies supported</li>
+            <li>Attendees and introductions</li>
+            <li>Workshops completed</li>
+          </ul>
+          <p class="small" style="margin-top:12px">Useful for reporting activity. It does not show whether commercial capability changed.</p>
+        </div>
+        <div>
+          <p class="mono">Counted at the back</p>
+          <ul class="plain">
+            <li>Revenue</li>
+            <li>Jobs</li>
+            <li>Funding raised</li>
+            <li>Survival</li>
+          </ul>
+          <p class="small" style="margin-top:12px">Real outcomes. They do not, on their own, show what to work on next.</p>
+        </div>
+        <div>
+          <p class="mono">The missing middle</p>
+          <ul class="plain">
+            <li>Can the company create qualified demand?</li>
+            <li>Does it know who it is selling to and why they should buy?</li>
+            <li>Can it progress and close a deal?</li>
+            <li>Is the way of working repeatable?</li>
+            <li>Is commercial capability producing movement?</li>
+          </ul>
+          <p class="small" style="margin-top:12px">Measurable now, while there is still time to act.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark wide">
+    <div class="wrap">
+      <p class="eyebrow">Why the method is public</p>
+      <div class="grid2">
+        <div>
+          <h2>The method is published so it can be inspected.</h2>
+          <p class="big" style="margin-top:20px">The method is published in full: the questions, scales, arithmetic, version record and conformance tests can be read and checked before an organisation relies on it.</p>
+        </div>
+        <div>
+          <ul class="plain">
+            <li><b>You can read every question and scale</b> before anyone answers one.</li>
+            <li><b>You can reproduce the arithmetic</b> by hand from the published rules.</li>
+            <li><b>You can verify determinism yourself</b> against our public test vectors.</li>
+            <li><b>You can check any deployment</b> against the version it claims to run.</li>
+            <li><b>What stays ours</b> is the diagnostic library, the routing, and the register of who has been measured.</li>
+          </ul>
+          <div class="btns"><a class="btn" href="/conformance/">Check an implementation</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">The model</p>
+      <h2>Four stages, four root causes, sixteen cells.</h2>
+      <p class="big" style="margin-top:16px;max-width:64ch">A company answers 37 questions: 32 on what it has built and 5 on whether it is producing output now. The answers populate the grid below.</p>
+      <p style="max-width:64ch">The stages show where a constraint appears. The root causes indicate the underlying discipline. The two views answer different questions. Select a cell to see the worked example.</p>
+      <p class="small" style="max-width:64ch">The 16-cell structure is fixed. The questions that populate it adapt to the company&rsquo;s business model and one of three maturity levels. A subscription software company and a direct-to-consumer brand may therefore provide different evidence. <a href="/method/" style="color:var(--mark)">See how that works</a>.</p>
+      <div class="grid2" style="margin-top:32px;grid-template-columns:1.25fr 1fr;align-items:start">
+        <div>
+          <table class="matrix" id="mx"><thead><tr><th></th><th>Demand</th><th>Sales Process</th><th>Closing</th><th>Expand</th></tr></thead><tbody id="mxb"></tbody></table>
+          <p class="small" style="margin-top:14px">Values shown are the worked example published in the method. Darker cells indicate lower scores.</p>
+        </div>
+        <div class="readout" id="ro">
+          <span class="mono">Select a cell to inspect the worked example.</span>
+          <p style="margin:0" class="small">Each cell is scored from two questions on a five-point scale. The stage score is the average of its column and the root-cause score is the average of its row.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">The two halves</p>
+      <div class="grid2" style="align-items:start">
+        <div>
+          <h2>What you&rsquo;ve built, and whether it&rsquo;s running.</h2>
+          <p class="big" style="margin-top:18px">The headline score combines two separate measures. The gap between them can be more useful than the headline itself.</p>
+          <p><b>Capability</b> is the engine: what the company has built and can evidence. Thirty-two questions populate the sixteen cells above.</p>
+          <p><b>Momentum</b> is whether that capability is producing output now. Five questions assess current output against the conditions the company needs to meet.</p>
+          <p>A single average can hide the distinction. A company scoring 70 on capability and 30 on momentum has a different operating problem from one scoring 30 and 70; both measures remain visible.</p>
+        </div>
+        <div class="card">
+          <span class="mono">The four combinations</span>
+          <div class="tw"><table style="margin-top:6px">
+            <thead><tr><th>Capability</th><th>Momentum</th><th>Possible reading</th></tr></thead>
+            <tbody>
+              <tr><td>Low</td><td>Low</td><td>Capability and momentum are both low. Start with one stage and establish the basics.</td></tr>
+              <tr><td>Low</td><td>High</td><td>Output is present, but may depend on effort rather than a repeatable system.</td></tr>
+              <tr><td>High</td><td>Low</td><td>Capability is in place, but current output is low. Check who inspects the work and how often.</td></tr>
+              <tr><td>High</td><td>High</td><td>Capability and output are both strong. Focus shifts to durability, retention and expansion.</td></tr>
+            </tbody>
+          </table></div>
+          <p class="small" style="margin-top:16px">Both measures are reported separately on every result and tracked again at the rescore.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">What a company receives</p>
+      <div class="grid2" style="grid-template-columns:1fr 1.1fr;gap:44px;align-items:center">
+        <div>
+          <h2>Eight minutes in. This out.</h2>
+          <p class="big" style="margin-top:18px">Not a percentage and a suggestion to try harder. A position, the stage where the problem shows up, the cause underneath it, and the first thing to do about it.</p>
+          <p>The same company-level result can feed the aggregate report an institution licenses. One result, two reporting uses.</p>
+          <div class="btns"><a class="btn ghost" href="/specimen/report/">The report a company receives</a><a class="btn ghost" href="/specimen/cohort/">The report an institution receives</a></div>
+        </div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div style="background:var(--band-bg);color:var(--band-strong);padding:24px 26px">
+            <div style="display:flex;align-items:baseline;gap:14px">
+              <span style="font-size:44px;font-weight:700;letter-spacing:-.04em;line-height:1.1">52</span>
+              <span style="font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--band-accent)">Developing</span>
+            </div>
+            <div style="font-family:var(--mono);font-size:12px;color:var(--band-mid);margin-top:8px">Capability <b style="color:#fff;font-weight:500">48</b> &nbsp;&middot;&nbsp; Momentum <b style="color:#fff;font-weight:500">56</b> &nbsp;&middot;&nbsp; Method v1.4</div>
+          </div>
+          <div style="padding:24px 26px">
+            <div class="tw"><table>
+              <tbody>
+                <tr><td style="width:44%">Constraint lens</td><td><b>Control</b></td></tr>
+                <tr><td>Stage where it appears</td><td><b>Closing</b></td></tr>
+                <tr><td>Root cause in this stage</td><td><b>Process</b></td></tr>
+                <tr><td>Root cause across the model</td><td><b>Process</b>, indicated across the model</td></tr>
+              </tbody>
+            </table></div>
+            <p class="mono" style="margin-top:18px">First action</p>
+            <p style="margin:0">For the top five live deals, record the next approval step, its owner and its date, then confirm all three with the buyer.</p>
+            <p class="small" style="margin-top:14px">Rescore after at least 90 days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">From result to support</p>
+      <div class="grid2" style="align-items:start">
+        <div>
+          <h2>Two ways to act on a diagnosis.</h2>
+          <p class="big" style="margin-top:18px">Some results point to work the company can carry out itself. Where the licensed action layer is in use, it provides three specific actions, each with an owner, a date and evidence to review at the next measurement. Where a person is needed, the result indicates a support category. The loop is measure, act, record evidence and rescore.</p>
+          <p>Some work needs a person. In that case, the stage and indicated root cause point to a support category. The institution chooses the provider from its own provision, and the company receives the relevant route. The institution keeps its providers; Growth Score does not name or select one.</p>
+          <p>This helps an institution distinguish between work the company can take on and support a person may provide. The report records the route selected and what preceded the next measurement. It does not establish that the action or intervention caused the movement.</p>
+          <div class="btns"><a class="btn ghost" href="/routing/">See how routing works</a><a class="btn ghost" href="/the-experience/">See the experience</a></div>
+        </div>
+        <div class="card">
+          <span class="mono">The sequence</span>
+          <ul class="plain">
+            <li><b>Measure.</b> 37 questions, about eight minutes, free to the company</li>
+            <li><b>Diagnose.</b> The stage where the constraint appears and the root cause indicated by the answers</li>
+            <li><b>Fix.</b> Actions the company can take, with an owner, a date and evidence to review</li>
+            <li><b>Route.</b> Where a person is needed, to the relevant support category and institution-selected provision</li>
+            <li><b>Rescore.</b> Movement reported alongside the action or intervention that preceded it</li>
+          </ul>
+          <p class="small" style="margin-top:16px">Routing indicates a support category. It does not ration support or make an eligibility decision.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">What licensees receive</p>
+      <div class="grid4">
+        <a class="card" href="/banks/"><span class="mono">Banks</span><h3>Which customers are building capability</h3><p class="small">A dated view for each customer, before the financial outcome appears.</p></a>
+        <a class="card" href="/public-bodies/"><span class="mono">Public bodies</span><h3>Movement, not throughput</h3><p class="small">One instrument across delivery partners, so movement can be compared across programmes.</p></a>
+        <a class="card" href="/universities/"><span class="mono">Universities</span><h3>Evidence for the next bid</h3><p class="small">A baseline at intake and a rescore at exit, reported by cohort and year.</p></a>
+        <a class="card" href="/investors/"><span class="mono">Investors</span><h3>Portfolio movement</h3><p class="small">The same instrument at agreed intervals, starting with the portfolio baseline.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="narrow mid">
+      <h2>Take the measure. It is free to the company.</h2>
+      <p class="big" style="margin-top:16px">About eight minutes, with no obligation. The company receives its result whether or not it later speaks with a provider.</p>
+      <div class="btns" style="justify-content:center"><a class="btn" href="/specimen/">See a specimen result</a></div>
+    </div>
+  </section>
+
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="margin-bottom:14px"><span class="row"><span class="mk">Growth Score</span><svg class="cohort" viewBox="0 0 30 24" aria-hidden="true"><rect x="0" y="16" width="1.6" height="8" fill="var(--logo-pop-band)"/><rect x="4" y="8" width="1.6" height="16" fill="var(--logo-pop-band)"/><rect x="7.2" y="12" width="1.6" height="12" fill="var(--logo-pop-band)"/><rect x="12.8" y="2" width="1.6" height="22" fill="var(--logo-pop-band)"/><rect x="16.4" y="9" width="1.6" height="15" fill="var(--logo-pop-band)"/><rect x="22.6" y="5" width="1.6" height="19" fill="var(--logo-tail-band)"/><rect x="28.4" y="15" width="1.6" height="9" fill="var(--logo-tail-band)"/></svg></span><span class="sub">An open measurement standard</span></div>
+        <p style="max-width:34ch">Whether a company can win and keep customers, and what&rsquo;s stopping it.</p>
+        <p style="max-width:34ch;font-size:12px;margin-top:12px">Published and maintained by Closing Foundry Ltd.</p>
+      </div>
+      <div><h4>The measure</h4><p>
+        <a href="/how-it-works/">How it works</a><br>
+        <a href="/method/">The method</a><br>
+        <a href="/specimen/report/">Specimen report</a><br>
+        <a href="/specimen/cohort/">Cohort report</a><br>
+        <a href="/run/">Run it yourself</a></p></div>
+      <div><h4>Using it</h4><p>
+        <a href="/the-experience/">The experience</a><br>
+        <a href="/routing/">Routing</a><br>
+        <a href="/integrate/">Ways to run it</a></p></div>
+      <div><h4>Can you trust it</h4><p>
+        <a href="/checking-a-result/">Checking a result</a><br>
+        <a href="/conformance/">Conformance</a><br>
+        <a href="/versions/">Version history</a><br>
+        <a href="/limits/">Limits</a></p></div>
+      <div><h4>Who it is for</h4><p>
+        <a href="/banks/">Banks</a><br>
+        <a href="/public-bodies/">Public bodies</a><br>
+        <a href="/universities/">Universities</a><br>
+        <a href="/accelerators/">Accelerators</a><br>
+        <a href="/investors/">Investors</a></p></div>
+      <div><h4>Company</h4><p>
+        <a href="/about/">About</a><br>
+        <a href="/contact/">Contact</a><br>
+        <a href="/privacy/">Privacy</a><br>
+        <a href="/terms/">Terms of use</a></p></div>
+    </div>
+    <div class="foot-bottom">
+      <span>Published by Closing Foundry Ltd, registered in England and Wales, company no. 14629519.</span>
+      <span>Not a credit signal. Not an automated decision-making tool.</span>
+    </div>
+  </div>
+</footer>
+<script>
+
+document.querySelectorAll("table").forEach(function(t){
+  if(t.parentElement && t.parentElement.classList.contains("tw")) return;
+  var w = document.createElement("div"); w.className = "tw";
+  t.parentNode.insertBefore(w, t); w.appendChild(t);
+});
+
+document.getElementById("menuBtn").addEventListener("click", function(){
+  var open = document.getElementById("nav").classList.toggle("open");
+  this.setAttribute("aria-expanded", open ? "true":"false");
+});
+var isTouch = window.matchMedia("(max-width:860px)");
+document.querySelectorAll(".drop").forEach(function(d){
+  var t = d.querySelector(".dtrig");
+  if(d.querySelector('a.on')) d.classList.add("hason");
+  t.addEventListener("click", function(e){
+    e.stopPropagation();
+    var open = d.classList.contains("open");
+    document.querySelectorAll(".drop").forEach(function(o){ o.classList.remove("open"); o.querySelector(".dtrig").setAttribute("aria-expanded","false"); });
+    if(!open){ d.classList.add("open"); t.setAttribute("aria-expanded","true"); }
+  });
+  d.addEventListener("mouseenter", function(){ if(isTouch.matches) return;
+    document.querySelectorAll(".drop").forEach(function(o){ o.classList.remove("open"); });
+    d.classList.add("open"); t.setAttribute("aria-expanded","true"); });
+  d.addEventListener("mouseleave", function(){ if(isTouch.matches) return;
+    d.classList.remove("open"); t.setAttribute("aria-expanded","false"); });
+});
+document.addEventListener("click", function(){
+  document.querySelectorAll(".drop").forEach(function(d){ d.classList.remove("open"); d.querySelector(".dtrig").setAttribute("aria-expanded","false"); });
+});
+document.addEventListener("keydown", function(e){ if(e.key === "Escape"){
+  document.querySelectorAll(".drop").forEach(function(d){ d.classList.remove("open"); }); } });
+var sb = document.getElementById("sendBtn");
+if(sb){ sb.addEventListener("click", function(){
+  var TO = "hello@closingfoundry.com";
+  var v = function(id){ var e=document.getElementById(id); return e ? e.value.trim() : ""; };
+  var name=v("f1"), org=v("f2"), email=v("f3"), who=v("f4"), what=v("f5");
+  if(!name || !email){ document.getElementById("formNote").textContent = "Please add a name and an email address."; return; }
+  var body = "Name: "+name+"\nOrganisation: "+org+"\nEmail: "+email+"\nDescribes them: "+who+"\n\nCurrently unable to measure:\n"+what;
+  window.location.href = "mailto:"+TO+"?subject="+encodeURIComponent("Growth Score demonstration request: "+(org||name))+"&body="+encodeURIComponent(body);
+}); }
+
+/* ---------------- hero cohort plot ---------------- */
+(function(){
+  var svg = document.getElementById("plotSvg");
+  if(!svg) return;
+  var N = 198, X0 = 40, X1 = 600, BASE = 140;
+  var ticksG = document.getElementById("ticks"), axisG = document.getElementById("axis");
+
+  for(var a = 0; a <= 10; a++){
+    var x = X0 + (X1 - X0) * (a/10);
+    var l = document.createElementNS("http://www.w3.org/2000/svg","line");
+    l.setAttribute("x1",x); l.setAttribute("x2",x);
+    l.setAttribute("y1",BASE); l.setAttribute("y2", a % 5 === 0 ? BASE+9 : BASE+5);
+    l.setAttribute("stroke","var(--rule)");
+    axisG.appendChild(l);
+  }
+
+  var seed = 7;
+  function rnd(){ seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; }
+  var tickEls = [];
+  for(var i = 0; i < N; i++){
+    var r = (rnd() + rnd() + rnd()) / 3;
+    var pos = X0 + (X1 - X0) * Math.min(0.97, r * 1.15);
+    var h = 10 + (rnd() * 13);
+    var t = document.createElementNS("http://www.w3.org/2000/svg","line");
+    t.setAttribute("x1",pos); t.setAttribute("x2",pos);
+    t.setAttribute("y1",BASE); t.setAttribute("y2",BASE - h);
+    t.setAttribute("stroke", r > 0.72 ? "var(--mark)" : "var(--ink)");
+    t.setAttribute("stroke-width","1.5");
+    t.setAttribute("opacity","0");
+    t.setAttribute("class","tick");
+    t.style.transformOrigin = pos + "px " + BASE + "px";
+    t.style.transform = "translateX(" + (320 - pos) + "px) scaleY(0.1)";
+    ticksG.appendChild(t);
+    tickEls.push(t);
+  }
+
+  var blob = document.getElementById("blob");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function setView(per, stagger){
+    document.getElementById("btnAgg").setAttribute("aria-pressed", per ? "false":"true");
+    document.getElementById("btnPer").setAttribute("aria-pressed", per ? "true":"false");
+    blob.style.opacity = per ? "0" : "1";
+    tickEls.forEach(function(t,i){
+      t.style.transitionDelay = (reduce || !stagger) ? "0ms" : (per ? (i*3)+"ms" : "0ms");
+      t.setAttribute("opacity", per ? "1" : "0");
+      t.style.transform = per ? "translateX(0) scaleY(1)"
+                              : "translateX(" + (320 - t.getAttribute("x1")) + "px) scaleY(0.1)";
+    });
+    document.getElementById("rB").textContent = per ? "198" : "None";
+    document.getElementById("rA").textContent = per ? "198" : "None";
+    document.getElementById("rC").textContent = per ? "Per company" : "None";
+  }
+  document.getElementById("btnAgg").addEventListener("click", function(){ setView(false, false); });
+  document.getElementById("btnPer").addEventListener("click", function(){ setView(true, true); });
+
+  setView(false, false);
+  /* demonstrate itself once, then hand control back */
+  if(!reduce) setTimeout(function(){ setView(true, true); }, 1300);
+})();
+/* ---- matrix from the published worked example ---- */
+var STAGES = ["Demand","Sales Process","Closing","Expand"];
+var CAUSES = ["Product","People","Process","Repeatability"];
+var V = [[3.5,3.0,2.5,2.5],[3.5,3.0,2.0,2.0],[3.0,2.5,1.5,2.0],[2.0,2.0,1.5,1.5]];
+var NOTE = {
+  "Demand|Product":"The proposition isn’t yet sharp enough for one buyer. Pick the single best-fit segment and rewrite the value statement around their named pain.",
+  "Demand|Process":"Demand creation happens in bursts rather than to a rhythm that can be inspected.",
+  "Sales Process|Process":"Discovery quality varies by whoever is running the call. Good at-bats are being wasted.",
+  "Closing|Process":"Pricing, approval, procurement and legal steps are discovered too late. Avoidable slippage is the visible symptom.",
+  "Closing|Repeatability":"Common late-stage mistakes repeat because deal reviews report activity rather than inspect buyer evidence.",
+  "Expand|Process":"There’s no repeatable plan for renewal or expansion, so both depend on the relationship lasting."
+};
+function colour(v){
+  var t = (v-1)/4;                    // 0 weakest .. 1 strongest
+  var a = 0.10 + (1-t)*0.62;          // weaker = darker
+  return "rgba(11,78,214," + a.toFixed(3) + ")";
+}
+var body = document.getElementById("mxb");
+CAUSES.forEach(function(rc,j){
+  var tr = document.createElement("tr");
+  var th = document.createElement("th"); th.className="row"; th.textContent = rc; tr.appendChild(th);
+  STAGES.forEach(function(st,i){
+    var td = document.createElement("td");
+    var d = document.createElement("div");
+    d.className = "cell"; d.textContent = V[i][j].toFixed(1);
+    d.style.background = colour(V[i][j]);
+    d.style.color = V[i][j] < 2.6 ? "#fff" : "var(--ink)";
+    d.setAttribute("role","button"); d.tabIndex = 0;
+    function pick(){
+      document.querySelectorAll(".cell").forEach(function(c){c.classList.remove("sel");});
+      d.classList.add("sel");
+      var key = st+"|"+rc;
+      document.getElementById("ro").innerHTML =
+        '<span class="mono">'+st+' &times; '+rc+' &middot; '+V[i][j].toFixed(1)+' of 5</span>' +
+        '<p style="margin:0">'+(NOTE[key] || "Scored from two questions in this cell. The written diagnosis for this combination is part of the licensed library, not the published method.")+'</p>';
+    }
+    d.addEventListener("click", pick);
+    d.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); pick(); }});
+    td.appendChild(d); tr.appendChild(td);
+  });
+  body.appendChild(tr);
+});
+
+(function(){
+  var box=document.getElementById('themer'); if(!box) return;
+  var H=document.documentElement, mq=window.matchMedia('(prefers-color-scheme: dark)');
+  function resolve(pref){ return pref==='auto' ? (mq.matches?'dark':'light') : pref; }
+  function pref(){ try{ return localStorage.getItem('gs-theme') || 'auto'; }catch(e){ return 'auto'; } }
+  function paint(){ var p=pref();
+    box.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.t===p?'true':'false'); }); }
+  function apply(p, animate){
+    if(animate) H.classList.add('theming');
+    H.setAttribute('data-theme', resolve(p));
+    if(animate) setTimeout(function(){ H.classList.remove('theming'); }, 260);
+  }
+  box.querySelectorAll('button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var p=b.dataset.t;
+      try{ p==='auto' ? localStorage.removeItem('gs-theme') : localStorage.setItem('gs-theme', p); }catch(e){}
+      apply(p, true); paint();
+    });
+  });
+  if(mq.addEventListener) mq.addEventListener('change', function(){ if(pref()==='auto') apply('auto', true); });
+  paint();
+})();
+</script>
+<div id="sigfly" aria-hidden="true"><svg id="sigflySvg" viewBox="-2 -3 180 30"></svg></div>
+<script>
+(function(){
+var root=document.documentElement;
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+var fly=document.getElementById('sigfly'),svg=document.getElementById('sigflySvg');
+var target=document.querySelector('header .logo .sig'),row=document.querySelector('header .logo .row');
+if(!fly||!svg||!target||!row)return;
+root.classList.add('sigfly-run');
+function lcg(s){return function(){s=(s*1664525+1013904223)%4294967296;return s/4294967296}}
+var FINAL=[[0,9],[3.8,16],[7,6],[12.2,21],[15.6,12],[19,18,1],[24.2,8],[27.8,14],[32.8,23],[36.4,10,1],[41.4,19],[45,7]];
+var W=176,BASE=24,FX=11.5,N=44,NSEL=16,HOLD=5200;
+function eo(t){return 1-Math.pow(1-t,3)}
+function eio(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+function cl(t){return t<0?0:t>1?1:t}
+function tone(n){return getComputedStyle(root).getPropertyValue(n).trim()}
+var st=(function(){
+  var rnd=lcg(20260813),bars=[],x=0,i;
+  for(i=0;i<N;i++){bars.push({x0:x,h0:Math.round((4+rnd()*20)*10)/10});x+=1.2+(1.2+rnd()*3.4)}
+  var sc=(W-2)/(x-1.2);bars.forEach(function(b){b.x0=Math.round(b.x0*sc*10)/10});
+  var idx=bars.map(function(b,i){return i}),sel=[];
+  while(sel.length<NSEL){var j=Math.floor(rnd()*idx.length);sel.push(idx.splice(j,1)[0])}
+  var selSet={};sel.forEach(function(v){selSet[v]=1});
+  var blueSurv=sel.slice().sort(function(a,b){return a-b}).filter(function(v,i){return i===3||i===9}).slice(0,2);
+  var inkPool=bars.map(function(b,i){return i}).filter(function(i){return !selSet[i]});
+  var step=inkPool.length/10,inkSurv=[],k;
+  for(k=0;k<10;k++)inkSurv.push(inkPool[Math.floor(k*step)]);
+  var surv=inkSurv.concat(blueSurv).sort(function(a,b){return a-b});
+  var blueSlots=[],inkSlots=[];
+  FINAL.forEach(function(f,i){if(f[2])blueSlots.push(i);else inkSlots.push(i)});
+  var map={},bi=0,ii=0;
+  surv.forEach(function(s){map[s]=blueSurv.indexOf(s)>=0?blueSlots[bi++]:inkSlots[ii++]});
+  var ns='http://www.w3.org/2000/svg';
+  svg.innerHTML='';
+  var g=document.createElementNS(ns,'g');svg.appendChild(g);
+  var text=document.createElementNS(ns,'text');
+  text.setAttribute('x','69.06');text.setAttribute('y',String(BASE));
+  text.setAttribute('font-size','26');
+  text.setAttribute('font-family','IBM Plex Sans, system-ui, sans-serif');
+  text.setAttribute('font-weight','700');text.setAttribute('letter-spacing','-0.57');
+  text.textContent='fac16';svg.appendChild(text);
+  bars.forEach(function(b,i){
+    var r=document.createElementNS(ns,'rect');
+    r.setAttribute('x',b.x0);r.setAttribute('width',1.2);
+    r.setAttribute('y',BASE);r.setAttribute('height',0);
+    g.appendChild(r);b.el=r;b.sel=!!selSet[i];
+    b.slot=(map[i]!==undefined)?map[i]:null;
+  });
+  return {bars:bars,text:text};
+})();
+function frame(t){
+  var ink=tone('--logo-pop'),acc=tone('--logo-tail');
+  st.bars.forEach(function(b,i){
+    var grow=eo(cl((t-i*22)/560));
+    var x=b.x0,h=b.h0*grow,w=1.2,op=1,fill=ink;
+    if(t>1500&&b.sel&&cl((t-1500-(i%16)*55)/260)>0)fill=acc;
+    var cv=eio(cl((t-3000-i*12)/1100));
+    if(cv>0){
+      var f=b.slot!==null?FINAL[b.slot]:null;
+      if(f){x=b.x0+(FX+f[0]-b.x0)*cv;h=b.h0+(f[1]-b.h0)*cv;w=1.2+.4*cv;fill=f[2]?acc:ink}
+      else{x=b.x0+((FX+20)-b.x0)*cv;op=1-cl(cv*1.6);h=b.h0*(1-cv*.5)}
+    }
+    b.el.setAttribute('x',x.toFixed(2));b.el.setAttribute('width',w.toFixed(2));
+    b.el.setAttribute('height',Math.max(0,h).toFixed(2));
+    b.el.setAttribute('y',(BASE-Math.max(0,h)).toFixed(2));
+    b.el.setAttribute('fill',fill);b.el.setAttribute('opacity',op.toFixed(2));
+  });
+  var to=eo(cl((t-3550)/700));
+  st.text.setAttribute('opacity',to.toFixed(2));
+  st.text.setAttribute('fill',tone('--logo-pop'));
+  st.text.setAttribute('transform','translate('+(8*(1-to)).toFixed(2)+',0)');
+}
+function place(){
+  var wrap=document.querySelector('main .wrap')||document.body;
+  var wr=wrap.getBoundingClientRect();
+  var w=Math.min(420,Math.max(220,wr.width-8));
+  fly.style.width=w+'px';
+  fly.style.left=Math.round(wr.left)+'px';
+  fly.style.top=Math.round(Math.min(190,window.innerHeight*0.30))+'px';
+  fly.style.transform='none';
+  return w;
+}
+var flyW=place();
+function land(){
+  var tr=target.getBoundingClientRect(), fr=fly.getBoundingClientRect();
+  var unit=tr.width/46.6;              // px per svg unit in the header mark
+  var funit=flyW/180;                  // px per unit in the flyer
+  var s=unit/funit;
+  var dx=tr.left-(fr.left+13.5*unit);  // field starts at u=11.5, viewBox x0=-2
+  var dy=tr.bottom-(fr.top+27*unit);   // baseline at v=24, viewBox y0=-3
+  fly.classList.add('go');
+  fly.style.transform='translate('+dx.toFixed(1)+'px,'+dy.toFixed(1)+'px) scale('+s.toFixed(4)+')';
+  var done=false;
+  function finish(){
+    if(done)return;done=true;
+    root.classList.remove('sigfly-run');
+    setTimeout(function(){fly.style.display='none'},260);
+  }
+  fly.addEventListener('transitionend',finish,{once:true});
+  setTimeout(finish,1400);
+}
+var t0=null;
+function run(ts){
+  if(t0===null)t0=ts;
+  var t=ts-t0;
+  frame(Math.min(t,HOLD));
+  if(t<HOLD)requestAnimationFrame(run);
+  else{frame(HOLD);setTimeout(land,650)}
+}
+requestAnimationFrame(run);
+})();
+</script>
+</body>
+</html>
