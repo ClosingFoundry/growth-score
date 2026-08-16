@@ -4,9 +4,10 @@
 (function () {
   "use strict";
 
-  var VERSION = "1.0";
+  var VERSION = "1.1";
   var KEY = "cc_consent";
   var CLARITY_ID = "y3e5xpqs63";
+  var GA_ID = "G-ZZZ07MC1P4";
   var PRIVACY = "/privacy/";
 
   /* ---------- storage ---------- */
@@ -45,8 +46,28 @@
     else (document.head || document.documentElement).appendChild(t);
   }
 
-  function clearClarityCookies() {
-    var names = ["_clck", "_clsk", "CLID", "MUID", "ANONCHK", "SM", "MR"];
+  /* ---------- google analytics ---------- */
+
+  var gaLoaded = false;
+
+  function loadGA() {
+    if (gaLoaded) return;
+    gaLoaded = true;
+    var t = document.createElement("script");
+    t.async = true;
+    t.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+    (document.head || document.documentElement).appendChild(t);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", GA_ID);
+  }
+
+  /* ---------- withdrawal ---------- */
+
+  function clearAnalyticsCookies() {
+    var names = ["_clck", "_clsk", "CLID", "MUID", "ANONCHK", "SM", "MR",
+                 "_ga", "_ga_" + GA_ID.replace("G-", ""), "_gid", "_gat"];
     var host = location.hostname;
     var domains = ["", host, "." + host];
     var parts = host.split(".");
@@ -62,11 +83,12 @@
   function apply(rec, viaChoice) {
     if (rec && rec.analytics) {
       loadClarity();
+      loadGA();
       return;
     }
     if (viaChoice) {
-      clearClarityCookies();
-      if (window.clarity) location.reload();
+      clearAnalyticsCookies();
+      if (window.clarity || window.dataLayer) location.reload();
     }
   }
 
@@ -119,7 +141,7 @@
   var BAR =
     '<div class="cc-pad">' +
       '<p class="cc-k">Cookies</p>' +
-      '<p class="cc-p">This site needs no cookies to work. With your consent we use Microsoft Clarity to see how pages are used and where they are unclear. Nothing optional is stored until you choose. <a href="' + PRIVACY + '">Privacy</a>.</p>' +
+      '<p class="cc-p">This site needs no cookies to work. With your consent we use Microsoft Clarity and Google Analytics to see how pages are used and where they are unclear. Nothing optional is stored until you choose. <a href="' + PRIVACY + '">Privacy</a>.</p>' +
     '</div>' +
     '<div class="cc-row">' +
       '<button type="button" class="cc-b cc-quiet" data-cc="open">Choose</button>' +
@@ -149,11 +171,14 @@
           '<div class="cc-ch"><span class="cc-cn">Analytics</span>' +
             '<label class="cc-sw"><input type="checkbox" id="cc-analytics"> On</label>' +
           '</div>' +
-          '<p class="cc-d">Microsoft Clarity. Shows which pages are used, where people stop, and where the wording is unclear. It records on-page movement and clicks. Text typed into form fields is masked before it leaves your browser. Assessment answers, scores and results are never sent to Clarity.</p>' +
+          '<p class="cc-d">Microsoft Clarity and Google Analytics. Between them they show which pages are used, where people arrive from, where they stop, and where the wording is unclear. Clarity also records on-page movement and clicks. Text typed into form fields is masked before it leaves your browser. Assessment answers, scores and results are never sent to either.</p>' +
           '<div class="cc-list">' +
             '<div class="cc-i"><span class="cc-n">_clck</span><br>Links this visit to earlier ones. Microsoft, one year.</div>' +
             '<div class="cc-i"><span class="cc-n">_clsk</span><br>Joins the pages of a single visit. Microsoft, one day.</div>' +
-            '<div class="cc-i"><span class="cc-n">CLID</span> and related<br>Set by Microsoft on clarity.ms as part of the same service. Turning analytics off stops further collection and clears what this site can clear. Microsoft may hold the rest until it expires.</div>' +
+            '<div class="cc-i"><span class="cc-n">CLID</span> and related<br>Set by Microsoft on clarity.ms as part of the same service.</div>' +
+            '<div class="cc-i"><span class="cc-n">_ga</span> and <span class="cc-n">_ga_ZZZ07MC1P4</span><br>Count visits and tell a returning visit from a new one. Google, two years.</div>' +
+            '<div class="cc-i"><span class="cc-n">_gid</span><br>Groups the pages of one day&rsquo;s visiting. Google, one day.</div>' +
+            '<div class="cc-i">Turning analytics off stops further collection and clears what this site can clear. Microsoft and Google may hold the rest until it expires.</div>' +
           '</div>' +
         '</div>' +
 
