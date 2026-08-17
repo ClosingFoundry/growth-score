@@ -390,7 +390,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
       <p class="small" style="max-width:64ch">The grid is the same for every company. The questions that fill it are not: a subscription software founder and a direct-to-consumer brand are asked about different evidence, at one of three maturity levels. <a href="method/" style="color:var(--mark)">How that works</a>.</p>
       <div class="grid2" style="margin-top:32px;grid-template-columns:1.25fr 1fr;align-items:start">
         <div>
-          <table class="matrix" id="mx"><thead><tr><th></th><th>Product</th><th>People</th><th>Process</th><th>Repeatability</th></tr></thead><tbody id="mxb"></tbody></table>
+          <table class="matrix" id="mx"><thead><tr><th></th><th>Proposition</th><th>People</th><th>Process</th><th>Repeatability</th></tr></thead><tbody id="mxb"></tbody></table>
           <p class="small" style="margin-top:14px">Values shown are the worked example published in the method. Darker means weaker.</p>
         </div>
         <div class="readout" id="ro">
@@ -594,10 +594,10 @@ if(sb){ sb.addEventListener("click", function(){
 })();
 /* ---- matrix from the published worked example ---- */
 var STAGES = ["Interest","Intent","Commitment","Value"];
-var CAUSES = ["Product","People","Process","Repeatability"];
+var CAUSES = ["Proposition","People","Process","Repeatability"];
 var V = [[3.5,3.0,2.5,2.5],[3.5,3.0,2.0,2.0],[3.0,2.5,1.5,2.0],[2.0,2.0,1.5,1.5]];
 var NOTE = {
-  "Interest|Product":"The proposition isn’t yet sharp enough for one buyer. Pick the single best-fit segment and rewrite the value statement around their named pain.",
+  "Interest|Proposition":"The proposition isn’t yet sharp enough for one buyer. Pick the single best-fit segment and rewrite the value statement around their named pain.",
   "Interest|Process":"Interest creation happens in bursts rather than to a rhythm that can be inspected.",
   "Intent|Process":"Discovery quality varies by whoever is running the call. Good at-bats are being wasted.",
   "Commitment|Process":"Pricing, approval, procurement and legal steps are discovered too late. Avoidable slippage is the visible symptom.",

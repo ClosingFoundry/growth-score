@@ -29,8 +29,8 @@
   ],
   "root_causes": [
     {
-      "id": "product",
-      "name": "Product",
+      "id": "proposition",
+      "name": "Proposition",
       "asks": "Is the proposition, value and business case sharp enough?"
     },
     {
