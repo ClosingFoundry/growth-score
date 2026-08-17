@@ -359,7 +359,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-trans
         <li><b>It’s deterministic.</b> Set the same values twice and you get the same result. There's no model in the scoring path and there never will be.</li>
         <li><b>It’s reproducible by hand.</b> Every number here comes from the six lines of arithmetic published in the method. Nothing is hidden between the inputs and the output.</li>
         <li><b>Nothing is weighted by sector or size.</b> The same rules apply to every company, which is the only reason two results can be compared.</li>
-        <li><b>The judgement isn’t in the maths.</b> Load the worked example. Expand scores lowest, yet it isn't what the diagnosis sends you to fix. That precedence is the part you license.</li>
+        <li><b>The judgement isn’t in the maths.</b> Load the worked example. Value scores lowest, yet it isn't what the diagnosis sends you to fix. That precedence is the part you license.</li>
       </ul>
       <div class="btns"><a class="btn ghost" href="../method/">The full specification</a><a class="btn ghost" href="../specimen/">A complete report</a></div>
     </div>
@@ -425,7 +425,7 @@ if(sb){ sb.addEventListener("click", function(){
 (function(){
   var host = document.getElementById("cells");
   if(!host) return;
-  var ST = ["Demand","Sales Process","Closing","Expand"];
+  var ST = ["Interest","Intent","Commitment","Value"];
   var RC = ["Product","People","Process","Repeatability"];
   var MOM = ["First meetings","Qualified opportunities","Deal pace and slippage","Forecast confidence","Expansion"];
   var CAPLAB = ["Not in place","Inconsistent","Partly in place","Consistent","Proven and improving"];
@@ -499,7 +499,7 @@ if(sb){ sb.addEventListener("click", function(){
     var mom = mean(moms)/5*100;
     var score = Math.round((cap+mom)/2);
 
-    /* primary stage: weakest, with the documented Expand suppression */
+    /* primary stage: weakest, with the documented Value suppression */
     var order = stage.map(function(v,i){ return {i:i,v:v}; }).sort(function(a,b){ return a.v-b.v; });
     var pi = order[0].i;
     var newBizWeak = Math.min(stage[0],stage[1],stage[2]) < 2.5;
@@ -530,7 +530,7 @@ if(sb){ sb.addEventListener("click", function(){
       read += " The same cause is weakest across the whole engine, so it’s systemic.";
     }
     if(suppressed){
-      read += " Expand scores lowest, but new business isn’t yet working, so an expansion finding is suppressed and the diagnosis routes to the stage that matters now.";
+      read += " Value scores lowest, but new business isn’t yet working, so an expansion finding is suppressed and the diagnosis routes to the stage that matters now.";
     }
     document.getElementById("rRead").innerHTML = read;
 

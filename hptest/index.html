@@ -577,7 +577,7 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
       <p class="small" style="max-width:64ch">The 16-cell structure is fixed. The questions that populate it adapt to the company&rsquo;s business model and one of three maturity levels. A subscription software company and a direct-to-consumer brand may therefore provide different evidence. <a href="/method/" style="color:var(--mark)">See how that works</a>.</p>
       <div class="grid2" style="margin-top:32px;grid-template-columns:1.25fr 1fr;align-items:start">
         <div>
-          <table class="matrix" id="mx"><thead><tr><th></th><th>Demand</th><th>Sales Process</th><th>Closing</th><th>Expand</th></tr></thead><tbody id="mxb"></tbody></table>
+          <table class="matrix" id="mx"><thead><tr><th></th><th>Interest</th><th>Intent</th><th>Commitment</th><th>Value</th></tr></thead><tbody id="mxb"></tbody></table>
           <p class="small" style="margin-top:14px">Values shown are the worked example published in the method. Darker cells indicate lower scores.</p>
         </div>
         <div class="readout" id="ro">
@@ -639,7 +639,7 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
             <div class="tw"><table>
               <tbody>
                 <tr><td style="width:44%">Constraint lens</td><td><b>Control</b></td></tr>
-                <tr><td>Stage where it appears</td><td><b>Closing</b></td></tr>
+                <tr><td>Stage where it appears</td><td><b>Commitment</b></td></tr>
                 <tr><td>Root cause in this stage</td><td><b>Process</b></td></tr>
                 <tr><td>Root cause across the model</td><td><b>Process</b>, indicated across the model</td></tr>
               </tbody>
@@ -846,16 +846,16 @@ if(sb){ sb.addEventListener("click", function(){
   if(!reduce) setTimeout(function(){ setView(true, true); }, 1300);
 })();
 /* ---- matrix from the published worked example ---- */
-var STAGES = ["Demand","Sales Process","Closing","Expand"];
+var STAGES = ["Interest","Intent","Commitment","Value"];
 var CAUSES = ["Product","People","Process","Repeatability"];
 var V = [[3.5,3.0,2.5,2.5],[3.5,3.0,2.0,2.0],[3.0,2.5,1.5,2.0],[2.0,2.0,1.5,1.5]];
 var NOTE = {
-  "Demand|Product":"The proposition isn’t yet sharp enough for one buyer. Pick the single best-fit segment and rewrite the value statement around their named pain.",
-  "Demand|Process":"Demand creation happens in bursts rather than to a rhythm that can be inspected.",
-  "Sales Process|Process":"Discovery quality varies by whoever is running the call. Good at-bats are being wasted.",
-  "Closing|Process":"Pricing, approval, procurement and legal steps are discovered too late. Avoidable slippage is the visible symptom.",
-  "Closing|Repeatability":"Common late-stage mistakes repeat because deal reviews report activity rather than inspect buyer evidence.",
-  "Expand|Process":"There’s no repeatable plan for renewal or expansion, so both depend on the relationship lasting."
+  "Interest|Product":"The proposition isn’t yet sharp enough for one buyer. Pick the single best-fit segment and rewrite the value statement around their named pain.",
+  "Interest|Process":"Interest creation happens in bursts rather than to a rhythm that can be inspected.",
+  "Intent|Process":"Discovery quality varies by whoever is running the call. Good at-bats are being wasted.",
+  "Commitment|Process":"Pricing, approval, procurement and legal steps are discovered too late. Avoidable slippage is the visible symptom.",
+  "Commitment|Repeatability":"Common late-stage mistakes repeat because deal reviews report activity rather than inspect buyer evidence.",
+  "Value|Process":"There’s no repeatable plan for renewal or expansion, so both depend on the relationship lasting."
 };
 function colour(v){
   var t = (v-1)/4;                    // 0 weakest .. 1 strongest
