@@ -501,7 +501,7 @@ footer .logo .cohort rect:nth-of-type(6),footer .logo .cohort rect:nth-of-type(7
         <li><b>It’s deterministic.</b> Set the same values twice and you get the same result. There's no model in the scoring path and there never will be.</li>
         <li><b>It is reproducible by hand.</b> The score and component values come from the six arithmetic steps published in the method. There is no additional scoring logic between these inputs and outputs.</li>
         <li><b>The published arithmetic does not weight scores by sector or company size.</b> Results should be compared only within the method's stated version, scope and conditions.</li>
-        <li><b>The arithmetic and the diagnosis layer are separate.</b> Load the worked example: Expand scores lowest, but the documented precedence points to another stage. That precedence is part of the licensed layer.</li>
+        <li><b>The arithmetic and the diagnosis layer are separate.</b> Load the worked example: Value scores lowest, but the documented precedence points to another stage. That precedence is part of the licensed layer.</li>
       </ul>
       <div class="btns"><a class="btn ghost" href="../method/">Read the full specification</a><a class="btn" href="../specimen/report/">See a company-level report</a></div>
     </div>
@@ -597,7 +597,7 @@ if(sb){ sb.addEventListener("click", function(){
 (function(){
   var host = document.getElementById("cells");
   if(!host) return;
-  var ST = ["Demand","Sales Process","Closing","Expand"];
+  var ST = ["Interest","Intent","Commitment","Value"];
   var RC = ["Product","People","Process","Repeatability"];
   var MOM = ["First meetings","Qualified opportunities","Deal pace and slippage","Forecast confidence","Expansion"];
   var CAPLAB = ["Not in place","Inconsistent","Partly in place","Consistent","Proven and improving"];
@@ -671,7 +671,7 @@ if(sb){ sb.addEventListener("click", function(){
     var mom = mean(moms)/5*100;
     var score = Math.round((cap+mom)/2);
 
-    /* primary stage: weakest, with the documented Expand suppression */
+    /* primary stage: weakest, with the documented Value suppression */
     var order = stage.map(function(v,i){ return {i:i,v:v}; }).sort(function(a,b){ return a.v-b.v; });
     var pi = order[0].i;
     var newBizWeak = Math.min(stage[0],stage[1],stage[2]) < 2.5;
@@ -702,7 +702,7 @@ if(sb){ sb.addEventListener("click", function(){
       read += " The same root cause has the lowest score across the engine, so the pattern is present in both the selected stage and the wider system.";
     }
     if(suppressed){
-      read += " Expand has the lowest score, but a new-business stage is also below the published threshold. Under the stated precedence rule, the result reports the relevant new-business stage rather than an expansion finding.";
+      read += " Value has the lowest score, but a new-business stage is also below the published threshold. Under the stated precedence rule, the result reports the relevant new-business stage rather than an expansion finding.";
     }
     document.getElementById("rRead").innerHTML = read;
 

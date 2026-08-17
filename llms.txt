@@ -7,7 +7,7 @@ The measurement method is published in full and may be implemented by anyone. Th
 ## Key facts
 - Current method version: v1.4
 - 37 questions: 32 capability, 5 momentum
-- Model: 4 go-to-market stages (Demand, Sales Process, Closing, Expand) by 4 root causes (Product, People, Process, Repeatability), 2 questions per cell
+- Model: 4 go-to-market stages (Interest, Intent, Commitment, Value) by 4 root causes (Product, People, Process, Repeatability), 2 questions per cell
 - Score = round((capability + momentum) / 2), each rescaled to 0-100
 - Bands: Forming 0-39, Developing 40-59, Established 60-79, Durable 80-100
 - Problem lenses: Volume, Efficiency, Control, Expansion

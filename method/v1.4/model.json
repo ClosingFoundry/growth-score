@@ -7,23 +7,23 @@
   },
   "stages": [
     {
-      "id": "demand",
-      "name": "Demand",
+      "id": "interest",
+      "name": "Interest",
       "job": "Create enough qualified attention from the right kind of customer"
     },
     {
-      "id": "sales_process",
-      "name": "Sales Process",
+      "id": "intent",
+      "name": "Intent",
       "job": "Turn that attention into real, progressing opportunities"
     },
     {
-      "id": "closing",
-      "name": "Closing",
+      "id": "commitment",
+      "name": "Commitment",
       "job": "Convert them into paying customers, with predictable timing"
     },
     {
-      "id": "expand",
-      "name": "Expand",
+      "id": "value",
+      "name": "Value",
       "job": "Keep customers, and grow the value of the ones you have"
     }
   ],

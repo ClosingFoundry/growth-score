@@ -13,7 +13,7 @@
       "expect": {
         "score": 20,
         "band": "Forming",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -26,7 +26,7 @@
       "expect": {
         "score": 40,
         "band": "Developing",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -39,7 +39,7 @@
       "expect": {
         "score": 60,
         "band": "Established",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -52,7 +52,7 @@
       "expect": {
         "score": 80,
         "band": "Durable",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -65,7 +65,7 @@
       "expect": {
         "score": 100,
         "band": "Durable",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -78,7 +78,7 @@
       "expect": {
         "score": 74,
         "band": "Established",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -91,7 +91,7 @@
       "expect": {
         "score": 74,
         "band": "Established",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -104,7 +104,7 @@
       "expect": {
         "score": 74,
         "band": "Established",
-        "primary_stage": "Closing"
+        "primary_stage": "Commitment"
       }
     },
     {
@@ -117,7 +117,7 @@
       "expect": {
         "score": 74,
         "band": "Established",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -130,7 +130,7 @@
       "expect": {
         "score": 74,
         "band": "Established",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -143,7 +143,7 @@
       "expect": {
         "score": 74,
         "band": "Established",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -156,7 +156,7 @@
       "expect": {
         "score": 74,
         "band": "Established",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -169,7 +169,7 @@
       "expect": {
         "score": 74,
         "band": "Established",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -182,7 +182,7 @@
       "expect": {
         "score": 50,
         "band": "Developing",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -195,7 +195,7 @@
       "expect": {
         "score": 70,
         "band": "Established",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -208,7 +208,7 @@
       "expect": {
         "score": 69,
         "band": "Established",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -221,7 +221,7 @@
       "expect": {
         "score": 61,
         "band": "Established",
-        "primary_stage": "Closing"
+        "primary_stage": "Commitment"
       }
     },
     {
@@ -234,7 +234,7 @@
       "expect": {
         "score": 53,
         "band": "Developing",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -247,7 +247,7 @@
       "expect": {
         "score": 65,
         "band": "Established",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -260,7 +260,7 @@
       "expect": {
         "score": 59,
         "band": "Developing",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -273,7 +273,7 @@
       "expect": {
         "score": 55,
         "band": "Developing",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -286,7 +286,7 @@
       "expect": {
         "score": 58,
         "band": "Developing",
-        "primary_stage": "Closing"
+        "primary_stage": "Commitment"
       }
     },
     {
@@ -299,7 +299,7 @@
       "expect": {
         "score": 73,
         "band": "Established",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -312,7 +312,7 @@
       "expect": {
         "score": 70,
         "band": "Established",
-        "primary_stage": "Closing"
+        "primary_stage": "Commitment"
       }
     },
     {
@@ -325,7 +325,7 @@
       "expect": {
         "score": 68,
         "band": "Established",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -338,7 +338,7 @@
       "expect": {
         "score": 53,
         "band": "Developing",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -351,7 +351,7 @@
       "expect": {
         "score": 52,
         "band": "Developing",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -364,7 +364,7 @@
       "expect": {
         "score": 55,
         "band": "Developing",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -377,7 +377,7 @@
       "expect": {
         "score": 61,
         "band": "Established",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -390,7 +390,7 @@
       "expect": {
         "score": 56,
         "band": "Developing",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -403,7 +403,7 @@
       "expect": {
         "score": 54,
         "band": "Developing",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -416,7 +416,7 @@
       "expect": {
         "score": 64,
         "band": "Established",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -429,7 +429,7 @@
       "expect": {
         "score": 65,
         "band": "Established",
-        "primary_stage": "Closing"
+        "primary_stage": "Commitment"
       }
     },
     {
@@ -442,7 +442,7 @@
       "expect": {
         "score": 59,
         "band": "Developing",
-        "primary_stage": "Expand"
+        "primary_stage": "Value"
       }
     },
     {
@@ -455,7 +455,7 @@
       "expect": {
         "score": 62,
         "band": "Established",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -468,7 +468,7 @@
       "expect": {
         "score": 60,
         "band": "Established",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -481,7 +481,7 @@
       "expect": {
         "score": 54,
         "band": "Developing",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -494,7 +494,7 @@
       "expect": {
         "score": 63,
         "band": "Established",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -507,7 +507,7 @@
       "expect": {
         "score": 58,
         "band": "Developing",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -520,7 +520,7 @@
       "expect": {
         "score": 55,
         "band": "Developing",
-        "primary_stage": "Closing"
+        "primary_stage": "Commitment"
       }
     },
     {
@@ -533,7 +533,7 @@
       "expect": {
         "score": 69,
         "band": "Established",
-        "primary_stage": "Expand"
+        "primary_stage": "Value"
       }
     },
     {
@@ -546,7 +546,7 @@
       "expect": {
         "score": 63,
         "band": "Established",
-        "primary_stage": "Closing"
+        "primary_stage": "Commitment"
       }
     },
     {
@@ -559,7 +559,7 @@
       "expect": {
         "score": 59,
         "band": "Developing",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     },
     {
@@ -572,7 +572,7 @@
       "expect": {
         "score": 53,
         "band": "Developing",
-        "primary_stage": "Closing"
+        "primary_stage": "Commitment"
       }
     },
     {
@@ -585,7 +585,7 @@
       "expect": {
         "score": 57,
         "band": "Developing",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -598,7 +598,7 @@
       "expect": {
         "score": 68,
         "band": "Established",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -611,7 +611,7 @@
       "expect": {
         "score": 55,
         "band": "Developing",
-        "primary_stage": "Demand"
+        "primary_stage": "Interest"
       }
     },
     {
@@ -624,7 +624,7 @@
       "expect": {
         "score": 64,
         "band": "Established",
-        "primary_stage": "Sales Process"
+        "primary_stage": "Intent"
       }
     }
   ]

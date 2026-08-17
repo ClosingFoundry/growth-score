@@ -7,193 +7,193 @@
         {
           "n": 1,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Product"
         },
         {
           "n": 2,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Product"
         },
         {
           "n": 3,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "People"
         },
         {
           "n": 4,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "People"
         },
         {
           "n": 5,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Process"
         },
         {
           "n": 6,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Process"
         },
         {
           "n": 7,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Repeatability"
         },
         {
           "n": 8,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Repeatability"
         },
         {
           "n": 9,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Product"
         },
         {
           "n": 10,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Product"
         },
         {
           "n": 11,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "People"
         },
         {
           "n": 12,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "People"
         },
         {
           "n": 13,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Process"
         },
         {
           "n": 14,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Process"
         },
         {
           "n": 15,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Repeatability"
         },
         {
           "n": 16,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Repeatability"
         },
         {
           "n": 17,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Product"
         },
         {
           "n": 18,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Product"
         },
         {
           "n": 19,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "People"
         },
         {
           "n": 20,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "People"
         },
         {
           "n": 21,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Process"
         },
         {
           "n": 22,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Process"
         },
         {
           "n": 23,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Repeatability"
         },
         {
           "n": 24,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Repeatability"
         },
         {
           "n": 25,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Product"
         },
         {
           "n": 26,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Product"
         },
         {
           "n": 27,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "People"
         },
         {
           "n": 28,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "People"
         },
         {
           "n": 29,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Process"
         },
         {
           "n": 30,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Process"
         },
         {
           "n": 31,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Repeatability"
         },
         {
           "n": 32,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Repeatability"
         },
         {
@@ -230,10 +230,10 @@
       "bank_version": "dtc_pre_v1",
       "maturity_stage": "Pre-trading",
       "stage_display_labels": {
-        "Demand": "Demand",
-        "Expand": "Retention & Growth",
-        "Closing": "Purchase",
-        "Sales Process": "Conversion"
+        "Interest": "Interest",
+        "Value": "Retention & Growth",
+        "Commitment": "Purchase",
+        "Intent": "Conversion"
       }
     },
     {
@@ -242,193 +242,193 @@
         {
           "n": 1,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Product"
         },
         {
           "n": 2,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Product"
         },
         {
           "n": 3,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "People"
         },
         {
           "n": 4,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "People"
         },
         {
           "n": 5,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Process"
         },
         {
           "n": 6,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Process"
         },
         {
           "n": 7,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Repeatability"
         },
         {
           "n": 8,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Repeatability"
         },
         {
           "n": 9,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Product"
         },
         {
           "n": 10,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Product"
         },
         {
           "n": 11,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "People"
         },
         {
           "n": 12,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "People"
         },
         {
           "n": 13,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Process"
         },
         {
           "n": 14,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Process"
         },
         {
           "n": 15,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Repeatability"
         },
         {
           "n": 16,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Repeatability"
         },
         {
           "n": 17,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Product"
         },
         {
           "n": 18,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Product"
         },
         {
           "n": 19,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "People"
         },
         {
           "n": 20,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "People"
         },
         {
           "n": 21,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Process"
         },
         {
           "n": 22,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Process"
         },
         {
           "n": 23,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Repeatability"
         },
         {
           "n": 24,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Repeatability"
         },
         {
           "n": 25,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Product"
         },
         {
           "n": 26,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Product"
         },
         {
           "n": 27,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "People"
         },
         {
           "n": 28,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "People"
         },
         {
           "n": 29,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Process"
         },
         {
           "n": 30,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Process"
         },
         {
           "n": 31,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Repeatability"
         },
         {
           "n": 32,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Repeatability"
         },
         {
@@ -465,10 +465,10 @@
       "bank_version": "dtc_v1.5",
       "maturity_stage": "Trading",
       "stage_display_labels": {
-        "Demand": "Demand",
-        "Expand": "Retention & Growth",
-        "Closing": "Purchase",
-        "Sales Process": "Conversion"
+        "Interest": "Interest",
+        "Value": "Retention & Growth",
+        "Commitment": "Purchase",
+        "Intent": "Conversion"
       }
     },
     {
@@ -477,193 +477,193 @@
         {
           "n": 1,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Product"
         },
         {
           "n": 2,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Product"
         },
         {
           "n": 3,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "People"
         },
         {
           "n": 4,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "People"
         },
         {
           "n": 5,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Process"
         },
         {
           "n": 6,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Process"
         },
         {
           "n": 7,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Repeatability"
         },
         {
           "n": 8,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Repeatability"
         },
         {
           "n": 9,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Product"
         },
         {
           "n": 10,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Product"
         },
         {
           "n": 11,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "People"
         },
         {
           "n": 12,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "People"
         },
         {
           "n": 13,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Process"
         },
         {
           "n": 14,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Process"
         },
         {
           "n": 15,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Repeatability"
         },
         {
           "n": 16,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Repeatability"
         },
         {
           "n": 17,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Product"
         },
         {
           "n": 18,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Product"
         },
         {
           "n": 19,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "People"
         },
         {
           "n": 20,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "People"
         },
         {
           "n": 21,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Process"
         },
         {
           "n": 22,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Process"
         },
         {
           "n": 23,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Repeatability"
         },
         {
           "n": 24,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Repeatability"
         },
         {
           "n": 25,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Product"
         },
         {
           "n": 26,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Product"
         },
         {
           "n": 27,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "People"
         },
         {
           "n": 28,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "People"
         },
         {
           "n": 29,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Process"
         },
         {
           "n": 30,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Process"
         },
         {
           "n": 31,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Repeatability"
         },
         {
           "n": 32,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Repeatability"
         },
         {
@@ -707,193 +707,193 @@
         {
           "n": 1,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Product"
         },
         {
           "n": 2,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Product"
         },
         {
           "n": 3,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "People"
         },
         {
           "n": 4,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "People"
         },
         {
           "n": 5,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Process"
         },
         {
           "n": 6,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Process"
         },
         {
           "n": 7,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Repeatability"
         },
         {
           "n": 8,
           "type": "capability",
-          "stage": "Demand",
+          "stage": "Interest",
           "root_cause": "Repeatability"
         },
         {
           "n": 9,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Product"
         },
         {
           "n": 10,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Product"
         },
         {
           "n": 11,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "People"
         },
         {
           "n": 12,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "People"
         },
         {
           "n": 13,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Process"
         },
         {
           "n": 14,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Process"
         },
         {
           "n": 15,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Repeatability"
         },
         {
           "n": 16,
           "type": "capability",
-          "stage": "Sales Process",
+          "stage": "Intent",
           "root_cause": "Repeatability"
         },
         {
           "n": 17,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Product"
         },
         {
           "n": 18,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Product"
         },
         {
           "n": 19,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "People"
         },
         {
           "n": 20,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "People"
         },
         {
           "n": 21,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Process"
         },
         {
           "n": 22,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Process"
         },
         {
           "n": 23,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Repeatability"
         },
         {
           "n": 24,
           "type": "capability",
-          "stage": "Closing",
+          "stage": "Commitment",
           "root_cause": "Repeatability"
         },
         {
           "n": 25,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Product"
         },
         {
           "n": 26,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Product"
         },
         {
           "n": 27,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "People"
         },
         {
           "n": 28,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "People"
         },
         {
           "n": 29,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Process"
         },
         {
           "n": 30,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Process"
         },
         {
           "n": 31,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Repeatability"
         },
         {
           "n": 32,
           "type": "capability",
-          "stage": "Expand",
+          "stage": "Value",
           "root_cause": "Repeatability"
         },
         {
