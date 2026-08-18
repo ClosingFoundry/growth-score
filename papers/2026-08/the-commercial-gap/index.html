@@ -375,6 +375,25 @@ aside{position:static!important}
 [data-theme="dark"] main a{color:var(--band-accent,#8FB0F8)}
 main a{color:var(--link)}
 
+
+@media print{
+  header, footer, .skip, .no-print, #cc-bar, #cc-ov{display:none !important}
+  html, body{background:#fff !important; color:#0E1B2C !important; font-size:11pt}
+  main{padding:0 !important}
+  main section{padding:0 0 18pt !important}
+  main section > div{max-width:100% !important; padding:0 !important}
+  article section{page-break-before:always}
+  article section:first-of-type{page-break-before:auto}
+  h1,h2,h3{page-break-after:avoid}
+  table, figure, .fig{page-break-inside:avoid}
+  .toc{display:block !important; column-count:2; column-gap:28pt}
+  .toc a{display:block; padding:2pt 0; text-decoration:none; color:#0E1B2C !important; border:0 !important}
+  a{color:#0B4ED6}
+  .ph{background:#FFF4DE !important; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+  td,th{-webkit-print-color-adjust:exact; print-color-adjust:exact}
+  .print-mast{display:block !important; font-family:var(--mono); font-size:9pt; letter-spacing:.13em; text-transform:uppercase; color:#5F6C85; border-bottom:1pt solid #E2E7F0; padding-bottom:8pt; margin-bottom:16pt}
+}
+.print-mast{display:none}
 </style>
 <script src="/consent.js?v=3" defer></script>
 </head>
@@ -429,13 +448,14 @@ main a{color:var(--link)}
   </div>
 </header>
 <main id="main">
+<div class="print-mast">fac16 &middot; Growth Score &middot; The Commercial Gap &middot; Edition 1 &middot; fac16.com/papers/2026-08/the-commercial-gap/</div>
 <section style="padding: 84px 0 44px">
   <div style="max-width: 1120px; margin: 0 auto; padding: 0 28px">
     <p style="font-family: var(--mono); font-size: var(--size-12); letter-spacing: var(--tr-label-tight); text-transform: uppercase; color: var(--mid); margin: 0 0 18px">Position paper &middot; Edition 1</p>
     <h1 style="font-family: var(--display); font-size: var(--size-h1); font-weight: 700; letter-spacing: var(--tr-display); line-height: var(--lead-display); margin: 0; max-width: 22ch">The Commercial Gap.</h1>
     <p style="font-size: var(--size-23); line-height: var(--lead-ui); color: var(--ink-soft); margin: 22px 0 0; max-width: 46ch; text-wrap: pretty">One overlooked measurement in a complicated system.</p>
     <p style="font-size: var(--size-20); line-height: var(--lead-read); color: var(--ink-soft); margin: 26px 0 0; max-width: 62ch; text-wrap: pretty">The start-up support system can report how many businesses it engaged. It cannot report whether any of them became more capable of winning and keeping customers. This paper argues that the missing instrument is tractable, and states what it does not claim.</p>
-    <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; align-items: center">
+    <div class="no-print" style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; align-items: center">
       <a class="btn" href="the-commercial-gap-edition-1.pdf">Download the PDF</a>
       <a class="btn ghost" href="/method/">Read the method</a>
     </div>
