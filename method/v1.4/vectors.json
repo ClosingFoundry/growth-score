@@ -122,7 +122,7 @@
     },
     {
       "id": "v1.4-010",
-      "description": "Proposition weak across every stage (systemic)",
+      "description": "Product weak across every stage (systemic)",
       "input": {
         "capability": [1, 2, 4, 4, 4, 4, 4, 4, 1, 2, 4, 4, 4, 4, 4, 4, 1, 2, 4, 4, 4, 4, 4, 4, 1, 2, 4, 4, 4, 4, 4, 4],
         "momentum": [4, 4, 4, 4, 4]
